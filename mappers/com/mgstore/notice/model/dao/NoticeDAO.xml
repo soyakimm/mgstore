@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeDAO">
+	<resultMap type="com.mgstore.notice.model.dto.AskedDTO" id="generalAskedResultMap">
+		<id property="askId" column="ASK_ID"/>
+		<result property="askTitle" column="ASK_TITLE"/>
+		<result property="askContents" column="ASK_CONTENTS"/>
+		<result property="createdDate" column="ASK_DATE"/>
+		<result property="askViews" column="ASK_VIEWS"/>
+		<result property="" column="ASK_EXPOSURE"/>
+		<result property="updateDate" column="ASK_EDIT_DATE"/>
+		
+		<association property="writer" resultMap="memberResultMap"/>
+		<association property="category" resultMap="categoryResultMap"/>
+	</resultMap>
+
+
+
+
+
+</mapper>
