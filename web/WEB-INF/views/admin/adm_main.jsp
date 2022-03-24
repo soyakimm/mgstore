@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- ÆÄºñÄÜ -->
+    <!-- íŒŒë¹„ì½˜ -->
     <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <meta charset="EUC-KR">
-<title>°ü¸®ÀÚ¸ŞÀÎÆäÀÌÁö</title>
+<title>ê´€ë¦¬ìë©”ì¸í˜ì´ì§€</title>
 
     <script>
         window.resizeTo(1300,690);
     </script>
 
         <audio id='audio_play' src='../resources/audio/Squeaky-toy-sound-effect.mp3'></audio> 
-        <script type="text/javascript"> 
+      <script type="text/javascript"> 
         function play() { 
             var audio = document.getElementById('audio_play'); 
             if (audio.paused) { 
@@ -27,7 +27,7 @@
      
      
      <style>
-    /* 1400 X 1024 »çÀÌÁî·Î »õ·Î¿î Ã¢À¸·Î ¶ç¿ì±â*/
+    /* 1400 X 1024 ì‚¬ì´ì¦ˆë¡œ ìƒˆë¡œìš´ ì°½ìœ¼ë¡œ ë„ìš°ê¸°*/
     body{
         background-repeat: no-repeat;
         background-size:1300px 690px;
@@ -100,7 +100,7 @@
     } */
 
 
-     /*Áö¸¶ÄÏ ÆùÆ®*/
+     /*ì§€ë§ˆì¼“ í°íŠ¸*/
      @font-face {
         font-family: 'GmarketSansBold';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
@@ -121,30 +121,30 @@
 
 
       <span style="text-shadow:  -4px 0 white, 0 -5px white, -2px 0 white, 0 -2px white;"></span>
-        <h1 onclick="play()">°ü¸®ÀÚ ÆäÀÌÁö</h1>
+        <h1 onclick="play()">ê´€ë¦¬ì í˜ì´ì§€</h1>
     </div>
     <div class="background">
        <table id="firstTB">
            <tr>
                <td>
-                   <button class="firstBtn" id="adm_member" type="button">È¸¿ø°ü¸®</button>
-                   <button class="firstBtn" id="adm_order" type="button">ÁÖ¹®°ü¸®</button>
+                   <button class="firstBtn" id="adm_member" type="button">íšŒì›ê´€ë¦¬</button>
+                   <button class="firstBtn" id="adm_order" type="button">ì£¼ë¬¸ê´€ë¦¬</button>
                 </td>
             </tr>
             <tr>
                  <td>
-                    <button class="firstBtn" id="adm_comm" type="button">°Ô½ÃÆÇ °ü¸®</button>
-                   <button class="firstBtn" id="adm_income" type="button">¼öÀÍ°ü¸®</button>
+                    <button class="firstBtn" id="adm_comm" type="button">ê²Œì‹œíŒ ê´€ë¦¬</button>
+                   <button class="firstBtn" id="adm_income" type="button">ìˆ˜ìµê´€ë¦¬</button>
                 </td>
             </tr>
             
        </table>
 
-       <!-- ¼öÁ¤ ÇÊ¿ä | jsp »ı¼º ÈÄ location ¼öÁ¤ -->
+       <!-- ìˆ˜ì • í•„ìš” | jsp ìƒì„± í›„ location ìˆ˜ì • -->
        <script>
        		const adm_member = document.getElementById("adm_member");
        		adm_member.addEventListener('click', function(){
-       			location.href='<%=request.getContextPath()%>/rmreport/list';
+       			location.href='<%=request.getContextPath()%>/userlist';
        		});
        		
        		const adm_order = document.getElementById("adm_order");

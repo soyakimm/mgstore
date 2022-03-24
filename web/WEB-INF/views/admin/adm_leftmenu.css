@@ -1,6 +1,6 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
-/*³ëÅä»ê½º ÆùÆ®*/
+/*ë…¸í† ì‚°ìŠ¤ í°íŠ¸*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 .notosanskr * {
  font-family: 'Noto Sans KR', sans-serif;
