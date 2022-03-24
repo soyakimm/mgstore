@@ -19,9 +19,24 @@ public class AskedListServlet extends HttpServlet {
 		
 		String searchCondition = request.getParameter("searchCondition");
 		
+		System.out.println("searchCondition : " + searchCondition);
+		
 		AskedService askedService = new AskedService();
 		
 		List<AskedDTO> askedList = askedService.selectAskedList(searchCondition);
+		
+		System.out.println(askedList);
+		
+		String path ="";
+		
+		if(askedList != null) {
+			path = "/WEB-INF/views/notice/askedList.jsp";
+			request.setAttribute("askedList", askedList);
+		} else {
+			System.out.println("실패");
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
 	}
 
 
