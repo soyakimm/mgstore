@@ -10,6 +10,11 @@ public class Adm_MemberService {
 	public Adm_MemberService() {
 		Adm_MemberDAO = new Adm_MemberDAO();
 	}
+
+	public int getUserListCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }
