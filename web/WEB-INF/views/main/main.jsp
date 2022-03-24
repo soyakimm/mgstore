@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>main</title>
 </head>
 <body>
-	<jsp:forward page="/WEB-INF/views/main/main.jsp"/>
+	<jsp:include page="../common/header.jsp"/>
+	
+	<div>
+		<h1>멍개상점 임시 메인 화면입니다.</h1>
+	</div>
 </body>
 </html>

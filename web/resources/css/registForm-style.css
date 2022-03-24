@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrapper {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+/* 페이지 타이틀 */
+h1 {
+    font-family: 'GmarketSansLight';
+    font-weight: 900;
+    font-size: 36px;
+    text-align: center;
+}
+
+.regist-table {
+    width: 542px;
+    margin: 0 auto;
+}
+
+.required {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 44px;
+    align-items: center;
+    margin: 14px auto;
+}
+
+.th {
+    width: 108px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.th p {
+    width: 100%;
+    text-align: start;
+    vertical-align: middle;
+}
+
+.td b {
+    font-size: small;
+    color: #ff0000;
+    margin-right: 3px;
+}
+
+.td {
+    display: flex;
+    width: 100%;
+    height: 44px;
+    align-items: center;
+}
+
+
+.td input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+    display: block;
+    border: 1px solid #E5E5E5;
+    border-radius: 36px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #767676;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 6px 0;
+}
+
+/*
+.email-input {
+    max-width: 88px;
+}
+
+.td .email-domain {
+    display: block;
+    border: 1px solid #E5E5E5;
+    border-radius: 36px;
+    width: auto;
+    height: 48px;
+    font-size: 14px;
+    color: #767676;
+    padding-left: 20px;
+    padding-inline-end: 20px;
+    margin: 6px 0;
+}
+*/
+
+.td .dash {
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    color: #767676;
+    font-size: small;
+}
+
+/*
+.td .at {
+    padding-inline-start: 8px;
+    padding-inline-end: 8px;
+    color: #767676;
+    font-size: small;
+}
+*/
+
+.td input[type="password"] {
+    padding-right: 50px;
+}
+
+.required .check {
+    width: 150px;
+    height: 44px;
+    background: #E5E5E5;
+    color: #fff;
+    border: 1px solid #E5E5E5;
+    border-radius: 40px;
+    margin-left: 16px;
+}
+
+.required .check span {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.closed-icon, .opened-icon {
+    position: absolute;
+    right: 16px;
+    background: transparent;
+    border: 0 none;
+    filter: invert(43%) sepia(3%) saturate(202%) hue-rotate(39deg) brightness(105%) contrast(81%);
+}
+
+#address {
+    background: #E5E5E5;
+}
+
+/* 회원가입 버튼 */
+.regist-button {
+    display: block;
+    margin-top: 30px;
+    width: 100%;
+    height: 44px;
+    border: 3px solid #F7F6F7;
+    border-radius: 36px;
+    background: #F7F6F7;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.regist-button:hover {
+    border: 3px solid #f5742f;
+    background: #f5742f;
+    color: #fff;
+}
+
+.regist-button:hover span {
+    display: none;
+}
+
+.regist-button:hover::before {
+    content: "가입하기";
+}
+
+
+/* 전체 적용 효과 */
+body input {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body button {
+    cursor: pointer;
+}
+
+body ul {
+    padding-inline-start: 0;
+    margin-block-end: 0;
+}
+
+body li {
+    list-style: none;
+}

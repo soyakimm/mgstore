@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrapper {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+/* 페이지 타이틀 */
+h1 {
+    font-family: 'GmarketSansLight';
+    font-weight: 900;
+    font-size: 36px;
+    text-align: center;
+}
+
+/* 로그인 폼 */
+.login-table {
+    width: 542px;
+    height: 356px;
+    margin: 0 auto;
+}
+
+.save-id {
+    display:inline-flex;
+    margin-top: 10px;
+    margin-left: 26px;
+    text-align: center;
+}
+
+.save-id span {
+    display: flex;
+    font-size: small;
+    font-weight: 700;
+    text-align: center;
+}
+
+.input-area input[type="text"], input[type="password"] {
+    display: block;
+    border: 1px solid #E5E5E5;
+    border-radius: 36px;
+    width: 96%;
+    height: 44px;
+    font-size: 14px;
+    color: #757575;
+    padding-left: 20px;
+    margin: 6px 0;
+}
+
+/* 아이디 저장 체크박스 */
+input[type="checkbox"]{
+    margin: 0 auto;
+    width: 2rem !important;
+    height: 2rem !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance:none;
+    outline: none;
+    box-shadow: none;
+}
+
+input[type="checkbox"]:checked{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance:none;
+    box-shadow: none;
+    filter: invert(69%) sepia(35%) saturate(7370%) hue-rotate(341deg) brightness(99%) contrast(93%);
+}
+
+/* 로그인 버튼 */
+.login-button {
+    display: block;
+    width: 100%;
+    height: 44px;
+    border: 3px solid #F7F6F7;
+    border-radius: 36px;
+    background: #F7F6F7;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.login-button:hover {
+    border: 3px solid #f5742f;
+    background: #f5742f;
+    color: #fff;
+}
+
+.login-button:hover span {
+    display: none;
+}
+
+.login-button:hover::before {
+    content: "로그인";
+}
+
+/* 아이디 찾기, 비밀번호 찾기 */
+.button-box button {
+    font-size: small;
+    border: 0 none;
+    background: transparent;
+    line-height: 36px;
+}
+
+.button-box .line {
+    color: #767676;
+    font-size: 10px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+    line-height: 36px;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+}
+
+.button-box a:hover {
+    color: #f5742f;
+}
+
+/* 전체 적용 효과 */
+button {
+    cursor: pointer;
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    color: #000;
+    text-decoration-line: none;
+    font-family: 'Noto Sans KR', sans-serif;
+}

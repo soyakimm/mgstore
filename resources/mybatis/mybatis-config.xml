@@ -17,6 +17,10 @@
 	</environments>
 	
 	<mappers> <!-- 패키지 : 하위 모두 포함해서 매핑 -->
-
+		<mapper resource="com/mgstore/user/model/dao/UserDAO.xml"/>
+		<!-- 
+		<package name="com.mgstore.user.model.dao"/>
+		
+		 -->
 	</mappers>
 </configuration>
