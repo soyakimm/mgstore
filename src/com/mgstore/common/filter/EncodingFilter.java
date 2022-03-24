@@ -28,7 +28,6 @@ public class EncodingFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		/* xml에 설정한 init-param의 key를 이용하여 fConfig에서 값을 꺼내올 수 있다. */
 		encodingType = fConfig.getInitParameter("encoding-type");
 	}
 

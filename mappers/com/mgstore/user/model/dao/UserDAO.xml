@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserDAO">
+
+	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+	<insert id="insertUser" parameterType="com.mgstore.user.model.dto.UserDTO">
+		INSERT
+		  INTO TBL_USER
+		(
+		  USER_ID
+		, USER_PWD
+		, USER_NAME
+		, NICKNAME
+		, EMAIL
+		, PHONE
+		, ADDRESS
+		, AGREEMENT
+		, ROLE
+		, USER_STATUS
+		, REG_DATE
+		, MOD_DATE
+		)
+		VALUES
+		(
+		  #{ userId }
+		, #{ userPwd }
+		, #{ userName }
+		, #{ nickname }
+		, #{ email }
+		, #{ phone }
+		, #{ address }
+		, DEFAULT
+		, DEFAULT
+		, DEFAULT
+		, DEFAULT
+		, NULL
+		)
+	</insert>
+	
+	<select id="selectEncryptedPwd" resultType="java.lang.String">
+		SELECT
+			   USER_PWD
+		  FROM TBL_USER
+		 WHERE USER_STATUS = 'Y'
+		   AND USER_ID = #{ userId }
+	</select>
+	
+	<select id="selectLoginUser" resultMap="userResultMap">
+		SELECT
+			   USER_ID
+			 , USER_PWD
+			 , USER_NAME
+			 , NICKNAME
+			 , EMAIL
+			 , PHONE
+			 , ADDRESS
+			 , AGREEMENT
+			 , ROLE
+			 , USER_STATUS
+			 , REG_DATE
+			 , MOD_DATE
+		 FROM TBL_USER
+		WHERE USER_STATUS = 'Y'
+		  AND USER_ID = #{ userId }
+	</select>
+</mapper>

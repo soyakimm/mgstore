@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>failed</title>
 </head>
 <body>
-	<jsp:forward page="/WEB-INF/views/main/main.jsp"/>
+	<jsp:include page="../common/header.jsp"/>
+	<h1 align="center">${ requestScope.message }</h1>
 </body>
 </html>
