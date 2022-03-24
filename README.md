@@ -1,4 +1,3 @@
-# readme
 
 
     멍개상점 | MenggeaStore 🐶
