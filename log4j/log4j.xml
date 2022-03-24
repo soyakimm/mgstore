@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+        	<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p: %c - %m%n" /> 
+        </layout>                        
+
+    </appender>
+
+    <!-- info부터 적용 table사용시 -->
+    <logger name="jdbc.resultsettable" additivity="false"> 
+      <level value="info" /> 
+      <appender-ref ref="console" /> 
+    </logger> 
+
+    <!-- sql 로깅 -->
+    <!-- SQL문이 preparedStatement일 경우 argument값으로 대체된 SQL문 출력 -->
+    <logger name="jdbc.sqlonly" additivity="false"> 
+      <level value="info" /> 
+      <appender-ref ref="console" /> 
+    </logger> 
+	
+	<!-- resultset제외한 모든 jdbc 호출 정보 출력 -->
+    <logger name="jdbc.audit" additivity="false">
+          <level value="info" />
+          <appender-ref ref="console" />
+    </logger>
+
+    <!-- info부터 적용 기본적인 resultset-->
+    <!-- resultset을 포함한 모든 jdbc 호출 정보 로그 -->
+    <!-- resultsettable 만 사용하기 위해서 로그레벨은 warning시킨다. resultset이 중복됨 --> 
+    <logger name="jdbc.resultset" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- 수행시간을 찍는다-->
+    <logger name="jdbc.sqltiming" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+    <root>
+        <priority value="warn" />
+        <appender-ref ref="console" />
+    </root>
+</log4j:configuration>

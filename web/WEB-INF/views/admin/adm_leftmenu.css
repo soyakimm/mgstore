@@ -1,0 +1,120 @@
+@charset "EUC-KR";
+
+/*노토산스 폰트*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * {
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+  @font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+* {
+    font-family: GmarketSansBold;
+}
+
+
+
+body {       
+    margin: 30px;
+    padding: 0;
+    /* background-image: url('/EVENT/resources/sectionline.jpg'); */
+    background-repeat: no-repeat;
+    background-size:1300px 690px;
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: white
+
+}
+
+
+.menuImg{
+    background-color: #F7F6F7;
+    float : left;
+    width: 400px;
+    height: 768px;
+    border: 2px solid black; 
+    /*position: relative;*/
+}
+
+.menuBtn{
+    background-color: #F7F6F7;
+    color:black;
+    width: 100px;
+    height : 50px;
+    margin:30px;
+    opacity: 100%;
+    font-size: medium;
+    border : none;
+    width : 200px;
+    height: 60px;
+    cursor:pointer;
+    outline:none;
+    border: 2px solid black;
+}
+
+.menuBtn:hover{
+    opacity: 100%;
+    color: aqua;
+    background-color: black;
+}
+
+
+#title_Btns{
+    position: absolute;
+    left : 50px;
+    top : 10px;
+    bottom : 10px;
+    
+}
+
+
+#title_link{
+    color : #F5742F;
+    width : 400px;
+    text-align: center;
+    font-size: 70px;
+    position: absolute;
+    left : 1px;
+    top : 150px;
+    text-decoration : none;
+}
+
+#btnList{
+    list-style: url(/EVENT/resources/images/mng_arrow_small.png);
+    text-align: center;
+    margin-top : 50px;
+    margin-left: 20px;
+    
+}
+#btnList li{
+    margin-right: 40px;
+    height : 80px;
+}
+
+
+/*h1{
+    color : black;
+    width : 400px;
+    text-align: center;
+    font-size: 50px;
+    position: absolute;
+    top : 90px;
+}*/
+
+
+.summary{
+    display : relative;
+    margin-left : 430px;
+    width: 700px;
+    height: 768px;
+    border: 2px solid black; 
+    color: black;
+    background-color: #F7F6F7;
+}
+
+
+
