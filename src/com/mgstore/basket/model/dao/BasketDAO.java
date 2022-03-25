@@ -1,4 +1,5 @@
-package com.mgstore.Basket.model.dao;
+package com.mgstore.basket.model.dao;
+
 
 public class BasketDAO {
 

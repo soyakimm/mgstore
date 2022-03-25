@@ -1,4 +1,5 @@
-package com.mgstore.Basket.model.dto;
+package com.mgstore.basket.model.dto;
+
 
 public class BasketDTO {
 

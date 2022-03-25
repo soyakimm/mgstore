@@ -1,4 +1,5 @@
-package com.mgstore.Basket.controller;
+package com.mgstore.basket.controller;
+
 
 import java.io.IOException;
 import javax.servlet.ServletException;

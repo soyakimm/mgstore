@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+
+	<resultMap type="com.mgstore.admin.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+
+	
+	<select id="selectUserList" resultMap="userResultMap">
+		SELECT
+			   USER_ID
+			 , USER_NAME
+			 , EMAIL
+			 , USER_STATUS
+		  FROM TBL_USER
+		 WHERE USER_STATUS = 'Y'
+		 <if test="_parameter != null">
+		   AND USER_ID = #{ userId }
+		  </if>
+	</select>
+	
+
+</mapper>

@@ -1,4 +1,5 @@
-package com.mgstore.Basket.model.service;
+package com.mgstore.basket.model.service;
+
 
 public class BasketService {
 
