@@ -19,6 +19,7 @@
 	<mappers> <!-- 패키지 : 하위 모두 포함해서 매핑 -->
 		<mapper resource="com/mgstore/user/model/dao/UserDAO.xml"/>
 		<mapper resource="com/mgstore/product/model/dao/ProductDAO.xml"/>
+		<mapper resource="com/mgstore/notice/model/dao/NoticeDAO.xml"/>
 		<!-- 
 		<package name="com.mgstore.user.model.dao"/>
 		
