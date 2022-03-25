@@ -1,0 +1,580 @@
+@charset "UTF-8";
+
+.group {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+a { text-decoration:none !important }
+
+
+:root {
+    --black: #000000;
+    --star-dust: #a0a0a0;
+    --white: #ffffff;
+    --fuscous-gray: #565656;
+    --mist-gray: #c4c4c4;
+    --crusta: #f5742f;
+    --font-size-xxl: 17px;
+    --font-size-xxxs: 11px;
+    --font-size-l2: 15px;
+    --font-size-xl3: 20px;
+    --font-size-xl: 30px;
+    --font-size-xs: 12px;
+    --font-family-gmarket_sans_ttf-medium: "Gmarket Sans TTF-Medium", Helvetica;
+    --font-family-noto_sans_kr: "Noto Sans KR", Helvetica;
+    --font-family-roboto: "Roboto", Helvetica;
+  }
+  
+  .frame-3 {
+    align-items: flex-start;
+    background-color: var(--white);
+    display: flex;
+    height: 3500px;
+    padding: 0 49px;
+    width: 1400px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .hidden,
+  .hidden * {
+    pointer-events: none;
+    visibility: hidden;
+  }
+  
+  .flex-col {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 159px;
+    margin-top: 129px;
+    min-height: 3344px;
+    width: 1041px;
+  }
+  
+  .flex-row-1 {
+    align-items: center;
+    display: flex;
+    margin-left: 1px;
+    margin-top: 154px;
+    min-width: 928px;
+  }
+  
+  .overlap-group1 {
+    align-items: flex-start;
+    background-color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    height: 32px;
+    min-width: 94px;
+    padding: 2px 8px;
+  }
+  
+  .border-1px-star-dust {
+    border: 1px solid var(--star-dust);
+  }
+  
+  .text-1 {
+    letter-spacing: 0;
+    min-height: 22px;
+  }
+  
+  .notosanskr-medium-fuscous-gray-15px {
+    color: var(--fuscous-gray);
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-l2);
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .x1 {
+    height: 22px;
+    margin-left: 655px;
+    margin-top: 1.97px;
+    object-fit: cover;
+    width: 28px;
+  }
+  
+  .text-15 {
+    letter-spacing: 0;
+    margin-left: 5px;
+    margin-top: 4px;
+    min-height: 22px;
+    min-width: 28px;
+  }
+  
+  .overlap-group3 {
+    align-items: flex-start;
+    background-color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    height: 32px;
+    margin-left: 24px;
+    min-width: 94px;
+    padding: 2px 8px;
+  }
+  
+  .rectangle-51 {
+    background-color: var(--mist-gray);
+    height: 639px;
+    margin-left: 1px;
+    margin-top: 71px;
+    width: 928px;
+  }
+  
+  .text-19 {
+    color: var(--black);
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-xxl);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-left: 3px;
+    margin-top: 98px;
+    min-height: 1000px;
+    width: 928px;
+  }
+  
+  .text-4 {
+    color: var(--black);
+    font-family: var(--font-family-roboto);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-right: 56px;
+    margin-top: 829px;
+    min-height: 14px;
+    min-width: 1px;
+  }
+  
+  .overlap-group2 {
+    align-items: flex-end;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    display: flex;
+    height: 125px;
+    justify-content: flex-end;
+    margin-left: 1px;
+    margin-top: 9px;
+    min-width: 928px;
+    padding: 16px 14px;
+  }
+  
+  .text-17 {
+    align-self: flex-start;
+    letter-spacing: 0;
+    min-height: 22px;
+    min-width: 119px;
+  }
+  
+  .overlap-group5 {
+    align-items: flex-start;
+    background-color: var(--crusta);
+    border-radius: 4px;
+    display: flex;
+    height: 29px;
+    justify-content: flex-end;
+    margin-bottom: 2px;
+    margin-left: 8px;
+    min-width: 69px;
+    padding: 3px 20px;
+  }
+  
+  .text-18 {
+    color: var(--white);
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-l2);
+    font-weight: 500;
+    letter-spacing: 0;
+    min-height: 22px;
+  }
+  
+  .overlap-group6 {
+    align-items: flex-end;
+    background-color: #e3e3e3;
+    border-radius: 4px;
+    display: flex;
+    height: 29px;
+    margin-bottom: 3px;
+    margin-left: 668px;
+    min-width: 30px;
+    padding: 4px 5px;
+  }
+  
+  .landscape-1 {
+    height: 20px;
+    object-fit: cover;
+    width: 20px;
+  }
+  
+  .text-16 {
+    align-self: flex-start;
+    color: transparent;
+    font-family: var(--font-family-gmarket_sans_ttf-medium);
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-left: 57px;
+    margin-top: 30px;
+    min-height: 35px;
+  }
+  
+  .span1 {
+    color: var(--black);
+    font-size: var(--font-size-l2);
+  }
+  
+  .span0 {
+    color: var(--crusta);
+  }
+  
+  .overlap-group {
+    align-items: center;
+    background-color: #f8eee1;
+    border-radius: 17px;
+    display: flex;
+    height: 169px;
+    margin-left: 1px;
+    margin-top: 43px;
+    min-width: 1040px;
+    padding: 17px 56px;
+  }
+  
+  .flex-col-1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3px;
+    margin-left: 76px;
+    min-height: 56px;
+    width: 49px;
+  }
+  
+  .text {
+    letter-spacing: 0;
+    min-height: 20px;
+  }
+  
+  .gmarketsansttf-medium-star-dust-17px {
+    color: var(--star-dust);
+    font-family: var(--font-family-gmarket_sans_ttf-medium);
+    font-size: var(--font-size-xxl);
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .x32kg {
+    letter-spacing: 0;
+    margin-top: 16px;
+    min-height: 20px;
+  }
+  
+  .gmarketsansttf-medium-black-17px {
+    color: var(--black);
+    font-family: var(--font-family-gmarket_sans_ttf-medium);
+    font-size: var(--font-size-xxl);
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .text-3 {
+    position: relative;
+    right: 380px;
+    bottom: 4px;
+  }
+  
+  .line-2 {
+    align-self: flex-start;
+    height: 134px;
+    margin-left: 62px;
+    width: 1px;
+  }
+  
+  .text-container-1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3px;
+    margin-left: 116px;
+    min-height: 56px;
+    width: 33px;
+  }
+  
+  .text-5 {
+    letter-spacing: 0;
+    margin-top: 16px;
+    min-height: 20px;
+  }
+  
+  .text-container-4 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3px;
+    margin-left: 67px;
+    min-height: 56px;
+    width: 33px;
+  }
+  
+  .text-11 {
+    letter-spacing: 0;
+    margin-left: 3px;
+    margin-top: 16px;
+    min-height: 20px;
+  }
+  
+  .ellipse-4 {
+    background-color: var(--mist-gray);
+    border-radius: 55px;
+    height: 110px;
+    margin-bottom: 1px;
+    width: 110px;
+  }
+  
+  .text-container-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3px;
+    margin-left: 71px;
+    min-height: 56px;
+    width: 33px;
+  }
+  
+  .text-7 {
+    letter-spacing: 0;
+    margin-top: 16px;
+    min-height: 20px;
+  }
+  
+  .text-container-3 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3px;
+    margin-left: 68px;
+    min-height: 56px;
+    width: 50px;
+  }
+  
+  .text-9 {
+    letter-spacing: 0;
+    margin-top: 16px;
+    min-height: 20px;
+    min-width: 50px;
+  }
+  
+  .text-8 {
+    letter-spacing: 0;
+    margin-right: 1px;
+    min-height: 20px;
+    min-width: 33px;
+  }
+  
+  .line-3 {
+    height: 1px;
+    margin-top: 20px;
+    width: 1041px;
+  }
+  
+  .flex-row {
+    align-items: flex-start;
+    display: flex;
+    height: 76px;
+    margin-left: 1px;
+    min-width: 1040px;
+  }
+  
+  .notosanskr-medium-black-11px {
+    color: var(--black);
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-xxxs);
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .number {
+    letter-spacing: 0;
+    margin-left: 6px;
+    min-height: 16px;
+    width: 9px;
+  }
+  
+  .number-1 {
+    letter-spacing: 0;
+    margin-left: 5px;
+    min-height: 16px;
+    width: 9px;
+  }
+  
+  .visibility {
+    height: 15px;
+    margin-left: 11px;
+    margin-top: 1px;
+    object-fit: cover;
+    width: 15px;
+  }
+  
+  .text-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    min-height: 76px;
+    width: 306px;
+  }
+  
+  .text-2 {
+    color: var(--black);
+    font-family: var(--font-family-gmarket_sans_ttf-medium);
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-top: 12px;
+    min-height: 35px;
+    position: relative;
+    left: 53px;
+  }
+  
+  .text-1-1 {
+    color: #0d9572;
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-xl3);
+    font-weight: 500;
+    letter-spacing: 0;
+    min-height: 29px;
+    position: relative;
+    left: 53px;
+  }
+  
+  .number-2 {
+    letter-spacing: 0;
+    margin-left: 4px;
+    min-height: 16px;
+    width: 9px;
+  }
+  
+  .comment {
+    height: 15px;
+    margin-left: 5px;
+    margin-top: 2px;
+    object-fit: cover;
+    width: 15px;
+  }
+  
+  .date {
+    letter-spacing: 0;
+    margin-left: 564px;
+    margin-top: 1px;
+    min-height: 16px;
+    width: 63px;
+  }
+  
+  .heart {
+    height: 15px;
+    margin-left: 4px;
+    margin-top: 1.91px;
+    object-fit: cover;
+    width: 15px;
+  }
+  
+  .overlap-group4 {
+    align-items: flex-start;
+    background-color: var(--white);
+    border-radius: 24px;
+    display: flex;
+    height: 48px;
+    margin-left: 54px;
+    margin-top: 404px;
+    min-width: 48px;
+    padding: 10px;
+  }
+  
+  .heart-1 {
+    height: 26px;
+    object-fit: cover;
+    width: 26px;
+  }
+
+
+.group {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.img-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background: url(../게시글/image/puppy-gf45300657_1920.jpg); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  right: 440px;
+  top: 20px;
+}
+
+.lline {
+  position: relative;
+  top: 20px;
+
+}
+
+/*댓글 시작*/
+
+/*댓글 끝*/
+
+/*폰트*/
+.web-font42{
+    font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 29px;
+color: #0D9572;
+    }
+ 
+.web-font43{
+    font-family: 'Gmarket Sans TTF';
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 35px;
+color: #000000;
+    }
+
+.web-font44{
+font-family: 'Gmarket Sans TTF';
+font-style: normal;
+font-weight: 500;
+font-size: 17px;
+line-height: 20px;
+color: #000000;
+    }
+
+.web-font45{
+font-family: 'Gmarket Sans TTF';
+font-style: normal;
+font-weight: 500;
+font-size: 17px;
+line-height: 20px;
+color: #A0A0A0;
+    }
+
+.web-font46{
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 500;
+font-size: 11px;
+line-height: 16px;
+color: #000000;
+    }
+
+.web-font47{
+font-family: 'Noto Sans KR';
+font-style: normal;
+    }
