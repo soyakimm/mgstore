@@ -16,7 +16,7 @@ public class AskedService {
 	public AskedService() {
 		noticeDAO = new NoticeDAO();
 	}
-	/* 자주 묻는 질문 전체조회*/
+	/* 자주 묻는 질문 조회*/
 	public List<AskedDTO> selectAskedList(String searchCondition) {
 
 		SqlSession session = getSqlSession();
@@ -24,6 +24,24 @@ public class AskedService {
 		List<AskedDTO> askedList = noticeDAO.selectAskedList(session, searchCondition);
 		
 		return askedList;
+	}
+	
+	/* 자주 묻는 질문 등록*/
+	public int insertAsked(AskedDTO newAsked) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = noticeDAO.insertAsked(session, newAsked);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
 	}
 
 }
