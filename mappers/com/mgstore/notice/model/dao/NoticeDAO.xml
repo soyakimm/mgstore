@@ -38,6 +38,7 @@
 		<result property="askCategoryName" column="ASK_CATE_NAME"/>
 	</resultMap>
 	
+	<!-- 자주묻는질문 조회 -->
 	<select id="selectAskedList" resultMap="generalAskedResultMap">
 	SELECT
 		   A.ASK_ID
@@ -56,22 +57,23 @@
 	 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
 	 <where>
 	 	<if test="searchCondition == '이용문의'">
-	 	C.ASK_CATE_NAME = '이용문의'
+	 	A.ASK_CATE_ID = 1
 	 	</if>
 	 	<if test="searchCondition == '구매문의'">
-	 	C.ASK_CATE_NAME = '구매문의'
+	 	A.ASK_CATE_ID = 2
 	 	</if>
 	 	<if test="searchCondition == '배송문의'">
-	 	C.ASK_CATE_NAME = '배송문의'
+	 	A.ASK_CATE_ID = 3
 	 	</if>
 	 	<if test="searchCondition == '기타'">
-	 	C.ASK_CATE_NAME = '기타'
+	 	A.ASK_CATE_ID = 4
 	 	</if>
 	 	AND A.ASK_EXPOSURE = 'Y'
 	 </where>
 	 ORDER BY A.ASK_ID DESC
 	</select>
 	
+	<!-- 자주묻는질문 등록 -->
 	<insert id="insertAsked">
 		INSERT
 		  INTO ASKED
@@ -80,20 +82,56 @@
 		  ASK_TITLE,
 		  ASK_CONTENTS,
 		  USER_ID,
-		  ASKE_CATE_ID
+		  ASK_CATE_ID
 		)
 		VALUES
 		(
 		  ASK_SEQ.NEXTVAL,
 		  #{ askTitle },
-		  #{ contents },
+		  #{ askContents },
 		  #{ userId },
-		  #{ categoryCode },
+		  #{ categoryCode }
 		)
 	</insert>
-
-
-
+	
+	<!-- 자주 묻는 질문 수정 조회용 메소드 -->
+	<select id="selectAskedDetail" resultMap="generalAskedResultMap">
+		SELECT
+			   A.ASK_ID
+			 , A.ASK_TITLE
+			 , A.ASK_CONTENTS
+			 , A.ASK_DATE
+			 , A.ASK_VIEWS
+			 , A.ASK_EXPOSURE
+			 , A.USER_ID
+			 , B.NICKNAME
+			 , A.ASK_EDIT_DATE
+			 , A.ASK_CATE_ID
+			 , C.ASK_CATE_NAME
+		 FROM ASKED A
+	     JOIN TBL_USER B ON (A.USER_ID = B.USER_ID)
+	 	 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
+		WHERE A.ASK_EXPOSURE = 'Y'
+		  AND A.ASK_ID = #{ askId }
+	</select>
+	
+	<!-- 자주 묻는 질문 수정 -->
+	<update id="updateAsked">
+		UPDATE
+		       ASKED
+		   SET ASK_TITLE = #{ askTitle },
+		       ASK_CATE_ID = #{ categoryCode },
+		       ASK_CONTENTS = #{ askContents }
+		 WHERE ASK_ID = #{ askId }
+	</update>
+	
+	<!-- 자주 묻는 질문 삭제 -->
+	<delete id="deleteAsked">
+		UPDATE
+			   ASKED
+		   SET ASK_EXPOSURE = 'N'
+		 WHERE ASK_ID = #{ askId }
+	</delete>
 
 
 

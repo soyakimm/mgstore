@@ -22,9 +22,10 @@ public class AskedinsertServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String askTitle = request.getParameter("title");
+		String askTitle = request.getParameter("askTitle");
 		int categoryCode = Integer.parseInt(request.getParameter("category"));
-		String askContents = request.getParameter("contents");
+		String askContents = request.getParameter("askContents");
+		
 		/*추후 필터에서 로그인 유저별 사용가능 여부 정할것!*/
 		String userId = ((UserDTO)request.getSession().getAttribute("loginUser")).getUserId();
 		
@@ -42,7 +43,7 @@ public class AskedinsertServlet extends HttpServlet {
 		String path = "";
 		if(result > 0) {
 			path = "/WEB-INF/views/common/success.jsp";
-			request.setAttribute("successMessage", "insertAsked");
+			request.setAttribute("successCode", "insertAsked");
 		} else {
 			System.out.println("실패");
 			/* 이후에 실패 page 만들기 ? */
@@ -50,8 +51,6 @@ public class AskedinsertServlet extends HttpServlet {
 		
 		
 		request.getRequestDispatcher(path).forward(request, response);
-		
-		
 		
 		
 	}

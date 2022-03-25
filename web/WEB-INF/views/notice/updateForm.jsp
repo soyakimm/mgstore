@@ -37,10 +37,10 @@
                 <div>
                 	<!-- 보내준 value값이 select 표시되도록 해보기! -->
                     <select class="asked-category-w text-8" name="category">
-                        <option value="2">이용문의</option>
-                        <option value="3">구매문의</option>
-                        <option value="4">배송문의</option>
-                        <option value="5">기타</option>
+                        <option value="1">이용문의</option>
+                        <option value="2">구매문의</option>
+                        <option value="3">배송문의</option>
+                        <option value="4">기타</option>
                     </select>
                 </div>
                 <textarea class="aked-contents-w notosans-15px-b" name="contents">${ asked.askContents }</textarea>

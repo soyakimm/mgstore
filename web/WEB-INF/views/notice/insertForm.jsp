@@ -32,17 +32,17 @@
             자주 묻는 질문 등록
             </div>
             <div>
-                <input type="text" class="asked-title-w" name="title" placeholder="제목을 입력해주세요" required> <!-- required : 입력값 필수! -->
+                <input type="text" class="asked-title-w" name="askTitle" placeholder="제목을 입력해주세요" required> <!-- required : 입력값 필수! -->
             </div>
                 <div>
                     <select class="asked-category-w text-8" name="category">
-                        <option value="2">이용문의</option>
-                        <option value="3">구매문의</option>
-                        <option value="4">배송문의</option>
-                        <option value="5">기타</option>
+                        <option value="1">이용문의</option>
+                        <option value="2">구매문의</option>
+                        <option value="3">배송문의</option>
+                        <option value="4">기타</option>
                     </select>
                 </div>
-                <textarea class="aked-contents-w notosans-15px-b" name="contents" placeholder="게시글을 작성해주세요" required></textarea>
+                <textarea class="aked-contents-w notosans-15px-b" name="askContents" placeholder="게시글을 작성해주세요" required></textarea>
               <div class="asked-under">
               <!-- 파일첨부 db를 안만들어서 아마 제거될 예정 ^^.. -->
                 <div class="file-add notosans-15px-b">파일첨부</div>
