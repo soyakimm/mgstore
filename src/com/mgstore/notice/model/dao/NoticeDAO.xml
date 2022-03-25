@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeDAO">
+	<resultMap type="com.mgstore.notice.model.dto.AskedDTO" id="generalAskedResultMap">
+		<id property="askId" column="ASK_ID"/>
+		<result property="askTitle" column="ASK_TITLE"/>
+		<result property="askContents" column="ASK_CONTENTS"/>
+		<result property="createdDate" column="ASK_DATE"/>
+		<result property="askViews" column="ASK_VIEWS"/>
+		<result property="askExposure" column="ASK_EXPOSURE"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="updateDate" column="ASK_EDIT_DATE"/>
+		<result property="categoryCode" column="ASK_CATE_ID"/>
+		
+		<association property="writer" resultMap="memberResultMap"/>
+		<association property="category" resultMap="categoryResultMap"/>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="memberResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.notice.model.dto.AskCategoryDTO" id="categoryResultMap">
+		<id property="askCategoryId" column="ASK_CATE_ID"></id>
+		<result property="askCategoryName" column="ASK_CATE_NAME"/>
+	</resultMap>
+	
+	<select id="selectAskedList" resultMap="generalAskedResultMap">
+	SELECT
+		   A.ASK_ID
+		 , A.ASK_TITLE
+		 , A.ASK_CONTENTS
+		 , A.ASK_DATE
+		 , A.ASK_VIEWS
+		 , A.ASK_EXPOSURE
+		 , A.USER_ID
+		 , B.NICKNAME
+		 , A.ASK_EDIT_DATE
+		 , A.ASK_CATE_ID
+		 , C.ASK_CATE_NAME
+	 FROM ASKED A
+	 JOIN TBL_USER B ON (A.USER_ID = B.USER_ID)
+	 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
+	 <where>
+	 	<if test="searchCondition == '이용문의'">
+	 	C.ASK_CATE_NAME = '이용문의'
+	 	</if>
+	 	<if test="searchCondition == '구매문의'">
+	 	C.ASK_CATE_NAME = '구매문의'
+	 	</if>
+	 	<if test="searchCondition == '배송문의'">
+	 	C.ASK_CATE_NAME = '배송문의'
+	 	</if>
+	 	<if test="searchCondition == '기타'">
+	 	C.ASK_CATE_NAME = '기타'
+	 	</if>
+	 	AND A.ASK_EXPOSURE = 'N'
+	 </where>
+	 ORDER BY A.ASK_ID DESC
+	</select>
+	
+	<insert id="insertAsked">
+		INSERT
+		  INTO ASKED
+		(
+		  ASK_ID,
+		  ASK_TITLE,
+		  ASK_CONTENTS,
+		  USER_ID,
+		  ASK_CATE_ID
+		)
+		VALUES
+		(
+		  ASK_SEQ.NEXTVAL,
+		  #{ askTitle },
+		  #{ askContents },
+		  #{ userId },
+		  #{ categoryCode }
+		)
+	</insert>
+	
+	<!-- 수정을 위한 상세보기 조회 -->
+	<select id="selectAskedDetail" resultMap="generalAskedResultMap">
+		SELECT
+				   A.ASK_ID
+				 , A.ASK_TITLE
+				 , A.ASK_CONTENTS
+				 , A.ASK_DATE
+				 , A.ASK_VIEWS
+				 , A.ASK_EXPOSURE
+				 , A.USER_ID
+				 , B.NICKNAME
+				 , A.ASK_EDIT_DATE
+				 , A.ASK_CATE_ID
+				 , C.ASK_CATE_NAME
+			 FROM ASKED A
+			 JOIN TBL_USER B ON (A.USER_ID = B.USER_ID)
+			 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
+			WHERE A.ASK_EXPOSURE = 'N'
+			  AND A.ASK_ID = #{ askId }
+	</select>
+	
+	<update id="updateAsked">
+		UPDATE
+			   ASKED
+		   SET ASK_TITLE = #{ askTitle },
+		       ASK_CONTENTS = #{ askContents },
+		       ASK_EDIT_DATE = SYSDATE,
+		       ASK_CATE_ID = #{ categoryCode }
+		 WHERE ASK_ID = #{ askId }
+	</update>
+	
+	<update id="deleteAsked">
+		UPDATE
+			   ASKED
+		   SET ASK_EXPOSURE = 'Y'
+		 WHERE ASK_ID = #{ askId }
+	</update>
+
+
+
+
+
+
+</mapper>
