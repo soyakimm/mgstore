@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductDAO">
+
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="productResultMap">
+		<id property="id" column="PRO_ID"/>
+		<result property="title" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="fee" column="DELIVERY_FEE"/>
+		<result property="amount" column="PRO_AMOUNT"/>
+		<result property="content" column="PRO_CONTENT"/>
+		<result property="point" column="PRO_POINT"/>
+		<result property="date" column="PRO_DATE"/>
+		<result property="ratingSum" column="RATING_SUM"/>
+		<result property="ratingAmount" column="RATING_AMOUNT"/>
+		<result property="status" column="PRO_STATUS"/>
+		
+		<association property="cateId" column="PCATE_ID"/>
+	</resultMap>
+
+</mapper>

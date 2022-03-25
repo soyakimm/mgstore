@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html{ font-size: 100%; }
+
+a { 
+  text-decoration: none;
+  color: black; }
+/* 텍스트 속성 넣어주기 이전 기본 값 지정해 줘야 함*/
+a:visited { text-decoration: none; }
+a:active { color: #F5742F; }
+
+img { max-width: 100%; }
+
+li, ul { 
+  list-style-type: none;
+  color: black;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1em;
+  color: black;
+}
+
+a:hover, button:hover{
+  cursor: pointer;
+  color: #F5742F
+  !important
+}
+
+button{
+  font-size: 1em;
+  background-color:transparent;
+  border: 0;
+  outline: 0;
+  font-family: 'GmarketSansMedium';
+}
+
+.proList-page{
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* 카테고리 사이드 바 ---------- */
+
+.aside{
+  margin: auto auto auto 0px;
+  position: relative;
+  order: 1;
+}
+
+.store-list-wrapper{
+  width: 300px;
+  height: 100%;
+  z-index: auto;
+  position: relative;
+}
+
+.fix-box {
+  position: fixed;
+  margin: 5% auto auto 0;
+}
+
+.all-select{
+  font-family: 'GmarketSansBold';
+  font-size: 1.2em;
+  margin-inline-start: 40px;
+  border-bottom: 1px solid #cdcdcd;
+  width: 250px;
+  height: 45px;
+}
+
+svg{
+  width: 32px;
+  height: 32px;
+} /* star */
+
+.category-name{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  margin-bottom: 10px;
+  cursor:pointer;
+}
+
+.hide-button{
+  width: 14px;
+  height: 8px;
+  margin-right: 10px;
+}
+
+
+
+
+/* toggle ---------- */
+
+.category-name{
+  position: relative;
+}
+
+.category-name::before{
+  display: inline-block;
+}
+
+.sub-select{
+  padding-inline-start: 10px;
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  display: none;
+  overflow: hidden;
+}
+
+.sub-select button {
+  color: #767676;
+}
+
+.sub-select::before{
+  display: inline-block;
+}
+
+/**/
+.sort-name-show{
+  position: relative;
+}
+
+.sort-name-show::before{
+  display: inline-block;
+}
+
+.sort-select{
+  padding-inline-start: 10px;
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  display: none;
+  overflow: hidden;
+}
+
+.sort-select::before{
+  display: inline-block;
+}
+
+
+
+/* 상품 목록-------- */
+
+.catalog{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  max-width: 1400px;
+  width: 100%;
+  margin: 7% 0 0 0;
+  padding: 0 10% 0 7%;
+  order: 2;
+}
+
+.catalog-title{
+  margin-bottom: 3%;
+}
+
+.title1 {
+  font-family: 'GmarketSansBold';
+  font-size: 1.2em;
+  padding-bottom: 10%;
+}
+
+.catalog-sort-name{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor:pointer;
+  font-size: 0.8em;
+}
+
+ul.sort-select{
+  position: absolute;
+  direction: rtl;
+  background: white;
+  border: 1px solid #cdcdcd;
+  border-radius: 10px;
+  top: 210px;
+  padding: 10px 10px 10px 20px;
+}
+
+
+.goods{
+  display : flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.goods-grid-list{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.goods-grid-item{
+  padding: 0 6px 24px;
+
+  flex-grow: 0;
+  max-width: 22%;
+  flex-basis: 22%;
+}
+
+.goods-desc-category h4{
+  color: #0D9572;
+  font-size: 0.9em;
+  margin-bottom: 0px;
+}
+
+.goods-desc-name h3{
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.goods-desc-price .num{
+  font-weight: bold;
+}
+
+.goods-desc-rank{
+  display: flex;
+  align-items: center;
+}
+
+.goods-stars{
+  margin-top: 10px;
+}
+
+.star{
+  width: 20px;
+  height: 20px;
+}
+
+
+
+/* 페이징 ------------------ */
+
+.paging-navigation ul{
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  list-style: none;
+}
+
+.paging-navigation li{
+  padding: 1% 1% 5% 1%;
+}
+
+/* 단점 : 창 너비 줄이면 상품목록 위에 오버랩 */
+.paging-navigation a.current-page {
+  color: #F5742F;
+  font-weight: bold;
+  cursor: default;
+  position: relative;
+}
+
+
+
+
