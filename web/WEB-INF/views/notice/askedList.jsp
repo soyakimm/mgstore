@@ -99,7 +99,7 @@ button {
 
 		<!--관리자만 볼 수 있는 버튼으로 만들기!!-->
 		<button type="button" class="regist-bord"
-			onclick="location.href='10_자주묻는질문_글작성.html'" id="regist-button">
+			onclick="location.href='${ pageContext.servletContext.contextPath }/asked/insert'" id="regist-button">
 			<div class="regist-bord-text">게시글 등록</div>
 		</button>
 	</div>

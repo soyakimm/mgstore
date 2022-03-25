@@ -12,16 +12,18 @@ public class AskedDTO {
 	private java.util.Date createdDate;
 	private int askViews;
 	private String askExposure;
-	private UserDTO writer;
+	private String userId; 
+	private UserDTO writer; //userDTO에서 userID와 일치하는 닉네임을 가져옴
 	private java.util.Date updateDate;
-	private AskCategoryDTO category;
+	private int categoryCode;
+	private AskCategoryDTO category; //카테고리 코드와 일치하는 카테고리명을 가져옴
 	
 	
 	public AskedDTO() {}
 
 
 	public AskedDTO(int askId, String askTitle, String askContents, Date createdDate, int askViews, String askExposure,
-			UserDTO writer, Date updateDate, AskCategoryDTO category) {
+			String userId, UserDTO writer, Date updateDate, int categoryCode, AskCategoryDTO category) {
 		super();
 		this.askId = askId;
 		this.askTitle = askTitle;
@@ -29,8 +31,10 @@ public class AskedDTO {
 		this.createdDate = createdDate;
 		this.askViews = askViews;
 		this.askExposure = askExposure;
+		this.userId = userId;
 		this.writer = writer;
 		this.updateDate = updateDate;
+		this.categoryCode = categoryCode;
 		this.category = category;
 	}
 
@@ -95,6 +99,16 @@ public class AskedDTO {
 	}
 
 
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
 	public UserDTO getWriter() {
 		return writer;
 	}
@@ -115,6 +129,16 @@ public class AskedDTO {
 	}
 
 
+	public int getcategoryCode() {
+		return categoryCode;
+	}
+
+
+	public void setcategoryCode(int categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+
+
 	public AskCategoryDTO getCategory() {
 		return category;
 	}
@@ -128,9 +152,13 @@ public class AskedDTO {
 	@Override
 	public String toString() {
 		return "AskedDTO [askId=" + askId + ", askTitle=" + askTitle + ", askContents=" + askContents + ", createdDate="
-				+ createdDate + ", askViews=" + askViews + ", askExposure=" + askExposure + ", updateDate=" + updateDate
-				+ ", category=" + category + "]";
+				+ createdDate + ", askViews=" + askViews + ", askExposure=" + askExposure + ", userId=" + userId
+				+ ", writer=" + writer + ", updateDate=" + updateDate + ", categoryCode=" + categoryCode + ", category="
+				+ category + "]";
 	}
+
+
+	
 
 
 	

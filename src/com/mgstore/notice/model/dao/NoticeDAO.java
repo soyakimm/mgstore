@@ -13,5 +13,11 @@ public class NoticeDAO {
 		
 		return session.selectList("NoticeDAO.selectAskedList", searchCondition);
 	}
+	
+	/* 자주 묻는 질문 등록*/
+	public int insertAsked(SqlSession session, AskedDTO newAsked) {
+		
+		return	session.insert("NoticeDAO.insertAsked", newAsked);
+	}
 
 }
