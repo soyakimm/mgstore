@@ -12,7 +12,8 @@
         window.resizeTo(1300,690);
     </script>
 
-        <audio id='audio_play' src='../resources/audio/Squeaky-toy-sound-effect.mp3'></audio> 
+	   <!-- 강아지 뾱뾱이 소리 -->
+      <!--  <audio id='audio_play' src='../resources/audio/Squeaky-toy-sound-effect.mp3'></audio>
       <script type="text/javascript"> 
         function play() { 
             var audio = document.getElementById('audio_play'); 
@@ -24,13 +25,13 @@
             } 
         } 
      </script>
-     
+     -->
      
      <style>
-    /* 1400 X 1024 사이즈로 새로운 창으로 띄우기*/
+    /* 1300 X 1024 사이즈로 새로운 창으로 띄우기*/
     body{
         background-repeat: no-repeat;
-        background-size:1300px 690px;
+        background-size:1300px 768px;
         font-family: 'notosanskr', sans-serif;
         background-color: #F5742F;
     }
@@ -117,10 +118,9 @@
 
 </head>
 <body>
- <div class="title" >
 
-
-      <span style="text-shadow:  -4px 0 white, 0 -5px white, -2px 0 white, 0 -2px white;"></span>
+ 	<div class="title" >
+        <span style="text-shadow:  -4px 0 white, 0 -5px white, -2px 0 white, 0 -2px white;"></span>
         <h1 onclick="play()">관리자 페이지</h1>
     </div>
     <div class="background">
@@ -130,36 +130,38 @@
                    <button class="firstBtn" id="adm_member" type="button">회원관리</button>
                    <button class="firstBtn" id="adm_order" type="button">주문관리</button>
                 </td>
-            </tr>
-            <tr>
+             </tr>
+             <tr>
                  <td>
-                    <button class="firstBtn" id="adm_comm" type="button">게시판 관리</button>
-                   <button class="firstBtn" id="adm_income" type="button">수익관리</button>
+                 	<!-- 2022.03.24 구현보류 -->
+                    <!--  <button class="firstBtn" id="adm_comm" type="button">게시판 관리</button> -->
+                   <button class="firstBtn" id="adm_profit" type="button">수익관리</button>
                 </td>
             </tr>
-            
        </table>
-
+       
        <!-- 수정 필요 | jsp 생성 후 location 수정 -->
        <script>
        		const adm_member = document.getElementById("adm_member");
        		adm_member.addEventListener('click', function(){
-       			location.href='<%=request.getContextPath()%>/userlist';
+       			location.href='<%=request.getContextPath()%>/userchart';
        		});
        		
        		const adm_order = document.getElementById("adm_order");
        		adm_order.addEventListener('click', function(){
-       			location.href='<%=request.getContextPath()%>/shreport/list';
+       			location.href='<%=request.getContextPath()%>/order/list';
        		});
        		
+   			<%--        		
             const adm_comm = document.getElementById("adm_comm");
             adm_comm.addEventListener('click', function(){
                 location.href='<%=request.getContextPath()%>/views/Login/loginAdmin.jsp';   
             });     
-
-       		const adm_income = document.getElementById("adm_income");
+         	--%>    
+         
+       		const adm_profit = document.getElementById("adm_profit");
        		adm_income.addEventListener('click', function(){
-       			location.href='<%=request.getContextPath()%>/income/report';
+       			location.href='<%=request.getContextPath()%>/profit';
        		});
        </script>
        

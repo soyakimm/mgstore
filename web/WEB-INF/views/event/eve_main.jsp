@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!--  수정필요  -->
+	<jsp:include page="../common/header.jsp"/>
+	
+	
 </body>
 </html>
