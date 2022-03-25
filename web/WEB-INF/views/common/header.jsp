@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
                     </div>
                     <ul class="header-link-comm-store header-comm-store-hover">
                         <li><button class="header-community-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community'">커뮤니티</button></li>
-                        <li><button class="header-store-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/main'" style="color: #f5742f">스토어</button></li>
+                        <li><button class="header-store-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/store'" style="color: #f5742f">스토어</button></li>
                     </ul>
                     <form name="header-top-search-form" action="${ pageContext.servletContext.contextPath }/search/result?page=1&search=">
                         <div class="header-search-bar">
@@ -42,7 +43,11 @@
                             <img src="${ pageContext.servletContext.contextPath }/resources/images/common/search.svg" alt="검색하기">
                         </button>
                     </form>
+                    
+                    <!-- 비로그인 -->
+                    <c:if test="${ empty sessionScope.loginUser }">
                     <div class="header-button-box">
+                    	<!-- 환영 메시지 -->
                         <div class="header-welcome">
                             <span class="header-message">365일 24시간, 여기가 
                             <b class="flipeffect" style="color: #f5742f;">
@@ -52,24 +57,78 @@
                             </b>
                             </span>
                         </div>
-                        <div class="header-line"><span> | </span></div>
-                        <a href="/order/cart">
-                            <img src="${ pageContext.servletContext.contextPath }/resources/images/common/cart.svg" alt="장바구니">
-                        </a>
-                        <div class="header-line"><span> | </span></div>
-                        <button class="login" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/user/login'">
-                            <a href="${ pageContext.servletContext.contextPath }/user/login">로그인</a>
-                        </button>
-                        <div class="header-line"><span> | </span></div>
-                        <button class="regist" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/user/regist'">
-                            <a href="${ pageContext.servletContext.contextPath }/user/regist">회원가입</a>
-                        </button>
-                    </div>
+                    	<!-- 장바구니/로그인/회원가입 -->
+	                    <div class="header-line"><span> | </span></div>
+	                    <a href="${ pageContext.servletContext.contextPath }/user/login">
+	                    	<img src="${ pageContext.servletContext.contextPath }/resources/images/common/cart.svg" alt="장바구니">
+	                    </a>
+	                    <div class="header-line"><span> | </span></div>
+	                    <button class="login" type="button">
+	                    	<a href="${ pageContext.servletContext.contextPath }/user/login">로그인</a>
+	                    </button>
+	                    <div class="header-line"><span> | </span></div>
+	                    <button class="regist" type="button">
+	                    	<a href="${ pageContext.servletContext.contextPath }/user/regist">회원가입</a>
+	                    </button>
+	                </div>
+                    </c:if>
+                    
+                    <!-- 로그인(회원) -->
+                    <c:if test="${ !empty sessionScope.loginUser && sessionScope.loginUser.role == '회원' }">
+                    <div class="header-button-box">
+                    	<!-- 환영 메시지 -->
+                        <div class="header-welcome">
+                            <span class="header-message">
+                            <b class="flipeffect" style="color: #f5742f;">
+	                            <span style="--i:1">${ sessionScope.loginUser.nickname }</span>
+                            </b>
+                             님 안녕하세요!
+                            </span>
+                        </div>
+                    	<!-- 장바구니/마이페이지/로그아웃 -->
+	                    <div class="header-line"><span> | </span></div>
+	                    <a href="${ pageContext.servletContext.contextPath }/user/cart">
+	                    	<img src="${ pageContext.servletContext.contextPath }/resources/images/common/cart.svg" alt="장바구니">
+	                    </a>
+	                    <div class="header-line"><span> | </span></div>
+	                    <button class="login" type="button">
+	                    	<a href="${ pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
+	                    </button>
+	                    <div class="header-line"><span> | </span></div>
+	                    <button class="regist" type="button">
+	                    	<a href="${ pageContext.servletContext.contextPath }/user/logout">로그아웃</a>
+	                    </button>
+	                </div>
+                    </c:if>
+                    
+                    <!-- 로그인(관리자) -->
+                    <c:if test="${ !empty sessionScope.loginUser && sessionScope.loginUser.role == '관리자' }">
+                    <div class="header-button-box">
+                    	<!-- 환영 메시지 -->
+                        <div class="header-welcome">
+                            <span class="header-message">
+                            <b class="flipeffect">
+	                            <span style="--i:1">관리자</span>
+                            </b>
+                            로 로그인 중입니다
+                            </span>
+                        </div>
+                    	<!-- 관리자페이지/로그아웃 -->
+	                    <div class="header-line"><span> | </span></div>
+	                    <button class="admin" type="button">
+	                    	<a href="${ pageContext.servletContext.contextPath }/admin">관리자페이지</a>
+	                    </button>
+	                    <div class="header-line"><span> | </span></div>
+	                    <button class="logout" type="button">
+	                    	<a href="${ pageContext.servletContext.contextPath }/user/logout">로그아웃</a>
+	                    </button>
+	                </div>
+                    </c:if>
                 </div>
             </div>
-            <!-- 서브 헤더(상세 카테고리) -->
+            <!-- 서브 헤더(스토어는 상세 카테고리 포함) -->
             <div class="header-sub">
-                <div class="header-menu">
+                <div class="header-menu on">
                     <div class="header-title">
                     	<button class="show-all-list" type="button">
                         	<img class="header-category-icon" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
@@ -162,7 +221,6 @@
 	                                </div>
 	                            </li>
 	                        </ul>    
-	                    </div>
                     	</button>
                     <nav id="header-nav">
                         <ul>
