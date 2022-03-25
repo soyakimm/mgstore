@@ -19,6 +19,10 @@
 				successMessage = "신규 가입을 환영합니다!";
 				movePath = "${ pageContext.servletContext.contextPath }/user/login";
 				break;
+			case "insertAsked" :
+				successMessage = "자주묻는질문 등록에 성공하였습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/asked/list";
+				break;
 		}
 
 		alert(successMessage);
