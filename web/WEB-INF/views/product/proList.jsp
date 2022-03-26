@@ -8,7 +8,9 @@
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
-   <link rel="stylesheet" href="../css/00_proList.css" type="text/css">
+   <link href="${ pageContext.servletContext.contextPath }/resources/css/product/proList.css" rel="stylesheet">
+   <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>

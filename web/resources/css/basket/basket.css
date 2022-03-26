@@ -1,0 +1,265 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html{ font-size: 100%; }
+
+a { 
+  text-decoration: none;
+  color: black; }
+a:visited { text-decoration: none; }
+a:active { color: #F5742F; }
+
+img { max-width: 100%; }
+
+li, ul { 
+  list-style-type: none;
+  color: black;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1em;
+  color: black;
+}
+
+a:hover, button:hover{
+  cursor: pointer;
+  color: #F5742F
+  !important
+}
+
+button{
+    color: black;
+}
+
+
+.basket-page {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 장바구니 헤더 ----- */
+
+.basket-header{
+    margin: 10% 0 0 0;
+    border-bottom: 1px solid #000000;
+}
+
+.title1{
+    font-family: 'GmarketSansBold';
+    padding-bottom: 10%;
+}
+
+/* 장바구니 바디 ----- */
+.basket-body{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+/* 좌측 상품목록 */
+
+.basket-product-wrapper{
+    margin-right: 4%;
+    width: 66%;
+}
+
+.basket-product-header{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 2% ;
+}
+
+.check-all-product{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items:center;
+    position: relative;
+    color: #767676;
+}
+
+.all-check-button{
+    padding-right: 10px;
+}
+
+.delete-product{
+    position: relative;
+}
+
+.deleteBtn{
+    background-color: white;
+    color: #F5742F; 
+    font-size: 0.9em;
+    font-weight: bold;
+    border: 2px solid #F5742F;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.deleteBtn:hover {
+    background-color: #F5742F;
+    color: white !important;
+  }
+
+
+.product-list{
+    border: 1px solid #767676; 
+    border-radius: 10px;
+    max-height: 1400px;
+    margin-top: 1%;
+    margin-bottom: 15%;
+}
+
+.product-info{
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    align-items: center;
+    padding: 4% 3%;
+    border-bottom: 1px solid #cdcdcd; /**/
+}
+
+.product-detail{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-num{
+    margin: 0 40px;
+    padding: 20px;
+}
+
+.check-button{
+    padding: 3%;
+    position: relative;
+}
+
+.goods-desc-name{
+    margin-bottom: 25%;
+}
+
+.goods-desc-price{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 220px;
+    font-weight: bold;
+}
+
+.product-num{
+    display: flex;
+
+    /* 드래그 방지 */
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.upBtn-box, .downBtn-box, .pro-num{
+    border: #767676 solid 1px;
+    padding: 8px 19px;
+}
+
+.upBtn-box, .downBtn-box{
+    font-weight: bolder;
+}
+
+.upBtn-box:hover, .downBtn-box:hover{
+    background-color: #F5742F;
+    border-color: #F5742F;
+    color: white;
+    cursor: pointer;
+}
+
+.upBtn-box{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px ;
+}
+
+.downBtn-box{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px ;
+}
+
+
+
+
+
+/* 우측 상품가격 */
+.order-box-wrapper{
+    width: 28%;
+}
+
+.fix-box{
+    position: fixed;
+    width: 21%;
+}
+
+.order-all-price{
+    color: #767676;
+    border-bottom: 1px solid #767676;
+    margin-top: 15%;
+}
+
+.order-all-price>div{
+    padding: 0 3% 3% 3%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.final-order-price{
+    margin-top: 7%;
+    padding: 0 3% 3% 3%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-weight: bolder;
+}
+
+.orderBtn{
+    margin-top: 5%;
+    padding: 4%;
+    width: 100%;
+    background-color: #F5742F; 
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    border: 1px solid #F5742F;
+    border-radius: 10px;
+}
+
+.orderBtn:hover{
+    color:white !important;
+}
+
+
+
+
+
+
+
