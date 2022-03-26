@@ -27,7 +27,7 @@
                     </li>
                     <li>
                         <label class="save-id">
-                            <input type="checkbox" id="save-id" name="save-id" value="checked" style="background: url(${ pageContext.servletContext.contextPath }/resources/images/common/checkbox.png) no-repeat;">
+                            <input type="checkbox" id="saveId" name="saveId" style="background: url(${ pageContext.servletContext.contextPath }/resources/images/common/checkbox.png) no-repeat;">
                             <span>아이디 저장</span>
                         </label>
                     </li>
@@ -39,15 +39,18 @@
                 </ul>
             </form>
             <div class="button-box">
-                <button class="login" type="button" onclick="location.href='/user/find-id'">
+                <button class="login" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/user/findid'">
                     <a href="#">아이디 찾기</a>
                 </button>
                 <div class="line"><span> | </span></div>
-                <button class="regist" type="button" onclick="location.href='/user/find-password'">
+                <button class="regist" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/user/findpwd'">
                     <a href="#">비밀번호 찾기</a>
                 </button>
             </div>
         </div>
     </div>
+    
+    <!-- 아이디 저장 -->
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/saveId.js"></script>
 </body>
 </html>

@@ -20,4 +20,19 @@ public class UserDAO {
 	public UserDTO selectLoginUser(SqlSession session, UserDTO requestUser) {
 		return session.selectOne("UserDAO.selectLoginUser", requestUser);
 	}
+
+	public String selectUserId(SqlSession session, UserDTO requestUser) {
+		return session.selectOne("UserDAO.selectUserId", requestUser);
+	}
+
+	/* 아이디 찾기 */
+	
+	
+
+
+	
+	
+	
+	
+	
 }

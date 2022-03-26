@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wrapper {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+/* 페이지 타이틀 */
+h1, .result {
+    font-family: 'GmarketSansLight';
+    font-weight: 900;
+    font-size: 36px;
+    text-align: center;
+}
+
+h3 {
+	font-family: 'Noto Sans KR', sans-serif;
+	text-align: center;
+}
+
+.button-box {
+	display: flex;
+	margin: 0 80px;
+}
+/* 결과창 */
+.result-table {
+    width: 542px;
+    height: 290px;
+    margin: 0 auto;
+    border: 1px solid #E5E5E5;
+    border-radius: 40px;
+    align-items: center;
+}
+
+/* 로그인 버튼 */
+.login-button {
+    display: block;
+    width: 100%;
+    height: 44px;
+    border: 3px solid #F7F6F7;
+    border-radius: 36px;
+    background: #F7F6F7;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+.login-button:hover {
+    border: 3px solid #f5742f;
+    background: #f5742f;
+    color: #fff;
+}
+
+.login-button:hover span {
+    display: none;
+}
+
+.login-button:hover::before {
+    content: "로그인";
+}
+
+/* 다시 찾기 버튼 */
+.tryagain-button {
+    display: inline-block;
+    width: 100%;
+    height: 44px;
+    border: 3px solid #F7F6F7;
+    border-radius: 36px;
+    background: #F7F6F7;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 10px;
+}
+
+.tryagain-button:hover {
+    border: 3px solid #f5742f;
+    background: #f5742f;
+    color: #fff;
+}
+
+.tryagain-button:hover span {
+    display: none;
+}
+
+.tryagain-button:hover::before {
+    content: "아이디 찾기";
+}
+
+/* 회원가입 버튼 */
+.regist-button {
+    display: inline-block;
+    width: 100%;
+    height: 44px;
+    border: 3px solid #757575;
+    border-radius: 36px;
+    background: #757575;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 10px;
+}
+
+.regist-button:hover {
+    border: 3px solid #f5742f;
+    background: #f5742f;
+    color: #fff;
+}
+
+.regist-button:hover span {
+    display: none;
+}
+
+.regist-button:hover::before {
+    content: "신규 가입";
+}
+
+/* 전체 적용 효과 */
+button {
+    cursor: pointer;
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    color: #000;
+    text-decoration-line: none;
+    font-family: 'Noto Sans KR', sans-serif;
+}
