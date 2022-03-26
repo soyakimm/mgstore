@@ -84,13 +84,16 @@ body {
     text-decoration : none;
 }
 
+
 #btnList{
-    list-style: url(/EVENT/resources/images/mng_arrow_small.png);
+    list-style: url(resources/images/admin/adm_img/mng_arrow_small.png);
     text-align: center;
     margin-top : 50px;
     margin-left: 20px;
     
+    
 }
+
 #btnList li{
     margin-right: 40px;
     height : 80px;

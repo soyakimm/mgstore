@@ -27,11 +27,13 @@
 			 , USER_NAME
 			 , EMAIL
 			 , USER_STATUS
+			 , PHONE
+			 , ADDRESS
 		  FROM TBL_USER
 		 WHERE USER_STATUS = 'Y'
 		 <if test="_parameter != null">
 		   AND USER_ID = #{ userId }
-		  </if>
+		  </if> 
 	</select>
 	
 
