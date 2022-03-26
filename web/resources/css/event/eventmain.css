@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+
+/*노토산스 폰트*/
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
+
+/*지마켓 폰트*/
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.group {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/*전체선택자*/
+*, *::before, *::after {
+    box-sizing: border-box;
+    
+    font-family: GmarketSansBold;
+}
+
+.content-body {
+   min-width: 1400px;
+   position: relative;
+   padding-bottom: 100px;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font-family: 'GmarketSansBold';
+}
+
+.event-container {
+    width: 1200px !important;
+    margin: 74 auto;
+    padding: 0;
+}
+
+.main-containe {
+    width: 100%;
+    position: relative;
+    margin-top: 50px;
+}
+
+.block-title {
+    margin-bottom: 40px;
+    border: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 100%;
+    text-align: left;
+    font-family: 'GmarketSansBold';
+    vertical-align: baseline; 
+}
+
+.block-title::after {
+    content: "";
+    display: block;
+    clear: both;
+    box-sizing: border-box;
+}
+
+    /* 배너파트 CSS 시작 */
+.banner-wrap {
+    margin-bottom: 50px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: 400;
+    text-align: left;
+    font-family: "Noto";
+    vertical-align: baseline;
+    box-sizing: border-box;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+.banner-content {
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/*위트 참고, 나중에 찾아보기 */
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    cursor: pointer;
+}
+
+a {
+    padding: auto;
+    cursor: pointer;
+}
+
+img{
+    vertical-align: middle;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+}
+
+.clearfix2 {
+    font-weight: 400;
+    text-align: left;
+    line-height: 1;
+    cursor: pointer;
+    line-height: 1;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: "Noto", sans-serif;
+    vertical-align: baseline;
+}
+
+.banner-etc{
+    cursor: pointer;
+    float: left;
+    width: calc(100% - 240px);
+}
+
+.banner-subject{
+ cursor: pointer;
+}
+
+.keeping-box {
+    float: left;
+    width: 61px;
+    height: 26px;
+    border-radius: 13px;
+    margin-right: 10px;
+    text-align: center;
+    border: 1px solid #FFBB00;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: 'Noto', sans-serif;
+    font-weight: 400;
+}
+
+.keeping-box span {
+    color: #FFBB00;
+    display: block;
+    line-height: 23px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.clearfix>*{
+    float:left;
+}
+
+.banner-subject>span {
+    width: calc(100%-85px);
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 27px;
+    text-overflow: ellipsis;
+    white-space:normal;
+    overflow: hidden;
+}
+
+.banner-subject::after {
+    content: "";
+    display: block;
+    clear:both;
+}
+
+.clearfix2>*:nth-child(2) {
+    float:right;
+}
+
+.banner-date::after{
+    content: "";
+    display: block;
+    clear:both;
+}
+
+.banner-date span {
+    position: relative;
+    color: gray;
+    font-size: 13px;
+    font-weight: 400;
+    padding: auto;
+}
+
+.banner-date>span {
+    margin-right: 17px;
+}
+
+.banner-date>span::after{
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 8px;
+    width: 3px;
+    height: 3px;
+    background: #b7b7b7;
+    border-radius: 50%;
+}
+
+.banner-watch {
+    float: right;
+    
+}
+
+
+
+.banner-date img {
+    margin-right: 5px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+/* 체크필요 : 눈모양icon */
+img {
+    vertical-align: middle;
+    border: 0;
+       
+}
+
+.banner-date span {
+    position: relative;
+    color: gray;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Noto" sans-serif;
+    margin: 0;
+    padding: 0;
+    border:0;
+    text-align: 0;
+}
+
+   /* 배너파트 CSS 끝 */

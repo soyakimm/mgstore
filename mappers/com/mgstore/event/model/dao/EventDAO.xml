@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EventDAO">
+<resultMap type="com.mgstore.event.model.dto.EventDTO" id="eventResultMap">
+		<id property="eveid" column="EVENT_ID"/>
+		<result property="evedate" column="EVE_DATE"/>
+		<result property="evestart" column="EVE_START"/>
+		<result property="eveend" column="EVE_END"/>
+		<result property="eveinfo" column="EVE_INFO"/>
+		<result property="userid" column="USER_ID"/>
+		<result property="evemoddate" column="EVE_MOD_DATE"/>
+		<result property="evedelflag" column="EVE_DELFLAG"/>
+	</resultMap>
+	
+	<!-- 추후수정 -->
+<select id="selectEventList" resultMap="EventResultMap">
+         SELECT /* com.greedy.jsp.board.model.dao.EventDAO#selectEventList() */
+               EVENT_ID
+             , EVE_DATE
+             , EVE_START
+             , EVE_END
+             , EVE_INFO
+             , USER_ID
+             , EVE_MOD_DATE
+             , EVE_DELFLAG
+          FROM EVENT
+         WHERE A.RNUM >= #{ startRow }     
+         ORDER BY A.RNUM 
+	</select>
+
+
+</mapper>

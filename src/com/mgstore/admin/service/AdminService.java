@@ -1,4 +1,5 @@
 package com.mgstore.admin.service;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -6,6 +7,7 @@ import static com.mgstore.common.mybatis.Template.getSqlSession;
 
 import com.mgstore.admin.model.dao.AdminDAO;
 import com.mgstore.admin.model.dto.UserDTO;
+import com.mgstore.user.model.dao.UserDAO;
 
 public class AdminService {
 	
@@ -27,4 +29,5 @@ public class AdminService {
 		return userlist;
 		
 	}
+
 }

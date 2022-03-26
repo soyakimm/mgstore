@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,6 +12,7 @@
     <link href="${ pageContext.servletContext.contextPath }/resources/css/admin/adm_leftmenu.css" rel="stylesheet" type="text/css">
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    
 
 
     <!-- 페이징 : 부트스트랩 -->
@@ -151,7 +153,7 @@
     }
 
 
-    #modaltext{
+    .modaltext{
     /* background-color:rgba(255, 91, 70, 1);  */
     border-radius: 7px;
     border-width: 0 0 0 8px; 
@@ -165,7 +167,7 @@
 
     </style>
     
-  
+   <!-- 모달  -->
     <script>
         window.onload = function() {
      
@@ -178,17 +180,24 @@
             document.querySelector('.black_bg').style.display ='none';
         }
      
-        document.getElementById('modal_btn').addEventListener('click', onClick);
+       // document.getElementById('modal_btn').addEventListener('click', onClick);
+       const btn = document.querySelectorAll(".modal_btn");
+
+       
+		for (let i = 0; i < btn.length; i++) {
+		  btn[i].addEventListener('click', onClick);
+		}
         document.querySelector('.modal_close').addEventListener('click', offClick);
      
-    };
+   		};
+   		 
     </script>
     
     
     
     <script>
         $(function(){
-            $("#userMemTable td").mouseenter(function(){
+            $(".userMemTable td").mouseenter(function(){
                 $(this).parent().css({"cursor":"pointer", "color" : "gray"});
             }).mouseout(function(){
                 $(this).parent().css({"color" : "black"});
@@ -210,8 +219,8 @@
                 <li><button class="menuBtn" id="userBtn" type="button">일반회원</button></li>
                 <li><button class="menuBtn" id="reportBtn" type="button">신고내역</button></li>
                 <li><button class="menuBtn" id="byeuserBtn" type="button">탈퇴회원</button></li>
-                <li><button class="menuBtn" id="commBtn" type="button">게시판관리</button></li>
-                <li><button class="menuBtn" id="orderBtn" type="button">주문내역</button></li>
+                <!-- <li><button class="menuBtn" id="commBtn" type="button">게시판관리</button></li> -->
+               <!--  <li><button class="menuBtn" id="orderBtn" type="button">주문내역</button></li> -->
                 <li><button class="menuBtn" id="proBtn" type="button">재고관리</button></li>
                 <li><button class="menuBtn" id="profitBtn" type="button">수익관리</button></li>
                 <li><button class="menuBtn" id="payBtn" type="button">판매관리</button></li>
@@ -220,37 +229,33 @@
                 /* 클릭 시 이동할 페이지 */
             	const userBtn = document.getElementById('userBtn');
             	userBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/usermem/list';
+            		location.href='${ pageContext.servletContext.contextPath }/admin/usermain';
             	});
             	
             	const reportBtn = document.getElementById('reportBtn');
             	reportBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/hostmem/list';
+            		location.href='${ pageContext.servletContext.contextPath }/admin/userreport';
             	});
             	
             	const byeuserBtn = document.getElementById('byeuserBtn');
             	byeuserBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/outmem/list';
+            		location.href='${ pageContext.servletContext.contextPath }/admin/userbye';
             	});
 
-                const commBtn = document.getElementById('commBtn');
-            	commBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/usermem/list';
-            	});
 
                 const proBtn = document.getElementById('proBtn');
             	proBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/usermem/list';
+            		location.href='${ pageContext.servletContext.contextPath }/pro/listmng';
             	});
 
                 const profitBtn = document.getElementById('profitBtn');
             	profitBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/usermem/list';
+            		location.href='${ pageContext.servletContext.contextPath }/pay/profit';
             	});
             	
                 const payBtn = document.getElementById('payBtn');
             	payBtn.addEventListener('click', function(){
-            		location.href='${ pageContext.servletContext.contextPath }/usermem/list';
+            		location.href='${ pageContext.servletContext.contextPath }/pay/list';
             	});
             </script>
         </div>
@@ -262,161 +267,79 @@
         <h2 id="wrapTitle">일반회원</h2>
       
 
+
              <!-- 검색 폼 영역 -->
+             <span>
             <div id="searcharea">
                 <div id="searchbar">
-                    <form action="${ pageContext.servletContext.contextPath }/house/search" method="get">
-           
-            <input type="search" id="searchtext" placeholder="아이디로 검색하세요." size="100" name="search" value="">
-            <button type="submit" id="searchbutton">검색</button>
-        </form>
+                    <form method="get" action="${ pageContext.servletContext.contextPath }/admin/userlist">
+            <input type="search" id="searchtext" placeholder="아이디로 검색하세요." size="100" name="search" value="${ param.searchValue }">
+            	<button type="submit" id="searchbutton.href='${ pageContext.servletContext.contextPath }/admin/userlist'">검색</button>
+        			</form>
                 </div>
             </div>
+            </span>
         <br><br>
-</div>
+
 
         
         <!-- 우선 더미테이블 만듦-->
         <table id="userTable">
             <tr>
-                <th>회원번호</th>
-                <!-- <th>이름</th> -->
                 <th>아이디</th>
+                <th>이름</th>
                 <th>연락처</th>
                 <th>회원상태</th>
             </tr>
             
-                    <tr id="userinfoTable">
-                        <th>1</th>
-                        
-                        <!-- 모달 btn ( text 혹은 button )-->
-                    <th> 
-                    <text type='button' id="modal_btn">itswo</text>
+             <c:forEach var="userlist" items="${ requestScope.userList }">
+              <tr id="userinfoTable">
+                       
+                    <!-- 모달 btn ( text 혹은 button )-->
+                   <th> 
+                      <text type="button" class="modal_btn">${ userlist.userId }</text>
                     <div class="black_bg"></div>
                     <div class="modal_wrap">
                     <div class="modal_close"><a href="#">close</a></div>
                 
-                        <!-- <div class="summary">
-                            <span style="text-shadow:  1px 0 #000, 0 1px #000, 1px 0 #000, 0 3px #000;">
-                            <h2 id="wrapTitle">상세 회원 정보</h2>
-                            </span>
-                            <hr> -->
-                          
+                
                                 <h2>상세 회원 정보</h2>
-                            <table id="userMemTable">
-                                <tr>
-                                
-                                    <th><text id=modaltext>회원번호</text></th>
-                                    <th><text id=modaltext2></text></th> 
-                                    <tr></tr>
-                                    <th><text id=modaltext>아이디</text></th>
-                                    <th><text id=modaltext2></text></th>
+                            <table class="userMemTable">
+                           
+                                    <th><text class="modaltext">아이디</text></th>
+                                    <th><text class="modaltext2">${ userlist.userId }</text></th>
                                     <tr></tr>
                     
-                                <!-- <tr id="fromSecond"> -->
-                                    <th><text id=modaltext>이름</text></th>
-                                    <th><text id=modaltext2></text></th>
+                                  <!--  <tr id="fromSecond"> -->
+                                    <th><text class="modaltext">이름</text></th>
+                                    <th><text class="modaltext2">${ userlist.userName }</text></th>
                                     <tr></tr>
-                                    <th><text id=modaltext> 이메일</text></th>
-                                    <th><text id=modaltext2></text></th>
+                                    <th><text class="modaltext"> 이메일</text></th>
+                                    <th><text class="modaltext2">${ userlist.email }</text></th>
+                                    
                                     <tr></tr>
                                
                     
-                                <!-- <tr id="fromSecond"> -->
-                                    <th><text id=modaltext>핸드폰</text></th>
-                                    <th><text id=modaltext2></text></th>
+                                   <!-- <tr id="fromSecond"> -->
+                                    <th><text class=modaltext>핸드폰</text></th>
+                                    <th><text class=modaltext2>${ userlist.phone }</text></th>
                                     <tr></tr>
-                                    <th><text id=modaltext>주소</text></th>
-                                    <th><text id=modaltext2></text></th>
-                            
-                            </tr>
+                                    <th><text class=modaltext>주소</text></th>
+                                    <th><text class=modaltext2>${ userlist.address }</text></th>
                             </table>
-
                         </div>
+                        
                     </th>
-
-                <!-- <th>itswo</th> -->
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>2</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>3</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>4</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>5</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-         
-            <tr id="userinfoTable">
-                <th>6</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>7</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>8</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>9</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-            <tr id="userinfoTable">
-                <th>10</th>
-                <th>itswo</th>
-                <th>010-0000-1111</th>
-                <th>가입</th>
-			</tr>
-
-
-            <!-- 만약 리스트 내에 없는 회원이라면 : (1)참고-->
-            <tr>
-				<td colspan="5">없는 회원입니다.</td>
-			</tr>
-			
-        </table>
-
-
-
-        </body>
-        </html>
-
-
-
-        
-
+                        
+                        
+                 <th>${ userlist.userName }</th>                        
+                <th>${ userlist.phone }</th>
+                <th>${ userlist.userStatus }</th>
+                </c:forEach>
+			     </tr>
+	        </table>
+		<jsp:include page="../admin/paging.jsp"/>
+		</div>
+ 
+</body>
+</html>

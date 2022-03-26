@@ -1,5 +1,6 @@
 package com.mgstore.admin.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,5 +13,6 @@ public class AdminDAO {
 		
 		return session.selectList("AdminDAO.selectUserList", userId);
 	}
+
 
 }

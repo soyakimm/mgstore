@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자이벤트</title>
 	<!-- 외부 스타일 시트 -->
- 	<link href=${ pageContext.servletContext.contextPath }/views/event/eve_admin.css" rel="stylesheet">
+ 	<link href=${ pageContext.servletContext.contextPath }/resources/css/event/eventmng.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -78,7 +79,7 @@
                                 </b>
                                 <div>
                                     <span class="eve-user">
-                                        <img src="../EVENT/resources/images/Logo.PNG" alt="eve-user" style="width: 40px;" >
+                                        <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/Logo.PNG" alt="이벤트댓글유저" style="width: 40px;" >
                                         <b>이벤트 당첨자 ID (성함) </b>
                                         <div id="bankTa">
                                             <ul id="eve-user-add"></ul>
