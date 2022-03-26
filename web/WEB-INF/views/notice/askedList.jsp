@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,10 +28,10 @@ button {
 		<div class="title-mid">
 			<div class="title-mid-1">자주 묻는 질문</div>
 			<div class="title-mid-1">
-				<a href="02_일대일문의.html">1:1 문의</a>
+				<a href="${ pageContext.servletContext.contextPath }/inq/list">1:1 문의</a>
 			</div>
 		</div>
-		<form method="get" action="${ pageContext.servletContext.contextPath }/asked/list">
+		<form name="askedForm" method="get" action="${ pageContext.servletContext.contextPath }/asked/list">
 			<div class="category-min">
 				<div class="overlap-min-group">
 					<button type="submit" class="category-min-1" name="searchCondition" value="all">
@@ -60,9 +61,10 @@ button {
 			</div>
 		</form>
 		<div id="Accordion_wrap">
+		<!-- 아래 멍개는 예시 -->
 			<div class="que">
-				<span>여기는 멍개상점 자주 묻는 질문 게시판 입니다.</span> <span class="que-date">2022-09-19
-					01:12</span>
+				<span>여기는 멍개상점 자주 묻는 질문 게시판 입니다.</span> 
+				<span class="que-date">2022-09-1901:12</span>
 			</div>
 			<div class="anw">
 				<span>글작성/삭제/수정 기능은 관리자에게만 부여!</span>
@@ -73,15 +75,18 @@ button {
 					<button>삭제</button>
 				</div>
 			</div>
+			
 			<c:forEach var="asked" items="${ askedList }">
 				<div class="que">
-					<span>${ asked.askTitle }</span> <span class="que-date">${ asked.createdDate }</span>
+					<span>${ asked.askTitle }</span> 
+					<span class="que-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ asked.createdDate }"/></span>
 				</div>
 				<div class="anw">
 					<span>${ asked.askContents }</span>
+					<!-- 관리자만 확인 가능한 버튼 -->
 					<div class="anw-btn-mng">
-						<button>수정</button>
-						<button>삭제</button>
+						<button type="button" onclick="updateAskedView(${ asked.askId })">수정</button>
+						<button type="button" onclick="deleteAskedView(${ asked.askId })">삭제</button>
 					</div>
 				</div>
 			</c:forEach>
@@ -94,6 +99,18 @@ button {
       $(this).toggleClass('on').siblings().removeClass('on');
       $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
       });
+      
+      /* 게시글 수정 이동 함수*/
+      function updateAskedView(askId){
+    	  location.href = "${ pageContext.servletContext.contextPath }/asked/update?askId="+ askId;
+      }
+      
+      /* 게시글 삭제 이동 함수*/
+      function deleteAskedView(askId){
+    	  if(confirm('이 게시글을 삭제하시겠습니까?')){
+    		  location.href = "${ pageContext.servletContext.contextPath }/asked/delete?askId="+ askId;
+    	  }
+      }
       
     </script>
 

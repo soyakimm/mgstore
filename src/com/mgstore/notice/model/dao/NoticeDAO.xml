@@ -38,31 +38,6 @@
 		<result property="askCategoryName" column="ASK_CATE_NAME"/>
 	</resultMap>
 	
-	<resultMap type="com.mgstore.notice.model.dto.InqDTO" id="generalInqResultMap">
-		<id property="inqId" column="PRE_ID"/>
-		<result property="inqTitle" column="PER_TITLE"/>
-		<result property="inqContents" column="PER_CONTENTS"/>
-		<result property="inqDate" column="PER_DATE"/>
-		<result property="inqAnsStatus" column="PER_ANS_STATUS"/>
-		<result property="inqDelStatus" column="DEL_STATUS"/>
-		<result property="ansContents" column="PER_ANS"/>
-		<result property="ansDate" column="PER_ANS_DATE"/>
-		<result property="ansDelStatus" column="ANS_DEL_STATUS"/>
-		<result property="userId" column="USER_ID"/>
-		<result property="inqCategoryId" column="PER_CATE_ID"/>
-		<result property="adminId" column="MANAVER_ID"/>
-		
-		<association property="inqCategoryName" resultMap="inqCategoryResultMap"></association>
-	</resultMap>
-	
-	<resultMap type="com.mgstore.notice.model.dto.InqCategoryDTO" id="inqCategoryResultMap">
-		<id property="inqCategoryCode" column="PER_CATE_ID"/>
-		<result property="inqCategoryName" column="PER_CATE_NAME"/>
-	</resultMap>
-	
-	
-	
-	<!-- 자주묻는질문 조회 -->
 	<select id="selectAskedList" resultMap="generalAskedResultMap">
 	SELECT
 		   A.ASK_ID
@@ -81,23 +56,22 @@
 	 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
 	 <where>
 	 	<if test="searchCondition == '이용문의'">
-	 	A.ASK_CATE_ID = 1
+	 	C.ASK_CATE_NAME = '이용문의'
 	 	</if>
 	 	<if test="searchCondition == '구매문의'">
-	 	A.ASK_CATE_ID = 2
+	 	C.ASK_CATE_NAME = '구매문의'
 	 	</if>
 	 	<if test="searchCondition == '배송문의'">
-	 	A.ASK_CATE_ID = 3
+	 	C.ASK_CATE_NAME = '배송문의'
 	 	</if>
 	 	<if test="searchCondition == '기타'">
-	 	A.ASK_CATE_ID = 4
+	 	C.ASK_CATE_NAME = '기타'
 	 	</if>
-	 	AND A.ASK_EXPOSURE = 'Y'
+	 	AND A.ASK_EXPOSURE = 'N'
 	 </where>
 	 ORDER BY A.ASK_ID DESC
 	</select>
 	
-	<!-- 자주묻는질문 등록 -->
 	<insert id="insertAsked">
 		INSERT
 		  INTO ASKED
@@ -118,74 +92,46 @@
 		)
 	</insert>
 	
-	<!-- 자주 묻는 질문 수정 조회용 메소드 -->
+	<!-- 수정을 위한 상세보기 조회 -->
 	<select id="selectAskedDetail" resultMap="generalAskedResultMap">
 		SELECT
-			   A.ASK_ID
-			 , A.ASK_TITLE
-			 , A.ASK_CONTENTS
-			 , A.ASK_DATE
-			 , A.ASK_VIEWS
-			 , A.ASK_EXPOSURE
-			 , A.USER_ID
-			 , B.NICKNAME
-			 , A.ASK_EDIT_DATE
-			 , A.ASK_CATE_ID
-			 , C.ASK_CATE_NAME
-		 FROM ASKED A
-	     JOIN TBL_USER B ON (A.USER_ID = B.USER_ID)
-	 	 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
-		WHERE A.ASK_EXPOSURE = 'Y'
-		  AND A.ASK_ID = #{ askId }
+				   A.ASK_ID
+				 , A.ASK_TITLE
+				 , A.ASK_CONTENTS
+				 , A.ASK_DATE
+				 , A.ASK_VIEWS
+				 , A.ASK_EXPOSURE
+				 , A.USER_ID
+				 , B.NICKNAME
+				 , A.ASK_EDIT_DATE
+				 , A.ASK_CATE_ID
+				 , C.ASK_CATE_NAME
+			 FROM ASKED A
+			 JOIN TBL_USER B ON (A.USER_ID = B.USER_ID)
+			 JOIN ASKED_CATE C ON (A.ASK_CATE_ID = C.ASK_CATE_ID)
+			WHERE A.ASK_EXPOSURE = 'N'
+			  AND A.ASK_ID = #{ askId }
 	</select>
 	
-	<!-- 자주 묻는 질문 수정 -->
 	<update id="updateAsked">
 		UPDATE
-		       ASKED
+			   ASKED
 		   SET ASK_TITLE = #{ askTitle },
-		       ASK_CATE_ID = #{ categoryCode },
-		       ASK_CONTENTS = #{ askContents }
+		       ASK_CONTENTS = #{ askContents },
+		       ASK_EDIT_DATE = SYSDATE,
+		       ASK_CATE_ID = #{ categoryCode }
 		 WHERE ASK_ID = #{ askId }
 	</update>
 	
-	<!-- 자주 묻는 질문 삭제 -->
-	<delete id="deleteAsked">
+	<update id="deleteAsked">
 		UPDATE
 			   ASKED
 		   SET ASK_EXPOSURE = 'Y'
 		 WHERE ASK_ID = #{ askId }
-	</delete>
-	
-	<!-- 1:1 문의 조회 -->
-	<select id="selectInqList" resultMap="generalInqResultMap">
-		SELECT
-		       A.PER_ID,
-		       A.PER_TITLE,
-		       A.PER_CONTENTS,
-		       A.PER_DATE,
-		       A.PER_ANS_STATUS,
-		       A.DEL_STATUS,
-		       A.PER_ANS,
-		       A.PER_ANS_DATE,
-		       A.ANS_DEL_STATUS,
-		       A.USER_ID,
-		       A.PER_CATE_ID,
-		       B.PER_CATE_NAME,
-		       A.MANAGER_ID
-		  FROM PERSONAL_INQUIRY A
-		  JOIN PER_INQ_CATE B ON (A.PER_CATE_ID = B.PER_CATE_ID)
-		  <where>
-		  	<if test="#{ searchCondition } == '답변완료'">
-		  	A.PER_CATE_ID = 10
-		  	</if>
-		  	<if test="#{ searchCondition } == '답변미완료'">
-		  	A.PER_CATE_ID = 20
-		  	</if>
-		  	AND A.PER_ANS_STATUS = 'Y'
-		  </where>
-		  ORDER BY A.PER_ID DESC
-	  </select>
+	</update>
+
+
+
 
 
 
