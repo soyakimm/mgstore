@@ -53,4 +53,18 @@ public class UserService {
 		
 		return loginUser;
 	}
+
+	public String findId(UserDTO requestUser) {
+		
+		SqlSession session = getSqlSession();
+		
+		String userId = userDAO.selectUserId(session, requestUser);
+		
+		session.close();
+		
+		return userId;
+	}
+
+
+
 }

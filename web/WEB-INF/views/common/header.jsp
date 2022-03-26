@@ -116,7 +116,7 @@
                     	<!-- 관리자페이지/로그아웃 -->
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="admin" type="button">
-	                    	<a href="${ pageContext.servletContext.contextPath }/admin">관리자페이지</a>
+	                    	<a href="${ pageContext.servletContext.contextPath }/adminmain">관리자페이지</a>
 	                    </button>
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="logout" type="button">

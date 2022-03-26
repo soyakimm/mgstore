@@ -79,4 +79,13 @@
 		WHERE USER_STATUS = 'Y'
 		  AND USER_ID = #{ userId }
 	</select>
+	
+	<select id="selectUserId" resultType="string">
+		SELECT
+			   USER_ID
+		  FROM TBL_USER
+		 WHERE USER_NAME = #{ userName }
+		   AND EMAIL = #{ email }
+	</select>
+	
 </mapper>
