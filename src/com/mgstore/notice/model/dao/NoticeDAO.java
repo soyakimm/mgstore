@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mgstore.notice.model.dto.AskedDTO;
+import com.mgstore.notice.model.dto.InqDTO;
 
 public class NoticeDAO {
 
@@ -37,6 +38,11 @@ public class NoticeDAO {
 		/* delete지만 데이터 바로 삭제안하고 삭제여부만 Y로 수정해준다 (update 사용)*/
 		System.out.println("DAO 진행");
 		return session.update("NoticeDAO.deleteAsked", askId);
+	}
+
+	public List<InqDTO> selectInqList(SqlSession session, String searchCondition) {
+		
+		return session.selectList("NoticeDAO.selectInqList", searchCondition);
 	}
 
 }

@@ -1,8 +1,7 @@
 package com.mgstore.notice.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,27 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class InqListServlet
- */
+import com.mgstore.notice.model.dto.InqDTO;
+import com.mgstore.notice.model.service.InqService;
+
 @WebServlet("/inq/list")
 public class InqListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String currentPage = request.getParameter("currentPage");
-//		int pageNo = 1;
-//		
-//		if(currentPage != null && !"".equals(currentPage)) {//currentPage가 널이아니고 공란이 아닌경우
-//			pageNo = Integer.parseInt(currentPage);
-//		}
-//		
-//		/* 0보다 작은 숫자값을 입력해도 1페이지를 보여준다 */
-//		if(pageNo <= 0) {
-//			pageNo = 1;
-//		}
-//		
-//		String searchCondition = request.getParameter("searchCondition");
+		String searchCondition = request.getParameter("searchCondition");
+		
+		System.out.println("searchCondition : " + searchCondition);
+		
+		InqService inqService = new InqService();
+		
+		List<InqDTO> inqList = inqService.selectInqList(searchCondition);
+		
+		System.out.println("inqList : " + inqList);
+		
+		String path ="";
+		
+		if(inqList != null) {
+			path="/WEB-INF/views/notice/inqList.jsp";
+			request.setAttribute("inqList", inqList);
+		} else {
+			System.out.println("문의글 조회 실패");
+		}
+		
+		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 

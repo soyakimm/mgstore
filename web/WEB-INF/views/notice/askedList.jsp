@@ -28,7 +28,7 @@ button {
 		<div class="title-mid">
 			<div class="title-mid-1">자주 묻는 질문</div>
 			<div class="title-mid-1">
-				<a href="02_일대일문의.html">1:1 문의</a>
+				<a href="${ pageContext.servletContext.contextPath }/inq/list">1:1 문의</a>
 			</div>
 		</div>
 		<form name="askedForm" method="get" action="${ pageContext.servletContext.contextPath }/asked/list">

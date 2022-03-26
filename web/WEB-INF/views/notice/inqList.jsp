@@ -33,10 +33,14 @@ button {
 		<form method="get" action="${ pageContext.servletContext.contextPath }/inq/list">
 		<div class="category-min-ask">
 			<div class="overlap-min-group-ask">
-				<div class="category-min-ask-1">답변완료</div>
+				<button type="submit" class="category-min-ask-1" name="searchCondition" value="답변완료">
+				답변완료
+				</button>
 			</div>
 			<div class="overlap-min-group-ask">
-				<div class="category-min-ask-1">답변대기</div>
+				<button type="submit" class="category-min-ask-1" name="searchCondition" value="답변미완료">
+				답변미완료
+				</button>
 			</div>
 		</div>
 		</form>
