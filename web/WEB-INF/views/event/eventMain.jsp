@@ -12,6 +12,7 @@
 
 </head>
 <body>
+	
 	<jsp:include page="../common/header.jsp"/>
 	
 	<!-- 이벤트 메인 전체 적용  -->
@@ -31,7 +32,7 @@
         <div class="banner-content">
             <a>
                 <!-- 배너 사진 첨부 -->
-                <img src="${ pageContext.servletContext.contextPath }${ event.attachmentList[0].eventPath }">
+                <img src="${ pageContext.servletContext.contextPath }${ event.attachmentList[0].evepath }">
             </a>
         </div><!--banner-content-->
        
@@ -47,7 +48,7 @@
         </div> <!--banner-fix--> 
         
         <div class="banner-date">
-            <span>${ event.createdDate }</span> <!-- 이벤트 작성일 (mng에서반영) -->
+            <span>${ event.evecreate }</span> <!-- 이벤트 작성일 (mng에서반영) -->
             <div class="banner-watch">
             		<!-- 이벤트 조회수 (클릭시 반영) -->
                 <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/ico_watching.png" alt="이벤트조회눈"><span>${ event.count }</span>
@@ -56,5 +57,20 @@
     </div> <!-- banner-wrap -->
     </c:forEach>
     
+    
+<!-- 무한스크롤 스크립트 -->
+<script>
+	var scrollPosition = $(window).scrollTop();
+
+	$(window).scroll(function() {
+		var scroll = Math.round($(window).scrollTop());
+		if(scroll == $(document).height() - $(window).height()) {
+			if(!pageEvent._config.check) {
+				pageEvent._config.check = true;
+				pageEvent.getEventComponent();
+			}
+		}
+	});
+</script>
 </body>
 </html>
