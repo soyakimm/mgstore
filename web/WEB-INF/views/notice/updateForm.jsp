@@ -21,7 +21,7 @@
             <a href="${ pageContext.servletContext.contextPath }/asked/list">자주묻는질문</a>
           </div>
           <div class="title-mid-1">
-          <a href="#">1:1 문의</a>
+			<a href="${ pageContext.servletContext.contextPath }/inq/list">1:1 문의</a>
           </div>
         </div>
 		<form method="post" action="${ pageContext.servletContext.contextPath }/asked/update">
@@ -43,7 +43,7 @@
                         <option value="4">기타</option>
                     </select>
                 </div>
-                <textarea class="aked-contents-w notosans-15px-b" name="contents">${ asked.askContents }</textarea>
+                <textarea class="aked-contents-w notosans-15px-b" name="contents" required>${ asked.askContents }</textarea>
               <div class="asked-under">
               <!-- 파일첨부 db를 안만들어서 아마 제거될 예정 ^^.. -->
                 <div class="file-add notosans-15px-b">파일첨부</div>

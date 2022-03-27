@@ -7,11 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>멍개상점 고객센터</title>
+<!-- 외부 스타일 시트 -->
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/notice/notice.css"
 	rel="stylesheet">
 <!--제이쿼리 CDN-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 button {
 	background-color: white;
@@ -33,6 +34,11 @@ button {
 		<form method="get" action="${ pageContext.servletContext.contextPath }/inq/list">
 		<div class="category-min-ask">
 			<div class="overlap-min-group-ask">
+				<button type="submit" class="category-min-ask-1" name="searchCondition" value="전체">
+				전체
+				</button>
+			</div>
+			<div class="overlap-min-group-ask">
 				<button type="submit" class="category-min-ask-1" name="searchCondition" value="답변완료">
 				답변완료
 				</button>
@@ -45,9 +51,10 @@ button {
 		</div>
 		</form>
 		<div id="Accordion_wrap">
+		<!-- 예시 -->
 			<div class="que">
 				<span>여기는 1:1 문의 게시판 입니다. </span> <span class="que-status">답변완료</span>
-				<spna class="que-date">2022-09-19 01:12</spna>
+				<span class="que-date">2022-09-19 01:12</span>
 			</div>
 			<div class="anw">
 				<span class="que-contents"> 회원이 남긴 질문이 나옵니다. </span>
@@ -68,45 +75,69 @@ button {
 					<button>삭제</button>
 				</div>
 			</div>
+			<!-- --------- -->
+			
 			<c:forEach var="inq" items="${ inqList }">
 			<div class="que">
-				<span>${ inq.perTitle }</span> 
-				<span class="que-status">${ inq.categoryName }</span>
-				<spna class="que-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.perQueDate }"/></spna>
+				<span>${ inq.inqTitle }</span> 
+				<span class="que-status">${ inq.inqCategoryName.inqCategoryName }</span>
+				<span class="que-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.inqDate }"/></span>
 			</div>
 			<div class="anw">
-				<span class="que-contents">${ inq.perContents }</span>
+				<span class="que-contents">${ inq.inqContents }</span>
 				<div class="anw-btn-mem">
-					<button>수정</button>
-					<button>삭제</button>
+					<button type="button" onclick="updateInqView(${ inq.inqId })">수정</button>
+					<button type="button" onclick="deleteInqView(${ inq.inqId })">삭제</button>
+					<!-- 답변등록 버튼은 관리자만 보이게 -->
+					<button type="button" onclick="insertAns(${ inq.inqId })">답변등록</button>
 				</div>
 				<br>
 				<br>
 				<hr width=95%>
-				<span class="anw-title">${ inq.perAnw }</span>
-				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.perAnwDate }"/></div>
+				<c:if test="${ inq.inqCategoryId eq 10}">
+				<span class="anw-title">
+				${ inq.ansContents }
+				</span>
+				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.ansDate }"/></div>
 				<div class="anw-btn-mng">
 					<button>수정</button>
 					<button>삭제</button>
 				</div>
+				</c:if>
 			</div>
 			</c:forEach>
 		</div>
 
-		<script>
+	<script>
       /* 아코디언 게시판*/
       $(".que").click(function() {
       $(this).next(".anw").stop().slideToggle(300);
       $(this).toggleClass('on').siblings().removeClass('on');
       $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
       });
+      
+      /* 문의글 수정 이동 함수*/
+      function updateInqView(inqId){
+    	  location.href = "${ pageContext.servletContext.contextPath }/inq/update?inqId="+ inqId;
+      }
+      
+      /* 문의글 삭제 이동 함수*/
+      function deleteInqView(inqId){
+    	  if(confirm('이 게시글을 삭제하시겠습니까?')){
+    		  location.href = "${ pageContext.servletContext.contextPath }/inq/delete?inqId="+ inqId;
+    	  }
+      }
+      
+      /* 답변글 등록 이동 (inq update로 inq 아이디 가지고 이동해서 내용 수정하기로 진행)*/
+      function insertAns(inqId){
+    	  location.href = "${ pageContext.servletContext.contextPath }/inq/ans?inqId="+ inqId;
+      }
+
     </script>
-    
-    <jsp:include page="inqPaging.jsp" />
 
 
 		<button type="button" class="regist-bord"
-			onclick="location.href='11_일대일문의_글작성.html'" id="regist-button">
+			onclick="location.href='${ pageContext.servletContext.contextPath }/inq/insert" id="regist-button">
 			<div class="regist-bord-text">문의글 등록</div>
 		</button>
 	</div>
