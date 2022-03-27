@@ -8,16 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/CommunityServlet")
-public class CommunityServlet extends HttpServlet {
+@WebServlet("/CommunityWrite")
+public class CommunityWriteServlet extends HttpServlet {
 
-    
-    /*getParameter는 항상 String 형태로 반환하므로 주의할점은 int 타입의 변수에 값을 저장하고 싶다면 형변환을 해줘야함
-    ex) int a = Integer.pareInt(request.getParamaeter("id");*/
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		String path = "/WEB-INF/views/community/write.jsp";
 
-		request.getRequestDispatcher("/WEB-INF/views/community/write.jsp").forward(request, response);
+		request.getRequestDispatcher(path).forward(request, response);
 	}
 
 
