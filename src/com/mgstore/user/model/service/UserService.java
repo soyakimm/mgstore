@@ -53,7 +53,8 @@ public class UserService {
 		
 		return loginUser;
 	}
-
+	
+	/* 아이디 찾기 */
 	public String findId(UserDTO requestUser) {
 		
 		SqlSession session = getSqlSession();
@@ -64,7 +65,28 @@ public class UserService {
 		
 		return userId;
 	}
-
-
-
+	
+	/* 아이디 중복 확인 */
+	public int userIdCheck(String userId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = userDAO.userIdCheck(session, userId);
+		
+		session.close();
+		
+		return result;
+	}
+	
+	/* 닉네임 중복 확인 */
+	public int nicknameCheck(String nickname) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = userDAO.nicknameCheck(session, nickname);
+		
+		session.close();
+		
+		return result;
+	}
 }

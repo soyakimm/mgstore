@@ -20,12 +20,22 @@ public class UserDAO {
 	public UserDTO selectLoginUser(SqlSession session, UserDTO requestUser) {
 		return session.selectOne("UserDAO.selectLoginUser", requestUser);
 	}
-
+	
+	/* 아이디 찾기 */
 	public String selectUserId(SqlSession session, UserDTO requestUser) {
 		return session.selectOne("UserDAO.selectUserId", requestUser);
 	}
+	
+	/* 아이디 중복 확인 */
+	public int userIdCheck(SqlSession session, String userId) {
+		return session.selectOne("UserDAO.userIdCheck", userId);
+	}
+	
+	/* 닉네임 중복 확인 */
+	public int nicknameCheck(SqlSession session, String nickname) {
+		return session.selectOne("UserDAO.nicknameCheck", nickname);
+	}
 
-	/* 아이디 찾기 */
 	
 	
 

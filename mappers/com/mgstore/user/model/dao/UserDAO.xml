@@ -88,4 +88,17 @@
 		   AND EMAIL = #{ email }
 	</select>
 	
+	<select id="userIdCheck" resultType="_int">
+		SELECT
+			   COUNT(*)
+		  FROM TBL_USER
+		 WHERE USER_ID = #{ userId }
+	</select>
+	
+	<select id="nicknameCheck" resultType="_int">
+		SELECT
+			   COUNT(*)
+		  FROM TBL_USER
+		 WHERE NICKNAME = #{ nickname }
+	</select>
 </mapper>
