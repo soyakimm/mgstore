@@ -100,6 +100,24 @@ public class InqService {
 		return result;
 	}
 
+	/* 게시글 답변등록 */
+	public int updateAns(InqDTO updateAns) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = NoticeDAO.updateAns(session, updateAns);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 
 	
 

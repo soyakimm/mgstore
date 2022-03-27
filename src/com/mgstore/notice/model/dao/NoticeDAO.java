@@ -58,14 +58,22 @@ public class NoticeDAO {
 		return session.selectOne("NoticeDAO.selectInqDetail", inqId);
 	}
 
+	/* 1:1 문의 수정*/
 	public int updateQue(SqlSession session, InqDTO updateQue) {
 
 		return session.update("NoticeDAO.updateQue", updateQue);
 	}
 
+	/* 1:1 문의 삭제*/
 	public int deleteInq(SqlSession session, int inqId) {
 		
 		return session.update("NoticeDAO.deleteInq", inqId);
+	}
+
+	/* 1:1 답변 등록*/
+	public static int updateAns(SqlSession session, InqDTO updateAns) {
+		
+		return session.update("NoticeDAO.updateAns", updateAns);
 	}
 
 }

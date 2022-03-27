@@ -236,6 +236,7 @@
 		 ORDER BY A.PER_ID DESC
 	</select>
 	
+	<!-- 문의 수정 -->
 	<update id="updateQue">
 		UPDATE
 		       PERSONAL_INQUIRY
@@ -245,11 +246,23 @@
 		 WHERE PER_ID = #{ inqId }
 	</update>
 	
+	<!-- 문의 삭제 -->
 	<update id="deleteInq">
 		UPDATE
 		       PERSONAL_INQUIRY
 		   SET DEL_STATUS = 'Y'
 		 WHERE PER_ID = #{ inqId }
+	</update>
+	
+	<!-- 답변 등록 -->
+	<update id="updateAns">
+		UPDATE
+		       PERSONAL_INQUIRY
+		   SET PER_ANS_STATUS = 'Y' ,
+		       PER_ANS = #{ ansContents },
+		       PER_CATE_ID = 10,
+		       MANAGER_ID = #{ adminId }
+		 WHERE PER_ID = #{ inqId }		   
 	</update>
 
 

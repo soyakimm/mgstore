@@ -51,6 +51,7 @@ button {
 		</div>
 		</form>
 		<div id="Accordion_wrap">
+		<!-- 예시 -->
 			<div class="que">
 				<span>여기는 1:1 문의 게시판 입니다. </span> <span class="que-status">답변완료</span>
 				<span class="que-date">2022-09-19 01:12</span>
@@ -74,6 +75,8 @@ button {
 					<button>삭제</button>
 				</div>
 			</div>
+			<!-- --------- -->
+			
 			<c:forEach var="inq" items="${ inqList }">
 			<div class="que">
 				<span>${ inq.inqTitle }</span> 
@@ -85,15 +88,17 @@ button {
 				<div class="anw-btn-mem">
 					<button type="button" onclick="updateInqView(${ inq.inqId })">수정</button>
 					<button type="button" onclick="deleteInqView(${ inq.inqId })">삭제</button>
+					<!-- 답변등록 버튼은 관리자만 보이게 -->
+					<button type="button" onclick="insertAns(${ inq.inqId })">답변등록</button>
 				</div>
 				<br>
 				<br>
 				<hr width=95%>
+				<c:if test="${ inq.inqCategoryId eq 10}">
 				<span class="anw-title">
-				<c:if test="inq.perAnw != 'NO DATA'">
-				${ inq.perAnw }
+				${ inq.ansContents }
 				</span>
-				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.perAnwDate }"/></div>
+				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.ansDate }"/></div>
 				<div class="anw-btn-mng">
 					<button>수정</button>
 					<button>삭제</button>
@@ -122,11 +127,17 @@ button {
     		  location.href = "${ pageContext.servletContext.contextPath }/inq/delete?inqId="+ inqId;
     	  }
       }
+      
+      /* 답변글 등록 이동 (inq update로 inq 아이디 가지고 이동해서 내용 수정하기로 진행)*/
+      function insertAns(inqId){
+    	  location.href = "${ pageContext.servletContext.contextPath }/inq/ans?inqId="+ inqId;
+      }
+
     </script>
 
 
 		<button type="button" class="regist-bord"
-			onclick="location.href='${ pageContext.servletContext.contextPath }/inq/insert'" id="regist-button">
+			onclick="location.href='${ pageContext.servletContext.contextPath }/inq/insert" id="regist-button">
 			<div class="regist-bord-text">문의글 등록</div>
 		</button>
 	</div>
