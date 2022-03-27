@@ -338,7 +338,7 @@
                 </c:forEach>
 			     </tr>
 	        </table>
-		<jsp:include page="../admin/paging.jsp"/>
+<%-- 		<jsp:include page="../admin/paging.jsp"/> --%>
 		</div>
  
 </body>

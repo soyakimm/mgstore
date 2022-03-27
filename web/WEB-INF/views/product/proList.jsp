@@ -113,7 +113,9 @@
                             <li><button type="button" onclick="link">- 악세사리</button></li>
                         </ul>
                     </li>
+                    
                     <script>
+                    //상품 카테고리 토글
                         $(".category-name").click(function() {
                             //한 개씩 펼치게 하기
                             $(".sub-select").slideUp(300);
@@ -480,6 +482,9 @@
         </div>
     </div>
 </div>
+
+	<!-- 페이징 삽입 -->
+	<jsp:include page="../common/paging.jsp"/>
 
 </body>
 </html>
