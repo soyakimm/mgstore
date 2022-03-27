@@ -26,7 +26,9 @@ button {
 	<div class="main">
 		<h1 class="title-bg">고객센터</h1>
 		<div class="title-mid">
-			<div class="title-mid-1">자주 묻는 질문</div>
+			<div class="title-mid-1">
+				자주 묻는 질문
+			</div>
 			<div class="title-mid-1">
 				<a href="${ pageContext.servletContext.contextPath }/inq/list">1:1 문의</a>
 			</div>

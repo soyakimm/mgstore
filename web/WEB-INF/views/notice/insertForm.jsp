@@ -23,7 +23,7 @@
             <a href="${ pageContext.servletContext.contextPath }/asked/list">자주묻는질문</a>
           </div>
           <div class="title-mid-1">
-          <a href="#">1:1 문의</a>
+          <a href="${ pageContext.servletContext.contextPath }/inq/list">1:1 문의</a>
           </div>
         </div>
 		<form method="post" action="${ pageContext.servletContext.contextPath }/asked/insert">
@@ -48,8 +48,7 @@
                 <div class="file-add notosans-15px-b">파일첨부</div>
                 <div class="file-layout-container">
                   <div>
-                    <input class="file-layout" value="파일을 첨부해주세요."
-							disabled="disabled">
+                    <input class="file-layout" value="파일을 첨부해주세요." disabled="disabled">
                   </div>
                   <div class="asked-submit">
                     <button type="submit">게시글 작성</button>

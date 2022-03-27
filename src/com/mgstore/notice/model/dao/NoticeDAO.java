@@ -40,9 +40,32 @@ public class NoticeDAO {
 		return session.update("NoticeDAO.deleteAsked", askId);
 	}
 
+	/* 1:1 문의 조회*/
 	public List<InqDTO> selectInqList(SqlSession session, String searchCondition) {
 		
 		return session.selectList("NoticeDAO.selectInqList", searchCondition);
+	}
+
+	/* 1:1 문의 등록*/
+	public int insertInq(SqlSession session, InqDTO newInq) {
+		
+		return session.insert("NoticeDAO.insertInq", newInq);
+	}
+
+	/* 1:1 문의 상세 조회*/
+	public InqDTO selectInqDetail(SqlSession session, int inqId) {
+		
+		return session.selectOne("NoticeDAO.selectInqDetail", inqId);
+	}
+
+	public int updateQue(SqlSession session, InqDTO updateQue) {
+
+		return session.update("NoticeDAO.updateQue", updateQue);
+	}
+
+	public int deleteInq(SqlSession session, int inqId) {
+		
+		return session.update("NoticeDAO.deleteInq", inqId);
 	}
 
 }

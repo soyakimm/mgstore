@@ -31,6 +31,18 @@
 				successMessage = "자주묻는질문 삭제에 성공하였습니다.";
 				movePath = "${ pageContext.servletContext.contextPath }/asked/list";
 				break;
+			case "insertInq" :
+				successMessage = "1:1 문의 등록이 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
+				break;
+			case "updateAsked" :
+				successMessage = "1:1 문의 수정이 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
+				break;
+			case "deleteInq" :
+				successMessage = "1:1 문의 삭제가 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
+				break;
 			
 		}
 
