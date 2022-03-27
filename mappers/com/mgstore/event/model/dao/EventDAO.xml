@@ -3,32 +3,89 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EventDAO">
+<!-- 이벤트 -->
 <resultMap type="com.mgstore.event.model.dto.EventDTO" id="eventResultMap">
 		<id property="eveid" column="EVENT_ID"/>
-		<result property="evedate" column="EVE_DATE"/>
-		<result property="evestart" column="EVE_START"/>
-		<result property="eveend" column="EVE_END"/>
-		<result property="eveinfo" column="EVE_INFO"/>
-		<result property="userid" column="USER_ID"/>
-		<result property="evemoddate" column="EVE_MOD_DATE"/>
-		<result property="evedelflag" column="EVE_DELFLAG"/>
+		<result property="eveCateCode" column="EVE_CATE_CODE"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="eveTitle" column="EVE_TITLE"/>
+		<result property="eveContent" column="EVE_CONTENT"/>
+		<result property="eveCreate" column="EVE_CREATE"/>
+		<result property="eveStart" column="EVE_START"/>
+		<result property="eveEnd" column="EVE_END"/>	
+		<result property="eveModDate" column="EVE_MOD_DATE"/>
+		<result property="eveCount" column="EVE_COUNT"/>
+		<result property="eveStatus" column="EVE_STATUS"/>
 	</resultMap>
 	
-	<!-- 추후수정 -->
-<select id="selectEventList" resultMap="EventResultMap">
-         SELECT /* com.greedy.jsp.board.model.dao.EventDAO#selectEventList() */
-               EVENT_ID
-             , EVE_DATE
-             , EVE_START
-             , EVE_END
-             , EVE_INFO
-             , USER_ID
-             , EVE_MOD_DATE
-             , EVE_DELFLAG
-          FROM EVENT
-         WHERE A.RNUM >= #{ startRow }     
-         ORDER BY A.RNUM 
-	</select>
+	
+<!-- 유저 -->	
+	<resultMap type="com.mgstore.admin.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+<!-- 이벤트 카테고리 -->
+	<resultMap type="com.greedy.jsp.board.model.dto.EveCategoryDTO" id="categoryResultMap">
+		<id property="eveCateCode" column="EVE_CATE_CODE"/>
+		<result property="eveCateName" column="EVE_CATE_NAME"/>
+	</resultMap>
+	
+
+<!-- 이벤트 첨부 파일 / 추후 수정 -->
+<!-- 	<resultMap type="com.greedy.jsp.board.model.dto.EveAttachmentDTO" id="attachmentResultMap">
+		<id property="EveImgNo" column="EVE_IMG_NO"></id>
+		<result property="eveId" column="EVE_ID"/>
+		<result property="eveOriginName" column="EVE_ORIGIN_NAME"/>
+		<result property="eveSavedName" column="EVE_SAVED_NAME"/>
+		<result property="eveSavePath" column="EVE_SAVE_PATH"/>
+		<result property="eveFileType" column="EVE_FILE_TYPE"/>
+		<result property="eveImgStatus" column="EVE_IMG_STATUS"/>
+		<result property="evePath" column="EVE_PATH"/>
+		</resultMap>	 
+-->
+
+<!-- ★ select는 resulttype적기 -->
+
+<!-- 썸네일 등록 --> 
+	<insert id="insertEventContent" >
+        INSERT /* EventDAO#insertEventContent() */
+          INTO EVENT
+        (
+          EVENT_ID <!-- pk -->
+        , EVENT_TITLE <!-- 제목 -->
+        , EVE_CATE_CODE<!-- 카테고리 코드(진행중, 종료중) -->
+        , EVE_START<!-- 이벤트 시작일 -->
+        , EVE_END<!-- 이벤트 종료일 -->
+        , USER_ID<!-- 이벤트 당첨자 등록 -->
+        )
+        VALUES 
+        (
+          SEQ_BOARD_NO.NEXTVAL
+        , #{ eveCateCode }
+        , #{ eveTitle }
+        , #{ eveStart }
+        , #{ eveEnd }
+        , #{ userId }
+        )
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+        	SELECT
+        	       SEQ_EVENT_ID.CURRVAL
+        	  FROM DUAL
+        </selectKey>
+	</insert>
+	
+
 
 
 </mapper>
