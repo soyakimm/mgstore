@@ -30,8 +30,8 @@
                         </a>
                     </div>
                     <ul class="header-link-comm-store header-comm-store-hover">
-                        <li><button class="header-community-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community'">커뮤니티</button></li>
-                        <li><button class="header-store-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/store'" style="color: #f5742f">스토어</button></li>
+                        <li><button class="header-community-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community/main'">커뮤니티</button></li>
+                        <li><button class="header-store-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/'" style="color: #f5742f">스토어</button></li>
                     </ul>
                     <form name="header-top-search-form" action="${ pageContext.servletContext.contextPath }/search/result?page=1&search=">
                         <div class="header-search-bar">
@@ -136,7 +136,7 @@
 	                        <ul class="header-all-category">
 	                            <li class="header-all-category-container">
 	                                <div class="header-all-list-contents">
-	                                    <div class="header-all-list">
+	                                    <div class="header-all-list" style="width: 1230px; background: rgba(255, 255, 255, 0.8);">
 	                                        <h2>ALL CATEGORY</h2>
 	                                        <ul class="header-inner-list">
 	                                            <li>
@@ -224,13 +224,13 @@
                     	</button>
                     <nav id="header-nav">
                         <ul>
-                            <li class="header-item"><a href="/store/">사료</a></li>
-                            <li class="header-item"><a href="/store/">간식</a></li>
-                            <li class="header-item"><a href="/store/">케어</a></li>
-                            <li class="header-item"><a href="/store/">리빙</a></li>
-                            <li class="header-item"><a href="/store/">외출</a></li>
-                            <li class="header-item"><a href="/store/">장난감</a></li>
-                            <li class="header-item"><a href="/store/">패션</a></li>
+                            <li class="header-item"><a href="#">사료</a></li>
+                            <li class="header-item"><a href="#">간식</a></li>
+                            <li class="header-item"><a href="#">케어</a></li>
+                            <li class="header-item"><a href="#">리빙</a></li>
+                            <li class="header-item"><a href="#">외출</a></li>
+                            <li class="header-item"><a href="#">장난감</a></li>
+                            <li class="header-item"><a href="#">패션</a></li>
                         </ul>
                     </nav>
                 </div>
