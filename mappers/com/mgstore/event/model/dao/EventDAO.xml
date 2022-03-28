@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EventDAO">
 <!-- 이벤트 -->
-<resultMap type="com.mgstore.event.model.dto.EventDTO" id="eventResultMap">
-		<id property="eveid" column="EVENT_ID"/>
-		<result property="eveCateCode" column="EVE_CATE_CODE"/>
+<resultMap type="com.mgstore.event.model.dto.EventDTO" id="basiceventResultMap">
+		<id property="eveId" column="EVE_ID"/>
+		<result property="categoryCode" column="EVE_CATE_CODE"/>
 		<result property="userId" column="USER_ID"/>
 		<result property="eveTitle" column="EVE_TITLE"/>
 		<result property="eveContent" column="EVE_CONTENT"/>
@@ -16,6 +16,9 @@
 		<result property="eveModDate" column="EVE_MOD_DATE"/>
 		<result property="eveCount" column="EVE_COUNT"/>
 		<result property="eveStatus" column="EVE_STATUS"/>
+		
+		<association property="user" resultMap="userResultMap"/>
+		<association property="category" resultMap="categoryResultMap"/>
 	</resultMap>
 	
 	
@@ -36,16 +39,35 @@
 	</resultMap>
 	
 <!-- 이벤트 카테고리 -->
-	<resultMap type="com.greedy.jsp.board.model.dto.EveCategoryDTO" id="categoryResultMap">
+	<resultMap type="com.mgstore.event.model.dto.EveCategoryDTO" id="categoryResultMap">
 		<id property="eveCateCode" column="EVE_CATE_CODE"/>
 		<result property="eveCateName" column="EVE_CATE_NAME"/>
 	</resultMap>
 	
+<!-- 썸네일 이벤트 resultmap / id: 임의의 이름 기술 -->
+		<resultMap type="com.mgstore.event.model.dto.EventDTO" id="thumbnailEventResultMap">
+		<id property="eveid" column="EVE_ID"/>
+		<result property="eveCateCode" column="EVE_CATE_CODE"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="eveTitle" column="EVE_TITLE"/>
+		<result property="eveContent" column="EVE_CONTENT"/>
+		<result property="eveCreate" column="EVE_CREATE"/>
+		<result property="eveStart" column="EVE_START"/>
+		<result property="eveEnd" column="EVE_END"/>	
+		<result property="eveModDate" column="EVE_MOD_DATE"/>
+		<result property="eveCount" column="EVE_COUNT"/>
+		
+		<association property="user" resultMap="userResultMap"/>
+		<association property="category" resultMap="categoryResultMap"/>
+		
+		<collection property="attachmentList" resultMap="attachmentResultMap"/>
+	</resultMap>
 
-<!-- 이벤트 첨부 파일 / 추후 수정 -->
-<!-- 	<resultMap type="com.greedy.jsp.board.model.dto.EveAttachmentDTO" id="attachmentResultMap">
-		<id property="EveImgNo" column="EVE_IMG_NO"></id>
-		<result property="eveId" column="EVE_ID"/>
+
+<!-- 이벤트 첨부 파일 -->
+	<resultMap type="com.mgstore.event.model.dto.EveAttachmentDTO" id="attachmentResultMap">
+		<id property="EveImgNo" column="EVE_IMG_NO"></id> <!-- 이벤트 첨부파일 pk -->
+		<result property="eveId" column="EVE_ID"/> <!-- 이벤트 게시판과 연결 -->
 		<result property="eveOriginName" column="EVE_ORIGIN_NAME"/>
 		<result property="eveSavedName" column="EVE_SAVED_NAME"/>
 		<result property="eveSavePath" column="EVE_SAVE_PATH"/>
@@ -53,39 +75,110 @@
 		<result property="eveImgStatus" column="EVE_IMG_STATUS"/>
 		<result property="evePath" column="EVE_PATH"/>
 		</resultMap>	 
--->
+
+
+<!--  id: selectEventListResultMap + 가져오려는 컬럼 항목들.. --> <!-- 여기 현주님쓰라고 해서 쓴부분.. -->
+	<resultMap type="com.mgstore.event.model.dto.EventDTO" id="selectEventListResultMap">
+		<collection property="user" resultMap="userResultMap"/>
+		<collection property="category" resultMap="categoryResultMap"/>
+		<collection property="attachmentList" resultMap="attachmentResultMap"/>
+	</resultMap>
+
 
 <!-- ★ select는 resulttype적기 -->
 
-<!-- 썸네일 등록 --> 
-	<insert id="insertEventContent" >
+<!-- 썸네일 등록1 : 게시글 작성 --> 
+	<insert id="insertThumbnailContent" >
         INSERT /* EventDAO#insertEventContent() */
           INTO EVENT
         (
-          EVENT_ID <!-- pk -->
-        , EVENT_TITLE <!-- 제목 -->
+          EVE_ID <!-- pk -->
+        , EVE_TITILE <!-- 제목 -->
         , EVE_CATE_CODE<!-- 카테고리 코드(진행중, 종료중) -->
         , EVE_START<!-- 이벤트 시작일 -->
         , EVE_END<!-- 이벤트 종료일 -->
-        , USER_ID<!-- 이벤트 당첨자 등록 -->
+        , USER_ID <!-- 이벤트 당첨자 등록 -->
         )
         VALUES 
         (
-          SEQ_BOARD_NO.NEXTVAL
-        , #{ eveCateCode }
+          EVE_ID_SEQ.NEXTVAL
         , #{ eveTitle }
+        , #{ categoryCode }
         , #{ eveStart }
         , #{ eveEnd }
-        , #{ userId }
+        , #{ user.userId } 
         )
-        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+        <selectKey keyProperty="eveId" resultType="Integer" order="AFTER">
         	SELECT
-        	       SEQ_EVENT_ID.CURRVAL
+        	       EVE_ID_SEQ.CURRVAL
         	  FROM DUAL
         </selectKey>
 	</insert>
 	
+<!-- 썸네일 등록2 :: SQL 재수정 필요(evethumbNailPath)-->	
+	<insert id="insertAttachment" parameterType="com.mgstore.event.model.dto.EveAttachmentDTO">
+        INSERT 
+          INTO EVENT_ATTACHMENT 
+        (
+          EVE_IMG_NO <!-- 이벤트 PK -->
+        , EVE_ID <!-- 이벤트 게시판 PK/FK -->
+        , EVE_ORIGIN_NAME 
+        , EVE_SAVED_NAME
+        , EVE_SAVE_PATH
+        , EVE_FILE_TYPE
+        , EVE_THUMBNAIL_PATH
+        )
+        VALUES 
+        (
+          SEQ_EVE_IMG_NO.NEXTVAL <!-- 이벤트 PK -->
+        , EVE_ID_SEQ.NEXTVAL <!-- EVE_ID의 PK이자 FK -->
+        , #{ eveOriginName }
+        , #{ eveSavedName }
+        , #{ eveSavePath }
+        , #{ eveFileType }
+        , #{ evethumbNailPath }
+        )
+	</insert>
+	
+	
+<!-- 이벤트 메인화면 list - select -->
 
+ 	<select id="selectEventList" resultMap="selectEventListResultMap">
+        SELECT 
+               A.EVE_ID
+             , A.EVE_TITILE
+             , A.EVE_CONTENT
+             , B.EVE_CATE_NAME
+             , A.USER_ID
+             , A.EVE_COUNT
+             , A.EVE_CREATE
+             , A.EVE_MODDATE
+             , D.EVE_IMG_NO
+             , D.EVE_ORIGIN_NAME
+             , D.EVE_SAVED_NAME
+             , D.EVE_SAVE_PATH
+             , D.EVE_FILE_TYPE
+             , D.EVE_THUMBNAIL_PATH
+          FROM EVENT A  <!-- join해서 행의 개수는 Attachemnet 개수에 따라 달라진다. -->
+          JOIN EVE_CATEGORY B ON (A.EVE_CATE_CODE = B.EVE_CATE_CODE)
+          JOIN TBL_USER C ON (A.USER_ID = C.USER_ID)
+          JOIN EVENT_ATTACHMENT D ON (A.EVE_ID = D.EVE_ID)
+         WHERE A.EVE_STATUS = 'Y'
+           AND D.EVE_IMG_STATUS = 'Y'
+           AND D.EVE_FILE_TYPE = 'TITLE' <!--  CHECK제약조건 수정필요? --> 
+         ORDER BY A.EVE_ID DESC
+	</select>
+	
 
+<!-- 이벤트 게시글 조회수 증가(멍개눈) -->
+ 	<update id="incrementEventCount">
+	UPDATE
+		  EVENT A
+	   SET A.EVE_COUNT = (SELECT B.EVE_COUNT
+	     					  FORM EVENT B
+	     					 WHERE B.EVE_ID = #{eveId}
+	     				    ) + 1
+	  WHERE A.EVE_ID = #{ eveId }
+	</update>
 
 </mapper>
