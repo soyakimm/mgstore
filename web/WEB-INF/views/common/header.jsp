@@ -30,7 +30,7 @@
                         </a>
                     </div>
                     <ul class="header-link-comm-store header-comm-store-hover">
-                        <li><button class="header-community-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community'">커뮤니티</button></li>
+                        <li><button class="header-community-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community/main'">커뮤니티</button></li>
                         <li><button class="header-store-button" type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/store'" style="color: #f5742f">스토어</button></li>
                     </ul>
                     <form name="header-top-search-form" action="${ pageContext.servletContext.contextPath }/search/result?page=1&search=">

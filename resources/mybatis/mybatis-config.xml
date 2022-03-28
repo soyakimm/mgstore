@@ -21,6 +21,10 @@
 		<mapper resource="com/mgstore/admin/model/dao/AdminDAO.xml"/>
 		<mapper resource="com/mgstore/notice/model/dao/NoticeDAO.xml"/>
 		<mapper resource="com/mgstore/myshopping/model/dao/MyshoppingDAO.xml"/>
+	  <mapper resource="com/mgstore/community/model/dao/CommunityDAO.xml"/> 
+		<mapper resource="com/mgstore/event/model/dao/EventDAO.xml"/>
+
+
 <!-- 		<mapper resource="com/mgstore/product/model/dao/ProductDAO.xml"/> -->
 
 		<!-- 

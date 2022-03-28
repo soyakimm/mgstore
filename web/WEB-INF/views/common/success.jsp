@@ -59,7 +59,20 @@
 				successMessage = "상품 삭제가 완료되었습니다.";
 				movePath = "${ pageContext.servletContext.contextPath }/myshopping/wishList";
 				break;
+
+			case "insertWrite" :
+				successMessage = "게시판 등록이 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/community/main";
+				break;
+
+
 			
+
+			case "insertThumbnail" : 
+				successMessage = "이벤트 썸네일 게시판 등록 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/event/main";
+				break;
+
 		}
 
 		alert(successMessage);

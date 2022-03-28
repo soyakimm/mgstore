@@ -325,7 +325,7 @@
                                     <th><text class=modaltext2>${ userlist.phone }</text></th>
                                     <tr></tr>
                                     <th><text class=modaltext>주소</text></th>
-                                    <th><text class=modaltext2>${ userlist.address }</text></th>
+                                    <th><text class=modaltext2>${ userlist.address.replace("$","") }</text></th>
                             </table>
                         </div>
                         
@@ -338,7 +338,7 @@
                 </c:forEach>
 			     </tr>
 	        </table>
-<%-- 		<jsp:include page="../admin/paging.jsp"/> --%>
+ 		<jsp:include page="../common/paging.jsp"/> 
 		</div>
  
 </body>
