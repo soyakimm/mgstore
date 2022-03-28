@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+  
+  .notosanskr * { 
+   font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  :root {
+    --black: #000000;
+    --sonic-silver: #767676;
+    --font-size-xs: 12px;
+    --font-size-m2: 20px;
+    --font-size-xxxl2: 39px;
+    --font-size-m3: 15px;
+    --font-family-noto_sans: "Noto Sans", Helvetica;
+    --font-family-gmarket_sans_ttf-medium: "Gmarket Sans TTF-Medium", Helvetica;
+  }
+  
+  /* 공통으로 반영될 css*/
+  
+  a {
+    text-decoration: none;
+    color: #484848;
+  }
+  
+  .cancel-main {
+    align-items: center;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title-bg {
+    color: var(--black);
+    font-family: 'GmarketSansLight';
+    font-size: var(--font-size-xxxl2);
+    font-weight: bold;
+    height: 62px;
+    letter-spacing: 0;
+    text-align: center;
+    width: 521px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .wrapper {
+    align-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    background-size: 100% 100%;
+    padding: 0 4%;
+  }
+  
+  .search-day {
+      border: solid 1px #767676;
+      padding: 3px ;
+  }
+  
+  .sb-tilte-box {
+    text-align: center;
+    border: solid 1px #F7F6F7 ;
+    width: 180px;
+    height: 338px;
+    margin-top : 20px;
+  }
+  
+  .sub-title {
+      font-family: 'Noto Sans KR';
+      font-size: 20px;
+      color: #f5742f;
+      padding: 0 8px 8px;
+      font-weight: normal;
+      border-bottom: 2px #f5742f solid;
+  }
+  
+  /* 메뉴에 hover 가 안먹음*/
+  .sub-menu-li:hover {
+    color: #f5742f
+  }
+  
+  .sub-menu li {
+      text-align: center;
+      list-style: none;
+      padding: 5px;
+      font-family: 'Noto Sans KR';
+      padding-right: 50px;
+      color: #484848;
+  }
+  
+  /* 주문/배송내역 */
+  
+  .cancel-table {
+    width : 1100px;
+    text-align: center;
+    height: 80px;
+    font-family: 'Noto Sans KR';
+    color: #484848;
+  }
+  
+  
+  .cancel {
+    display: flex;
+  }
+  
+  
+  .table-col-data {
+    height: 80px;
+    border-bottom: 1px solid #E3E2E3;
+  }
+  
+  .table-col-data-2 {
+  width: 70px;
+  border-bottom: 1px solid #E3E2E3;
+  }
+  
+  .table-col-data-3 {
+  width: 450px;
+  text-align: left;
+  padding-left: 20px;
+  border-bottom: 1px solid #E3E2E3;
+  }
+  
+  
+  .table-col-name {
+    background-color: #F7F6F7;
+    height: 43px;
+    border-top: 1px solid #484848;
+    border-bottom: 1px solid #E3E2E3;
+    
+  }
+  
+  .table-col-data button {
+    background-color: #767676;
+    color: white;
+    border-radius: 5px;
+    margin-top: 3px;
+  }
+
+  .wish-main {
+    align-items: center;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .wish {
+    display: flex;
+  }
+
+  .img-area img {
+    width: 190px;
+    height: 190px;
+  }
+
+  .wish-list {
+    font-family: 'Noto Sans KR';
+  }
+
+  .wish-list li {
+    list-style: none;
+    padding: 2px;
+  }
+
+  .wish-product {
+    width: 1000px;
+  }
+
+  .wish {
+    display: flex;
+  }
+
+  .wish-pro {
+    float: left;
+    margin: 5%;
+  }
+.check-text {
+  font-family: 'Noto Sans KR';
+  font-weight: bold;
+}
+
+.check-btn {
+  border-radius: 5px;
+  border: 2px solid #f5742f;
+  background-color: white;
+  font-family: 'Noto Sans KR';
+  color: #f5742f;
+  cursor: pointer;
+}
+
+.pro-price {
+  font-size: 15px;
+  color: #767676;
+}
+
+.basket{
+  border-radius: 5px;
+  border: 1px solid #f5742f;
+  background-color: #f5742f;
+  color: white;
+  cursor: pointer;
+}
+
+.whis-del{
+  border-radius: 5px;
+  border: 2px solid #f5742f;
+  color: #f5742f;
+  background-color: white;
+  cursor: pointer;
+}
+
+
+  
+  

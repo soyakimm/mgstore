@@ -101,11 +101,45 @@ public class InqService {
 	}
 
 	/* 게시글 답변등록 */
+	public int insertAns(InqDTO updateAns) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = NoticeDAO.insertAns(session, updateAns);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 	public int updateAns(InqDTO updateAns) {
 		
 		SqlSession session = getSqlSession();
 		
-		int result = NoticeDAO.updateAns(session, updateAns);
+		int result = noticeDAO.updateAns(session, updateAns);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+	/* 문의삭제 => 답변내용 NO DATA 로 변경 후, 카테고리값 20으로 변경*/
+	public int deleteAns(int inqId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = noticeDAO.deleteAns(session, inqId);
 		
 		if(result > 0) {
 			session.commit();

@@ -26,11 +26,11 @@
 				<a href="${ pageContext.servletContext.contextPath }/inq/list">1:1 문의</a>
 			</div>
 		</div>
-		<form method="post" action="${ pageContext.servletContext.contextPath }/inq/ans">
+		<form method="post" action="${ pageContext.servletContext.contextPath }/inq/ansUpdate">
 		<input type="hidden" name="inqId" value="${ inqAns.inqId }">
 		<div class="overlap-group2">
 			<div class="text-top">
-			문의사항 답변 등록
+			문의사항 답변 수정
 			</div>
 			<div>
                 <input type="text" class="asked-title-w" name="inqTitle" value="${ inqAns.inqTitle }" required readonly> <!-- required : 입력값 필수! -->
