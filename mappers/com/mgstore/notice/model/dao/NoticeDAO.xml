@@ -255,7 +255,7 @@
 	</update>
 	
 	<!-- 답변 등록 -->
-	<update id="updateAns">
+	<update id="insertAns">
 		UPDATE
 		       PERSONAL_INQUIRY
 		   SET PER_ANS_STATUS = 'Y' ,
@@ -263,6 +263,26 @@
 		       PER_CATE_ID = 10,
 		       MANAGER_ID = #{ adminId }
 		 WHERE PER_ID = #{ inqId }		   
+	</update>
+	
+	<!-- 답변 수정 -->
+	<update id="updateAns">
+		UPDATE
+		       PERSONAL_INQUIRY
+		   SET PER_ANS_STATUS = 'Y',
+		       PER_ANS = #{ ansContents },
+		       PER_ANS_DATE = SYSDATE
+		 WHERE PER_ID = #{ inqId }
+	</update>
+	
+	<!-- 답변 삭제 -->
+	<update id="deleteAns">
+		UPDATE
+		       PERSONAL_INQUIRY
+		   SET PER_ANS_STATUS = 'N',
+		       PER_ANS = 'NO DATA',
+		       PER_CATE_ID = 20
+		 WHERE PER_ID = #{ inqId }
 	</update>
 
 

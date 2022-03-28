@@ -1,0 +1,324 @@
+@charset "UTF-8";
+
+.group {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  
+  a { text-decoration:none !important }
+
+  :root {
+    --black: #000000;
+    --mist-gray: #c4c4c4;
+    --white: #ffffff;
+    --fuscous-gray: #565656;
+    --font-size-xxl2: 18px;
+    --font-size-xl2: 16px;
+    --font-size-l2: 15px;
+    --font-size-xs: 9px;
+    --font-size-xs: 12px;
+    --font-family-gmarket_sans_ttf-bold: "Gmarket Sans TTF-Bold", Helvetica;
+    --font-family-noto_sans_kr: "Noto Sans KR", Helvetica;
+    --font-family-gmarket_sans_ttf-medium: "Gmarket Sans TTF-Medium", Helvetica;
+    --font-family-roboto: "Roboto", Helvetica;
+  }
+  
+  .frame-4 {
+    align-items: center;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    height: 3500px;
+    overflow: hidden;
+    padding: 131px 0;
+    width: 1400px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .hidden,
+  .hidden * {
+    pointer-events: none;
+    visibility: hidden;
+  }
+  
+  .line-1-1 {
+    height: 1px;
+    margin-top: 102px;
+    width: 1400px;
+  }
+  
+  .flex-row-2 {
+    align-items: center;
+    display: flex;
+    margin-left: 14px;
+    margin-top: 40px;
+    min-width: 1194px;
+  }
+  
+  .rectangle {
+    background-color: var(--mist-gray);
+    height: 198px;
+    width: 204px;
+    margin-bottom: 30px;
+  }
+  
+  .text-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 37px;
+    margin-left: 53px;
+    min-height: 77px;
+    width: 937px;
+  }
+  
+  .text-2 {
+    letter-spacing: 0;
+    margin-top: 10px;
+    min-height: 46px;
+  }
+  
+  .notosanskr-medium-black-16px {
+    color: var(--black);
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-xl2);
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .text-1 {
+    letter-spacing: 0;
+    min-height: 21px;
+  }
+  
+  .gmarketsansttf-bold-black-18px {
+    color: var(--black);
+    font-family: var(--font-family-gmarket_sans_ttf-bold);
+    font-size: var(--font-size-xxl2);
+    font-style: normal;
+    font-weight: 700;
+  }
+  
+  .text-2-1 {
+    letter-spacing: 0;
+    margin-left: 14px;
+    margin-top: 10px;
+    min-height: 46px;
+    width: 1194px;
+  }
+  
+  .flex-col {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1px;
+    min-height: 1888px;
+    width: 1401px;
+  }
+  
+  .text-1-2 {
+    letter-spacing: 0;
+    margin-left: 15px;
+    margin-top: 10px;
+    min-height: 46px;
+    width: 1194px;
+  }
+  
+  .flex-row {
+    align-items: center;
+    display: flex;
+    margin-left: 15px;
+    margin-top: 40px;
+    min-width: 1194px;
+    border-bottom: solid 1px #A0A0A0;
+  }
+  
+  .text-1-1 {
+    align-self: flex-start;
+    letter-spacing: 0;
+    margin-left: 111px;
+    margin-top: 84px;
+    min-height: 21px;
+  }
+  
+  .flex-col-1 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 1362px;
+    width: 1401px;
+  }
+  
+  .line {
+    height: 1px;
+    margin-left: 1px;
+    margin-top: 22px;
+    width: 1400px;
+  }
+  
+  .flex-col-2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 838px;
+    width: 1401px;
+  }
+  
+  .line-6 {
+    height: 1px;
+    margin-left: 1px;
+    margin-top: 24px;
+    width: 1400px;
+  }
+  
+  .flex-row-1 {
+    align-items: center;
+    display: flex;
+    margin-left: 15px;
+    margin-top: 42px;
+    min-width: 1194px;
+  }
+  
+  .flex-col-3 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 574px;
+    width: 1401px;
+  }
+  
+  .flex-col-4 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 312px;
+    width: 1401px;
+  }
+  
+  .overlap-group-container {
+    align-items: flex-start;
+    display: flex;
+    margin-left: 60px;
+    min-width: 1239px;
+  }
+  
+  .overlap-group2 {
+    align-items: center;
+    background-color: #f5742f;
+    display: flex;
+    height: 32px;
+    min-width: 96px;
+    padding: 0 6px;
+  }
+  
+  .create-new-post {
+    color: var(--white);
+    font-family: var(--font-family-gmarket_sans_ttf-medium);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    letter-spacing: 0;
+    min-height: 10px;
+    min-width: 84px;
+  }
+  
+  .border-1px-fuscous-gray {
+    border: 1px solid var(--fuscous-gray);
+  }
+  
+  .overlap-group {
+    align-items: flex-start;
+    background-color: var(--white);
+    border-radius: 4px;
+    display: flex;
+    height: 29px;
+    margin-left: 20px;
+    min-width: 69px;
+    padding: 2px 12px;
+  }
+  
+  .text {
+    letter-spacing: 0;
+    min-height: 22px;
+  }
+  
+  .notosanskr-medium-fuscous-gray-15px {
+    color: var(--fuscous-gray);
+    font-family: var(--font-family-noto_sans_kr);
+    font-size: var(--font-size-l2);
+    font-style: normal;
+    font-weight: 500;
+  }
+  
+  .overlap-group1 {
+    align-items: flex-start;
+    background-color: var(--white);
+    border-radius: 4px;
+    display: flex;
+    height: 29px;
+    margin-left: 985px;
+    min-width: 69px;
+    padding: 2px 12px;
+  }
+  
+  .line-1-2 {
+    height: 1px;
+    margin-right: 3px;
+    margin-top: 16px;
+    width: 1398px;
+  }
+  
+  .line-1 {
+    height: 1px;
+    margin-left: 1px;
+    margin-top: 102px;
+    width: 1400px;
+  }
+  
+  .text-3 {
+    align-self: flex-start;
+    letter-spacing: 0;
+    margin-left: 110px;
+    margin-top: 84px;
+    min-height: 21px;
+  }
+  
+  .text-4 {
+    color: var(--black);
+    font-family: var(--font-family-roboto);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-left: 1px;
+    margin-top: 652px;
+    min-height: 14px;
+    min-width: 1px;
+  }
+  
+  .line-14 {
+    height: 1px;
+    margin-top: 22px;
+    width: 1400px;
+  }
+  
+  .web-font48{
+    font-family: 'Gmarket Sans TTF';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+
+.web-font49{
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+color: #000000;
+}

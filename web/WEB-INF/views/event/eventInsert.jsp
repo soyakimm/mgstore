@@ -5,27 +5,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자이벤트</title>
+<title>이벤트입력</title>
 <!-- 외부 스타일 시트 -->
 <link href="${ pageContext.servletContext.contextPath }/resources/css/event/eventmng.css" rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
 	<div class="group">
 
 
-		<form action="${ pageContext.servletContext.contextPath }/event/insert" method="post">
+		<form action="${ pageContext.servletContext.contextPath }/event/insert" method="post" enctype="multipart/form-data">
 			<h2>이벤트 소개</h2>
 			<hr>
 			<div class="eve-info">
-			<form method="post" action="${ pageContext.servletContext.contextPath }/event/insert"
-				enctype="multipart/form-data">
 					<!-- 이벤트 이름-->
 					<div class="eve name">
-						<p id="title">이벤트제목</p>
-						<input type="text" id="text" name="evetitle" placeholder="이벤트 제목을 설정해주세요." required/>
+						<p id="title">이벤트제목</p> 
+						<input type="text" id="text" name="eveTitle" placeholder="이벤트 제목을 설정해주세요." required/>
 					</div>
 			</div>
 
@@ -37,21 +34,23 @@
 					<div style="padding-top: 1%;">
 						<select name="category">
 							<option class="option" value="" selected disabled>진행상황 선택</option>
-							<option class="option" value="진행중">진행중</option>
-							<option class="option" value="종료">종료</option>
+							<option class="option" value="1">진행중</option>
+							<option class="option" value="2">종료</option>
 						</select>
 
 
 						<!-- 날짜 선택 -->
 						<div class="eve-date">
 							<p id="title">이벤트 기간 설정</p>
-							<input type="date" name="rvdate" required>
-							</p>
+							<b id="sub" style="font-size: 14px;"> 왼쪽은 이벤트 시작기간
+								 <br> 오른쪽은 이벤트 종료기간입니다. <br>
+							</b>
+							<input type="date" name="eveStart" required> <input type="date" name="eveEnd" required> 
 						</div>
 
 
 
-						<!-- 배너 등록 -->
+						<!-- 배너 등록 --><br><br><br><br><br><br><br><br><br>
 						<div class="eve img"></div>
 							<p id="title">이벤트 배너 이미지 등록</p>
 							<b id="sub" style="font-size: 14px;"> 이벤트 배너이미지는 1200 × 150
@@ -70,27 +69,7 @@
 									<button id="imgBtn">설명이미지</button> 
 									<input type="file" name="evecontent" id="file" required>
 								</span>
-
 								
-								<!-- 당첨자 등록창 만든 후에, servlet이랑 이어주기 -->
-								<!-- 이벤트 당첨자 등록 -->
-								<div class="event-user inform" style="padding-top: 27%;"></div>
-									<h2>이벤트 당첨자</h2>
-									<hr>
-									<br> <b id="sub" style="color: #E92D2D;"> 최대 3명 이상의
-										이벤트 당첨자를 입력할 수 없습니다. </b>
-									<div>
-										<span class="eve-user"> 
-											<img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/Logo.PNG"
-											alt="이벤트댓글유저" style="width: 40px;"> <b>이벤트 당첨자 ID(성함) </b>
-											<div id="bankTa">
-												<ul id="eve-user-add"></ul>
-												<!-- <input type="text" id="bankText" placeholder="당첨자 이름을 입력하세요(ID 혹은 이름)" style="width: 80%;"/> -->
-												<div class="buttons">
-													<input type='text' name="txt"placeholder="당첨자 이름을 입력하세요(ID 혹은 이름)" style="width: 80%;">											
-													<input type="button" class="btnAdd" value="추가"><br>
-												</div>
-											</div> <br>
 										<br>
 										<br> <br>
 										<br>
@@ -98,11 +77,9 @@
 											<button id="appBtn" type="submit">등록하기</button><br>
 										<br>
 										<br>
-									</div>
-							</span>
+							
 						</div>
 					</form> <!-- 무조건 처리 필요한 enctype -->
-				</form><!-- 전체 폼 -->
 			</div><!--group-->
 		</body>	
 
@@ -150,10 +127,6 @@
 	          .appendChild(li);
 	      }     
 	</script>
-
-
-	
-
 
 	<script src="${ pageContext.servletContext.contextPath }/resources/js/EventImagePreview.js"></script>
 

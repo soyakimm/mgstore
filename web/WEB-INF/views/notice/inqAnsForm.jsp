@@ -13,6 +13,9 @@
 	rel="stylesheet">
 </head>
 <body>
+
+	<jsp:include page="../common/header.jsp" />
+	
 	<div class="main">
 		<h1 class="title-bg">고객센터</h1>
 		<div class="title-mid">

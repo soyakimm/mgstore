@@ -9,38 +9,42 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <context-param>
-  	<param-name>mybatis-config-location</param-name>
-  	<param-value>mybatis/mybatis-config.xml</param-value>
+    <param-name>mybatis-config-location</param-name>
+    <param-value>mybatis/mybatis-config.xml</param-value>
   </context-param>
-  
   <filter>
-  	<filter-name>encoding</filter-name>
-  	<!-- 필터 mgstore로 바꿈  -->
-  	<filter-class>com.mgstore.common.filter.EncodingFilter</filter-class>
-  	<init-param>
-  		<param-name>encoding-type</param-name>
-  		<param-value>UTF-8</param-value>
-  	</init-param>
+    <filter-name>encoding</filter-name>
+    <filter-class>com.mgstore.common.filter.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding-type</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
-  	<filter-name>encoding</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping> 
-  <!-- 모든 필터에 관해 encoding하겠다 = /*  -->
-  
+    <filter-name>encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <error-page>
-  	<error-code>403</error-code>
-  	<location>/WEB-INF/views/common/error403.jsp</location>
+    <error-code>403</error-code>
+    <location>/WEB-INF/views/common/error403.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/WEB-INF/views/common/error404.jsp</location>
+    <error-code>404</error-code>
+    <location>/WEB-INF/views/common/error404.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>500</error-code>
-  	<location>/WEB-INF/views/common/error500.jsp</location>
+    <error-code>500</error-code>
+    <location>/WEB-INF/views/common/error500.jsp</location>
   </error-page>
-  
+  <servlet>
+    <description></description>
+    <display-name>CommunityMainServlet</display-name>
+    <servlet-name>CommunityMainServlet</servlet-name>
+    <servlet-class>com.mgstore.community.controller.CommunityInsertServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommunityMainServlet</servlet-name>
+    <url-pattern>/Community/Main</url-pattern>
+  </servlet-mapping>
 </web-app>

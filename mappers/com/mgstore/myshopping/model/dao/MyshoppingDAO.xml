@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MyshoppingDAO">
+	<resultMap type="com.mgstore.product.model.dto.ProLikeDTO" id="generalProlikeResultMap">
+	<id property="userId" column="USER_ID"/>
+	<id property="proId" column="PRO_ID"/>
+	
+	<association property="user" resultMap="userResultMap"></association>
+	<association property="product" resultMap="ProductResultMap"></association>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="ProductResultMap">
+	<id property="proId" column="PRO_ID"/>
+	<result property="pCateId" column="PCATE_ID"/>
+	<result property="proTitle" column="PRO_TITLE"/>
+	<result property="price" column="PRICE"/>
+	<result property="deliveryFee" column="DELIVERY_REE"/>
+	<result property="proAmount" column="PRO_AMOUNT"/>
+	<result property="proContent" column="PRO_CONTENT"/>
+	<result property="proPoint" column="PRO_POINT"/>
+	<result property="proDate" column="PRO_DATE"/>
+	<result property="ratingSum" column="RATING_SUM"/>
+	<result property="ratingAmount" column="RATING_AMOUNT"/>
+	<result property="proStatus" column="PRO_STATUS"/>
+	
+	<association property="ProImgList" resultMap="ProImgResultMap"></association>
+	<association property="category" resultMap="ProCateResultMap"></association>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="ProImgResultMap">
+	<id property="PImgId" column="PIMG_ID"/>
+	<id property="proId" column="PRO_ID"/>
+	<result property="PImgOrgName" column="PIMG_ORGNAME"/>
+	<result property="PImgSvrName" column="PIMG_SVRNAME"/>
+	<result property="PImgTmbName" column="PIMG_TMBNAME"/>
+	<result property="PImgTmbYN" column="PIMG_TMB_YN"/>
+	<result property="PImgSize" column="PIMG_DATE"/>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.product.model.dto.ProCateDTO" id="ProCateResultMap">
+		<id property="pCateId" column="PCATE_ID"/>
+		<result property="pCateName" column="PCATE_NAME"/>
+		<result property="pCatePId" column="PCATE_P_ID"/>
+	</resultMap>
+	
+	<!-- 위시리스트(좋아요) 조회 -->
+	<select id="selectWishList" resultMap="generalProlikeResultMap">
+	SELECT 
+	       A.USER_ID,
+	       A.PRO_ID,
+	       B.PRO_TITLE,
+	       B.PRICE
+	       <!--  C.PIMG_TMBNAME -->
+	  FROM PRO_LIKE A
+	  JOIN PRODUCT B ON (A.PRO_ID = B.PRO_ID)
+	  <!--JOIN PRO_IMG C ON (B.PRO_ID = C.PRO_ID)-->
+	 WHERE B.PRO_STATUS = 'Y'
+	</select>
+	
+	<!-- 위시리스트(좋아요) 삭제 -->
+	<delete id="deleteWishList">
+	DELETE PRO_LIKE
+	 WHERE PRO_ID = #{ proId }
+	   AND USER_ID = #{ userId }
+	</delete>
+
+</mapper>
