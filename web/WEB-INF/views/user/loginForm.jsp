@@ -51,6 +51,6 @@
     </div>
     
     <!-- 아이디 저장 -->
-    <script src="${ pageContext.servletContext.contextPath }/resources/js/saveId.js"></script>
+    <script src="${ pageContext.servletContext.contextPath }/resources/js/user/saveId.js"></script>
 </body>
 </html>

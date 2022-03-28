@@ -122,7 +122,7 @@
                     </li>
                 </ul>
                 <div>
-                    <button type="submit" id="regist-button" class="regist-button">
+                    <button type="submit" id="regist-button" class="regist-button" disabled>
                         <span>SIGN UP</span>
                     </button>
                 </div>
@@ -185,6 +185,7 @@
     			console.log('false');
     			$("#checkEnteredPwdMsg").text("비밀번호는 영문 대소문자, 숫자, 특수기호가 포함된 8~16자리여야 합니다.");
     			$("#checkEnteredPwdMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+    			$("#regist-button").attr("disabled", true);
     		} else {
     			console.log('true');
     			$("#checkEnteredPwdMsg").text("");
@@ -194,6 +195,7 @@
     		if(isValidPwd()) {
     			$("#checkEnteredPwdMsg").text("아이디와 연속 3자리 이상 일치하는 비밀번호는 사용할 수 없습니다.");
     			$("#checkEnteredPwdMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+    			$("#regist-button").attr("disabled", true);
     		}
     		
     	});
@@ -203,6 +205,7 @@
     		if($("#userPwd").val() != $(this).val()) {
     			$("#checkConfirmedPwdMsg").text("비밀번호가 일치하지 않습니다. 다시 입력해 주세요.");
     			$("#checkConfirmedPwdMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+    			$("#regist-button").attr("disabled", true);
     		} else {
     			$("#checkConfirmedPwdMsg").text("");
     		}
@@ -261,6 +264,7 @@
     			console.log('false');
     			$("#checkNameMsg").text("한글 이름을 입력해 주세요.");
     			$("#checkNameMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+    			$("#regist-button").attr("disabled", true);
     		} else {
     			console.log('true');
     			$("#checkNameMsg").text("");
@@ -280,6 +284,7 @@
     			console.log('false');
     			$("#checkNicknameMsg").text("닉네임은 2~6자의 한글/영문 대소문자/숫자 사용 가능합니다.");
     			$("#checkNicknameMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+    			$("#regist-button").attr("disabled", true);
     		} else {
     			console.log('true');
     			$("#checkNicknameMsg").text("");
@@ -293,7 +298,7 @@
     				console.log(result);
 		    		if(result == "fail") {
 		    			$("#checkNicknameMsg").text("이미 사용 중인 닉네임입니다.");
-		    			$("#checkNicknameMsg").css("color", "red");
+		    			$("#checkNicknameMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
 		    			$("#nickname").css({"background-color": "transparent", "color": "#767676"});
 		    			$("#regist-button").attr("disabled", true);
 		    		} else {
@@ -311,7 +316,7 @@
 			    		} else {
 			    			$("#checkNicknameMsg").text("");
 			    			$("#nickname").css({"background-color": "#f5742f", "color": "#fff"});
-			    			$("#regist-button").attr("disabled", false);
+			    			$("#regist-button").attr("disabled", true);
 			    		}
 		    		}
     			},
