@@ -173,9 +173,6 @@
          ORDER BY A.RNUM 
 	</select>
 	
-	
-	
-	
-	
-
+  
 </mapper>
+

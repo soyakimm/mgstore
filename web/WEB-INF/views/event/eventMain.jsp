@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>이벤트메인</title>
 	<!-- 외부 스타일 시트 -->
- 	<link href=${ pageContext.servletContext.contextPath }/views/event/eventmain.css" rel="stylesheet">
+ 	<link href=${ pageContext.servletContext.contextPath }/resources/css/event/eventmain.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
-	
+	 <div class="group">
 	<jsp:include page="../common/header.jsp"/>
 	
 	<!-- 이벤트 메인 전체 적용  -->
@@ -28,11 +28,12 @@
 	
 	<c:forEach var="eventList" items="${ requestScope.eventList }">
 	 <!-- 배너 파트 (1) -->
-    <div class="banner-wrap" onclick="location.href='/*이벤트 게시글 주소*/'">
+	
+    <div class="banner-wrap" onclick="location.href='#'">
         <div class="banner-content">
             <a>
-                <!-- 배너 사진 첨부 -->
-                <img src="${ pageContext.servletContext.contextPath }${ event.attachmentList[0].evepath }">
+                <!-- 배너 사진 첨부 -->                                       <!-- event 첨부파일 루트 확인하기... -->
+                <img src="${ pageContext.servletContext.contextPath }${ event.EveAttachmentList[0].evethumbNailPath }">
             </a>
         </div><!--banner-content-->
        
@@ -51,10 +52,11 @@
             <span>${ event.evecreate }</span> <!-- 이벤트 작성일 (mng에서반영) -->
             <div class="banner-watch">
             		<!-- 이벤트 조회수 (클릭시 반영) -->
-                <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/ico_watching.png" alt="이벤트조회눈"><span>${ event.count }</span>
+                <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/ico_watching.png" alt="이벤트조회눈"><span>${ eveCount }</span>
             </div>
         </div>
     </div> <!-- banner-wrap -->
+    </div> <!-- gorup -->
     </c:forEach>
     
     

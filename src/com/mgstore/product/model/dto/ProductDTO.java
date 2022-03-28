@@ -1,8 +1,6 @@
 package com.mgstore.product.model.dto;
-
 import java.sql.Date;
 import java.util.List;
-
 public class ProductDTO {
 	
 	private int proId;
@@ -162,8 +160,5 @@ public class ProductDTO {
 				+ ratingSum + ", ratingAmount=" + ratingAmount + ", proStatus=" + proStatus + ", ProImgList="
 				+ ProImgList + "]";
 	}
-
-	
-
-	
+  
 }

@@ -19,11 +19,11 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.mgstore.event.dto.EventDTO;
+import com.mgstore.event.model.dto.EventDTO;
 import com.mgstore.user.model.dto.UserDTO;
-import com.mgstore.event.dto.EveAttachmentDTO;
-import com.mgstore.event.dto.EveCategoryDTO;
-import com.mgstore.event.service.EventService;
+import com.mgstore.event.model.dto.EveAttachmentDTO;
+import com.mgstore.event.model.dto.EveCategoryDTO;
+import com.mgstore.event.model.service.EventService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -52,6 +52,7 @@ public class EventInsert extends HttpServlet {
 			System.out.println("최대 업로드 파일 용량 : " + maxFileSize);
 			System.out.println("인코딩 방식 : " + encodingType);
 			
+			/*원본파일하고 썸네일사진하고 저장하는 폴더 생성*/
 			String fileUploadDirectory = rootLocation + "/resources/event/original/";
 			String thumbnailDirectory = rootLocation + "/resources/event/eventBanner/";
 			
@@ -65,13 +66,13 @@ public class EventInsert extends HttpServlet {
 				System.out.println("폴더 생성 : " + directory2.mkdirs());
 			}
 			
-			/* 이게 최종적으로 request를 parsing하고 파일을 저장한 뒤 필요한 내용을 담을 리스트와 맵이다.
+			/* 선생님 : 이게 최종적으로 request를 parsing하고 파일을 저장한 뒤 필요한 내용을 담을 리스트와 맵이다.
 			 * 파일에 대한 정보는 리스트에, 다른 파라미터의 정보는 모두 맵에 담을 것이다.
 			 * */
 			Map<String, String> parameter = new HashMap<>();
 			List<Map<String, String>> fileList = new ArrayList<>();
 			
-			System.out.println("파일 잘 담겨짐! 체크");
+			System.out.println("파일 잘 담겨짐! 체크.. 제발 성공하게해주세요..");
 		
 		
 		/* 파일을 업로드할 시 최대 크기나 임시 저장할 폴더의 경로 등을 포함하기 위한 인스턴스이다. */
@@ -124,21 +125,21 @@ public class EventInsert extends HttpServlet {
 			/*필요한 정보를 Map에 담기*/
 			Map<String, String> fileMap = new HashMap<>();
 			fileMap.put("filedName", filedName);
-			fileMap.put("originFileName", originFileName);
-			fileMap.put("savedFileName", randomFileName);
-			fileMap.put("savePath", "/resources/upload/images/event/original/");
+			fileMap.put("eveOriginName", originFileName);
+			fileMap.put("eveSavedName", randomFileName);
+			fileMap.put("eveSavePath", "/resources/upload/images/event/original/");
 			
 			/* 이벤트 제목 배너사진과 이벤트 내용 이미지를 구분하고 썸네일도 생성한다. */
 			int width = 0;
 			int height = 0;
 			if("thumbnail".equals(filedName)) {
-				fileMap.put("fileType", "TITLE");
+				fileMap.put("eveFileType", "TITLE");
 				
 				/* 썸네일로 변환 할 사이즈를 지정한다. */
 				width = 350;
 				height = 200;
 			} else {
-				fileMap.put("fileType", "CONTENT");
+				fileMap.put("eveFileType", "BODY");
 				
 				width = 120;
 				height = 100;
@@ -150,7 +151,7 @@ public class EventInsert extends HttpServlet {
 					.toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
 			
 			/* 나중에 웹서버에서 접근 가능한 경로 형태로 썸네일의 저장 경로도 함께 저장한다. */
-			fileMap.put("thumbnailPath", "/resources/images/event/eventBanner" + randomFileName);
+			fileMap.put("evethumbNailPath", "/resources/images/event/eventBanner" + randomFileName);
 			
 			fileList.add(fileMap);
 			
@@ -162,7 +163,6 @@ public class EventInsert extends HttpServlet {
 		 * 하지만 인코딩 설정을 하더라도 전송되는 파라미터는 ISO-8859-1로 처리된다.
 		 * 별도로 ISO-8859-1로 해석된 한글을 UTF-8로 변경해주어야 한다.
 		 * */
-//		parameter.put(item.getFieldName(), item.getString());
 		parameter.put(item.getFieldName(), new String(item.getString().getBytes("ISO-8859-1"), "UTF-8"));
 		
 	}
@@ -172,19 +172,13 @@ public class EventInsert extends HttpServlet {
 			System.out.println("fileList : " + fileList);
 
 			
-			/*서비스 요청 가능 하게 EventDTO에 담는다 .*/ 
+			/*서비스 요청 가능 -> EventDTO에 담는다 .*/ 
 		    EventDTO thumbnail = new EventDTO();
 		    thumbnail.setCategoryCode(Integer.parseInt(parameter.get("category")));
-			thumbnail.setEvetitle(parameter.get("evetitle"));
-			thumbnail.setEvecontent(parameter.get("evecontent"));
-			thumbnail.setEvestatus(parameter.get("evestatus"));	
-			thumbnail.setEvecount(Integer.parseInt(parameter.get("evecount")));
-			thumbnail.setEvestatus(parameter.get("evestatus"));
-			
-			// 2022-03-27 <추후 작성 필요; date가 아닌 string으로 변환???>
-//			thumbnail.setEvestart(Date.parseDate(parameter.get("evestart")));
-//			thumbnail.setEveend(Date.parseDate(parameter.get("eveend")));
-			
+			thumbnail.setEveTitle(parameter.get("eveTitle"));
+			thumbnail.setEveEnd(java.sql.Date.valueOf(parameter.get("eveEnd")));
+			thumbnail.setEveStart(java.sql.Date.valueOf(parameter.get("eveStart")));
+			thumbnail.setUser((UserDTO)request.getSession().getAttribute("loginUser"));
 			
 			thumbnail.setAttachmentList(new ArrayList<EveAttachmentDTO>());
 			List<EveAttachmentDTO> list = thumbnail.getAttachmentList();
@@ -192,11 +186,11 @@ public class EventInsert extends HttpServlet {
 				Map<String, String> file = fileList.get(i);
 				
 				EveAttachmentDTO tempFileInfo = new EveAttachmentDTO(); //첨부파일에 대한 데이터분류
-				tempFileInfo.setEveoriginname(file.get("eveoriginname"));
-				tempFileInfo.setEvesavedname(file.get("evesavedname"));
-				tempFileInfo.setEvesavepath(file.get("evesavepath"));
-				tempFileInfo.setEvefiletype(file.get("evefiletype"));
-				tempFileInfo.setEvepath(file.get("evepath"));
+				tempFileInfo.setEveOriginName(file.get("eveOriginName"));
+				tempFileInfo.setEveSavedName(file.get("eveSavedName"));
+				tempFileInfo.setEveSavePath(file.get("eveSavePath"));
+				tempFileInfo.setEveFileType(file.get("eveFileType"));
+				tempFileInfo.setEvethumbNailPath(file.get("evethumbNailPath"));
 				
 				list.add(tempFileInfo);
 			}
@@ -209,11 +203,11 @@ public class EventInsert extends HttpServlet {
 			/* 성공 실패 페이지를 구분하여 연결한다. */
 			String path = "";
 			if(result > 0) {
-				path = "/WEB-INF/views/common/success.jsp";
+				path = "/WEB-INF/views/common/success.jsp"; /* 배너 -> main | 설명이미지 -> detail */
 				request.setAttribute("successCode", "insertThumbnail");
 			} else {
 				path = "/WEB-INF/views/common/failed.jsp";
-				request.setAttribute("message", "썸네일 게시판 등록 실패!");
+				request.setAttribute("message", "이벤트 썸네일 게시판 등록 실패!");
 			}
 			
 			request.getRequestDispatcher(path).forward(request, response);

@@ -1,7 +1,5 @@
 package com.mgstore.product.model.dto;
-
 import com.mgstore.user.model.dto.UserDTO;
-
 public class ProLikeDTO {
 	
 	private String userId;

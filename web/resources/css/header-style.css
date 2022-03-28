@@ -192,7 +192,7 @@ header .show-all-list:hover {
 
 .header-menu .header-title .header-all-category .header-all-category-container .header-all-list-contents {
     position: absolute;
-    width: 1400px;
+    width: 1000px;
     display: none;
 }
 
@@ -201,7 +201,7 @@ header .show-all-list:hover {
     margin: 0 auto;
 }
 .header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > h2 {

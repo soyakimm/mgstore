@@ -48,17 +48,17 @@ public class inqAnsServlet extends HttpServlet {
 		/*추후 필터에서 로그인 유저별 사용가능 여부 정할것!*/
 		String adminId = ((UserDTO)request.getSession().getAttribute("loginUser")).getUserId();
 		
-		InqDTO updateAns = new InqDTO();
-		updateAns.setInqId(inqId);
-		updateAns.setInqTitle(inqTitle);
-		updateAns.setInqContents(inqContents);
-		updateAns.setansContents(ansContents);
-		updateAns.setAdminId(adminId);
+		InqDTO insertAns = new InqDTO();
+		insertAns.setInqId(inqId);
+		insertAns.setInqTitle(inqTitle);
+		insertAns.setInqContents(inqContents);
+		insertAns.setansContents(ansContents);
+		insertAns.setAdminId(adminId);
 		
-		System.out.println("updateAns : " + updateAns);
+		System.out.println("insertAns : " + insertAns);
 		
 		InqService inqService = new InqService();
-		int result = inqService.updateAns(updateAns);
+		int result = inqService.insertAns(insertAns);
 		
 		String path = "";
 		if(result > 0) {
