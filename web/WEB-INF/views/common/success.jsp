@@ -43,9 +43,21 @@
 				successMessage = "1:1 문의 삭제가 완료되었습니다.";
 				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
 				break;
-			case "updateAns" :
+			case "insertAns" :
 				successMessage = "1:1 문의 답변등록이 완료되었습니다.";
 				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
+				break;
+			case "updateAns" :
+				successMessage = "1:1 문의 답변수정이 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
+				break;
+			case "deleteAns" :
+				successMessage = "1:1 문의 답변삭제가 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
+				break;
+			case "deleteWishList" :
+				successMessage = "상품 삭제가 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/myshopping/wishList";
 				break;
 			
 		}

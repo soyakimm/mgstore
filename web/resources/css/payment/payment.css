@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+  
+  .notosanskr * { 
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+.wrapper {
+    align-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    background-size: 100% 100%;
+    padding: 0 4%;
+  }
+
+  /* GmarketSansBold 폰트 사용여부 한솔님께 확인하고 고치던가 유지*/
+.payment h1 {
+    font-family: 'GmarketSansBold';
+}
+
+.payment-detail {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.detail-name {
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .detail-name table {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  
+  .detail-name li {
+    font-size: 8px;
+    font-weight: 400;
+  }
+  
+  .table-img-pro {
+    width: 50%;
+  }
+  
+  .table-img {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .table-img img{
+    height: 150px;
+    width: 150px;
+  }
+
+
+  .pay-request-text {
+    color: #ffffff;
+    font-family: var(--font-family-noto_sans);
+    font-size: var(--font-size-m3);
+    height: 20px;
+    letter-spacing: 0;
+    min-width: 73px;
+    text-align: center;
+  }
+  
+  
+  .pay-request {
+    align-items: center;
+    background-color: #f5742f;
+    border-radius: 10px;
+    display: flex;
+    height: 50px;
+    padding: 0 63px;
+    border: 0px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-left: 30%;
+  
+  }
+  
+  .pay-request :hover{
+    cursor: pointer;
+  }
+
+.pay-inf {
+    font-family: 'Noto Sans KR';
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 50px;
+}
+
+.input-layer1 {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+}
+
+.input-layer2 {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+}
+
+.input-layer3 {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+    color: #f5742f;
+}
+
+.input-layer4 {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    color: #484848;
+}
+
+.input-button {
+    width: 150px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #f5742f;
+    color: #f5742f;
+    background-color: white;
+    font-family: 'Noto Sans KR';
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.table-row{
+    width: 150px;
+}
+
+.table-row span{
+    color: #f5742f;
+    font-weight: bolder;
+}
+
+
+.pay-method {
+    width: 200px;
+    height: 50px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #767676;
+    color: #767676;
+    background-color: white;
+    font-family: 'Noto Sans KR';
+    border-radius: 10px;
+    cursor: pointer;
+    
+  
+  }
+
+  .pay-method :hover{
+    cursor: pointer;
+    border: 2px solid #f5742f;
+    color: #f5742f;
+  }

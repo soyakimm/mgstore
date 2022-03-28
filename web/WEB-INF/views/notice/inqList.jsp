@@ -100,8 +100,8 @@ button {
 				</span>
 				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.ansDate }"/></div>
 				<div class="anw-btn-mng">
-					<button>수정</button>
-					<button>삭제</button>
+					<button type="button" onclick="updateAnsView(${ inq.inqId })">수정</button>
+					<button type="button" onclick="deleteAnsView(${ inq.inqId })">삭제</button>
 				</div>
 				</c:if>
 			</div>
@@ -132,6 +132,20 @@ button {
       function insertAns(inqId){
     	  location.href = "${ pageContext.servletContext.contextPath }/inq/ans?inqId="+ inqId;
       }
+      
+      /* 답변 수정*/
+      function updateAnsView(inqId) {
+    	  location.href = "${ pageContext.servletContext.contextPath }/inq/ansUpdate?inqId="+ inqId;
+		
+	  }
+      
+      /* 문의글 삭제 이동 함수*/
+      function deleteAnsView(inqId){
+    	  if(confirm('이 답글을 삭제하시겠습니까?')){
+    		  location.href = "${ pageContext.servletContext.contextPath }/inq/ansDelete?inqId="+ inqId;
+    	  }
+      }
+      
 
     </script>
 

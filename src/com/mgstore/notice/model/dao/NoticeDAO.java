@@ -71,9 +71,21 @@ public class NoticeDAO {
 	}
 
 	/* 1:1 답변 등록*/
-	public static int updateAns(SqlSession session, InqDTO updateAns) {
+	public static int insertAns(SqlSession session, InqDTO insertAns) {
+		
+		return session.update("NoticeDAO.insertAns", insertAns);
+	}
+
+	/* 1:1 답변 수정*/
+	public int updateAns(SqlSession session, InqDTO updateAns) {
 		
 		return session.update("NoticeDAO.updateAns", updateAns);
+	}
+
+	/* 1:1 답변 삭제*/
+	public int deleteAns(SqlSession session, int inqId) {
+		
+		return session.update("NoticeDAO.deleteAns", inqId);
 	}
 
 }
