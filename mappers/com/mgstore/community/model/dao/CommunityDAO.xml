@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommunityDAO">
+  
+  <!-- 게시글 CommunityWriteDTO --> 
+  <resultMap type="com.mgstore.community.model.dto.CommunityWriteDTO" id="writeResultMap">
+  	<id property="postId" column="POST_ID"/>
+  	<result property="userId" column="USER_ID"/>
+  	<result property="categoryId" column="CATEGORY_ID"/>
+  	<result property="headerId" column="HEADER_ID"/>
+  	<result property="title" column="POST_TITLE"/>
+  	<result property="date" column="POST_DATE"/>
+  	<result property="views" column="POST_VIEWS"/>
+  	<result property="text" column="POST_TEXT"/>
+  	<result property="moddate" column="POST_MODDATE"/>
+  	<result property="status" column="POST_STATUS"/>
+  	
+  	<association property="user" resultMap="userResultMap"/>  <!-- 다른 DTO에서 참고해온다 -->
+  	<association property="category" resultMap="categoryResultMap"/>
+  	<association property="header" resultMap="headerResultMap"/>
+  	
+  	<collection property="postImgList" resultMap="postImgResultMap"/> <!-- 게시글 이미지 묶음 -->
+  </resultMap>
+  
+  <!-- 사용자  UserDTO-->
+  <resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+	<!-- 카테고리 CommunityCategoryDTO -->
+  	<resultMap type="com.mgstore.community.model.dto.CommunityCategoryDTO" id="categoryResultMap">
+		<id property="categoryId" column="CATEGORY_ID"/>
+		<result property="categoryName" column="CATEGORY_NAME"/>
+	</resultMap>
+  
+  	<!-- 말머리 CommunityHeaderDTO -->
+  	<resultMap type="com.mgstore.community.model.dto.CommunityHeaderDTO" id="headerResultMap">
+		<id property="headerId" column="HEADER_ID"/>
+		<result property="headerName" column="HEADER_NAME"/>
+	</resultMap>
+	
+	<!-- 게시글 사진 CommunityPostImageDTO-->
+  <resultMap type="com.mgstore.community.model.dto.CommunityPostImageDTO" id="postImgResultMap"> 
+		<id property="imageId" column="PO_IMAGE_ID"/>
+		<result property="postId" column="POST_ID"/>
+		<result property="savePath" column="PO_IMAGE_PATH"/>
+		<result property="originalName" column="PO_IMAGE_NAME"/>
+		<result property="savedName" column="PO_IMAGE_RENAME"/>
+		<result property="fileType" column="PO_FILE_TYPE"/>
+		<result property="thumbnailPath" column="PO_THUMBNAIL_PATH"/>
+		<result property="status" column="PO_STATUS"/>
+	</resultMap>
+  
+  
+  <!-- 사진없는 게시글 추가 -->
+  <insert id="insertWrite">
+  	INSERT
+  	  INTO POST
+  	(
+  	 POST_ID
+   , USER_ID     <!-- 게시글 작성한 USER_ID -->	 
+   , CATEGORY_ID
+   , HEADER_ID
+   , POST_TITLE
+   , POST_TEXT	 
+  	)
+  	VALUES
+  	(
+  	 SEQ_POST_ID.NEXTVAL
+   , #{ userId }
+   , #{ categoryId }	
+   , #{ headerId }
+   , #{ title }
+   , #{ text }
+  	)
+  </insert>
+  
+  
+  
+  <!-- 머지위해서  
+  <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+  
+  SELECT 
+  		COUNT(*)
+  	FROM POST 	
+  머지 위해서-->
+  <!-- 검색키워드 없으므로 주석 -->
+  <!-- 검색 키워드가 있는 경우 다른 테이블과 join해야 하는 경우에 사용한다.
+          현재 테이블에 있다면 join 사용하지 않는다. -->
+    <!--  	<if test="searchCondition == 'category'">
+	      JOIN TBL_CATEGORY B ON(A.CATEGORY_CODE = B.CATEGORY_CODE)
+    	</if>
+    	<if test="searchCondition == 'writer'">
+	      JOIN TBL_MEMBER B ON(A.BOARD_WRITER_MEMBER_NO = B.MEMBER_NO)
+    	</if>
+    	<where>
+			<if test="searchCondition == 'category'">
+	           B.CATEGORY_NAME = #{ searchValue }
+			</if>
+			<if test="searchCondition == 'writer'">
+	           B.NICKNAME LIKE '%' || #{ searchValue } || '%'	
+			</if>
+			<if test="searchCondition == 'title'">
+	           A.BOARD_TITLE LIKE '%' || #{ searchValue } || '%' 	
+			</if>
+			<if test="searchCondition == 'content'">
+	           A.BOARD_BODY LIKE '%' || #{ searchValue } || '%' 	
+			</if> -->
+	  <!-- 머지위해서      AND A.POST_STATUS = 'Y' 머지 위해서-->
+    	<!--  </where>-->
+  <!-- 머지위해서</select>
+  
+  <select id="selectWriteList" resultMap="writeResultMap">
+  SELECT A.RNUM
+  	   , A.POST_ID
+  	   , A.CATEGORY_ID 머지 위해서-->
+  	 <!-- , D.CATEGORY_NAME -->  
+ <!-- 머지위해서 	   , A.HEADER_ID		
+  	   , A.POST_TITLE
+       , A.POST_DATE 머지 위해서-->
+     <!--  , E.NICKNAME -->  
+ <!-- 머지위해서 	   , A.POST_VIEWS
+  	   , A.POST_TEXT
+  	   , A.POST_MODDATE
+  	   , A.POST_STATUS	    
+  	FROM (SELECT ROWNUM RNUM
+  	 		   , B.POST_ID
+  	 		   , B.CATEGORY_ID
+  	 		   , B.HEADER_ID
+  	 		   , B.POST_TITLE
+  	 		   , B.POST_DATE
+  	 		   , B.POST_VIEWS
+  	 		   , B.POST_TEXT
+  	 		   , B.POST_MODDATE
+  	 		   , B.POST_STATUS
+  	 	    FROM (SELECT C.POST_ID
+  	 		           , C.CATEGORY_ID
+  	 		           , C.HEADER_ID
+  	 		           , C.POST_TITLE
+  	 		           , C.POST_DATE
+  	 		           , C.POST_VIEWS
+  	 		           , C.POST_TEXT
+  	 		           , C.POST_MODDATE
+  	 		           , C.POST_STATUS
+  	 		           FROM POST C 머지 위해서-->
+  	 		         <!--    <if test="searchCondition == 'category'">
+	      				  JOIN TBL_CATEGORY D ON(C.CATEGORY_CODE = D.CATEGORY_CODE)
+    					</if>
+    					<if test="searchCondition == 'writer'">
+	      				  JOIN TBL_MEMBER D ON(C.BOARD_WRITER_MEMBER_NO = D.MEMBER_NO)
+    					</if>
+    					<where>
+							<if test="searchCondition == 'category'">
+	           				   D.CATEGORY_NAME = #{ searchValue }
+							</if>
+							<if test="searchCondition == 'writer'">
+	           				   D.NICKNAME LIKE '%' || #{ searchValue } || '%'	
+							</if>
+							<if test="searchCondition == 'title'">
+	           				   C.BOARD_TITLE LIKE '%' || #{ searchValue } || '%' 	
+							</if>
+							<if test="searchCondition == 'content'">
+	           				   C.BOARD_BODY LIKE '%' || #{ searchValue } || '%' 	
+							</if> -->
+	       		<!-- 머지위해서		   AND C.POST_STATUS = 'Y' 머지 위해서-->
+    				<!--  	</where> -->
+               <!-- 머지위해서	          ORDER BY C.POST_ID DESC
+  	 		           ) B
+  	 		           <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]> 
+  	 		     )A 머지 위해서-->
+  	 	 <!--   JOIN TBL_CATEGORY D ON (A.CATEGORY_CODE = D.CATEGORY_CODE)
+          JOIN TBL_MEMBER E ON(A.BOARD_WRITER_MEMBER_NO = E.MEMBER_NO) --> 
+  	<!-- 머지위해서	 WHERE A.RNUM >= #{ startRow }     
+         ORDER BY A.RNUM 
+  </select>
+  머지 위해서-->
+</mapper>

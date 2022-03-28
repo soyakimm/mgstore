@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+.group {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+.ft1 {
+    font-family: 'Gmarket Sans TTF';
+font-style: normal;
+font-weight: 500;
+font-size: 38px;
+line-height: 44px;
+color: #000000;
+}

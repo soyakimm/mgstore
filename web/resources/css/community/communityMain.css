@@ -43,7 +43,7 @@
 
 .overlap-group1 {
   align-items: flex-end;
-  background-image: url(../main/images/v91_10.png);
+  background: url("${pageContext.request.contextPath}/resources/images/community/dog-ge71586665_1920.jpg") no-repeat;
   background-position: 50% 50%;
   background-size: cover;
   display: flex;
@@ -591,9 +591,6 @@ a {
   max-width: 1400px;
   margin: 0 auto;
 }
-
-
-/*폰트*/
 
 .web-font1 { 
     font-family: 'Gmarket Sans TTF';
