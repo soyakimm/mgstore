@@ -6,15 +6,15 @@ import com.mgstore.user.model.dto.UserDTO;
 
 public class ProAskDTO {
 	
-	private int PAskId;
+	private int pAskId;
 	private String userID;
 	private UserDTO user;
-	private String PQuestion;
-	private java.sql.Date PAskDate;
-	private String PAskStatus;
-	private String ManagerId;
-	private String PAnswer;
-	private java.sql.Date PAnswerDate;
+	private String pQuestion;
+	private java.sql.Date pAskDate;
+	private String pAskStatus;
+	private String managerId;
+	private String pAnswer;
+	private java.sql.Date pAnswerDate;
 	private int proId;
 	private ProductDTO product;
 	
@@ -25,27 +25,27 @@ public class ProAskDTO {
 	public ProAskDTO(int pAskId, String userID, UserDTO user, String pQuestion, Date pAskDate, String pAskStatus,
 			String managerId, String pAnswer, Date pAnswerDate, int proId, ProductDTO product) {
 		super();
-		PAskId = pAskId;
+		this.pAskId = pAskId;
 		this.userID = userID;
 		this.user = user;
-		PQuestion = pQuestion;
-		PAskDate = pAskDate;
-		PAskStatus = pAskStatus;
-		ManagerId = managerId;
-		PAnswer = pAnswer;
-		PAnswerDate = pAnswerDate;
+		this.pQuestion = pQuestion;
+		this.pAskDate = pAskDate;
+		this.pAskStatus = pAskStatus;
+		this.managerId = managerId;
+		this.pAnswer = pAnswer;
+		this.pAnswerDate = pAnswerDate;
 		this.proId = proId;
 		this.product = product;
 	}
 
 
-	public int getPAskId() {
-		return PAskId;
+	public int getpAskId() {
+		return pAskId;
 	}
 
 
-	public void setPAskId(int pAskId) {
-		PAskId = pAskId;
+	public void setpAskId(int pAskId) {
+		this.pAskId = pAskId;
 	}
 
 
@@ -69,63 +69,63 @@ public class ProAskDTO {
 	}
 
 
-	public String getPQuestion() {
-		return PQuestion;
+	public String getpQuestion() {
+		return pQuestion;
 	}
 
 
-	public void setPQuestion(String pQuestion) {
-		PQuestion = pQuestion;
+	public void setpQuestion(String pQuestion) {
+		this.pQuestion = pQuestion;
 	}
 
 
-	public java.sql.Date getPAskDate() {
-		return PAskDate;
+	public java.sql.Date getpAskDate() {
+		return pAskDate;
 	}
 
 
-	public void setPAskDate(java.sql.Date pAskDate) {
-		PAskDate = pAskDate;
+	public void setpAskDate(java.sql.Date pAskDate) {
+		this.pAskDate = pAskDate;
 	}
 
 
-	public String getPAskStatus() {
-		return PAskStatus;
+	public String getpAskStatus() {
+		return pAskStatus;
 	}
 
 
-	public void setPAskStatus(String pAskStatus) {
-		PAskStatus = pAskStatus;
+	public void setpAskStatus(String pAskStatus) {
+		this.pAskStatus = pAskStatus;
 	}
 
 
 	public String getManagerId() {
-		return ManagerId;
+		return managerId;
 	}
 
 
 	public void setManagerId(String managerId) {
-		ManagerId = managerId;
+		this.managerId = managerId;
 	}
 
 
-	public String getPAnswer() {
-		return PAnswer;
+	public String getpAnswer() {
+		return pAnswer;
 	}
 
 
-	public void setPAnswer(String pAnswer) {
-		PAnswer = pAnswer;
+	public void setpAnswer(String pAnswer) {
+		this.pAnswer = pAnswer;
 	}
 
 
-	public java.sql.Date getPAnswerDate() {
-		return PAnswerDate;
+	public java.sql.Date getpAnswerDate() {
+		return pAnswerDate;
 	}
 
 
-	public void setPAnswerDate(java.sql.Date pAnswerDate) {
-		PAnswerDate = pAnswerDate;
+	public void setpAnswerDate(java.sql.Date pAnswerDate) {
+		this.pAnswerDate = pAnswerDate;
 	}
 
 
@@ -151,9 +151,9 @@ public class ProAskDTO {
 
 	@Override
 	public String toString() {
-		return "ProAskDTO [PAskId=" + PAskId + ", userID=" + userID + ", user=" + user + ", PQuestion=" + PQuestion
-				+ ", PAskDate=" + PAskDate + ", PAskStatus=" + PAskStatus + ", ManagerId=" + ManagerId + ", PAnswer="
-				+ PAnswer + ", PAnswerDate=" + PAnswerDate + ", proId=" + proId + ", product=" + product + "]";
+		return "ProAskDTO [pAskId=" + pAskId + ", userID=" + userID + ", user=" + user + ", pQuestion=" + pQuestion
+				+ ", pAskDate=" + pAskDate + ", pAskStatus=" + pAskStatus + ", managerId=" + managerId + ", pAnswer="
+				+ pAnswer + ", pAnswerDate=" + pAnswerDate + ", proId=" + proId + ", product=" + product + "]";
 	}
 
 

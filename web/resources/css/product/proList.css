@@ -36,6 +36,7 @@ body{
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 1.1em;
   color: black;
+  padding-top: 200px;
 }
 
 a:hover, button:hover{
@@ -76,7 +77,7 @@ button{
 
 .fix-box {
   position: fixed;
-  margin: 5% auto auto 0;
+  /*margin: 5% auto auto 0;*/
 }
 
 .all-select{
