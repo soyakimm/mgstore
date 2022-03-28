@@ -47,7 +47,10 @@
 				successMessage = "1:1 문의 답변등록이 완료되었습니다.";
 				movePath = "${ pageContext.servletContext.contextPath }/inq/list";
 				break;
-			
+			case "insertThumbnail" : 
+				successMessage = "이벤트 썸네일 게시판 등록 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/event/main";
+				break;
 		}
 
 		alert(successMessage);
