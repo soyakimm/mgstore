@@ -1,151 +1,181 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?> -->
-<!-- <!DOCTYPE mapper -->
-<!--   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" -->
-<!--   "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
-<!-- <mapper namespace="ProductDAO"> -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductDAO">
 
+	<!-- 상품 -->
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="productResultMap">
+		<id property="proId" column="PRO_ID"/>
+		<result property="pCateId" column="PCATE_ID"/>
+		<result property="proTitle" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="deliveryFee" column="DELIVERY_FEE"/>
+		<result property="proAmount" column="PRO_AMOUNT"/>
+		<result property="proContent" column="PRO_CONTENT"/>
+		<result property="proPoint" column="PRO_POINT"/>
+		<result property="proDate" column="PRO_DATE"/>
+		<result property="ratingSum" column="RATING_SUM"/>
+		<result property="ratingAmount" column="RATING_AMOUNT"/>
+		<result property="proStatus" column="PRO_STATUS"/>
+		
+		<association property="category" column="proCateResultMap"/>
+	</resultMap>
 	
-<!-- 	<resultMap type="com.mgstore.product.model.dto.ProCateDTO" id="proCateResultMap"> -->
-<!-- 		<id property="pCateID" column="PCATE_ID"/> -->
-<!-- 		<result property="pCateName" column="PCATE_NAME"/> -->
-<!-- 		<result property="pCatePId" column="PCATE_P_ID"/> -->
+	<!-- 카테고리 -->
+	<resultMap type="com.mgstore.product.model.dto.ProCateDTO" id="proCateResultMap">
+		<id property="pCateId" column="PCATE_ID"/>
+		<result property="pCateName" column="PCATE_NAME"/>
+		<result property="pCatePId" column="PCATE_P_ID"/>
+	</resultMap>
+	
+	<!-- 상품 옵션 -->
+<!-- 	<resultMap type="com.mgstore.product.model.ProOptionDTO" id="proOptionResultMap"> -->
+<!-- 		<id property="optId" column="OPT_ID"/> -->
+<!-- 		<result property="optCont" column="OPT_CONT"/> -->
+<!-- 		<result property="optPrice" column="OPT_PRICE"/> -->
+<!-- 		<result property="optAmount" column="OPT_AMOUNT"/> -->
+<!-- 		<result property="optPId" column="OPT_P_ID"/> -->
+	
+<!-- 		<association property="product" column="productResultMap"/>	 -->
 <!-- 	</resultMap> -->
 	
-<!-- 	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="generalProductResultMap"> -->
-<!-- 		<id property="proId" column="PRO_ID"/> -->
-<!-- 		<result property="proTitle" column="PRO_TITLE"/> -->
-<!-- 		<result property="price" column="PRICE"/> -->
-<!-- 		<result property="deliveryFee" column="DELIVERY_FEE"/> -->
-<!-- 		<result property="proAmount" column="PRO_AMOUNT"/> -->
-<!-- 		<result property="proContent" column="PRO_CONTENT"/> -->
-<!-- 		<result property="proPoint" column="PRO_POINT"/> -->
-<!-- 		<result property="proDate" column="PRO_DATE"/> -->
-<!-- 		<result property="ratingSum" column="RATING_SUM"/> -->
-<!-- 		<result property="ratingAmount" column="RATING_AMOUNT"/> -->
-<!-- 		<result property="proStatus" column="PRO_STATUS"/> -->
+	<!-- 썸네일 -->
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProResultMap">
+		<id property="proId" column="PRO_ID"/>
+		<result property="pCateId" column="PCATE_ID"/>
+		<result property="proTitle" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="deliveryFee" column="DELIVERY_FEE"/>
+		<result property="proAmount" column="PRO_AMOUNT"/>
+		<result property="proContent" column="PRO_CONTENT"/>
+		<result property="proPoint" column="PRO_POINT"/>
+		<result property="proDate" column="PRO_DATE"/>
+		<result property="ratingSum" column="RATING_SUM"/>
+		<result property="ratingAmount" column="RATING_AMOUNT"/>
+		<result property="proStatus" column="PRO_STATUS"/>
 		
-<!-- 		<association property="pCateId" resultMap="proCateResultMap"/> -->
-<!-- 	</resultMap> -->
-	
-<!-- 	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProductResultMap"> -->
-<!-- 		<id property="proId" column="PRO_ID"/> -->
-<!-- 		<result property="proTitle" column="PRO_TITLE"/> -->
-<!-- 		<result property="price" column="PRICE"/> -->
-<!-- 		<result property="deliveryFee" column="DELIVERY_FEE"/> -->
-<!-- 		<result property="proAmount" column="PRO_AMOUNT"/> -->
-<!-- 		<result property="proContent" column="PRO_CONTENT"/> -->
-<!-- 		<result property="proPoint" column="PRO_POINT"/> -->
-<!-- 		<result property="proDate" column="PRO_DATE"/> -->
-<!-- 		<result property="ratingSum" column="RATING_SUM"/> -->
-<!-- 		<result property="ratingAmount" column="RATING_AMOUNT"/> -->
-<!-- 		<result property="proStatus" column="PRO_STATUS"/> -->
+		<association property="category" column="proCateResultMap"/>
 		
-<!-- 		<association property="pCateId" resultMap="proCateResultMap"/> -->
+		<collection property="proImgList" resultMap="proImgResultMap"/>
+	</resultMap>
+	
+	<!-- 상품이미지 -->
+	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="proImgResultMap">
+		<id property="pImgId" column="PIMG_ID"/>
+		<result property="refProId" column="REF_PRO_ID"/>
+		<result property="pImgOrgName" column="PIMG_ORGNAME"/>
+		<result property="pImgSvrName" column="PIMG_SVRNAME"/>
+		<result property="pImgTmbName" column="PIMG_TMBNAME"/>
+		<result property="pImgTmbYN" column="PIMG_TMB_YN"/>
+		<result property="pImgSize" column="PIMG_SIZE"/>
+		<result property="pImgDate" column="PIMG_DATE"/>
+	</resultMap>
+	
+	<!-- 상품 좋아요 -->
+	<resultMap type="com.mgstore.product.model.dto.ProLikeDTO" id="proLikeResultMap">
+		<association property="user" resultMap="userResultMap"/>
+		<association property="product" resultMap="productResultMap"/> <!-- collection이 아니라 association 맞는지? -->
+	</resultMap>
+	
+	<!-- UserDTO 가져오기 -->
+	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+	<!-- 상품 문의 -->
+	<resultMap type="com.mgstore.product.model.dto.ProAskDTO" id="proAskResultMap">
+		<id property="pAskId" column="PASK_ID"/>
+		<result property="pQuestion" column=""/>
+		<result property="aAskDate" column=""/>
+		<result property="pAskStatus" column=""/>
+		<result property="managerId" column=""/>
+		<result property="pAnswer" column=""/>
+		<result property="pAnswerDate" column=""/>
 		
-<!-- 		<collection property="proImgList" resultMap="proImgResultMap"/> -->
-<!-- 	</resultMap> -->
+		<association property="user" column="userResultMap"/>
+		<association property="product" column="productResultMap"/>
+	</resultMap>
 	
-<!-- 	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="proImgResultMap"> -->
-<!-- 		<id property="pImgId" column="PIMG_ID"/> -->
-<!-- 		<result property="pImgOrgName" column="PIMG_ORGNAME"/> -->
-<!-- 		<result property="pImgSvrName" column="PIMG_SVRNAME"/> -->
-<!-- 		<result property="pImgTmbName" column="PIMG_TMBNAME"/> -->
-<!-- 		<result property="pImgTmbYN" column="PIMG_TMB_YN"/> -->
-<!-- 		<result property="pImgSize" column="PIMG_SIZE"/> -->
-<!-- 		<result property="pImgDate" column="PIMG_DATE"/> -->
-		
-<!-- 		<association property="proId" resultMap="generalProductResultMap"/> -->
-<!-- 	</resultMap>	 -->
-	
-<!-- 	<select id="selectTotalCount" resultType="_int" parameterType="hashmap"> -->
-<!-- 		SELECT /* com.mgstore.product.model.dao.ProductDAO#selectTotalCount() */ -->
-<!-- 			  COUNT(*) -->
-<!-- 		  FROM PRODUCT A -->
-<!-- 		<if test="searchCondition == 'pCateId'"> -->
-<!-- 		  JOIN PRO_CATE B ON(A.PCATE_ID = B.PCATE_ID) -->
-<!-- 		</if> -->
-<!-- 		<where> -->
-<!-- 			<if test="searchCondition == 'pCateName'"> -->
-<!-- 				B.PCATE_NAME = #{ searchValue } -->
-<!-- 			</if> -->
-<!-- 			<if test="searchCondition == 'proTitle'"> -->
-<!-- 			  A.PRO_TITLE LIKE '%' || #{ searchValue } || '%' -->
-<!-- 			</if> -->
-<!-- 			AND A.PRO_STATUS = 'Y' -->
-<!-- 		</where> -->
-<!-- 	</select> -->
-	
-<!-- <!-- 	<select id="selectProductList" resultMap="generalProductResultMap"> --> -->
-<!-- <!-- 		SELECT /* com.mgstore.product.model.dao.productDAO#selectProList()*/ --> -->
-<!-- <!-- 			  A.RNUM --> -->
-<!-- <!-- 			, A.PRODUCT_ID --> -->
-<!-- <!-- 			, B.PCATE_ID --> -->
-<!-- <!-- 			, A.PRO_TITLE --> -->
-<!-- <!-- 			, A.PRICE --> -->
-<!-- <!-- 			, A.DELIVERY_FEE --> -->
-<!-- <!-- 			, A.PRO_AMOUNT --> -->
-<!-- <!-- 			, A.PRO_CONTENT --> -->
-<!-- <!-- 			, A.PRO_POINT --> -->
-<!-- <!-- 			, A.PRO_DATE --> -->
-<!-- <!-- 			, A.RATING_SUM --> -->
-<!-- <!-- 			, A.RATING_AMOUNT --> -->
-<!-- <!-- 			, A.PRO_STATUS --> -->
-<!-- <!-- 		FROM (SELECT ROWNUM RNUM --> -->
-<!-- <!-- 					, B.PRODUCT_ID --> -->
-<!-- <!-- 					, B.PCATE_ID --> -->
-<!-- <!-- 					, B.PRO_TITLE --> -->
-<!-- <!-- 					, B.PRICE --> -->
-<!-- <!-- 					, B.DELIVERY_FEE --> -->
-<!-- <!-- 					, B.PRO_AMOUNT --> -->
-<!-- <!-- 					, B.PRO_CONTENT --> -->
-<!-- <!-- 					, B.PRO_POINT --> -->
-<!-- <!-- 					, B.PRO_DATE --> -->
-<!-- <!-- 					, B.RATING_SUM --> -->
-<!-- <!-- 					, B.RATING_AMOUNT --> -->
-<!-- <!-- 					, B.PRO_STATUS) --> -->
-<!-- <!-- 				FROM (SELECT C.PRODUCT_ID --> -->
-<!-- <!-- 						  	, C.PCATE_ID --> -->
-<!-- <!-- 							, C.PRO_TITLE --> -->
-<!-- <!-- 							, C.PRICE --> -->
-<!-- <!-- 							, C.DELIVERY_FEE --> -->
-<!-- <!-- 							, C.PRO_AMOUNT --> -->
-<!-- <!-- 							, C.PRO_CONTENT --> -->
-<!-- <!-- 							, C.PRO_POINT --> -->
-<!-- <!-- 							, C.PRO_DATE --> -->
-<!-- <!-- 							, C.RATING_SUM --> -->
-<!-- <!-- 							, C.RATING_AMOUNT --> -->
-<!-- <!-- 							, C.PRO_STATUS	 --> -->
-<!-- <!-- 						FROM PRODUCT C --> -->
-<!-- <!-- 					<if test="searchCondition == 'category'"> --> -->
-<!-- <!-- 						JOIN PRO_CATE D ON(C.PCATE_ID = D.PCATE_ID) --> -->
-<!-- <!-- 					</if> --> -->
-<!-- <!-- 					<where> --> -->
-<!-- <!-- 						<if test="searchCondition == 'category"> --> -->
-<!-- <!-- 							D.PCATE_NAME = #{ searchValue } --> -->
-<!-- <!-- 						</if> --> -->
-<!-- <!-- 						<if test="searchCondition == 'title'"> --> -->
-<!-- <!-- 							C.PRO_TITLE LIKE '%' || #{ searchValue } || '%' --> -->
-<!-- <!-- 						</if> --> -->
-<!-- <!-- 					  AND C.PRO_STATUC = 'Y' --> -->
-<!-- <!-- 					</where> --> -->
-<!-- <!-- 					ORDER BY C.PRO_ID DESC --> -->
-<!-- <!-- 					) B --> -->
-<!-- <!-- 				<![CDATA[ --> -->
-<!-- <!-- 				WHERE ROWNUM <= #{ endRow } --> -->
-<!-- <!-- 				]]> --> -->
-<!-- <!-- 		JOIN PRO_CATE D ON (A.PCATE_ID = D.PCATE_ID) --> -->
-<!-- <!-- 	   WHERE A.RNUM >= { startRow } --> -->
-<!-- <!-- 	   ORDER BY A.RNUM --> -->
-<!-- <!-- 	</select> --> -->
-	
-<!-- <!-- 	<insert id="insertProduct"> --> -->
-<!-- <!-- 		INSERT /* */ --> -->
-<!-- <!-- 	</insert> --> -->
-	
+	<select id="selectProductList" resultMap="productResultMap">
+		SELECT /* com.mgstore.product.model.dao.ProductDAO#selectProductList() */
+               A.RNUM
+             , A.PRO_ID
+             , A.PCATE_ID
+             , D.PCATE_NAME
+             , A.PRO_TITLE
+             , A.PRICE
+             , A.DELICERY_FEE
+             , A.PRO_AMOUNT
+             , A.PRO_CONTENT
+             , A.PRO_POINT
+             , A.PRO_DATE
+             , A.RATING_SUM
+             , A.RATING_COUNT
+             , A.PRO_STATUS
+          FROM (SELECT ROWNUM RNUM
+			             , B.PRO_ID
+			             , B.PCATE_ID
+			             , B.PRO_TITLE
+			             , B.PRICE
+			             , B.DELICERY_FEE
+			             , B.PRO_AMOUNT
+			             , B.PRO_CONTENT
+			             , B.PRO_POINT
+			             , B.PRO_DATE
+			             , B.RATING_SUM
+			             , B.RATING_COUNT
+			             , B.PRO_STATUS
+                  FROM (SELECT C.PRO_ID
+				             , C.PCATE_ID
+				             , C.PRO_TITLE
+				             , C.PRICE
+				             , C.DELICERY_FEE
+				             , C.PRO_AMOUNT
+				             , C.PRO_CONTENT
+				             , C.PRO_POINT
+				             , C.PRO_DATE
+				             , C.RATING_SUM
+				             , C.RATING_COUNT
+				             , C.PRO_STATUS
+	                          FROM PRODUCT C
+                        <if test="searchCondition == 'category'">
+	      				  JOIN PRO_CATE D ON(C.PCATE_ID = D.PCATE_ID)
+    					</if>
+    					<where>
+							<if test="searchCondition == 'category'">
+	           				   D.PCATE_NAME = #{ searchValue }
+							</if>
+							<if test="searchCondition == 'title'">
+	           				   C.PRO_TITLE LIKE '%' || #{ searchValue } || '%' 	
+							</if>
+	       				   AND C.PRO_STATUS = 'Y'
+    					</where>
+                         ORDER BY C.PRO_ID DESC
+                        ) B
+                  <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+               ) A
+          JOIN PRO_CATE D ON (A.PCATE_ID = D.PCATE_ID)
+         WHERE A.RNUM >= #{ startRow }     
+         ORDER BY A.RNUM 
+	</select>
 	
 	
 	
 	
 	
 
-<!-- </mapper> -->
+</mapper>

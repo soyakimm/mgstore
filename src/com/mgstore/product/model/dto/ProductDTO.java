@@ -10,7 +10,7 @@ public class ProductDTO {
 	private ProCateDTO category;
 	private String proTitle;
 	private int price;
-	private int delivaryFee;
+	private int deliveryFee;
 	private int proAmount;
 	private String proContent;
 	private int proPoint;
@@ -22,7 +22,7 @@ public class ProductDTO {
 	
 	public ProductDTO() {}
 
-	public ProductDTO(int proId, int pCateId, ProCateDTO category, String proTitle, int price, int delivaryFee,
+	public ProductDTO(int proId, int pCateId, ProCateDTO category, String proTitle, int price, int deliveryFee,
 			int proAmount, String proContent, int proPoint, Date proDate, int ratingSum, int ratingAmount,
 			char proStatus, List<ProImgDTO> proImgList) {
 		super();
@@ -31,7 +31,7 @@ public class ProductDTO {
 		this.category = category;
 		this.proTitle = proTitle;
 		this.price = price;
-		this.delivaryFee = delivaryFee;
+		this.deliveryFee = deliveryFee;
 		this.proAmount = proAmount;
 		this.proContent = proContent;
 		this.proPoint = proPoint;
@@ -82,12 +82,12 @@ public class ProductDTO {
 		this.price = price;
 	}
 
-	public int getDelivaryFee() {
-		return delivaryFee;
+	public int getDeliveryFee() {
+		return deliveryFee;
 	}
 
-	public void setDelivaryFee(int delivaryFee) {
-		this.delivaryFee = delivaryFee;
+	public void setDeliveryFee(int deliveryFee) {
+		this.deliveryFee = deliveryFee;
 	}
 
 	public int getProAmount() {
@@ -157,12 +157,13 @@ public class ProductDTO {
 	@Override
 	public String toString() {
 		return "ProductDTO [proId=" + proId + ", pCateId=" + pCateId + ", category=" + category + ", proTitle="
-				+ proTitle + ", price=" + price + ", delivaryFee=" + delivaryFee + ", proAmount=" + proAmount
+				+ proTitle + ", price=" + price + ", deliveryFee=" + deliveryFee + ", proAmount=" + proAmount
 				+ ", proContent=" + proContent + ", proPoint=" + proPoint + ", proDate=" + proDate + ", ratingSum="
 				+ ratingSum + ", ratingAmount=" + ratingAmount + ", proStatus=" + proStatus + ", ProImgList="
 				+ ProImgList + "]";
 	}
+
 	
-	
+
 	
 }

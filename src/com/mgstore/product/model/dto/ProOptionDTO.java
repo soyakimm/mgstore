@@ -2,66 +2,66 @@ package com.mgstore.product.model.dto;
 
 public class ProOptionDTO {
 	
-	private int OptId;
-	private String OptCont;
-	private int OptPrice;
-	private int OptAmount;
-	private int OptPId;
+	private int optId;
+	private String optCont;
+	private int optPrice;
+	private int optAmount;
+	private int optPId;
 	private int proId;
 	private ProductDTO product;
 	
 	public ProOptionDTO(){}
-	
+
 	public ProOptionDTO(int optId, String optCont, int optPrice, int optAmount, int optPId, int proId,
 			ProductDTO product) {
 		super();
-		OptId = optId;
-		OptCont = optCont;
-		OptPrice = optPrice;
-		OptAmount = optAmount;
-		OptPId = optPId;
+		this.optId = optId;
+		this.optCont = optCont;
+		this.optPrice = optPrice;
+		this.optAmount = optAmount;
+		this.optPId = optPId;
 		this.proId = proId;
 		this.product = product;
 	}
 
 	public int getOptId() {
-		return OptId;
+		return optId;
 	}
 
 	public void setOptId(int optId) {
-		OptId = optId;
+		this.optId = optId;
 	}
 
 	public String getOptCont() {
-		return OptCont;
+		return optCont;
 	}
 
 	public void setOptCont(String optCont) {
-		OptCont = optCont;
+		this.optCont = optCont;
 	}
 
 	public int getOptPrice() {
-		return OptPrice;
+		return optPrice;
 	}
 
 	public void setOptPrice(int optPrice) {
-		OptPrice = optPrice;
+		this.optPrice = optPrice;
 	}
 
 	public int getOptAmount() {
-		return OptAmount;
+		return optAmount;
 	}
 
 	public void setOptAmount(int optAmount) {
-		OptAmount = optAmount;
+		this.optAmount = optAmount;
 	}
 
 	public int getOptPId() {
-		return OptPId;
+		return optPId;
 	}
 
 	public void setOptPId(int optPId) {
-		OptPId = optPId;
+		this.optPId = optPId;
 	}
 
 	public int getProId() {
@@ -82,11 +82,10 @@ public class ProOptionDTO {
 
 	@Override
 	public String toString() {
-		return "ProOptionDTO [OptId=" + OptId + ", OptCont=" + OptCont + ", OptPrice=" + OptPrice + ", OptAmount="
-				+ OptAmount + ", OptPId=" + OptPId + ", proId=" + proId + ", product=" + product + "]";
+		return "ProOptionDTO [optId=" + optId + ", optCont=" + optCont + ", optPrice=" + optPrice + ", optAmount="
+				+ optAmount + ", optPId=" + optPId + ", proId=" + proId + ", product=" + product + "]";
 	}
-	
-	
+
 	
 	
 }

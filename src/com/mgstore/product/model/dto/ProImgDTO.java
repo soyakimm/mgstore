@@ -2,87 +2,103 @@ package com.mgstore.product.model.dto;
 
 import java.sql.Date;
 
-public class ProImgDTO {
+public class ProImgDTO implements java.io.Serializable {
 	
-	private int PImgId;
-	private int proId;
-	private ProductDTO product;
-	private String PImgOrgName;
-	private String PImgSvrName;
-	private String PImgTmbName;
-	private char PImgTmbYN;
-	private int PImgSize;
+	private int pImgId;
+	private int refproId;
+	private String pImgOrgName;
+	private String pImgSvrName;
+	private String pImgTmbName;
+	private char pImgTmbYN;
+	private int pImgSize;
+	private Date pImgDate;
 	
 	public ProImgDTO() {}
-	
-	public ProImgDTO(int pImgId, int proId, ProductDTO product, String pImgOrgName, String pImgSvrName,
-			String pImgTmbName, char pImgTmbYN, int pImgSize) {
+
+	public ProImgDTO(int pImgId, int refproId, String pImgOrgName, String pImgSvrName, String pImgTmbName,
+			char pImgTmbYN, int pImgSize, Date pImgDate) {
 		super();
-		PImgId = pImgId;
-		this.proId = proId;
-		this.product = product;
-		PImgOrgName = pImgOrgName;
-		PImgSvrName = pImgSvrName;
-		PImgTmbName = pImgTmbName;
-		PImgTmbYN = pImgTmbYN;
-		PImgSize = pImgSize;
+		this.pImgId = pImgId;
+		this.refproId = refproId;
+		this.pImgOrgName = pImgOrgName;
+		this.pImgSvrName = pImgSvrName;
+		this.pImgTmbName = pImgTmbName;
+		this.pImgTmbYN = pImgTmbYN;
+		this.pImgSize = pImgSize;
+		this.pImgDate = pImgDate;
 	}
-	public int getPImgId() {
-		return PImgId;
+
+	public int getpImgId() {
+		return pImgId;
 	}
-	public void setPImgId(int pImgId) {
-		PImgId = pImgId;
+
+	public void setpImgId(int pImgId) {
+		this.pImgId = pImgId;
 	}
-	public int getProId() {
-		return proId;
+
+	public int getRefproId() {
+		return refproId;
 	}
-	public void setProId(int proId) {
-		this.proId = proId;
+
+	public void setRefproId(int refproId) {
+		this.refproId = refproId;
 	}
-	public ProductDTO getProduct() {
-		return product;
+
+	public String getpImgOrgName() {
+		return pImgOrgName;
 	}
-	public void setProduct(ProductDTO product) {
-		this.product = product;
+
+	public void setpImgOrgName(String pImgOrgName) {
+		this.pImgOrgName = pImgOrgName;
 	}
-	public String getPImgOrgName() {
-		return PImgOrgName;
+
+	public String getpImgSvrName() {
+		return pImgSvrName;
 	}
-	public void setPImgOrgName(String pImgOrgName) {
-		PImgOrgName = pImgOrgName;
+
+	public void setpImgSvrName(String pImgSvrName) {
+		this.pImgSvrName = pImgSvrName;
 	}
-	public String getPImgSvrName() {
-		return PImgSvrName;
+
+	public String getpImgTmbName() {
+		return pImgTmbName;
 	}
-	public void setPImgSvrName(String pImgSvrName) {
-		PImgSvrName = pImgSvrName;
+
+	public void setpImgTmbName(String pImgTmbName) {
+		this.pImgTmbName = pImgTmbName;
 	}
-	public String getPImgTmbName() {
-		return PImgTmbName;
+
+	public char getpImgTmbYN() {
+		return pImgTmbYN;
 	}
-	public void setPImgTmbName(String pImgTmbName) {
-		PImgTmbName = pImgTmbName;
+
+	public void setpImgTmbYN(char pImgTmbYN) {
+		this.pImgTmbYN = pImgTmbYN;
 	}
-	public char getPImgTmbYN() {
-		return PImgTmbYN;
+
+	public int getpImgSize() {
+		return pImgSize;
 	}
-	public void setPImgTmbYN(char pImgTmbYN) {
-		PImgTmbYN = pImgTmbYN;
+
+	public void setpImgSize(int pImgSize) {
+		this.pImgSize = pImgSize;
 	}
-	public int getPImgSize() {
-		return PImgSize;
+
+	public Date getpImgDate() {
+		return pImgDate;
 	}
-	public void setPImgSize(int pImgSize) {
-		PImgSize = pImgSize;
+
+	public void setpImgDate(Date pImgDate) {
+		this.pImgDate = pImgDate;
 	}
+
 	@Override
 	public String toString() {
-		return "ProImgDTO [PImgId=" + PImgId + ", proId=" + proId + ", product=" + product + ", PImgOrgName="
-				+ PImgOrgName + ", PImgSvrName=" + PImgSvrName + ", PImgTmbName=" + PImgTmbName + ", PImgTmbYN="
-				+ PImgTmbYN + ", PImgSize=" + PImgSize + "]";
+		return "ProImgDTO [pImgId=" + pImgId + ", refproId=" + refproId + ", pImgOrgName=" + pImgOrgName
+				+ ", pImgSvrName=" + pImgSvrName + ", pImgTmbName=" + pImgTmbName + ", pImgTmbYN=" + pImgTmbYN
+				+ ", pImgSize=" + pImgSize + ", pImgDate=" + pImgDate + "]";
 	}
 	
-
 	
 	
 

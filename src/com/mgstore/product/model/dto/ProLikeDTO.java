@@ -4,29 +4,41 @@ import com.mgstore.user.model.dto.UserDTO;
 
 public class ProLikeDTO {
 	
-	private UserDTO userId;
-	private int proId;
+	private String userId;
+	private UserDTO user;
+	private int proId; 
 	private ProductDTO product;
 	
 	
 	public ProLikeDTO() {}
 
 
-	public ProLikeDTO(UserDTO userId, int proId, ProductDTO product) {
+	public ProLikeDTO(String userId, UserDTO user, int proId, ProductDTO product) {
 		super();
 		this.userId = userId;
+		this.user = user;
 		this.proId = proId;
 		this.product = product;
 	}
 
 
-	public UserDTO getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(UserDTO userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+
+	public UserDTO getUser() {
+		return user;
+	}
+
+
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
 
 
@@ -52,9 +64,9 @@ public class ProLikeDTO {
 
 	@Override
 	public String toString() {
-		return "ProLikeDTO [userId=" + userId + ", proId=" + proId + ", product=" + product + "]";
+		return "ProLikeDTO [userId=" + userId + ", user=" + user + ", proId=" + proId + ", product=" + product + "]";
 	}
-
+	
 	
 
 }
