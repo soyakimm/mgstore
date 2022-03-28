@@ -4,24 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main community</title>
-</head>
-<body>
-<jsp:include page="../common/header.jsp"/>
-	<!-- jQuery로 id 접근시 $(“#id”) , ex) $(“#header_area”)
-          class로 접근시 $(“.class”), ex) $(“.section_nav”)
-          
-          name으로 접근시 개체[name=개체 이름] 형태로 접근합니다.
-          name으로 접근시 $(tag_name[name=name]), ex) $(“input[name=search_value]“) -->
-
-	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+<title>communityMain</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Gmarket+Sans+TTF&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link href="${ pageContext.servletContext.contextPath }/resources/css/maincomm.css" rel="stylesheet">
-	<link href="${ pageContext.servletContext.contextPath }/resources/images/community" rel="stylesheet">
-
+	<link href="${ pageContext.servletContext.contextPath }/resources/css/community/communityMain.css" rel="stylesheet">
+</head>
+<body>
+<jsp:include page="../common/header.jsp"/>
 	<div class="group">
   <div class="frame-1 screen">
     <div class="overlap-group1">
@@ -159,7 +151,7 @@
     </div>
 <!--글쓰기 버튼-->
 
-<a href="../글작성/write.html"><div class="write_btn_wrap" >
+<a href="${ pageContext.servletContext.contextPath }/community/insert"><div class="write_btn_wrap" >
 <div class="write_btn">글쓰기</div>
 </div></a>
     <!--이벤트-->
@@ -175,7 +167,6 @@
     
     <div class="text"></div>
   </div>
-</div>    
-
+</div> 
 </body>
 </html>
