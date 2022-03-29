@@ -261,7 +261,6 @@ header .show-all-list:hover {
 
 /* 서브 헤더 - 메뉴 리스트 */
 header nav {
-    display: flex;
     height: 58px;
 }
 
