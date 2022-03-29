@@ -36,7 +36,6 @@ body{
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 1.1em;
   color: black;
-  padding-top: 200px;
 }
 
 a:hover, button:hover{
@@ -76,8 +75,9 @@ button{
 }
 
 .fix-box {
-  position: fixed;
-  /*margin: 5% auto auto 0;*/
+  position: sticky; 
+  top: 50px;
+  margin: 20% auto auto 0;
 }
 
 .all-select{
@@ -110,7 +110,24 @@ svg{
   margin-right: 10px;
 }
 
+.proAdminUrl>button{
+    margin-top: 10%;
+    padding: 3%;
+    width: 50%;
+    color: #F5742F;
+    border: 2px solid #F5742F;
+    border-radius: 10px;
+}
 
+.proAdminUrl>button:hover{
+  margin-top: 10%;
+  padding: 3%;
+  width: 50%;
+  color: white !important;
+  background: #F5742F;
+  border: 2px solid #F5742F;
+  border-radius: 10px;
+}
 
 
 /* toggle ---------- */

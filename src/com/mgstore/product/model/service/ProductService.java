@@ -33,4 +33,29 @@ public class ProductService {
 		return productList;
 	}
 
+	public ProductDTO selectOneProList(int no) {
+
+		SqlSession session = getSqlSession();
+		
+		ProductDTO product= null;
+		
+		int result = productDAO.incrementProductCount(session, no);
+		
+		if(result > 0) {
+			product = productDAO.selectOneThumbnailProduct(session, no);
+			
+			if(product != null) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return product;
+	}
+
 }

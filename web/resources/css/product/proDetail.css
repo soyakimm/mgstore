@@ -1,0 +1,267 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html{ font-size: 100%; }
+
+a { 
+  text-decoration: none;
+  color: black; }
+a:visited { text-decoration: none; }
+a:active { color: #F5742F; }
+
+img { max-width: 100%; }
+
+li, ul { 
+  list-style-type: none;
+  color: black;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1em;
+  color: black;
+}
+
+a:hover, button:hover{
+  cursor: pointer;
+  color: #F5742F
+  !important
+}
+
+select{
+  border-style: none;
+  width: 100%;
+}
+
+/* 상품설명 헤더부 ----- */
+
+.proDetail-page {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.pro-detail-wrapper{
+  margin-top: 12%;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: nowrap;
+  justify-content:center;
+  align-items:center;
+}
+
+.pro-detail-left{
+  width: 50%;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+.pro-detail-right{
+  width: 40%;
+  margin-left: 2%;
+  padding-right: 3%;
+}
+
+/* 헤더부 왼쪽 ----- */
+.pro-category>a{
+  color: #767676;
+  padding: 5px;
+}
+
+.pro-category{ margin: 0 0 0 7% ; }
+
+.thumbnail-img{
+  padding: 6%;
+}
+
+.thumbnail-img>img{
+  border-radius: 5%;
+}
+
+/* 헤더부 오른쪽 ----- */
+.pro-title{
+  font-size: 1.5em;
+}
+
+.pro-rating{
+  display: flex;
+  align-items:flex-start;
+}
+.star{
+  width: 27px;
+  height: 27px;
+}
+
+.pro-price-point{
+  margin-top: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.pro-price{
+  font-weight: bolder;
+  font-size: 1.5em;
+  margin-right: 3%;
+}
+
+.pro-point{
+  font-size: 1rem;
+  font-weight: bold;
+  color: #a1a1a1;
+}
+
+.point{ color: #F5742F; }
+
+.pro-fee{
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 3%;
+  margin-bottom: 10%;
+}
+
+.delivery{
+  color: #767676;
+  margin-right: 3%;
+}
+
+.option-select{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  width: 80%;
+  margin-bottom: 10px;
+  cursor:pointer;
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+  margin: 0 0 2% 0;
+  padding: 0 4%;
+  position: relative;
+}
+
+.pro-option-box button{
+  border: none;
+  background-color: white;
+}
+
+.sub-select{
+  position:relative;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.pro-price-info{
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid black;
+  margin-top: 6%;
+}
+
+.price-p, .price-num{
+  margin-top: 5%;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 6% 3% 0;
+}
+
+.pro-button-wrapper{
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start
+}
+
+.likeBtn img{
+  border: 1px solid #a1a1a1;
+  border-radius: 8px;
+  padding: 9px 25px;
+}
+
+.cartBtn{
+  background-color: white;
+  color: #F5742F; 
+  font-size: 0.9em;
+  font-weight: bold;
+  border: 2px solid #F5742F;
+  padding: 15px 80px;
+  border-radius: 10px;
+}
+
+.orderBtn{
+  background-color: #F5742F;
+  color: white; 
+  font-size: 0.9em;
+  font-weight: bold;
+  border: 2px solid #F5742F;
+  padding: 15px 80px;
+  border-radius: 10px;
+}
+
+
+/* body ----- */
+.proDetail-body{
+  margin-top: 8%;
+  background-color: #F7F6F7;
+}
+
+.body-page-block{
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 30%;
+  font-family: 'GmarketSansMedium';
+  font-size: 1.2em;
+}
+
+.product-detail-desc{
+  padding: 4%;
+}
+
+.product-detail-hide{
+  background-color: white;
+  border: 2px solid #F5742F;
+  padding: 15px;
+  margin: 5% 30% 20%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.product-detail-hide button{
+  background-color: transparent;
+  border: none;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,25 +1,25 @@
-package com.mgstore.basket.model.dto;
+package com.mgstore.cart.model.dto;
 
 import com.mgstore.product.model.dto.ProductDTO;
 import com.mgstore.user.model.dto.UserDTO;
 
-public class BasketDTO {
+public class CartDTO {
 	
 	private int proId;
 	private ProductDTO product;
 	private String userId;
 	private UserDTO user;
-	private int basketAmount;
+	private int cartAmount;
 	
-	public BasketDTO() {}
+	public CartDTO() {}
 
-	public BasketDTO(int proId, ProductDTO product, String userId, UserDTO user, int basketAmount) {
+	public CartDTO(int proId, ProductDTO product, String userId, UserDTO user, int cartAmount) {
 		super();
 		this.proId = proId;
 		this.product = product;
 		this.userId = userId;
 		this.user = user;
-		this.basketAmount = basketAmount;
+		this.cartAmount = cartAmount;
 	}
 
 	public int getProId() {
@@ -54,18 +54,18 @@ public class BasketDTO {
 		this.user = user;
 	}
 
-	public int getBasketAmount() {
-		return basketAmount;
+	public int getCartAmount() {
+		return cartAmount;
 	}
 
-	public void setBasketAmount(int basketAmount) {
-		this.basketAmount = basketAmount;
+	public void setCartAmount(int cartAmount) {
+		this.cartAmount = cartAmount;
 	}
 
 	@Override
 	public String toString() {
-		return "BasketDTO [proId=" + proId + ", product=" + product + ", userId=" + userId + ", user=" + user
-				+ ", basketAmount=" + basketAmount + "]";
+		return "cartDTO [proId=" + proId + ", product=" + product + ", userId=" + userId + ", user=" + user
+				+ ", cartAmount=" + cartAmount + "]";
 	}
 
 	

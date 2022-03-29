@@ -19,7 +19,7 @@
 		<result property="ratingAmount" column="RATING_AMOUNT"/>
 		<result property="proStatus" column="PRO_STATUS"/>
 		
-		<association property="category" column="proCateResultMap"/>
+		<association property="category" resultMap="proCateResultMap"/>
 	</resultMap>
 	
 	<!-- 카테고리 -->
@@ -55,7 +55,7 @@
 		<result property="ratingAmount" column="RATING_AMOUNT"/>
 		<result property="proStatus" column="PRO_STATUS"/>
 		
-		<association property="category" column="proCateResultMap"/>
+		<association property="category" resultMap="proCateResultMap"/>
 		
 		<collection property="proImgList" resultMap="proImgResultMap"/>
 	</resultMap>
@@ -104,74 +104,71 @@
 		<result property="pAnswer" column=""/>
 		<result property="pAnswerDate" column=""/>
 		
-		<association property="user" column="userResultMap"/>
-		<association property="product" column="productResultMap"/>
+		<association property="user" resultMap="userResultMap"/>
+		<association property="product" resultMap="productResultMap"/>
 	</resultMap>
 	
+	<!-- 모든 상품 조회 -->
 	<select id="selectProductList" resultMap="productResultMap">
-		SELECT /* com.mgstore.product.model.dao.ProductDAO#selectProductList() */
-               A.RNUM
-             , A.PRO_ID
-             , A.PCATE_ID
-             , D.PCATE_NAME
-             , A.PRO_TITLE
-             , A.PRICE
-             , A.DELICERY_FEE
-             , A.PRO_AMOUNT
-             , A.PRO_CONTENT
-             , A.PRO_POINT
-             , A.PRO_DATE
-             , A.RATING_SUM
-             , A.RATING_COUNT
-             , A.PRO_STATUS
-          FROM (SELECT ROWNUM RNUM
-			             , B.PRO_ID
-			             , B.PCATE_ID
-			             , B.PRO_TITLE
-			             , B.PRICE
-			             , B.DELICERY_FEE
-			             , B.PRO_AMOUNT
-			             , B.PRO_CONTENT
-			             , B.PRO_POINT
-			             , B.PRO_DATE
-			             , B.RATING_SUM
-			             , B.RATING_COUNT
-			             , B.PRO_STATUS
-                  FROM (SELECT C.PRO_ID
-				             , C.PCATE_ID
-				             , C.PRO_TITLE
-				             , C.PRICE
-				             , C.DELICERY_FEE
-				             , C.PRO_AMOUNT
-				             , C.PRO_CONTENT
-				             , C.PRO_POINT
-				             , C.PRO_DATE
-				             , C.RATING_SUM
-				             , C.RATING_COUNT
-				             , C.PRO_STATUS
-	                          FROM PRODUCT C
-                        <if test="searchCondition == 'category'">
-	      				  JOIN PRO_CATE D ON(C.PCATE_ID = D.PCATE_ID)
-    					</if>
-    					<where>
-							<if test="searchCondition == 'category'">
-	           				   D.PCATE_NAME = #{ searchValue }
-							</if>
-							<if test="searchCondition == 'title'">
-	           				   C.PRO_TITLE LIKE '%' || #{ searchValue } || '%' 	
-							</if>
-	       				   AND C.PRO_STATUS = 'Y'
-    					</where>
-                         ORDER BY C.PRO_ID DESC
-                        ) B
-                  <![CDATA[
-                  WHERE ROWNUM <= #{ endRow }
-                  ]]>
-               ) A
-          JOIN PRO_CATE D ON (A.PCATE_ID = D.PCATE_ID)
-         WHERE A.RNUM >= #{ startRow }     
-         ORDER BY A.RNUM 
+		SELECT
+			  PRO_ID
+			, PCATE_ID
+			, PRO_TITLE
+			, PRICE
+			, DELIVERY_FEE
+			, PRO_AMOUNT
+			, PRO_CONTENT
+			, PRO_POINT
+			, PRO_DATE
+			, RATING_SUM
+			, RATING_AMOUNT
+			, PRO_STATUS
+		  FROM PRODUCT
 	</select>
+	
+	<!-- 현재 파는 상품 조회 -->
+	<select id="selectSellingProductList" resultMap="productResultMap">
+		SELECT
+			  PRO_ID
+			, PCATE_ID
+			, PRO_TITLE
+			, PRICE
+			, DELIVERY_FEE
+			, PRO_AMOUNT
+			, PRO_CONTENT
+			, PRO_POINT
+			, PRO_DATE
+			, RATING_SUM
+			, RATING_AMOUNT
+			, PRO_STATUS
+		  FROM PRODUCT
+		 WHERE PRO_STATUS='Y'
+	</select>
+	
+	
+	<insert id="insertProduct" parameterType="com.mgstore.product.model.dto.ProductDTO">
+		INSERT
+		  INTO PRODUCT
+		(
+		  PRO_ID
+		, PCATE_ID
+		, PRO_TITLE
+		, PRICE
+		, PRO_AMOUNT
+		, PRO_CONTENT
+		, PRO_STATUS
+		)
+		VALUES
+		(
+		  SEQ_PRO_ID.NEXTVAL
+		, #{ proCateCode }
+		, #{ proTitle }
+		, #{ price }
+		, #{ proAmount }
+		, #{ proContent }
+		, #{ proStatus }
+		)
+	</insert>
 	
   
 </mapper>

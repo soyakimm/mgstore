@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,6 +117,13 @@
                         </ul>
                     </li>
                     
+<%-- 관리자 테스트 가능한 경우 실행하기 -->            
+<%--                     <c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }"> --%>
+						<div class="proAdminUrl">
+	                        <button class="proAdmin" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin'">상품관리</button>
+	                    </div>
+<%-- 					</c:if> --%>
+                    
                 
                 </ul>
             </div>  
@@ -126,7 +134,7 @@
         <!-- 상품 목록 헤더 -->
         <div id="catalog-page" class="catalog-page">
             <div class="catalog-title">
-                <span class=title1><h3>스토어</h3></sp>
+                <span class=title1><h3>스토어</h3></span>
                 <div class="catalog-sort-name">
                     <div class="sort-name-show">
                         <button type="button" onclick="link">정렬</button>
@@ -148,13 +156,13 @@
             <div class="goods-grid-list">
                 <div class="goods-grid-item">
                     <div class="goods-thumbnail">
-                        <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" ></a>
+                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" ></a>
                     </div>
                     <div class="goods-desc-category">
                         <a href="#"><h4>소카테고리명</h4></a>
                     </div>
                     <div class="goods-desc-name">
-                        <a href="#"><h3>멍개상점 상품명</h3></a>
+                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><h3>멍개상점 상품명</h3></a>
                     </div>
                     <div class="goods-desc-price">
                         <span class="num">1,000</span>원
