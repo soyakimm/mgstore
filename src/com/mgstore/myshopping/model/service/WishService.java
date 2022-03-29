@@ -30,10 +30,16 @@ public class WishService {
 	}
 
 	/*위시리스트 삭제*/
-	public int deleteWishList(ProLikeDTO proList) {
+	public int deleteWishList(ProLikeDTO product) {
 		SqlSession session = getSqlSession();
 		
-		int result = myshoppingDAO.deleteWishList(session, proList);
+		int result = myshoppingDAO.deleteWishList(session, product);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
 				
 		session.close();
 		

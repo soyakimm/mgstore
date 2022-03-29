@@ -9,7 +9,7 @@
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="net.sf.log4jdbc.DriverSpy"/>
-				<property name="url" value="jdbc:log4jdbc:oracle:thin:@192.168.110.3:1521:xe"/>
+				<property name="url" value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
 				<property name="username" value="C##MGSTORE"/>
 				<property name="password" value="MGSTORE"/>
 			</dataSource>
@@ -22,14 +22,12 @@
 		<mapper resource="com/mgstore/notice/model/dao/NoticeDAO.xml"/>
 		<mapper resource="com/mgstore/product/model/dao/ProductDAO.xml"/>
 		<mapper resource="com/mgstore/myshopping/model/dao/MyshoppingDAO.xml"/>
-	  	<mapper resource="com/mgstore/community/model/dao/CommunityDAO.xml"/> 
+	  <mapper resource="com/mgstore/community/model/dao/CommunityDAO.xml"/> 
 		<mapper resource="com/mgstore/event/model/dao/EventDAO.xml"/>
 		<mapper resource="com/mgstore/cart/model/dao/CartDAO.xml"/>
-
+		<mapper resource="com/mgstore/payment/model/dao/PaymentDAO.xml"/>
     
-		<!-- 
-		<package name="com.mgstore.user.model.dao"/>
-		 -->
+
 	</mappers>
 
 	

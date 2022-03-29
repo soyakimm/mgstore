@@ -122,7 +122,7 @@
                     </li>
                 </ul>
                 <div>
-                    <button type="submit" id="regist-button" class="regist-button" disabled>
+                    <button type="button" id="regist-button" class="regist-button" disabled>
                         <span>SIGN UP</span>
                     </button>
                 </div>
@@ -165,6 +165,7 @@
 			    			$("#checkIdMsg").text("");
 			    			$("#userId").css({"background-color": "#f5742f", "color": "#fff"});
 			    			$("#regist-button").attr("disabled", false);
+			    			$("#regist-button").attr("type", "submit");
 			    		}
 		    		}
     			},
@@ -189,6 +190,7 @@
     		} else {
     			console.log('true');
     			$("#checkEnteredPwdMsg").text("");
+    			$("#regist-button").attr("disabled", false);
     		}
     		
     		/* 2-2. 아이디와 연속 일치 여부 검사 */
@@ -208,6 +210,7 @@
     			$("#regist-button").attr("disabled", true);
     		} else {
     			$("#checkConfirmedPwdMsg").text("");
+    			$("#regist-button").attr("disabled", false);
     		}
     	});
     });
@@ -226,6 +229,7 @@
     	return count > 0 ? true : false;    	
     }
     </script>
+    
     <!-- 비밀번호 숨기기/보이기 -->
     <script>
     $(document).ready(function(){
@@ -268,6 +272,7 @@
     		} else {
     			console.log('true');
     			$("#checkNameMsg").text("");
+    			$("#regist-button").attr("disabled", false);
     		}
     	});
     });
@@ -288,6 +293,7 @@
     		} else {
     			console.log('true');
     			$("#checkNicknameMsg").text("");
+    			$("#regist-button").attr("disabled", false);
     		}
     		
     		$.ajax({
@@ -316,7 +322,7 @@
 			    		} else {
 			    			$("#checkNicknameMsg").text("");
 			    			$("#nickname").css({"background-color": "#f5742f", "color": "#fff"});
-			    			$("#regist-button").attr("disabled", true);
+			    			$("#regist-button").attr("disabled", false);
 			    		}
 		    		}
     			},

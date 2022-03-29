@@ -16,6 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
+	<form name="paymentForm" method="post" action="${ pageContext.servletContext.contextPath }/payment/list">
 	<div class="payment wrapper">
 		<h1>주문/결제</h1>
 		<div class="payment-detail">
@@ -23,15 +24,15 @@
 				<span>주문상품</span>
 				<hr>
 				<table>
-				<c:forEach var="pay" items="${ paymentList }">
+				<c:forEach var="pay" items='${ paymentList }'>
 					<tr>
 						<td class="table-img">
 						<img src="../resource/로고_주황.png">
 						</td>
 						<td class="table-img-pro">
-							<div>강아지 뇸뇸</div>
+							<div>${ pay.proTitle }</div>
 							<li>수량 1개</li>
-							<div>30,000원</div>
+							<div>${ pay.price }원</div>
 						</td>
 					</tr>
 				</c:forEach>
@@ -42,15 +43,15 @@
 				<hr>
 				<table>
 					<tr>
-						<td>김멍개</td>
+						<td>${ loginUser.userName }</td>
 						<!-- 회원 이름 -->
 					</tr>
 					<tr>
-						<td>010-7777-8888</td>
+						<td>${ loginUser.phone }</td>
 						<!-- 회원 번호 -->
 					</tr>
 					<tr>
-						<td>kimmg@greedy.com</td>
+						<td>${ loginUser.email }</td>
 						<!-- 회원 이메일 -->
 					</tr>
 				</table>
@@ -69,26 +70,30 @@
 					</tr>
 					<tr>
 						<td class="table-row">
-							주소<span>*</span>
+							우편번호<span>*</span>
 						</td>
 						<td>
-							<input type="text" class="input-layer1" id="postalcode" name="postalcode" readonly
-								placeholder="우편번호"></input>
+							<input type="text" class="postcodify_postcode5" name="zipCode"
+								readonly></input>
 						</td>
 						<td>
-							<input type="submit" class="input-button" onclick="DaumPostcode()"
-								value="주소검색"></input>
+							<button type="button" class="input-button" id="postcodify_search_button"
+								value="주소검색">주소검색</button>
 						</td>
 					</tr>
 					<tr>
-						<td class="table-row"></td>
-						<td colspan="2"><input type="text" class="input-layer2"
-							id="address" name="address" readonly placeholder="주소"></input></td>
+						<td class="table-row">
+						도로명주소
+						</td>
+						<td colspan="2"><input type="text" class="postcodify_address"
+							id="address1" name="address1" readonly></input></td>
 					</tr>
 					<tr>
-						<td class="table-row"></td>
-						<td colspan="2"><input type="text" class="input-layer2"
-							id="details" name="details" placeholder="나머지주소"></input></td>
+						<td class="table-row">
+						상세주소
+						</td>
+						<td colspan="2"><input type="text" class="postcodify_details"
+						name="address2"></input></td>
 					</tr>
 					<tr>
 						<td class="table-row">연락처1<span>*</span></td>
@@ -107,6 +112,7 @@
 					</tr>
 				</table>
 			</div>
+			<!-- 보유 포인트 부분 보류....
 			<div class="detail-name">
 				<span>적립금</span>
 				<hr>
@@ -114,34 +120,42 @@
 					<tr>
 						<td class="table-row">보유 포인트(원)</td>
 						<td class="input-layer3">1,234</td>
-						<!--회원 보유포인트 보여주기-->
 					</tr>
 					<tr>
 						<td class="table-row">사용 포인트(원)</td>
 						<td><input type="text" class="input-layer1" name="" value=""
-							placeholder="1,000"></input></td>
+							placeholder="0"></input></td>
 					</tr>
-				</table>
+				</table>  
 			</div>
+			-->
 			<div class="detail-name">
 				<span>최종 결제금액</span>
 				<hr>
 				<table>
 					<tr>
 						<td class="table-row">총 상품 금액</td>
-						<td class="input-layer4">39,900원</td>
+						<td class="input-layer4">원</td>
 					</tr>
 					<tr>
 						<td class="table-row">배송비</td>
-						<td class="input-layer4">2,500원</td>
+						<c:choose>
+						<c:when test=" eq '0'">
+						<td class="input-layer4">0원</td>
+						</c:when>
+						<c:otherwise>
+						<td class="input-layer4">원</td>
+						</c:otherwise>
+						</c:choose>
 					</tr>
+					<!--  포인트 보류
 					<tr>
 						<td class="table-row">사용 포인트</td>
 						<td class="input-layer4">1,000원</td>
-					</tr>
+					</tr>-->
 					<tr>
 						<td class="table-row">총 결제금액</td>
-						<td class="input-layer4"><b>41,400원</b></td>
+						<td class="input-layer4"><b>원</b></td>
 					</tr>
 				</table>
 			</div>
@@ -160,24 +174,18 @@
 				</table>
 			</div>
 			<div class="pay-inf">위 주문 내용을 확인하였으며 결제에 동의합니다.</div>
-			<button type="button" class="pay-request" onclick="" id="pay-request">
-				<div class="pay-request-text">주문하기</div>
-			</button>
+			<input type="button" class="pay-request pay-request-text" id="pay-request" value="주문하기">
+				
 		</div>
 	</div>
+	</form>
 </body>
 
-<!-- 주소 API -->
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function DaumPostcode() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    document.getElementById('postalcode').value = data.zonecode;
-                    document.getElementById('address').value = data.roadAddress;
-                }
-            }).open();
-        }
-    </script>
+<!-- jQuery와 Postcodify를 로딩한다 -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	
+	<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+	<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
 
 </html>

@@ -19,18 +19,18 @@ public class wishDeleteSetvlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		
 		System.out.println("proId : " + proId);
-		System.out.println("userId" + userId);
+		System.out.println("userId : " + userId);
 		
-		ProLikeDTO proList = new ProLikeDTO();
+		ProLikeDTO product = new ProLikeDTO();
 		
-		proList.setProId(proId);
-		proList.setUserId(userId);
+		product.setProId(proId);
+		product.setUserId(userId);
 		
-		System.out.println("proList: " + proList);
-		//뭔가 처음부터 안넘어간거같아여 ㅠㅠㅠ 저 proId가... 밑에 삭제실패가 안떠서ㅠㅠ
+		System.out.println("proList: " + product);
+		
 		WishService wishService = new WishService();
 		
-		int result = wishService.deleteWishList(proList);
+		int result = wishService.deleteWishList(product);
 		
 		String path = "";
 		

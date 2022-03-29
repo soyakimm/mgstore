@@ -182,3 +182,28 @@
     border: 2px solid #f5742f;
     color: #f5742f;
   }
+
+.postcodify_postcode5 {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+}
+
+.postcodify_address {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+}
+
+.postcodify_details {
+    width: 350px;
+    height: 40px;
+    font-family: 'Noto Sans KR';
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+}
+
