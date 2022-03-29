@@ -14,9 +14,9 @@ public class MyshoppingDAO {
 		return session.selectList("MyshoppingDAO.selectWishList");
 	}
 
-	public int deleteWishList(SqlSession session, ProLikeDTO proList) {
+	public int deleteWishList(SqlSession session, ProLikeDTO product) {
 		
-		return session.delete("MyshoppingDAO.deleteWishList");
+		return session.delete("MyshoppingDAO.deleteWishList",product);
 	}
 
 }

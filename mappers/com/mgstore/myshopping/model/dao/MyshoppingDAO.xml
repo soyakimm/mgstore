@@ -25,11 +25,11 @@
 	<result property="ratingAmount" column="RATING_AMOUNT"/>
 	<result property="proStatus" column="PRO_STATUS"/>
 	
-	<association property="ProImgList" resultMap="ProImgResultMap"></association>
+	<!--  <association property="ProImgList" resultMap="ProImgResultMap"></association> -->
 	<association property="category" resultMap="ProCateResultMap"></association>
 	</resultMap>
 	
-	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="ProImgResultMap">
+	<!-- <resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="ProImgResultMap">
 	<id property="PImgId" column="PIMG_ID"/>
 	<id property="proId" column="PRO_ID"/>
 	<result property="PImgOrgName" column="PIMG_ORGNAME"/>
@@ -37,7 +37,7 @@
 	<result property="PImgTmbName" column="PIMG_TMBNAME"/>
 	<result property="PImgTmbYN" column="PIMG_TMB_YN"/>
 	<result property="PImgSize" column="PIMG_DATE"/>
-	</resultMap>
+	</resultMap> -->
 	
 	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
 		<id property="userId" column="USER_ID"/>
@@ -76,7 +76,8 @@
 	
 	<!-- 위시리스트(좋아요) 삭제 -->
 	<delete id="deleteWishList">
-	DELETE PRO_LIKE
+	DELETE 
+	  FROM PRO_LIKE
 	 WHERE PRO_ID = #{ proId }
 	   AND USER_ID = #{ userId }
 	</delete>
