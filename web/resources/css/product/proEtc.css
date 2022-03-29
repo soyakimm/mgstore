@@ -1,0 +1,344 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html{ font-size: 100%; }
+
+a { 
+  text-decoration: none;
+  color: black; }
+a:visited { text-decoration: none; }
+a:active { color: #F5742F; }
+
+img { max-width: 100%; }
+
+li, ul { 
+  list-style-type: none;
+  color: black;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1em;
+  color: black;
+  width: 100%;
+  height: 100%;
+  
+}
+
+a:hover, button:hover{
+  cursor: pointer;
+  color: #F5742F
+  !important
+}
+
+button{
+    color: black;
+}
+
+
+.orderBtn:hover{
+	color: white !important;
+}
+
+.likeBtn{
+	cursor: pointer;
+}
+
+.proReview-page, .proAsked-page, .footer-notice-page {
+    max-width: 1400px ;
+    margin: 0 auto ;
+}
+
+
+/* header ----- */
+.proHeader-title, .proFooter-title{
+    font-family: 'GmarketSansMedium';
+    margin: 8% 0 0 1%;
+}
+
+.proReview-page-header, .notice-page-header {
+    border-bottom: 2px solid black;
+}
+
+.proAsked-page-header{
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 20px 30px;
+}
+
+.user-review, .user-asked{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 2% 3%;
+}
+
+.header-left{
+    display: flex;
+    align-content: center;
+}
+
+.user-review-header, .user-asked-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.askBtn{
+    background-color: white;
+    color: #F5742F; 
+    font-size: 0.9em;
+    font-weight: bold;
+    border: 2px solid #F5742F;
+    padding: 8px 2px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    width: 120px;
+}
+
+.askBtn:hover {
+    background-color: #F5742F;
+    color: white !important;
+  }
+
+  .askBtn::after{
+    cursor: pointer;
+  }
+
+
+/* 바디 ----- */
+.user-review-body, .user-asked-body{ 
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user-img img{
+    border: 1px solid #a1a1a1;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.user-title{
+    display: flex;
+    align-items: center;
+}
+
+.user-name{ font-weight: bold; }
+
+.sysdate{
+    align-content: right;
+    color: #767676;
+}
+
+.user-rating{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+.goods-stars{
+    margin-top: 10px;
+  }
+.star{
+    width: 20px;
+    height: 20px;
+  }
+
+.pet-info{
+      color: #767676;
+  }
+
+.pro-review, .pro-asked{
+      border-bottom: 1px solid #cdcdcd;
+  }
+
+.review-img{
+      padding: 1%;
+  }
+.review-img img{
+    border-radius: 15px;
+  }
+
+.review-content, .asked-content{
+      margin-left: 1%;
+      direction: ltr;
+  }
+
+.ans{
+    margin-top: 2%;
+    background: #F7F6F7;
+    padding: 30px 1000px 30px 30px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.Q, .A{
+    font-weight: bolder;
+    color: #F5742F;
+}
+
+
+
+/* 상품문의 팝업 ------ */
+.proAskedUser-body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.asked-header{
+  font-family: 'GmarketSansBold';
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #F5742F;
+}
+
+.asked-header>h3{
+  padding-left: 20px;
+}
+.close{
+  padding-right: 20px;
+}
+
+.asked-body{
+  background-color: white;
+  background-size:cover;
+  height: 50%;
+}
+
+.body-area{
+  padding: 5%;
+}
+
+textarea{
+  width: 100%;
+  height: 250px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  resize: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  box-sizing: border-box;
+}
+
+.button-area{
+  display: flex;
+  justify-content: center;
+  margin: 7%;
+}
+
+
+.lock-area>input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+.lock-area>input:checked {
+  border: 8px solid #F5742F;
+}
+
+input{
+  cursor: pointer;
+}
+
+.button-area>.closeBtn{
+  background-color: white;
+  color: #F5742F;
+  font-size: 1em;
+  font-weight: bold;
+  border: 2px solid #F5742F;
+  padding: 1.2% 8%;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.button-area>.inputBtn{
+  background-color: #F5742F;
+  color: white; 
+  font-size: 1em;
+  font-weight: bold;
+  border: 2px solid #F5742F;
+  padding: 1% 8%;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.lock-area{
+  margin-top: 2%;
+}
+
+.asked-footer{
+  background: #F7F6F7;
+  height: 100%;
+  background-size: cover;
+}
+
+.asked-footer-notice{
+  padding: 3% 4% 5%;
+  font-size: 0.9em;
+}
+
+.notice-content{
+  color:#767676;
+}
+
+/* proDetail footer ----- */
+.notice1, .notice2{
+  margin: 6% 0;
+}
+
+.notice-page-body{
+  border-bottom: 2px solid black;
+}
+
+.notice1-title, .notice2-title{
+  font-weight: bold;
+}
+
+.notice1-content, .notice2-content{
+  color: #767676;
+}

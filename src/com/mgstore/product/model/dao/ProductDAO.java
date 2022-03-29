@@ -17,5 +17,14 @@ public class ProductDAO {
 		return session.selectList("ProductDAO.selectProductList");
 	}
 
+	public int incrementProductCount(SqlSession session, int no) {
+		
+		return session.update("ProductDAO.incrementProductCount", no);
+	}
+
+	public ProductDTO selectOneThumbnailProduct(SqlSession session, int no) {
+		
+		return session.selectOne("ProductDAO.selectOneThumbnailProduct", no);
+	}
 }
 

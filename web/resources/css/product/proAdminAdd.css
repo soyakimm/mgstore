@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html{ font-size: 100%; }
+
+a { 
+  text-decoration: none;
+  color: black; }
+a:visited { text-decoration: none; }
+a:active { color: #F5742F; }
+
+img { max-width: 100%; }
+
+li, ul { 
+  list-style-type: none;
+  color: black;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1em;
+  color: black;
+}
+
+a:hover, button:hover{
+  cursor: pointer;
+  color: #F5742F
+  !important
+}
+
+button{
+  font-size: 1em;
+  background-color:transparent;
+  border: 0;
+  outline: 0;;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.proAdminAdd-page{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* header ----- */
+.proAdminAdd-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 1% 1%;
+    align-items: center;
+}
+
+.proAdminAdd-title{
+    font-family: 'GmarketSansBold';
+    font-size: 1.4em;
+}
+
+.proAdminAdd-button>button{
+    background-color: white;
+    border: 2px solid #F5742F;
+    color: #F5742F;
+    font-weight: bold;
+    margin: 0 2px;
+    border-radius: 10px;
+    padding: 6px 25px;
+}
+
+.proAdminAdd-button>button:active{
+    background-color:#F5742F;
+    color: white !important;
+}
+
+table{
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 15%;
+    border-top: 1px solid #767676;
+    border-collapse: collapse;
+    margin-left: auto; margin-right: auto;
+}
+
+td, th{
+    border-bottom: 1px solid #767676;
+}
+
+th:first-child, td:first-child {
+    border-left: none;
+  }
+
+td{
+    width: 43%;
+    padding: 10px;
+}
+
+th{
+    background-color: #cdcdcd;
+}
+
+#tid {
+    border-right: 1px solid #767676;
+}
+
+th>span{
+  color:#F5742F;
+}
+
+input, textarea{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.thumbnail-area, .detail-area{
+  border: 1px solid #cdcdcd;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+
+
+
+

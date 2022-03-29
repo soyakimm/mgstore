@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CartDAO">
+	
+	<!-- 장바구니 -->
+	<resultMap type="com.mgstore.cart.model.dto.CartDTO" id="cartResultMap">
+		<result property="cartAmount" column="CART_AMOUNT"/>
+		
+		<association property="user" resultMap="userResultMap"/>
+		<association property="product" resultMap="productResultMap"/>
+	</resultMap>
+	
+	<!-- 유저 -->
+	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
+		<id property="userId" column="USER_ID"/>
+		<result property="userPwd" column="USER_PWD"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="agreement" column="AGREEMENT"/>
+		<result property="role" column="ROLE"/>
+		<result property="userStatus" column="USER_STATUS"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modDate" column="MOD_DATE"/>
+	</resultMap>
+	
+	<!-- 상품 -->
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="productResultMap">
+		<id property="proId" column="PRO_ID"/>
+		<result property="pCateId" column="PCATE_ID"/>
+		<result property="proTitle" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="deliveryFee" column="DELIVERY_FEE"/>
+		<result property="proAmount" column="PRO_AMOUNT"/>
+		<result property="proContent" column="PRO_CONTENT"/>
+		<result property="proPoint" column="PRO_POINT"/>
+		<result property="proDate" column="PRO_DATE"/>
+		<result property="ratingSum" column="RATING_SUM"/>
+		<result property="ratingAmount" column="RATING_AMOUNT"/>
+		<result property="proStatus" column="PRO_STATUS"/>
+		
+		<association property="category" resultMap="proCateResultMap"/>
+	</resultMap>
+	
+	<resultMap type="com.mgstore.product.model.dto.ProCateDTO" id="proCateResultMap">
+		<id property="pCateId" column="PCATE_ID"/>
+		<result property="pCateName" column="PCATE_NAME"/>
+		<result property="pCatePId" column="PCATE_P_ID"/>
+	</resultMap>
+	
+	
+
+</mapper>
