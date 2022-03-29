@@ -23,9 +23,15 @@ public class CommunityDAO {
 		return session.selectOne("CommunityDAO.selectTotalCount", searchMap);
 	}
 
-	public List<CommunityWriteDTO> selectCommunityList(SqlSession session, SelectCriteria selectCriteria) {
+	public List<CommunityWriteDTO> selectWriteList(SqlSession session, SelectCriteria selectCriteria) {
 		
 		return session.selectList("CommunityDAO.selectWriteList", selectCriteria);
+	}
+	
+	/*썸네일이 존재하는 게시물 삽입*/
+	public int insertThumbnailContent(SqlSession session, CommunityWriteDTO thumbnail) {
+		
+		return session.insert("CommunityDAO.insertThumbnailContent", thumbnail);
 	}
 
 }

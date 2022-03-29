@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link href="${ pageContext.servletContext.contextPath }/resources/css/community/communityMain.css" rel="stylesheet">
+		<link href="${ pageContext.servletContext.contextPath }/resources/images/community" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -18,12 +19,19 @@
   <div class="frame-1 screen">
     <div class="overlap-group1">
     <!--View Detail 버튼-->
-    <a href="#">
+    <a href="${ pageContext.servletContext.contextPath }/community/freelist">
       <div class="overlap-group5">
-        <div class="view-detail web-font1">View Detail</div>
+        <div class="view-detail web-font1" href="${ pageContext.servletContext.contextPath }/community/freelist">View Detail</div>
       </div>
     </a>
-
+	
+	<!-- 멍개일상 -->
+	<a href="${ pageContext.servletContext.contextPath }/community/daily">
+      <div class="overlap-group5">
+        <div class="view-detail web-font1" href="${ pageContext.servletContext.contextPath }/community/daily">멍개일상</div>
+      </div>
+    </a>
+	
     </div>
     <div class="text-container">
       <div class="text-1-1 web-font2">내가 좋아요&nbsp;&nbsp;누른 페이지</div>
