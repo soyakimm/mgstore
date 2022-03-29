@@ -24,6 +24,19 @@ public class EventDAO {
 	public static int insertAttachment(SqlSession session, EveAttachmentDTO file) {
 		return session.insert("EventDAO.insertAttachment", file);
 	}
+
+	// 이벤트 게시글 조회수 
+	public static int incrementEventCount(SqlSession session, int eveId) {
+		
+		return session.update("EventDAO.incrementEventCount", eveId);
+		
+	}
+
+	// 이벤트 게시글 select
+	public static EventDTO selectOneThumbnailBoard(SqlSession session, int eveId) {
+		
+		return session.selectOne("EventDAO.selectOneThumbnailEvent", eveId);
+	}
 	
 	
 }

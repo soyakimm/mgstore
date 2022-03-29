@@ -1,0 +1,454 @@
+@charset "UTF-8";
+
+/*노토산스 폰트*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * {
+ font-family: 'Noto Sans KR', sans-serif;
+}
+/*지마켓 폰트*/
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.group {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/*공통 css*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: "GmarketSansBold", sans-serif;
+    vertical-align: baseline;
+}
+
+.container-wrapper .notice-container {
+    padding-top: 30px;
+    position: relative;
+}
+
+.container-wrapper, .headerInner{
+    width: 1200px !important;
+    margin: 0 auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: auto;
+    padding: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    border: 0;
+    font-size: 100%;
+    font-family: "Noto" sans-serif;
+    vertical-align: baseline;
+}
+
+/*공통부분 CSS*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    color: black;
+    text-align: left;
+    font-weight: 400;
+}
+
+.main-content {
+    width:100%;
+    position: relative;
+}
+
+.side-title {
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(228, 228, 228, 0.5);
+}
+
+.side-title p {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 300;
+    color: #1E262C;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+
+p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.side-title h2 {
+    display: flex;
+    margin-bottom: 5px;
+    color: #1E262C;
+    margin-bottom: 5px;
+    align-items: center;
+    font-weight: bold;
+}
+
+h2 {
+    letter-spacing: inherit;
+}
+
+.side-title h2 span {
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 10px;
+    color: gray;
+    border: 1px solid #FFBB00;
+    border-radius: 99px;
+    line-height: 15px;
+    letter-spacing: 0;
+}
+
+
+ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ol, ul {
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+}
+
+.side-title ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.side-title ul li {
+    float: left;
+    margin-right: 21px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    position: relative;
+    color: rgba(30, 38, 44, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+.side-title ul li img {
+    width: 14px;
+    margin-right: 5px;
+}
+
+/* img 공통 부분*/
+img {
+    vertical-align: middle;
+}
+
+.side-title ul li span:first-of-type {
+    margin-right: 5px;
+}
+
+.side-title ul li {
+    font-weight: 300;
+    line-height: 18px;
+    color: rgba(30, 38, 44, 0.5);
+}
+
+.side-title ul li.right-block {
+    float: right;
+}
+
+/* watching 눈모양 아이콘 css */
+.side-title ul li{
+    margin-right: 21px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    position: relative;
+    color: rgba(30, 38, 44, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+/* watching 눈모양 아이콘 css */
+.side-title ul li img {
+    width: 14px;
+    margin-right: 5px;
+}
+
+/* 조회수 <span>*/
+.side-title ul li span:first-of-type {
+    margin-right: 5px;
+}
+
+.side-title ul li.right-block {
+    float: right;
+}
+
+.side-title ul li {
+    margin-right: 21px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    position: relative;
+    color: rgba(30, 38, 44, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+.side-title ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.eve-content-section {
+    text-align: center;
+    
+}
+
+
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.eve-content {
+    justify-content: center !important;
+
+}
+
+area:-webkit-any-link {
+    cursor: pointer;
+}
+
+area {
+    display: inline;
+}
+
+.image-section {
+    text-align: center;
+}
+
+
+.sub-section {
+    font-size: 14px;
+    margin: 0 auto 30px;
+}
+
+.text-section {
+    margin: 30px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #48484d;
+}
+
+.report-section {
+    margin-top: 60px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.report-section .btn-wrap {
+    float: right;
+}
+
+.report-section .btn-wrap:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.report-section:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 관리자용 이벤트 게시글 수정, 삭제 버튼 css */
+.eve-modify-btn {
+    position: relative;
+    left: 80;
+    right: 90;
+    width: 60px;
+    height: 25px;
+
+    background: #F7F7F7;
+    border: 1px solid #F5742F;
+    box-sizing: border-box;
+    border-radius: 0px;
+    text-align: center;
+    color: #48484d;
+}
+
+.eve-delete-btn {
+    position: relative;
+    left: 50;
+    right: 50;
+    width: 60px;
+    height: 25px;
+    
+    background: #F7F7F7;
+    border: 1px solid #F5742F;
+    box-sizing: border-box;
+    border-radius: 0px;
+    text-align: center;
+    color: #48484d;
+    
+}
+
+
+/* 댓글 css */
+.comment-section .comment-title {
+    margin-bottom: 10px;
+    display: block;
+    color: #1E262C;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.comment-section .comment-title span {
+    color: #FFBB00;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.comment-section .comment-write {
+    position: relative;
+    width: 100%;
+    border: 1px solid #E2E2E2;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.comment-section .comment-write:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+.comment-section .comment-write textarea {
+    word-break: break-word;
+    word-wrap: break-word;
+    width: calc(100% - 114px);
+    height: 80px;
+    border: none;
+    background: #fff;
+    color: #48484d;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 14px 10px 10px;
+}
+
+
+
+
+/* 댓글 등록 버튼*/
+.comment-section .comment-write .submit {
+    float: right;
+    width: 64px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    background: #FF9500;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+
+button [type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+}
+
+
+button, input {
+    overflow: visible;
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.comment-section .comment-write:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.comment-section .text-comment > ul > li {
+    padding: 20px 0;
+}
+
+.comment-section .text-comment > ul > li .profile-img {
+    width: 50px;
+    float: left;
+    cursor: pointer;
+}
+
+.comment-section .text-comment > ul > li .profile-img .img-circle {
+    cursor: pointer;
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url(../resources/Logo.PNG) center center no-repeat;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.comment-section .text-comment > ul > li .comment-wrapper {
+    float: right;
+    width: calc( 100% - 50px);
+    /* padding-left: 5px; */
+}
+
+
+.comment-section .text-comment > ul > li:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.comment-section .text-comment > ul > li {
+    padding: 20px 0;
+}
+
+.comment-section .pageing-bar {
+    margin-bottom: 40px;
+} 
+
+

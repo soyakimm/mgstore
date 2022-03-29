@@ -19,6 +19,8 @@
 		
 		<association property="user" resultMap="userResultMap"/>
 		<association property="category" resultMap="categoryResultMap"/>
+		
+		<collection property="attachmentList" resultMap="attachmentResultMap"/>
 	</resultMap>
 	
 	
@@ -73,7 +75,7 @@
 		<result property="eveSavePath" column="EVE_SAVE_PATH"/>
 		<result property="eveFileType" column="EVE_FILE_TYPE"/>
 		<result property="eveImgStatus" column="EVE_IMG_STATUS"/>
-		<result property="evePath" column="EVE_PATH"/>
+		<result property="evethumbNailPath" column="EVE_THUMBNAIL_PATH"/>
 		</resultMap>	 
 
 
@@ -131,7 +133,7 @@
         VALUES 
         (
           SEQ_EVE_IMG_NO.NEXTVAL <!-- 이벤트 PK -->
-        , EVE_ID_SEQ.NEXTVAL <!-- EVE_ID의 PK이자 FK -->
+        , #{ eveId } <!-- EVE_ID의 PK이자 FK -->
         , #{ eveOriginName }
         , #{ eveSavedName }
         , #{ eveSavePath }
@@ -175,10 +177,36 @@
 	UPDATE
 		  EVENT A
 	   SET A.EVE_COUNT = (SELECT B.EVE_COUNT
-	     					  FORM EVENT B
-	     					 WHERE B.EVE_ID = #{eveId}
+	     					  FROM EVENT B
+	     					 WHERE B.EVE_ID = #{ eveId }
 	     				    ) + 1
 	  WHERE A.EVE_ID = #{ eveId }
 	</update>
+	
+	<!-- 이벤트 게시판 썸네일  -->
+	<select id="selectOneThumbnailEvent" resultMap="thumbnailEventResultMap">
+		SELECT /*EventDAO#selectOneThumbnailBoard() */
+               A.EVE_ID
+             , A.EVE_TITILE
+             , A.EVE_CONTENT
+             , B.EVE_CATE_NAME
+             , A.USER_ID
+             , A.EVE_COUNT
+             , A.EVE_START<!-- 이벤트 시작일 -->
+        	 , A.EVE_END<!-- 이벤트 종료일 -->
+             , D.EVE_IMG_NO
+             , D.EVE_ORIGIN_NAME
+             , D.EVE_SAVED_NAME
+             , D.EVE_SAVE_PATH
+             , D.EVE_FILE_TYPE
+             , D.EVE_THUMBNAIL_PATH
+          FROM EVENT A <!-- join해서 행의 개수는 attachemnet 개수에 따라 달라진다. -->
+          JOIN EVE_CATEGORY B ON (A.EVE_CATE_CODE = B.EVE_CATE_CODE)
+          <!-- JOIN TBL_USER C ON (A.BOARD_WRITER_MEMBER_NO = C.MEMBER_NO) -->
+          JOIN EVENT_ATTACHMENT D ON (A.EVE_ID = D.EVE_ID)
+         WHERE A.EVE_STATUS = 'Y'
+         <!-- AND D.EVE_IMG_STATUS = 'Y'  -->  
+           AND A.EVE_ID =  #{ eveId }
+	</select>
 
 </mapper>
