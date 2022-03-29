@@ -4,37 +4,37 @@ import java.sql.Date;
 
 public class EveCategoryDTO {
 	
-	private int evecatecode; // 카테고리 코드 (pk)
-	private String evecatename; // 카테고리명(진행중, 종료)
+	private int eveCateCode; // 카테고리 코드 (pk)
+	private String eveCateName; // 카테고리명(진행중, 종료)
 
 	public EveCategoryDTO() {}
 
-	public EveCategoryDTO(int evecatecode, String evecatename) {
+	public EveCategoryDTO(int eveCateCode, String eveCateName) {
 		super();
-		this.evecatecode = evecatecode;
-		this.evecatename = evecatename;
+		this.eveCateCode = eveCateCode;
+		this.eveCateName = eveCateName;
 	}
 
-	public int getEvecatecode() {
-		return evecatecode;
+	public int getEveCateCode() {
+		return eveCateCode;
 	}
 
-	public void setEvecatecode(int evecatecode) {
-		this.evecatecode = evecatecode;
+	public void setEveCateCode(int eveCateCode) {
+		this.eveCateCode = eveCateCode;
 	}
 
-	public String getEvecatename() {
-		return evecatename;
+	public String getEveCateName() {
+		return eveCateName;
 	}
 
-	public void setEvecatename(String evecatename) {
-		this.evecatename = evecatename;
+	public void setEveCateName(String eveCateName) {
+		this.eveCateName = eveCateName;
 	}
 
 	@Override
 	public String toString() {
-		return "EveCategoryDTO [evecatecode=" + evecatecode + ", evecatename=" + evecatename + "]";
+		return "EveCategoryDTO [eveCateCode=" + eveCateCode + ", eveCateName=" + eveCateName + "]";
 	}
-	
+
 	
 }

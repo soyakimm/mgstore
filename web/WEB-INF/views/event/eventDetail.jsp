@@ -36,7 +36,8 @@
                     </ul>
                 </div><!--side-title-->
                 <div class="image-section">
-                <img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentResultMap[0].eveSavePath }${thumbnail.attachmentResultMap[0].eveSavedName}">
+                <img src="${ pageContext.servletContext.contextPath }${ thumbnail.eveSavePath }${ thumbnail.eveSavedName }">
+                <!--  <img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].eveSavePath }${thumbnail.attachmentList[0].eveSavedName}"> -->
                     <img src="${ thumbnail.eveFileType.BODY  }" name="evecontent">
                     <map name="eventmap" class="eve-content-section">
                         <ul>

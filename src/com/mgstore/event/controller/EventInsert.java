@@ -48,13 +48,13 @@ public class EventInsert extends HttpServlet {
 			int maxFileSize = 1024 * 1024 * 10;
 			String encodingType = "UTF-8";
 			
-			System.out.println("파일 저장 ROOT 경로 : " + rootLocation);
+			System.out.println("파일 저장 ROOT 경로 : " + rootLocation); //오류 안났었어
 			System.out.println("최대 업로드 파일 용량 : " + maxFileSize);
 			System.out.println("인코딩 방식 : " + encodingType);
 			
 			/*원본파일하고 썸네일사진하고 저장하는 폴더 생성*/
-			String fileUploadDirectory = rootLocation + "/resources/event/original/";
-			String thumbnailDirectory = rootLocation + "/resources/event/eventBanner/";
+			String fileUploadDirectory = rootLocation + "/resources/images/event/original/";
+			String thumbnailDirectory = rootLocation + "/resources/images/event/eventBanner/"; 
 			
 			File directory = new File(fileUploadDirectory);
 			File directory2 = new File(thumbnailDirectory);
@@ -72,7 +72,7 @@ public class EventInsert extends HttpServlet {
 			Map<String, String> parameter = new HashMap<>();
 			List<Map<String, String>> fileList = new ArrayList<>();
 			
-			System.out.println("파일 잘 담겨짐! 체크.. 제발 성공하게해주세요..");
+			System.out.println("파일 잘 담겨짐! 체크.. 제발 성공하게해주세요.."); 
 		
 		
 		/* 파일을 업로드할 시 최대 크기나 임시 저장할 폴더의 경로 등을 포함하기 위한 인스턴스이다. */
@@ -95,7 +95,7 @@ public class EventInsert extends HttpServlet {
         
 		
 		/* 위에서 출력해본 모든 item들을 다 처리할 것이다. */
-		for(int i = 0; i < fileItems.size(); i++) {
+		for(int i = 0; i < fileItems.size(); i++) { 
 			FileItem item = fileItems.get(i);	
 			
 			if(!item.isFormField()) {
@@ -132,14 +132,14 @@ public class EventInsert extends HttpServlet {
 			/* 이벤트 제목 배너사진과 이벤트 내용 이미지를 구분하고 썸네일도 생성한다. */
 			int width = 0;
 			int height = 0;
-			if("thumbnail".equals(filedName)) {
+			if("thumbnail".equals(filedName)) {  
 				fileMap.put("eveFileType", "TITLE");
 				
 				/* 썸네일로 변환 할 사이즈를 지정한다. */
 				width = 350;
 				height = 200;
 			} else {
-				fileMap.put("eveFileType", "BODY");
+				fileMap.put("eveFileType", "BODY"); 
 				
 				width = 120;
 				height = 100;
@@ -151,9 +151,9 @@ public class EventInsert extends HttpServlet {
 					.toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
 			
 			/* 나중에 웹서버에서 접근 가능한 경로 형태로 썸네일의 저장 경로도 함께 저장한다. */
-			fileMap.put("evethumbNailPath", "/resources/images/event/eventBanner" + randomFileName);
+			fileMap.put("evethumbNailPath", "/resources/images/event/eventBanner/" + randomFileName);
 			
-			fileList.add(fileMap);
+			fileList.add(fileMap); 
 			
 		}
 		

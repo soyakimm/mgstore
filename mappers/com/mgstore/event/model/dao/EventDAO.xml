@@ -7,13 +7,12 @@
 <resultMap type="com.mgstore.event.model.dto.EventDTO" id="basiceventResultMap">
 		<id property="eveId" column="EVE_ID"/>
 		<result property="categoryCode" column="EVE_CATE_CODE"/>
-		<result property="userId" column="USER_ID"/>
 		<result property="eveTitle" column="EVE_TITLE"/>
 		<result property="eveContent" column="EVE_CONTENT"/>
 		<result property="eveCreate" column="EVE_CREATE"/>
 		<result property="eveStart" column="EVE_START"/>
 		<result property="eveEnd" column="EVE_END"/>	
-		<result property="eveModDate" column="EVE_MOD_DATE"/>
+		<result property="eveModDate" column="EVE_MODDATE"/>
 		<result property="eveCount" column="EVE_COUNT"/>
 		<result property="eveStatus" column="EVE_STATUS"/>
 		
@@ -25,7 +24,7 @@
 	
 	
 <!-- 유저 -->	
-	<resultMap type="com.mgstore.admin.model.dto.UserDTO" id="userResultMap">
+	<resultMap type="com.mgstore.user.model.dto.UserDTO" id="userResultMap">
 		<id property="userId" column="USER_ID"/>
 		<result property="userPwd" column="USER_PWD"/>
 		<result property="userName" column="USER_NAME"/>
@@ -77,15 +76,17 @@
 		<result property="eveImgStatus" column="EVE_IMG_STATUS"/>
 		<result property="evethumbNailPath" column="EVE_THUMBNAIL_PATH"/>
 		</resultMap>	 
+		
+<!-- 조회수 검사 -->
 
 
 <!--  id: selectEventListResultMap + 가져오려는 컬럼 항목들.. --> <!-- 여기 현주님쓰라고 해서 쓴부분.. -->
-	<resultMap type="com.mgstore.event.model.dto.EventDTO" id="selectEventListResultMap">
+	<!-- <resultMap type="com.mgstore.event.model.dto.EventDTO" id="selectEventListResultMap">
 		<collection property="user" resultMap="userResultMap"/>
 		<collection property="category" resultMap="categoryResultMap"/>
 		<collection property="attachmentList" resultMap="attachmentResultMap"/>
 	</resultMap>
-
+ -->
 
 <!-- ★ select는 resulttype적기 -->
 
@@ -95,7 +96,7 @@
           INTO EVENT
         (
           EVE_ID <!-- pk -->
-        , EVE_TITILE <!-- 제목 -->
+        , EVE_TITLE <!-- 제목 -->
         , EVE_CATE_CODE<!-- 카테고리 코드(진행중, 종료중) -->
         , EVE_START<!-- 이벤트 시작일 -->
         , EVE_END<!-- 이벤트 종료일 -->
@@ -145,10 +146,10 @@
 	
 <!-- 이벤트 메인화면 list - select -->
 
- 	<select id="selectEventList" resultMap="selectEventListResultMap">
+ 	<select id="selectEventList" resultMap="basiceventResultMap">
         SELECT 
                A.EVE_ID
-             , A.EVE_TITILE
+             , A.EVE_TITLE
              , A.EVE_CONTENT
              , B.EVE_CATE_NAME
              , A.USER_ID
@@ -187,7 +188,7 @@
 	<select id="selectOneThumbnailEvent" resultMap="thumbnailEventResultMap">
 		SELECT /*EventDAO#selectOneThumbnailBoard() */
                A.EVE_ID
-             , A.EVE_TITILE
+             , A.EVE_TITLE
              , A.EVE_CONTENT
              , B.EVE_CATE_NAME
              , A.USER_ID

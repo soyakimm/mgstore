@@ -19,7 +19,7 @@ public class EventDTO {
 	private Date eveCreate; // 등록일
 	private Date eveStart; // 시작일
 	private Date eveEnd;  // 종료일
-	private Date eveModdate; // 수정일
+	private Date eveModDate; // 수정일
 	private String eveStatus; //삭제여부 
 	private int eveCount; // 조회수 
 	private List<EveAttachmentDTO> attachmentList; //첨부이미지
@@ -41,7 +41,7 @@ public class EventDTO {
 		this.eveCreate = eveCreate;
 		this.eveStart = eveStart;
 		this.eveEnd = eveEnd;
-		this.eveModdate = eveModdate;
+		this.eveModDate = eveModdate;
 		this.eveStatus = eveStatus;
 		this.eveCount = eveCount;
 		this.attachmentList = attachmentList;
@@ -138,13 +138,13 @@ public class EventDTO {
 	}
 
 
-	public Date getEveModdate() {
-		return eveModdate;
+	public Date getEveModDate() {
+		return eveModDate;
 	}
 
 
-	public void setEveModdate(Date eveModdate) {
-		this.eveModdate = eveModdate;
+	public void setEveModDate(Date eveModDate) {
+		this.eveModDate = eveModDate;
 	}
 
 
@@ -182,7 +182,7 @@ public class EventDTO {
 	public String toString() {
 		return "EventDTO [eveId=" + eveId + ", user=" + user + ", eveTitle=" + eveTitle + ", eveContent=" + eveContent
 				+ ", categoryCode=" + categoryCode + ", category=" + category + ", eveCreate=" + eveCreate
-				+ ", eveStart=" + eveStart + ", eveEnd=" + eveEnd + ", eveModdate=" + eveModdate + ", eveStatus="
+				+ ", eveStart=" + eveStart + ", eveEnd=" + eveEnd + ", eveModdate=" + eveModDate + ", eveStatus="
 				+ eveStatus + ", eveCount=" + eveCount + ", attachmentList=" + attachmentList + "]";
 	}
 

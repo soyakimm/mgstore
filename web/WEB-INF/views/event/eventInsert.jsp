@@ -84,50 +84,6 @@
 		</body>	
 
 
-
-	<!-- 당첨자 등록 JS -->
-	<script>            
-	       $(document).ready (function () {                
-	         $('.btnAdd').click (function () {                                        
-	            $('.buttons').append 
-	            ('<input type="text" name="txt"> <input type="button" class="btnRemove" value="Remove"><br>'); // end append                            
-	                  $('.btnRemove').on('click', function () { 
-	                       $(this).prev().remove (); // remove the textbox
-	                        $(this).next ().remove (); // remove the <br>
-	                          $(this).remove (); // remove the button
-	       });
-	            }); // end click                                            
-	                }); // end ready        
-	</script>
-
-
-
-	<!-- 당첨자 추가 Script (다른것도 참고해보기)-->
-	<script>
-	    function addList()  {
-	  
-	        // 1. 추가할 값을 input창에서 읽어온다
-	        const addValue 
-	          = document.getElementById('addValue').value;
-	        
-	        // 2. 추가할 li element 생성
-	        // 2-1. 추가할 li element 생성
-	        const li = document.createElement("li");
-	        
-	        // 2-2. li에 id 속성 추가 
-	        li.setAttribute('id',addValue);
-	        
-	        // 2-3. li에 text node 추가 
-	        const textNode = document.createTextNode(addValue);
-	        li.appendChild(textNode);
-	        
-	        // 3. 생성된 li를 ul에 추가
-	        document
-	          .getElementById('fruits')
-	          .appendChild(li);
-	      }     
-	</script>
-
 	<script src="${ pageContext.servletContext.contextPath }/resources/js/EventImagePreview.js"></script>
 
 

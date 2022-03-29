@@ -18,7 +18,7 @@
 	<!-- 이벤트 메인 전체 적용  -->
     <div class="content-body">
         <div class="event-container">
-            <div class="main-container">
+            <div class="main-container">  
                 <div class="block-title">
                     <h2>멍개이벤트</h2>
                 </div><!-- block-title -->
@@ -26,7 +26,7 @@
         </div> <!-- container -->
     </div><!-- content-body -->
 	
-	<c:forEach var="thumbnail" items="${ eventList }">
+	<c:forEach var="thumbnail" items="${ eventList }"> 
 	 <!-- 배너 파트 (1) -->
 	
 	<div class="box" onclick="detailView(${ thumbnail.eveId });">
@@ -34,9 +34,10 @@
         <div class="banner-content"></div>
             <a>
                 <!-- 배너 사진 첨부 -->                                       <!-- event 첨부파일 루트 확인하기... -->
-                <img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].evethumbNailPath }">
+                 <img src="${ thumbnail.attachmentList[0].evethumbNailPath }"> 
+                <!-- <img src= "">  -->
             </a>
-        </div><!--banner-content-->
+        </div><!--banner-content--> 
        </div>
        
         <!-- 배너 하단 제목 부분-->
