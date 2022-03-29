@@ -32,7 +32,8 @@ public class EventService {
 		return eventList;
 	}
 
-	public int insertThumbnail(EventDTO thumbnail) {
+		/* 썸네일 추가 */
+		public int insertThumbnail(EventDTO thumbnail) {
 		
 		/*Connection 생성*/
 		SqlSession session = getSqlSession();
@@ -49,7 +50,7 @@ public class EventService {
 		
 		/* fileList에 EventNo값을 넣는다. */
 		for(int i = 0; i < fileList.size(); i++) {
-			fileList.get(i).setEveImgNo(thumbnail.getEveId()); //setRefBoardNo:게시글을 등록하는 순간 발생
+			fileList.get(i).setEveId(thumbnail.getEveId()); 
 		}
 		
 		/* Attachment 테이블에 list size만큼 insert 한다. */
@@ -73,9 +74,33 @@ public class EventService {
 		return result;
 	}
 
+		
+		
 	/* 이벤트 info 게시글 */
-	public EventDTO selectOneThumbnailEvent(int no) {
-		return null;
+	public EventDTO selectOneThumbnailEvent(int eveId) {
+		
+		SqlSession session = getSqlSession();
+		
+		EventDTO thumbnail= null;
+		
+		int result = EventDAO.incrementEventCount(session, eveId); //★조회수를 증가시킨다
+		
+		if(result > 0) {
+			thumbnail = EventDAO.selectOneThumbnailBoard(session, eveId);
+			
+			if(thumbnail != null) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return thumbnail;
+		
 	}
 
 

@@ -34,16 +34,12 @@ public class EventMain extends HttpServlet {
 		} else {
 			path ="/WEB-INF/views/common/failed.jsp";
 			 request.setAttribute("message", "이벤트 조회 실패!");
-			 System.out.println("이벤트 조회 실패");
 		}
 		
-		System.out.println("이벤트 메인");
+		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 	
-/*		String path = "/WEB-INF/views/event/eventMain.jsp";
-		request.getRequestDispatcher(path).forward(request, response);
-	}*/ 
 
 }  
 	
