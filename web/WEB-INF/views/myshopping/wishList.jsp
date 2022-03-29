@@ -27,7 +27,7 @@
 					<ul class="sub-menu">
 						<li class="sub-menu-li"><a href="">주문/배송</a></li>
 						<li class="sub-menu-li"><a href="">취소내역</a></li>
-						<li class="sub-menu-li"><a href="">위시리스트</a></li>
+						<li class="sub-menu-li"><a href="${ pageContext.servletContext.contextPath }/myshopping/wishList">위시리스트</a></li>
 					</ul>
 				</aside>
 			</div>
@@ -79,7 +79,6 @@
 								</li>
 								<li>
 									<button class="basket" onclick="basketUpdate(${ wishList.proId })">장바구니 담기</button>
-									<!-- 삭제 진행시에 Cause: java.sql.SQLException: 부적합한 열 유형: 1111 오류가난다 -->
 									<button class="whis-del" onclick="wishDelView(${ wishList.proId },'${ wishList.userId}')">삭제</button>
 								</li>
 							</ul>
