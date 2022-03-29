@@ -43,7 +43,7 @@
 
 .overlap-group1 {
   align-items: flex-end;
-  background: url("${pageContext.request.contextPath}/resources/images/community/dog-ge71586665_1920.jpg") no-repeat;
+  background-image: url("${pageContext.request.contextPath}/resources/images/community/dog-ge71586665_1920.jpg") no-repeat;
   background-position: 50% 50%;
   background-size: cover;
   display: flex;

@@ -90,13 +90,13 @@
   
   
   
-  <!-- 머지위해서  
+   
   <select id="selectTotalCount" resultType="_int" parameterType="hashmap">
   
   SELECT 
   		COUNT(*)
-  	FROM POST 	
-  머지 위해서-->
+  	FROM POST A	
+  
   <!-- 검색키워드 없으므로 주석 -->
   <!-- 검색 키워드가 있는 경우 다른 테이블과 join해야 하는 경우에 사용한다.
           현재 테이블에 있다면 join 사용하지 않는다. -->
@@ -119,20 +119,18 @@
 			<if test="searchCondition == 'content'">
 	           A.BOARD_BODY LIKE '%' || #{ searchValue } || '%' 	
 			</if> -->
-	  <!-- 머지위해서      AND A.POST_STATUS = 'Y' 머지 위해서-->
+	       WHERE A.POST_STATUS = 'Y' 
     	<!--  </where>-->
-  <!-- 머지위해서</select>
+  </select>
   
   <select id="selectWriteList" resultMap="writeResultMap">
   SELECT A.RNUM
   	   , A.POST_ID
-  	   , A.CATEGORY_ID 머지 위해서-->
-  	 <!-- , D.CATEGORY_NAME -->  
- <!-- 머지위해서 	   , A.HEADER_ID		
+  	   , A.CATEGORY_ID   
+  	   , A.HEADER_ID		
   	   , A.POST_TITLE
-       , A.POST_DATE 머지 위해서-->
-     <!--  , E.NICKNAME -->  
- <!-- 머지위해서 	   , A.POST_VIEWS
+       , A.POST_DATE  
+	   , A.POST_VIEWS
   	   , A.POST_TEXT
   	   , A.POST_MODDATE
   	   , A.POST_STATUS	    
@@ -155,7 +153,7 @@
   	 		           , C.POST_TEXT
   	 		           , C.POST_MODDATE
   	 		           , C.POST_STATUS
-  	 		           FROM POST C 머지 위해서-->
+  	 		           FROM POST C 
   	 		         <!--    <if test="searchCondition == 'category'">
 	      				  JOIN TBL_CATEGORY D ON(C.CATEGORY_CODE = D.CATEGORY_CODE)
     					</if>
@@ -175,18 +173,39 @@
 							<if test="searchCondition == 'content'">
 	           				   C.BOARD_BODY LIKE '%' || #{ searchValue } || '%' 	
 							</if> -->
-	       		<!-- 머지위해서		   AND C.POST_STATUS = 'Y' 머지 위해서-->
+	       			  WHERE C.POST_STATUS = 'Y' 
     				<!--  	</where> -->
-               <!-- 머지위해서	          ORDER BY C.POST_ID DESC
+                      ORDER BY C.POST_ID DESC
   	 		           ) B
   	 		           <![CDATA[
                   WHERE ROWNUM <= #{ endRow }
                   ]]> 
-  	 		     )A 머지 위해서-->
+  	 		     ) A 
   	 	 <!--   JOIN TBL_CATEGORY D ON (A.CATEGORY_CODE = D.CATEGORY_CODE)
           JOIN TBL_MEMBER E ON(A.BOARD_WRITER_MEMBER_NO = E.MEMBER_NO) --> 
-  	<!-- 머지위해서	 WHERE A.RNUM >= #{ startRow }     
+  		 WHERE A.RNUM >= #{ startRow }     
          ORDER BY A.RNUM 
   </select>
-  머지 위해서-->
+	
+	
+	<!-- 사진있는 게시물 삽입 -->
+	<insert id="insertThumbnailContent">
+		INSERT
+		   INTO POST
+		(
+		  POST_ID
+		, USER_ID
+		, CATEGORY_ID
+		, HEADER_ID
+		, POST_TITLE
+		, POST_TEXT 
+		)
+		VALUES
+		(
+		  SEQ_POST_ID.NEXTVAL
+		, #{  }  
+		 )
+		)
+	</insert>
+	
 </mapper>
