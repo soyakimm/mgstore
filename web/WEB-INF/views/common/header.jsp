@@ -244,7 +244,7 @@
 		                	</ul>
 		                </nav>
                 </div>
-            </div>
+            </div>  
         </div>
     </header>
 </body>

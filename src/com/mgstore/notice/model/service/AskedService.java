@@ -32,7 +32,7 @@ public class AskedService {
 		SqlSession session = getSqlSession();
 		
 		int result = noticeDAO.insertAsked(session, newAsked);
-		
+
 		if(result > 0) {
 			session.commit();
 		} else {

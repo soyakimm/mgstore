@@ -106,7 +106,7 @@ select option[value=""][disabled] {
 					<h1>게시글 작성</h1>
 				</div>
 				<div class="board_content">
-					<form method="post" action="${ pageContext.servletContext.contextPath }/thumbnail/insert">
+					<form method="post" action="${ pageContext.servletContext.contextPath }/community/insert">
 						<div class="content">
 							<h4>
 								<span class="title_span">&nbsp;</span> 분류

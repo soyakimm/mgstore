@@ -4,7 +4,7 @@ import java.util.List;
 public class ProductDTO {
 	
 	private int proId;
-	private int pCateId;
+	private int proCateId;
 	private ProCateDTO category;
 	private String proTitle;
 	private int price;
@@ -20,12 +20,12 @@ public class ProductDTO {
 	
 	public ProductDTO() {}
 
-	public ProductDTO(int proId, int pCateId, ProCateDTO category, String proTitle, int price, int deliveryFee,
+	public ProductDTO(int proId, int proCateId, ProCateDTO category, String proTitle, int price, int deliveryFee,
 			int proAmount, String proContent, int proPoint, Date proDate, int ratingSum, int ratingAmount,
 			char proStatus, List<ProImgDTO> proImgList) {
 		super();
 		this.proId = proId;
-		this.pCateId = pCateId;
+		this.proCateId = proCateId;
 		this.category = category;
 		this.proTitle = proTitle;
 		this.price = price;
@@ -48,12 +48,12 @@ public class ProductDTO {
 		this.proId = proId;
 	}
 
-	public int getpCateId() {
-		return pCateId;
+	public int getProCateId() {
+		return proCateId;
 	}
 
-	public void setpCateId(int pCateId) {
-		this.pCateId = pCateId;
+	public void setProCateId(int proCateId) {
+		this.proCateId = proCateId;
 	}
 
 	public ProCateDTO getCategory() {
@@ -154,11 +154,13 @@ public class ProductDTO {
 
 	@Override
 	public String toString() {
-		return "ProductDTO [proId=" + proId + ", pCateId=" + pCateId + ", category=" + category + ", proTitle="
+		return "ProductDTO [proId=" + proId + ", proCateId=" + proCateId + ", category=" + category + ", proTitle="
 				+ proTitle + ", price=" + price + ", deliveryFee=" + deliveryFee + ", proAmount=" + proAmount
 				+ ", proContent=" + proContent + ", proPoint=" + proPoint + ", proDate=" + proDate + ", ratingSum="
 				+ ratingSum + ", ratingAmount=" + ratingAmount + ", proStatus=" + proStatus + ", ProImgList="
 				+ ProImgList + "]";
 	}
+
+	
   
 }

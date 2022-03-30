@@ -5,100 +5,119 @@ import java.sql.Date;
 public class ProImgDTO implements java.io.Serializable {
 	
 	private int pImgId;
-	private int refproId;
+	private int refProId;
 	private String pImgOrgName;
 	private String pImgSvrName;
-	private String pImgTmbName;
-	private char pImgTmbYN;
-	private int pImgSize;
-	private Date pImgDate;
+	private String pImgPath;
+	private String pImgType;
+	private String pThumbnailPath;
+	private String pImgStatus;
+	
 	
 	public ProImgDTO() {}
 
-	public ProImgDTO(int pImgId, int refproId, String pImgOrgName, String pImgSvrName, String pImgTmbName,
-			char pImgTmbYN, int pImgSize, Date pImgDate) {
+
+	public ProImgDTO(int pImgId, int refProId, String pImgOrgName, String pImgSvrName, String pImgPath, String pImgType,
+			String pThumbnailPath, String pImgStatus) {
 		super();
 		this.pImgId = pImgId;
-		this.refproId = refproId;
+		this.refProId = refProId;
 		this.pImgOrgName = pImgOrgName;
 		this.pImgSvrName = pImgSvrName;
-		this.pImgTmbName = pImgTmbName;
-		this.pImgTmbYN = pImgTmbYN;
-		this.pImgSize = pImgSize;
-		this.pImgDate = pImgDate;
+		this.pImgPath = pImgPath;
+		this.pImgType = pImgType;
+		this.pThumbnailPath = pThumbnailPath;
+		this.pImgStatus = pImgStatus;
 	}
+
 
 	public int getpImgId() {
 		return pImgId;
 	}
 
+
 	public void setpImgId(int pImgId) {
 		this.pImgId = pImgId;
 	}
 
-	public int getRefproId() {
-		return refproId;
+
+	public int getRefProId() {
+		return refProId;
 	}
 
-	public void setRefproId(int refproId) {
-		this.refproId = refproId;
+
+	public void setRefProId(int refProId) {
+		this.refProId = refProId;
 	}
+
 
 	public String getpImgOrgName() {
 		return pImgOrgName;
 	}
 
+
 	public void setpImgOrgName(String pImgOrgName) {
 		this.pImgOrgName = pImgOrgName;
 	}
+
 
 	public String getpImgSvrName() {
 		return pImgSvrName;
 	}
 
+
 	public void setpImgSvrName(String pImgSvrName) {
 		this.pImgSvrName = pImgSvrName;
 	}
 
-	public String getpImgTmbName() {
-		return pImgTmbName;
+
+	public String getpImgPath() {
+		return pImgPath;
 	}
 
-	public void setpImgTmbName(String pImgTmbName) {
-		this.pImgTmbName = pImgTmbName;
+
+	public void setpImgPath(String pImgPath) {
+		this.pImgPath = pImgPath;
 	}
 
-	public char getpImgTmbYN() {
-		return pImgTmbYN;
+
+	public String getpImgType() {
+		return pImgType;
 	}
 
-	public void setpImgTmbYN(char pImgTmbYN) {
-		this.pImgTmbYN = pImgTmbYN;
+
+	public void setpImgType(String pImgType) {
+		this.pImgType = pImgType;
 	}
 
-	public int getpImgSize() {
-		return pImgSize;
+
+	public String getpThumbnailPath() {
+		return pThumbnailPath;
 	}
 
-	public void setpImgSize(int pImgSize) {
-		this.pImgSize = pImgSize;
+
+	public void setpThumbnailPath(String pThumbnailPath) {
+		this.pThumbnailPath = pThumbnailPath;
 	}
 
-	public Date getpImgDate() {
-		return pImgDate;
+
+	public String getpImgStatus() {
+		return pImgStatus;
 	}
 
-	public void setpImgDate(Date pImgDate) {
-		this.pImgDate = pImgDate;
+
+	public void setpImgStatus(String pImgStatus) {
+		this.pImgStatus = pImgStatus;
 	}
+
 
 	@Override
 	public String toString() {
-		return "ProImgDTO [pImgId=" + pImgId + ", refproId=" + refproId + ", pImgOrgName=" + pImgOrgName
-				+ ", pImgSvrName=" + pImgSvrName + ", pImgTmbName=" + pImgTmbName + ", pImgTmbYN=" + pImgTmbYN
-				+ ", pImgSize=" + pImgSize + ", pImgDate=" + pImgDate + "]";
+		return "ProImgDTO [pImgId=" + pImgId + ", refProId=" + refProId + ", pImgOrgName=" + pImgOrgName
+				+ ", pImgSvrName=" + pImgSvrName + ", pImgPath=" + pImgPath + ", pImgType=" + pImgType
+				+ ", pThumbnailPath=" + pThumbnailPath + ", pImgStatus=" + pImgStatus + "]";
 	}
-	
+
 	
 	
 
