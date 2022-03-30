@@ -2,7 +2,7 @@ package com.mgstore.event.model.dto;
 
 public class EveAttachmentDTO {
 	
-	private int eveImgNo;
+	private int EveImgNo;
 	private int eveId;
 	private String eveOriginName;
 	private String eveSavedName;
@@ -16,22 +16,22 @@ public class EveAttachmentDTO {
 	public EveAttachmentDTO(int eveImgNo, int eveId, String eveOriginName, String eveSavedName, String eveSavePath,
 			String eveFileType, String eveImgStatus, String evethumbNailPath) {
 		super();
-		this.eveImgNo = eveImgNo;
+		EveImgNo = eveImgNo;
 		this.eveId = eveId;
 		this.eveOriginName = eveOriginName;
 		this.eveSavedName = eveSavedName;
 		this.eveSavePath = eveSavePath;
-		this.eveFileType = eveFileType; 
+		this.eveFileType = eveFileType;
 		this.eveImgStatus = eveImgStatus;
 		this.evethumbNailPath = evethumbNailPath;
 	}
 
 	public int getEveImgNo() {
-		return eveImgNo;
+		return EveImgNo;
 	}
 
 	public void setEveImgNo(int eveImgNo) {
-		this.eveImgNo = eveImgNo;
+		EveImgNo = eveImgNo;
 	}
 
 	public int getEveId() {
@@ -92,9 +92,11 @@ public class EveAttachmentDTO {
 
 	@Override
 	public String toString() {
-		return "EveAttachmentDTO [eveImgNo=" + eveImgNo + ", eveId=" + eveId + ", eveOriginName=" + eveOriginName
+		return "EveAttachmentDTO [EveImgNo=" + EveImgNo + ", eveId=" + eveId + ", eveOriginName=" + eveOriginName
 				+ ", eveSavedName=" + eveSavedName + ", eveSavePath=" + eveSavePath + ", eveFileType=" + eveFileType
 				+ ", eveImgStatus=" + eveImgStatus + ", evethumbNailPath=" + evethumbNailPath + "]";
 	}
+
+	
 
 }

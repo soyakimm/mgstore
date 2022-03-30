@@ -103,12 +103,11 @@ a {
     cursor: pointer;
 }
 
-img{
+ img{
     vertical-align: middle;
-    width: 100%;
-    max-width: 100%;
+    max-width: 10;
     border: 0;
-}
+} 
 
 .clearfix2 {
     font-weight: 400;
@@ -214,8 +213,7 @@ img{
 }
 
 .banner-watch {
-    float: right;
-    
+    float: right;    
 }
 
 

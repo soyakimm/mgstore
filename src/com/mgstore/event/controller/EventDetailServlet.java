@@ -11,7 +11,7 @@ import com.mgstore.event.model.dto.EventDTO;
 import com.mgstore.event.model.service.EventService;
 
 @WebServlet("/event/detail")
-public class EventDetail extends HttpServlet {
+public class EventDetailServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

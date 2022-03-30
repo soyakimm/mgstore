@@ -37,6 +37,16 @@ public class EventDAO {
 		
 		return session.selectOne("EventDAO.selectOneThumbnailEvent", eveId);
 	}
+
+	//이벤트 업데이트
+	public int updateEvent(SqlSession session, EventDTO updateEvent) {
+		return session.update("EventDAO.updateEvent", updateEvent);
+	}
+
+	//이벤트 삭제
+	public int deleteEvent(SqlSession session, int eveId) {
+		return session.update("EventDAO.deleteEvent", eveId);
+	}
 	
 	
 }
