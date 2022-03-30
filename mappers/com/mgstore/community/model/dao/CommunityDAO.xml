@@ -189,7 +189,9 @@
 	
 	
 	<!-- 사진있는 게시물 삽입 -->
-<!--  	<insert id="insertThumbnailContent">
+
+
+  	<insert id="insertThumbnailContent">
 		INSERT
 		   INTO POST
 		(
@@ -203,9 +205,105 @@
 		VALUES
 		(
 		  SEQ_POST_ID.NEXTVAL
-		, #{  }  
+		, #{ userId }
+		, #{ categoryId } 
+		, #{ headerId } 
+		, #{ title }
+		, #{ text }   
 		 )
-		) 
-	</insert>     -->
+
+		<!-- 게시물 번호 얻어오는거 refno -->
+        <selectKey keyProperty="postId" resultType="Integer" order="AFTER">
+        	SELECT
+        	       SEQ_POST_ID.CURRVAL
+        	  FROM DUAL
+        </selectKey>
+	</insert>
 	
-</mapper> 
+	<!-- postImg dto 넣기 -->
+	<insert id="insertPostResult">
+		INSERT
+			INTO POST_IMAGE
+		(
+		  PO_IMAGE_ID
+		, POST_ID
+		, PO_IMAGE_PATH
+		, PO_IMAGE_NAME
+		, PO_IMAGE_RENAME
+		, PO_FILE_TYPE
+		, PO_THUMBNAIL_PATH 	
+		)
+		VALUES
+		(
+		  SEQ_PO_IMAGE_ID.NEXTVAL
+		, #{ postId }
+		, #{ originalName }
+        , #{ savedName }
+        , #{ savePath }
+        , #{ fileType }
+        , #{ thumbnailPath }
+		)
+	</insert>-->
+	
+	<!-- 썸네일 게시판 조회용 게시판 -->
+	<select id="selectThumbnailList" resultMap="writeResultMap">
+		SELECT
+		       A.POST_ID
+		     , A.POST_TITLE
+		     , A.POST_DATE
+		     , C.NICKNAME <!-- 회원 닉네임 -->
+		     , D.PO_IMAGE_ID  <!-- 사진 아이디 -->
+             , D.PO_IMAGE_NAME  <!-- 원본파일명 -->
+             , D.PO_IMAGE_RENAME <!-- 수정파일명 -->
+             , D.PO_IMAGE_PATH  <!-- 파일 경로 -->
+             , D.PO_THUMBNAIL_PATH <!-- 썸네일 경로 -->
+          FROM POST A
+          JOIN TBL_USER C ON (A.USER_ID = C.USER_ID)
+          JOIN POST_IMAGE D ON (A.POST_ID = D.POST_ID) 
+         WHERE A.POST_STATUS = 'Y'
+           AND D.PO_STATUS = 'Y'
+           AND D.PO_FILE_TYPE = 'TITLE'
+      ORDER BY A.POST_ID DESC      
+	</select>
+	
+	<!-- 조회수 업뎃 -->
+	<update id="incrementBoardCount">
+		UPDATE
+			  POST A
+	       SET A.POST_VIEWS = (SELECT B.POST_VIEWS
+	       						 FROM POST B
+	       						WHERE B.POST_ID = #{ postId }
+	       					 ) + 1
+	     WHERE A.POST_ID = #{ postId }		  
+	</update>
+	
+	<!-- 상세 글 페이지 -->
+	<select id="selectOneThumbnailBoard" resultMap="writeResultMap">
+		SELECT
+			  A.POST_ID
+			, A.POST_TITLE
+			, A.POST_TEXT
+			, A.CATEGORY_ID
+			, A.HEADER_ID
+		    , B.HEADER_NAME 	
+		  	, A.USER_ID
+		  	, C.NICKNAME
+		  	, A.POST_VIEWS
+		  	, A.POST_DATE
+		  	, A.POST_MODDATE
+		  	, D.PO_IMAGE_ID
+		  	, D.PO_IMAGE_NAME
+		  	, D.PO_IMAGE_RENAME
+		  	, D.PO_IMAGE_PATH
+		  	, D.PO_FILE_TYPE
+		  	, D.PO_THUMBNAIL_PATH
+		  FROM POST A
+		  JOIN HEADER B ON (A.HEADER_ID = B.HEADER_ID) 
+		  JOIN TBL_USER C ON (A.USER_ID = C.USER_ID)
+		  JOIN POST_IMAGE D ON (A.POST_ID = D.POST_ID)
+		 WHERE A.POST_STATUS = 'Y'
+		   AND D.PO_STATUS = 'Y'
+		   AND A.POST_ID = #{ postId }
+	</select>
+	
+</mapper>

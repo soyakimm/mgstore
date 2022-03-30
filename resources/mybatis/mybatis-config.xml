@@ -28,6 +28,7 @@
 		<mapper resource="com/mgstore/payment/model/dao/PaymentDAO.xml"/>
     	<mapper resource="com/mgstore/mypage/model/dao/MyPageDAO.xml"/>
 
+
 	</mappers>
 
 	
