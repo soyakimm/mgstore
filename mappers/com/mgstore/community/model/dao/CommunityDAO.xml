@@ -189,9 +189,8 @@
 	
 	
 	<!-- 사진있는 게시물 삽입 -->
-
-
   	<insert id="insertThumbnailContent">
+
 		INSERT
 		   INTO POST
 		(

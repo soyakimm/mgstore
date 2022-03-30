@@ -8,10 +8,336 @@
 	<title>header</title>
 	<!-- favicon -->
     <link href="${ pageContext.servletContext.contextPath }/resources/images/common/favicon.ico" rel="shortcut icon"/>
-    <!-- 스타일시트 -->
-    <link href="${ pageContext.servletContext.contextPath }/resources/css/header-style.css" rel="stylesheet">
     <!-- 웹폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	<!-- 스타일시트 -->
+	<style>
+		@charset "UTF-8";
+
+		/* 상단 팝업 광고 */
+		.popup {
+		    height: 45px;
+		    background: #f5742f;
+		    display: block;
+		}
+		
+		/* 헤더 */
+		#header {
+		    position: relative;
+		    flex-direction: row;
+		    justify-content: center;
+		    width: 100%;
+		    height: 115px;
+		    background-color: #fff;
+		    border-bottom: 1px solid rgba(229, 229, 229, 1);
+		}
+		
+		/* 페이지 크기 정렬 */
+		.header-wrapper {
+		    max-width: 1400px;
+		    margin: 0 auto;
+		}
+		
+		/* 메인 헤더 */
+		.header-main {
+		    height: 58px;
+		    position: relative;
+		    display: flex;
+		    align-items: center;
+		    border-bottom: 1px solid rgba(229, 229, 229, 1);
+		}
+		
+		/* 메인 헤더 - 로고 */
+		.header-logo {
+		    left: 19px;
+		    object-fit: cover;
+		    width: 97px;
+		}
+		
+		/* 메인 헤더 - 사이트 구분 */
+		.header-link-comm-store button {
+		    font-size: 18px;
+		    font-weight: 700;
+		}
+		
+		.header-comm-store-hover button:hover {
+		    color: #f5742f;
+		}
+		
+		.header-link-comm-store {
+		    display: block;
+		    list-style-type: disc;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		    padding-inline-start: 40px;
+		    padding-inline-end: 40px;
+		}
+		
+		.header-link-comm-store li {
+		    display: inline-block;
+		    margin-inline-start: 20px;
+		    margin-inline-end: 20px;
+		}
+		
+		/* 메인 헤더 - 통합검색 */
+		.header-main .header-top-search-form {
+		    display: flex;
+		    margin: 0 auto;
+		}
+		
+		.header-search-bar input[type="text"] {
+		    border: 1px solid #4e4a4a;
+		    border-radius: 36px;
+		    width: 434px;
+		    height: 42px;
+		    font-size: 18px;
+		    padding-left: 50px;
+		}
+		
+		.header-search-icon {
+		    position: absolute;
+		    top: 20px;
+		    left: 430px;
+		    height: 14px;
+		    width: 14px;
+		}
+		
+		/* 환영 문구, 장바구니, 로그인, 회원가입 */
+		header button {
+		    border: 0 none;
+		    background-color: transparent;
+		    cursor: pointer;
+		}
+		
+		.header-button-box button {
+		    font-size: 14px;
+		    margin-inline-start: 20px;
+		}
+		
+		.header-button-box .header-line {
+		    color: #767676;
+		    font-size: 10px;
+		    line-height: 100px;
+		    margin-inline-start: 20px;
+		}
+		
+		.header-button-box img {
+		    margin: 0;
+		    margin-inline-start: 20px;
+		    line-height: 80px;
+		}
+		
+		.header-button-box .header-message {
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		.header-button-box {
+		    display: flex;
+		    margin-left: auto;
+		    justify-content: space-between;
+		    align-items: center;
+		}
+		
+		.flipeffect {
+			position: relative;
+		}
+		.flipeffect span {
+			position: relative;
+			display: inline-block;
+			animation: flip 2s infinite;
+			animation-delay: calc(.2s * var(--i))
+		}
+		
+		@keyframes flip {
+			0%, 80% {
+				transform: rotateY(360deg)
+			}
+		}
+		
+		/* 서브 헤더 */
+		.header-sub {
+		    height: 58px;
+		    display: flex;
+		}
+		
+		/* 서브 헤더 - 타이틀 */
+		.header-menu {
+		    display: flex;
+		}
+		
+		.header-category-icon {
+		    display: flex;
+		    width: 18px;
+		    line-height: 100px;
+		}
+		
+		.header-title {
+		    display: flex;
+		}
+		
+		.header-title a {
+		    display: flex;
+		}
+		
+		/* 마이페이지 - 전체 카테고리 */
+		.mypage {
+			position: relative;
+			display: inline-block;
+			background: #000;
+		}
+		
+		.mypage-content {
+			display: none;
+			position: absolute;
+			z-index: 1;
+		}
+		
+		.mypage-content a {
+			display: block;
+		}
+		
+		.mypage:hover .mypage-content {
+			display: block;
+		}
+		
+		/* 서브 헤더 - 전체 카테고리 */
+		header .header-all-category {
+		    z-index: 1;
+		    display: flex;
+		    width: 36px;
+		}
+		
+		header .show-all-list .header-all-category-title {
+		    font-size: 18px;
+		    font-weight: 700;
+		}
+		
+		header .show-all-list:hover .header-category-icon {
+		    transform: rotate(90deg);
+		    transition-duration: 0.7s;
+		    filter: invert(69%) sepia(35%) saturate(7370%) hue-rotate(341deg) brightness(99%) contrast(93%);
+		}
+		
+		header .show-all-list:hover {
+		    color: #f5742f;
+		}
+		
+		.header-menu .header-title .header-all-category .header-all-category-container .header-all-list-contents {
+		    position: absolute;
+		    width: 1000px;
+		    display: none;
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents {
+		    display: block;
+		    margin: 0 auto;
+		}
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list {
+		    background: rgba(255, 255, 255, 0.6);
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > h2 {
+		    margin: 0;
+		    color: #767676;
+		    text-align: start;
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > ul {
+		    display: flex;
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > ul > li {
+		    text-align: start;
+		    margin-inline-end: 20px;
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > ul > li h3 {
+		    padding: 0;
+		    text-align: center;
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > ul > li ul li a {
+		    font-size: 12px;
+		    color: #767676;
+		    cursor: poniter;
+		    width: 140px;
+		}
+		
+		.header-menu .header-title .show-all-list:hover .header-all-category .header-all-category-container .header-all-list-contents .header-all-list > ul > li ul li a:hover {
+		    color:#f5742f;
+		    cursor: pointer;
+		}
+		
+		.menu-line {
+			border-right: 1px dashed #E5E5E5;
+		    height: 170px;
+		    margin-top: 30px;
+		}
+		
+		.show-all-list {
+			display: flex;
+			height: 58px;
+		}
+		
+		.show-all-list .header-all-category-title {
+			height: 100%;
+			margin-right: 36px;
+			line-height: 52px;
+		}
+		
+		.show-all-list .header-category-icon {
+			margin-top: 17px;
+			margin-left: 0;
+			margin-right: 10px;
+			align-items: center;
+		}
+		
+		/* 서브 헤더 - 메뉴 리스트 */
+		header nav {
+		    display: flex;
+		    height: 58px;
+		}
+		
+		header #header-nav a {
+		    display: flex;
+		    width: 100px;
+		    height: 100%;
+		    font-size: 18px;
+		    line-height: 20px;
+		}
+		
+		header #header-nav a:hover {
+		    color: #f5742f;
+		}
+		
+		header #header-nav li {
+		    margin: 0;
+		    display: inline-block;
+		}
+		
+		/* 전체 효과 */
+		header div {
+		    display: block;
+		    font-family: 'Noto Sans KR', sans-serif;
+		}
+		
+		header dl, ul, ol, li {
+		    list-style: none;
+		}
+		
+		header a {
+		    color: #000;
+		    text-decoration-line: none;
+		    font-family: 'Noto Sans KR', sans-serif;
+		}
+		
+		body {
+			margin: 0;
+		}
+	</style>
 </head>
 <body>
 	<!-- 상단 팝업 광고 -->
@@ -30,8 +356,8 @@
                         </a>
                     </div>
                     <ul class="header-link-comm-store header-comm-store-hover">
-                        <li class="header-community-button"><button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community/main'">커뮤니티</button></li>
-                        <li class="header-store-button on"><button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/'" style="color: #f5742f">스토어</button></li>
+                        <li class="header-community-button"><button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community/main'"  style="color: #f5742f">커뮤니티</button></li>
+                        <li class="header-store-button on"><button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/'">스토어</button></li>
                     </ul>
                     <form name="header-top-search-form" action="${ pageContext.servletContext.contextPath }/search/result?page=1&search=">
                         <div class="header-search-bar">
@@ -133,12 +459,12 @@
                     <div class="header-title">
                     	<button class="show-all-list" type="button">
 	                    	<!-- 커뮤니티 -->
-	                    	<img style="display: none" class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
-	                    	<div style="display: none" class="header-all-category-title">자유게시판</div>
+	                    	<img class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
+	                    	<div class="header-all-category-title">자유게시판</div>
 	                    	<!-- 스토어 -->
-	                    	<img class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
-	                    	<div class="header-all-category-title">카테고리</div>
-	                        <ul class="header-all-category">
+	                    	<img style="display: none" class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
+	                    	<div style="display: none" class="header-all-category-title">카테고리</div>
+	                        <ul style="display: none" class="header-all-category">
 	                            <li class="header-all-category-container">
 	                                <div class="header-all-list-contents">
 	                                    <div class="header-all-list" style="width: 1230px; background: rgba(255, 255, 255, 0.8);">
@@ -229,22 +555,19 @@
                     	</button>
 		                <nav id="header-nav" class="header-nav">
 		                	<ul>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/feed/all">사료</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/dessert/all">간식</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/care/all">케어</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/living/all">리빙</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
-		                	<li class="header-item comm" style="display: none"><a href="#">멍개병원</a></li>
-		                	<li class="header-item comm" style="display: none"><a href="#">멍개일상</a></li>
-		                	<li class="header-item comm" style="display: none"><a href="#">멍개노하우</a></li>
-		                	<li class="header-item comm" style="display: none"><a href="#">멍개메이트</a></li>
-		                	<li class="header-item comm" style="display: none"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/feed/all">사료</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/dessert/all">간식</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/care/all">케어</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/living/all">리빙</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
+		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
+		                	<li class="header-item comm"><a href="#">멍개일상</a></li>
+		                	<li class="header-item comm"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
 		                	</ul>
 		                </nav>
                 </div>
-            </div>  
+            </div>
         </div>
     </header>
 </body>
