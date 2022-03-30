@@ -26,8 +26,17 @@ public class SelectMyPageMainServlet extends HttpServlet {
 		Map<String, Object> myPageData = myPageService.selectMyPageData(userId);
 		System.out.println(myPageData.get("myPetList"));
 		
+		
 		request.setAttribute("myPetList", myPageData.get("myPetList"));
 		request.getRequestDispatcher("/WEB-INF/views/mypage/main.jsp").forward(request, response);
+		
+		
+		/*Map<String, Object> myPageData = mypageService.selectMyPageData(userId);
+		System.out.println(mypageData.get("myPostList")); */
+		
+		request.setAttribute("myPostList", myPageData.get("myPostList"));
+		request.getRequestDispatcher("/WEB-INF/views/mypage/main.jsp").forward(request, response);
+		
 		
 	}
 

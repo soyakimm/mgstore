@@ -4,18 +4,18 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyPageDAO">
 
-<resultMap type="com.mgstore.mypage.model.dto.MypetDTO" id="mypetResultMap">
-	<id property="petId" column="PET_ID"/>
-	<result property="petGender" column="PET_GENDER"/>
-	<result property="petNeutral" column="PET_NEUTRAL"/>
-	<result property="petKind" column="PET_KIND"/>
-	<result property="petName" column="PET_NAME"/>
-	<result property="petBirthdate" column="PET_BIRTHDATE"/>
-	<result property="userId" column="USERID"/>
-	<result property="petFilename" column="PETFILENAME"/>
-	<result property="petFileroute" column="PETFILEROUTE"/>
+	<resultMap type="com.mgstore.mypage.model.dto.MyPetDTO" id="myPetResultMap">
+		<id property="petId" column="PET_ID"/>
+		<result property="petGender" column="PET_GENDER"/>
+		<result property="petNeutral" column="PET_NEUTRAL"/>
+		<result property="petKind" column="PET_KIND"/>
+		<result property="petName" column="PET_NAME"/>
+		<result property="petBirthdate" column="PET_BIRTHDATE"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="petFilename" column="PET_FILENAME"/>
+		<result property="petFileroute" column="PET_FILEROUTE"/>
+	</resultMap>
 
-</resultMap>
 
 <!-- 유저 -->	
 	<resultMap type="com.mgstore.admin.model.dto.UserDTO" id="userResultMap">
@@ -49,5 +49,37 @@
 		   AND USER_ID = #{ userId }
 		  </if> 
 	</select>
+	
+		<select id="selectMyPetList" resultMap="myPetResultMap">
+		SELECT 
+			   PET_ID
+		     , PET_GENDER
+		     , PET_NEUTRAL
+		     , PET_KIND
+		     , PET_NAME
+		     , PET_BIRTHDATE
+		     , USER_ID
+		     , PET_FILENAME
+		     , PET_FILEROUTE
+		  FROM MY_PET
+		 WHERE USER_ID = #{ userId }
+	</select>
+	
+		<select id="selectMyPostList" resultMap="myPostResultMap">
+		SELECT
+			  POST_ID
+			, USER_ID
+			, CATEGORY_ID
+			, HEADER_ID
+			, POST_TITLE
+			, POST_DATE
+			, POST_VIEWS
+			, POST_TEXT
+			, POST_MODDATE
+			, POST_STATUS
+			FROM POST
+			WHERE USER_ID = #{ userId }
+				</select> 
+	
 	
 </mapper>

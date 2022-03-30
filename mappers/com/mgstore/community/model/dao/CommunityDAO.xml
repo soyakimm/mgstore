@@ -190,6 +190,7 @@
 	
 	<!-- 사진있는 게시물 삽입 -->
 
+
   	<insert id="insertThumbnailContent">
 		INSERT
 		   INTO POST
@@ -210,6 +211,7 @@
 		, #{ title }
 		, #{ text }   
 		 )
+
 		<!-- 게시물 번호 얻어오는거 refno -->
         <selectKey keyProperty="postId" resultType="Integer" order="AFTER">
         	SELECT
