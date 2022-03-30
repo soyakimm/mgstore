@@ -189,6 +189,7 @@
 	
 	
 	<!-- 사진있는 게시물 삽입 -->
+
   	<insert id="insertThumbnailContent">
 		INSERT
 		   INTO POST
@@ -240,7 +241,7 @@
         , #{ fileType }
         , #{ thumbnailPath }
 		)
-	</insert>
+	</insert>-->
 	
 	<!-- 썸네일 게시판 조회용 게시판 -->
 	<select id="selectThumbnailList" resultMap="writeResultMap">
