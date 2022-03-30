@@ -1,4 +1,4 @@
-/*package com.mgstore.mypage.controller;
+package com.mgstore.mypage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/MyPostServlet")
+@WebServlet("/MyPost/main")
 public class MyPostServlet extends HttpServlet {
 	
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//
+		
+		String userId = "MJKIM";
+		
 		
 
 	}
 }
-*/

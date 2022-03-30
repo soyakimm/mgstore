@@ -189,7 +189,7 @@
 	
 	
 	<!-- 사진있는 게시물 삽입 -->
-	<insert id="insertThumbnailContent">
+<!--  	<insert id="insertThumbnailContent">
 		INSERT
 		   INTO POST
 		(
@@ -205,7 +205,7 @@
 		  SEQ_POST_ID.NEXTVAL
 		, #{  }  
 		 )
-		)
-	</insert>
+		) 
+	</insert>     -->
 	
-</mapper>
+</mapper> 
