@@ -25,7 +25,7 @@
                 <button class="proAddBtn" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin/add'">추가</button>
                 <button class="proModifyBtn" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin/modify'">수정</button>
                 <button class="proDelBtn" onclick="link">삭제</button>
-                <button class="proapplyBtn" onclick="link">적용하기</button>
+                <button type="submit" class="proapplyBtn">적용하기</button>
             </div>
         </div>
         <div class="proAdmin-body">
@@ -162,6 +162,7 @@
                 <div class="proAdmin-list-body">
                     <div class="pro-content-box">
                         <!-- 상품 목록 영역 -->
+                        <c:forEach var="product" items="${ productList }">
                         <div class="pro-content">
                             <div class="pro-checkbox">
                                 <input type="checkbox" onclick="link" class="checkBtn">
@@ -169,12 +170,12 @@
                             </div>
                             <div class="pro-img"><img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png"></div>
                             <div class="pro-content-desc">
-                                <div class="pcd-cate"><span>상품분류</span></div>
-                                <div class="pcd-name"><span>이곳은 상품명이 들어갈 자리입니다.</span></div>
-                                <div class="pcd-price"><span>1,000원</span></div>
+                                <div class="pcd-cate"><span>${ product.category.pCateName }</span></div>
+                                <div class="pcd-name"><span>${ product.proTitle }</span></div>
+                                <div class="pcd-price"><span>${ product.price }원</span></div>
                                 <div class="pcd-display">
                                     <div class="pcd-show">
-                                        <input type="radio" name="display" value="게시함" id="show" >
+                                        <input type="radio" name="display" value="게시함" id="show" checked="checked">
                                         <label for="show" class="label-show">게시함</label>
                                     </div>
                                     <div class="pcd-hide">
@@ -184,7 +185,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        </c:forEach>
                     </div>
                 </div>
             </div>

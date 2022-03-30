@@ -19,11 +19,13 @@
 <body>
 	
    <div class="proAdminAdd-page">
+   <form method="post" action="${ pageContext.servletContext.contextPath }/product/admin/add"
+						enctype="multipart/form-data">
         <div class="proAdminAdd-header">
             <div class="proAdminAdd-title"><h3>상품 등록</h3></div>
             <div class="proAdminAdd-button">
                 <button class="proAddBtn" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin'">취소</button>
-                <button class="proModifyBtn" onclick="link">등록하기</button>
+                <button type="submit" class="proModifyBtn">등록하기</button>
             </div>
         </div>
         <div class="proAdminAdd-body">
@@ -32,40 +34,42 @@
                     <tr>
                         <th>상품명<span>&nbsp(필수)</span></th>
                         <td colspan="2">
-                            <input type="text" placeholder="상품명은 100자까지 입력 가능합니다." size="80" maxlength="100">
+                            <input type="text" name="proTitle" placeholder="상품명은 100자까지 입력 가능합니다." size="80" maxlength="100">
                         </td>
                     </tr>
                     <tr>
                         <th>판매가<span>&nbsp(필수)</span></th>
                         <td colspan="2">
-                            <input type="text">&nbsp원
+                            <input type="text" name="price">&nbsp원
                         </td>
                     </tr>
                     <tr>
                         <th>카테고리<span>&nbsp(필수)</span></th>
                         <td colspan="2">
-                            <select name="ACategory" style="width: 300px; height: 20px;">
+                            <select name="categoty" style="width: 300px; height: 20px;">
                                 <option>상위 카테고리를 선택해주세요.</option>
                                 <option> -------------------------------------------------- </option>
-                                <option value="feed">사료</option>
-                                <option value="dessert">간식</option>
-                                <option value="care">케어</option>
-                                <option value="living">리빙</option>
-                                <option value="outside">외출</option>
-                                <option value="toy">장난감</option>
-                                <option value="fashion">패션</option>
+                                <option value="2">사료</option>
+                                <option value="3">간식</option>
+                                <option value="4">케어</option>
+                                <option value="5">리빙</option>
+                                <option value="6">외출</option>
+                                <option value="1">장난감</option>
+                                <option value="7">패션</option>
 
                             </select>
-                            <select name="BCategory" style="width: 300px; height: 20px;">
+                            <select name=category style="width: 300px; height: 20px;">
                                 <option>하위 카테고리를 선택해주세요.</option>
                                 <option> -------------------------------------------------- </option>
+                                <option value="11">노즈워크</option>
+                                <option value="12">장난감</option>
                             </select>
                         </td>
                     </tr>
                     <tr height="300">
                         <th>상품 설명</th>
                         <td colspan="2">
-                            <textarea cols="100" rows="17" style="resize:none;" maxlength="2000" placeholder="상품 설명은 2000자까지 입력 가능합니다."></textarea>
+                            <textarea cols="100" rows="17" style="resize:none;" name="proContent" maxlength="2000" placeholder="상품 설명은 2000자까지 입력 가능합니다."></textarea>
                         </td>
                     </tr>
                     <tr class="table-img">
@@ -75,18 +79,19 @@
                             <div id="thumbnail-preview">
                                 <img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" alt="사진영역"  style="width:180; height:180;">
                             </div>
-                            <input type="file" id="img" name="uploadThumbnail" accept="image/gif, image/jpeg, img/png"/>
+                            <input type="file" id="img" name="thumbnail" accept="image/gif, image/jpeg, img/png"/>
                         </td>
                         <td>
                             <h4>상세 이미지</h4>
                             <div id="image-preview">
                                 <img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" alt="사진영역"  style="width:180; height:180;">
                             </div>
-                            <input type="file" id="img2" name="uploadDetail" accept="image/gif, image/jpeg, img/png"/>
+                            <input type="file" id="img2" name="contentImg" accept="image/gif, image/jpeg, img/png"/>
                         </td>
                     </tr>
                 </table>
             </div>
+        </form>
         </div>
 
         <script>
@@ -117,6 +122,7 @@
             }
             });
 </script>
+<script src="${ pageContext.servletContext.contextPath }/resources/js/imagePreview.js"></script>
 
 </body>
 </html>
