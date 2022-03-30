@@ -62,9 +62,12 @@
 
 			case "insertWrite" :
 				successMessage = "게시판 등록이 완료되었습니다.";
-				movePath = "${ pageContext.servletContext.contextPath }/community/main";
+				movePath = "${ pageContext.servletContext.contextPath }/community/freelist";
 				break;
-
+			case "insertPostThumbnail" :
+				successMessage = "게시판 등록이 완료되었습니다.";
+				movePath = "${ pageContext.servletContext.contextPath }/thumbnail/list";
+				break;
 
 			
 
@@ -73,6 +76,8 @@
 				movePath = "${ pageContext.servletContext.contextPath }/event/main";
 				break;
 
+		
+	
 		}
 
 		alert(successMessage);

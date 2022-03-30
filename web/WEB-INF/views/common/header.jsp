@@ -134,7 +134,7 @@
                     		<ul>
 	                    		<!-- 커뮤니티 -->
 	                        	<img class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
-	                            <div class="header-all-category-title">자유게시판</div>
+	                            <a href="${ pageContext.servletContext.contextPath }/community/freelist"><div class="header-all-category-title">자유게시판</div></a>
                     		</ul>
                     		<ul>
 	                            <!-- 스토어 -->
@@ -244,14 +244,14 @@
 		                <nav id="header-nav" class="header-nav">
 		                	<ul>
 		                	<li class="header-item"><a href="#">멍개병원</a></li>
-		                	<li class="header-item"><a href="#">멍개일상</a></li>
+		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/thumbnail/list">멍개일상</a></li>
 		                	<li class="header-item"><a href="#">멍개노하우</a></li>
 		                	<li class="header-item"><a href="#">멍개메이트</a></li>
 		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
 		                	</ul>
 		                </nav>
                 </div>
-            </div>
+            </div>  
         </div>
     </header>
     <!-- 커뮤니티/스토어 전환 -->
