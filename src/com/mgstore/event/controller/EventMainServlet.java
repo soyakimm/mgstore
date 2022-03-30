@@ -16,7 +16,7 @@ import com.mgstore.event.model.service.*;
 import com.mgstore.common.paging.SelectCriteria;
 
 @WebServlet("/event/main")
-public class EventMain extends HttpServlet {
+public class EventMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		/*조회수 카운트를 위한 페이지 설정*/

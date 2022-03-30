@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>이벤트메인</title>
 	<!-- 외부 스타일 시트 -->
- 	<link href=${ pageContext.servletContext.contextPath }/resources/css/event/eventmain.css" rel="stylesheet">
+ 	<link href="${ pageContext.servletContext.contextPath }/resources/css/event/eventmain.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -33,8 +33,8 @@
     <div class="banner-wrap" onclick="location.href='${ pageContext.servletContext.contextPath }/event/main'">
         <div class="banner-content"></div>
             <a>
-                <!-- 배너 사진 첨부 -->                                       <!-- event 첨부파일 루트 확인하기... -->
-                 <img src="${ thumbnail.attachmentList[0].evethumbNailPath }"> 
+                <!-- 배너 사진 첨부 -->                                      
+                 <img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].evethumbNailPath }"> 
                 <!-- <img src= "">  -->
             </a>
         </div><!--banner-content--> 
@@ -45,14 +45,14 @@
             <div class="banner-etc">
                 <div class="banner-subject fix">
                     <!-- keeping : 진행중 -->  <!-- thumbnail.name : 진행중 혹은 종료 분류 -->
-                    <div class="keeping-box kepping"><span>${ thumbnail.category }</span></div>
+                    <div class="keeping-box kepping"><span>${ thumbnail.category.eveCateName }</span></div>
                 <span>${ thumbnail.eveTitle }</span>
                 </div>
             </div>
         </div> <!--banner-fix--> 
         
-        <div class="banner-date">
-            <span>${ event.evecreate }</span> <!-- 이벤트 작성일 (mng에서반영) -->
+        <div class="banner-date">      
+            <span>${ thumbnail.eveStart } ~ ${thumbnail.eveEnd}</span> 
             <div class="banner-watch">
             		<!-- 이벤트 조회수 (클릭시 반영) -->
                 <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/ico_watching.png" alt="이벤트조회눈"><span>${ thumbnail.eveCount }</span>

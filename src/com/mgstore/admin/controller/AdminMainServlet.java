@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/adminmain")
-public class AdminMain extends HttpServlet {
+public class AdminMainServlet extends HttpServlet {
 
 //	private Object adminmain;
 

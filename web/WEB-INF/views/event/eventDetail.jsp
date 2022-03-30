@@ -16,29 +16,30 @@
 	<jsp:include page="../common/header.jsp"/>
 	
 	 <!-- content 전체 범위 -->
-	 <form method="get " action="${ pageContext.servletContext.contextPath }/event/detail" enctype="multipart/form-data">
-    <div class="content-body">
+ 	 <form method="get" action="${ pageContext.servletContext.contextPath }/event/detail" enctype="multipart/form-data">
+     
+ 		<div class="content-body">
         <div class="container-wrapper notice-container"> <!-- 위트참고 --> </div>
             <div class="main-content">
                 <div class="side-title">
                     <p><span>이벤트게시판</span></p>
-                    <h2>[댓글이벤트] 3월 멍개상점 베스트 어워드 ${ thumbnail.eveTitle } ,
-                    									${ thumbnail.eveId }
-                                        <span>진행중</span>
+                    <!-- [댓글이벤트] 3월 멍개상점 베스트 어워드 / ${ thumbnail.eveId } -->
+                    <h2>${ thumbnail.eveTitle }
+                                        <span>${thumbnail.category.eveCateName}</span>
                             </h2>
                     <ul>
                         <li class="none-bar">
-                            <img src="${pageContext.servletContext.contextPath}" alt=""><span>${ thumbnail.eveStart } ~ ${ thumbnail.eveEnd }</span>
+                            <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/ico_calendar.png"><span>${ thumbnail.eveStart } ~ ${ thumbnail.eveEnd }</span>
                         </li>
                         <li class="right-block">
-                            <img src="../EVENT/resources/images/ico_watching.png" alt=""><span>${ thumbnail.eveCount }</span>
+                           <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/ico_watching.png"><span>${ thumbnail.eveCount }</span>
                         </li>
                     </ul>
                 </div><!--side-title-->
+				<c:forEach items="${ thumbnail.attachmentList }" var="attachment">
                 <div class="image-section">
-                <img src="${ pageContext.servletContext.contextPath }${ thumbnail.eveSavePath }${ thumbnail.eveSavedName }">
-                <!--  <img src="${ pageContext.servletContext.contextPath }${ thumbnail.attachmentList[0].eveSavePath }${thumbnail.attachmentList[0].eveSavedName}"> -->
-                    <img src="${ thumbnail.eveFileType.BODY  }" name="evecontent">
+				<img src="${ pageContext.servletContext.contextPath }${ attachment.eveSavePath }${ attachment.eveSavedName }">
+				</c:forEach>
                     <map name="eventmap" class="eve-content-section">
                         <ul>
                             <li>
@@ -50,6 +51,8 @@
                         </ul>
                     </map>
                 </div>
+                <%-- </c:forEach> --%>
+                
                 <div class="sub-section full-size">
                     <div class="text-section">
                         
@@ -58,16 +61,16 @@
                 <div class="sub-section full-size">
                     <div class="report-section">
                         <div class="btn-wrap">
-                        	<c:if test="${ !empty loginUser }">  <!-- equals.admin? 으로 수정 필요할지도 모름 -->
+                        	<c:if test="${ loginUser == UserDTO.user }">
                             <!-- 관리자용 게시글 수정 / 삭제 버튼 --> <!-- ※ href 수정 : 이벤트 수정 페이지 -->
-                            <button type="button" class="eve-modify-btn" onClick="location.href='http://192.168.35.52:5500/EVENT/3.eve_mng.html'">수정</button>
+                            <button type="button" class="eve-modify-btn" onClick="location.href='${ pageContext.servletContext.contextPath }/event/update'">수정</button>
                             <!-- 관리자용 게시글 삭제 -->
-                            <button type="button" class="eve-delete-btn"  onclick="button_event();">삭제</button>
+                            <button type="button" class="eve-delete-btn"  onClick="location.href='${ pageContext.servletContext.contextPath }/event/delete'">삭제</button>
                             </c:if>
                         </div>
                     </div>
                 </div>
-    	</form> <!-- 이벤트 게시글 post로 보내기 -->
+                </form><!-- 이벤트 게시글 post로 보내기 -->
 	</div><!-- group -->
 	
 		<script>
@@ -75,5 +78,7 @@
 				location.href = '${ pageContext.servletContext.contextPath }/event/detail?eveId=' + eveId;
 			}
 	</script>
+	
+	<script src="${ pageContext.servletContext.contextPath }/resources/js/event/EventImagePreview.js"></script>
 </body>
 </html>

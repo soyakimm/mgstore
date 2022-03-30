@@ -103,5 +103,40 @@ public class EventService {
 		
 	}
 
+	//이벤트 업데이트
+	 public int updateEvent(EventDTO updateEvent) {
+		
+		 SqlSession session = getSqlSession();
+		 
+		 int result = eventDAO.updateEvent(session, updateEvent);
+		 
+		 if(result > 0) {
+			 session.commit();
+		 } else {
+			 session.rollback();
+		 }
+		 
+		 session.close();
+		 
+		return result;
+	}
+
+	public int deleteEvent(int eveId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = eventDAO.deleteEvent(session, eveId);
+		
+		if(result > 0 ) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 
 }

@@ -65,11 +65,18 @@
 				movePath = "${ pageContext.servletContext.contextPath }/community/main";
 				break;
 
-
-			
-
 			case "insertThumbnail" : 
 				successMessage = "이벤트 썸네일 게시판 등록 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/event/main";
+				break;
+				
+			case "updateEvent" : 
+				successMessage = "이벤트 게시판 수정 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/event/detail";
+				break;
+				
+			case "deleteEvent" :
+				successMessage = "이벤트 게시판 삭제 성공! ";
 				movePath = "${ pageContext.servletContext.contextPath }/event/main";
 				break;
 
