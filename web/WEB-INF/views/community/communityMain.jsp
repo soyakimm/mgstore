@@ -14,7 +14,7 @@
 		<link href="${ pageContext.servletContext.contextPath }/resources/images/community" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header-comm.jsp"/>
 	<div class="group">
   <div class="frame-1 screen">
     <div class="overlap-group1">
