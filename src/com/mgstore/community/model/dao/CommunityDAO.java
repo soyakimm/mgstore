@@ -33,5 +33,30 @@ public class CommunityDAO {
 		
 		return session.insert("CommunityDAO.insertThumbnailContent", thumbnail);
 	}
+	
+	/*sql 테이블에 insert*/
+	public int insertPostResult(SqlSession session, CommunityPostImageDTO file) {
+		
+		return session.insert("CommunityDAO.insertPostResult", file);
+	}
+	
+	/* 썸네일게시판 목록 조회용 메소드 */
+	public List<CommunityWriteDTO> selectThumbnailList(SqlSession session) {
+		
+		return session.selectList("CommunityDAO.selectThumbnailList");
+	}
+	
+	/*조회수*/
+	public int incrementBoardCount(SqlSession session, int postId) {
+		
+		return session.update("CommunityDAO.incrementBoardCount", postId);
+	}
+	
+	/*상세 글 하나 가져오기*/
+	public CommunityWriteDTO selectOneThumbnailBoard(SqlSession session, int postId) {
+		
+		return session.selectOne("CommunityDAO.selectOneThumbnailBoard", postId);
+		
+	}
 
 }

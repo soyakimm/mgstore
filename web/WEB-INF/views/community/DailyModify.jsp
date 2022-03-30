@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>thumbnailInsert</title>
+<title>DailyModify</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Gmarket+Sans+TTF&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link href="${ pageContext.servletContext.contextPath }/resources/css/community/insertForms.css" rel="stylesheet">
+	<link href="${ pageContext.servletContext.contextPath }/resources/css/community/DailyModify.css" rel="stylesheet">
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 .outer {
@@ -93,7 +93,7 @@
 
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+	<jsp:include page="../common/header.jsp"/>
 
 	<div class="outer">
 		<div class="wrap">
@@ -102,38 +102,43 @@
 					<h1>게시글 작성</h1>
 				</div>
 				<div class="board_content">
-					<form method="post" action="${ pageContext.servletContext.contextPath }/thumbnail/insert" enctype="multipart/form-data">
+					<form method="post" action="${ pageContext.servletContext.contextPath }/daily/modify" enctype="multipart/form-data">
 						<div class="content">
 							<h4>
 								<span class="title_span">&nbsp;</span> 분류
 							</h4>
 							<span class="input_area"> 
-							<select name="category">
+							<select name="category" id="category_select" >
 							<option value="" selected>카테고리 선택</option>
-                                <option value="10">멍개병원</option>
                                 <option value="20">멍개일상</option>
-                                <option value="30">멍개노하우</option>
-                                <option value="40">멍개메이트</option>
                                 <option value="50">자유게시판</option>
 							</select>
 							
-							<select name="header">
+							<!-- 카테고리 원래 선택 된 값 -->
+							<script>
+  							document.getElementById("category_select").value = "${ daily.categoryId }";
+							</script>
+							
+							<select name="header" id="header_select">
 							<option value="" selected>말머리 선택</option>
-                                <option value="1">건강관리(멍개노하우)</option>
-                                <option value="2">급여/식이(멍개노하우)</option>
-                                <option value="3">꿀팁(멍개노하우)</option>
-                                <option value="4">놀이(멍개노하우)</option>
-                                <option value="5">여행(멍개노하우)</option>
-                                <option value="6">기타(멍개노하우)</option>
-                                <option value="7">진행 중(멍개메이트)</option>
-                                <option value="8">완료(멍개메이트)</option>
+                                <option value="1">건강관리(멍개일상)</option>
+                                <option value="2">급여/식이(멍개일상)</option>
+                                <option value="3">꿀팁(멍개일상)</option>
+                                <option value="4">놀이(멍개일상)</option>
+                                <option value="5">여행(멍개일상)</option>
+                                <option value="6">기타(멍개일상)</option>
 							</select>
+							
+							<!-- 말머리 원래 선택 된 값 -->
+							<script>
+  							document.getElementById("header_select").value = "${ daily.headerId }";
+							</script>
 							
 							</span>
 							<h4>
 								<span class="title_span">&nbsp;</span> 제목
 							</h4>
-							<span class="input_area"> <input type="text" name="title"
+							<span class="input_area"> <input type="text" name="title" value="${ daily.title }"
 								required>
 							</span>
 
@@ -141,7 +146,7 @@
 								<span class="title_span">&nbsp;</span> 내용
 							</h4>
 							<textarea class="textarea" rows="20" cols="100" name="text"
-								required></textarea>
+								required>${ daily.text }</textarea>
 						
 						<!-- 무조건 사진 첨부! required -->
 							<h4>
@@ -160,19 +165,26 @@
 							<div class="image_area"></div>
 
 							<input type="file" name="contentImg1" accept="image/gif,image/jpeg,image/png"> 
-							<input type="file"
-								name="contentImg2" accept="image/gif,image/jpeg,image/png">
-						
+							<!-- 사진 그대로 가져오는 것.. -->
+							<input type="file" 
+								name="contentImg2" accept="image/gif,image/jpeg,image/png" value="${ pageContext.servletContext.contextPath }${ thumbnail.postImgList[0].thumbnailPath }" >
+							
+							
+							<!-- 사진 원래 선택 된 값 -->
+					<!-- 		<script>
+  							document.getElementById("header_select").value = "${ daily.headerId }";
+							</script>  -->
+							
 						</div>
 						<div class="btn_area">
 							<button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community/main'">목록으로</button>
-							<button type="submit">작성하기</button>
+							<button type="submit">수정하기</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
 </body>
 </html>

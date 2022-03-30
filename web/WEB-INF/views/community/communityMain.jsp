@@ -19,18 +19,13 @@
   <div class="frame-1 screen">
     <div class="overlap-group1">
     <!--View Detail 버튼-->
-    <a href="${ pageContext.servletContext.contextPath }/community/freelist">
+    <a href="#">
       <div class="overlap-group5">
         <div class="view-detail web-font1" href="${ pageContext.servletContext.contextPath }/community/freelist">View Detail</div>
       </div>
     </a>
 	
-	<!-- 멍개일상 -->
-	<a href="${ pageContext.servletContext.contextPath }/community/daily">
-      <div class="overlap-group5">
-        <div class="view-detail web-font1" href="${ pageContext.servletContext.contextPath }/community/daily">멍개일상</div>
-      </div>
-    </a>
+
 	
     </div>
     <div class="text-container">
