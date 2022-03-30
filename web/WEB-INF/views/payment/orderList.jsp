@@ -11,9 +11,7 @@
 	href="${ pageContext.servletContext.contextPath }/resources/css/payment/payment.css"
 	rel="stylesheet">
 <!--제이쿼리 CDN-->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
@@ -58,7 +56,7 @@
 				<hr>
 				<table>
 					<tr>
-						<td>${loginUser.userId}</td>
+						<td>${loginUser.userName}</td>
 						<!-- 회원 이름 -->
 					</tr>
 					<tr>
@@ -92,8 +90,9 @@
 								readonly></input>
 						</td>
 						<td>
-							<button type="button" class="input-button" id="postcodify_search_button"
-								>주소검색</button>
+							<button type="button" class="input-button" id="postcodify_search_button">
+								주소검색
+							</button>
 						</td>
 					</tr>
 					<tr>
@@ -203,13 +202,13 @@
 <script> 
 	$(function() { $("#postcodify_search_button").postcodifyPopUp(); }); 
 </script> 
-	
+
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>	
 	function payApi(payType){
 		var IMP = window.IMP; // 생략가능
         IMP.init('imp75129533'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
-        
         /* 배열넣기 (위에 전달받은 상품배열)*/
         /*상품아이디*/
         var productIdArr = [1, 2];
@@ -237,13 +236,13 @@
 		})  */     
         
         IMP.request_pay({
-        	 pg : 'kakaopay',
+        	 pg : payType,
              pay_method : 'card',
              merchant_uid : 'merchant_' + new Date().getTime(),
              name : '멍개상점 결제',
-             amount : 3000,
+             amount : 300,
              buyer_email : 'tgtg5174@gmail.com',
-             buyer_name : '${loginUser.userId}',
+             buyer_name : '${loginUser.userName}',
              buyer_tel : '${loginUser.phone}',
              buyer_addr : $('[name=address1]').val(), 
              buyer_postcode : $('[name=zipCode]').val()
@@ -256,13 +255,13 @@
                     type: 'POST',
                     dataType: 'json',
                     data: {
-                        imp_uid : rsp.imp_uid
-                        buyer_addr2 : $('[name=address2]'),
+                        imp_uid : rsp.imp_uid,
+                        buyer_addr2 : $('[name=address2]').val(),
                         imp_uid : rsp.imp_uid,
                         produectName : productAmountArr,
                         productAmountArr : productAmountArr,
-                        productPriceArr : productNameArr
-                        userId : ${loginUser.userId},
+                        productPriceArr : productNameArr,
+                        //userId : '${loginUser.userId}', //세션에 있어서 보낼필요 없음>>세션에서 꺼내쓰는걸로 jsp만들어야됨! / ''빼먹으면 오류
                         proId : productIdArr
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
@@ -283,7 +282,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href="../common/header.jsp";
+                location.href="${ pageContext.servletContext.contextPath }/payment/orderSuccess";
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

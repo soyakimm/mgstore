@@ -23,8 +23,8 @@
     </button>
     
     <script type="text/javascript">
-    function orderBack(){
-        location.replace("../main/main.jsp");
+    function backMain(){
+    	location.href="${ pageContext.servletContext.contextPath }/";
     };
     </script>
 </body>
