@@ -11,20 +11,59 @@ import com.mgstore.product.model.dto.ProductDTO;
 
 public class ProductDAO {
 	
-	/* 목록 조회용 메소드 */
-	public static List<ProductDTO> selectProductList(SqlSession session) {
+	/* 페이징 */
+	public List<ProductDTO> selectProductList(SqlSession session, SelectCriteria selectCriteria) {
 		
-		return session.selectList("ProductDAO.selectProductList");
+		return session.selectList("ProductDAO.selectBoardList", selectCriteria);
+	}
+	
+	/* 상품게시판 목록 조회 */
+//	public List<ProductDTO> selectThumbnailList(SqlSession session) {
+//		
+//		return session.selectList("ProductDAO.selectThumbnailList");
+//	}
+	
+	/* 썸네일 제목과 내용 insert용 메소드 */
+	public int insertThumbnailContent(SqlSession session, ProductDTO thumbnail) {
+		
+		return session.insert("ProductDAO.insertThumbnailContent", thumbnail);
+	}
+	
+	/* Attachment 테이블에 insert */
+	public int insertProImg(SqlSession session, ProImgDTO file) {
+		
+		return session.insert("ProductDAO.insertProImg", file);
+	}
+	
+
+	public ProductDTO selectOneThumbnailProduct(SqlSession session, int id) {
+		
+		return session.selectOne("ProductDAO.selectOneThumbnailProduct", id);
 	}
 
-	public int incrementProductCount(SqlSession session, int no) {
+	public static List<ProductDTO> selectThumbnailList(SqlSession session, SelectCriteria selectCriteria) {
+		return session.selectList("ProductDAO.selectThumbnailList");
+	}
+	
+	public int selectTotalCount(SqlSession session, Map<String, String> searchMap) {
 		
-		return session.update("ProductDAO.incrementProductCount", no);
+		return session.selectOne("ProductDAO.selectTotalCount", searchMap);
 	}
 
-	public ProductDTO selectOneThumbnailProduct(SqlSession session, int no) {
-		
-		return session.selectOne("ProductDAO.selectOneThumbnailProduct", no);
+	public int incrementProductCount(SqlSession session, int id) {
+		return 0;
 	}
+
+	public List<ProductDTO> selectAllThumbnailList(SqlSession session) {
+		return session.selectList("ProductDAO.selectAllThumbnailList");
+	}
+
+	
+//	public int incrementProductCount(SqlSession session, int id) {
+//		return 0;
+//	}
+	
+	
+	
 }
 
