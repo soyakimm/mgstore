@@ -7,7 +7,7 @@
 	<!-- 상품 -->
 	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="productResultMap">
 		<id property="proId" column="PRO_ID"/>
-		<result property="pCateId" column="PCATE_ID"/>
+		<result property="proCateId" column="PCATE_ID"/>
 		<result property="proTitle" column="PRO_TITLE"/>
 		<result property="price" column="PRICE"/>
 		<result property="deliveryFee" column="DELIVERY_FEE"/>
@@ -24,7 +24,7 @@
 	
 	<!-- 카테고리 -->
 	<resultMap type="com.mgstore.product.model.dto.ProCateDTO" id="proCateResultMap">
-		<id property="pCateId" column="PCATE_ID"/>
+		<id property="proCateId" column="PCATE_ID"/>
 		<result property="pCateName" column="PCATE_NAME"/>
 		<result property="pCatePId" column="PCATE_P_ID"/>
 	</resultMap>
@@ -41,9 +41,9 @@
 <!-- 	</resultMap> -->
 	
 	<!-- 썸네일 -->
-	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProResultMap">
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProductResultMap">
 		<id property="proId" column="PRO_ID"/>
-		<result property="pCateId" column="PCATE_ID"/>
+		<result property="proCateId" column="PCATE_ID"/>
 		<result property="proTitle" column="PRO_TITLE"/>
 		<result property="price" column="PRICE"/>
 		<result property="deliveryFee" column="DELIVERY_FEE"/>
@@ -66,10 +66,10 @@
 		<result property="refProId" column="REF_PRO_ID"/>
 		<result property="pImgOrgName" column="PIMG_ORGNAME"/>
 		<result property="pImgSvrName" column="PIMG_SVRNAME"/>
-		<result property="pImgTmbName" column="PIMG_TMBNAME"/>
-		<result property="pImgTmbYN" column="PIMG_TMB_YN"/>
-		<result property="pImgSize" column="PIMG_SIZE"/>
-		<result property="pImgDate" column="PIMG_DATE"/>
+		<result property="pImgPath" column="PIMG_PATH"/>
+		<result property="pImgType" column="PIMG_TYPE"/>
+		<result property="pThumbnailPath" column="PTHUMBNAIL_PATH"/>
+		<result property="pImgStatus" column="PIMG_STATUS"/>
 	</resultMap>
 	
 	<!-- 상품 좋아요 -->
@@ -108,45 +108,51 @@
 		<association property="product" resultMap="productResultMap"/>
 	</resultMap>
 	
-	<!-- 모든 상품 조회 -->
-	<select id="selectProductList" resultMap="productResultMap">
+	<!-- 상품게시판 목록 조회 -->
+	<select id="selectThumbnailList" resultMap="thumbnailProductResultMap">
 		SELECT
-			  PRO_ID
-			, PCATE_ID
-			, PRO_TITLE
-			, PRICE
-			, DELIVERY_FEE
-			, PRO_AMOUNT
-			, PRO_CONTENT
-			, PRO_POINT
-			, PRO_DATE
-			, RATING_SUM
-			, RATING_AMOUNT
-			, PRO_STATUS
-		  FROM PRODUCT
+				A.PRO_ID
+			  , B.PCATE_NAME
+			  , A.PRO_TITLE
+			  , A.PRICE
+			  , A.PRO_DATE
+			  , C.PIMG_ID
+			  , C.PIMG_ORGNAME
+			  , C.PIMG_SVRNAME
+			  , C.PIMG_PATH
+			  , C.PTHUMBNAIL_PATH
+		  FROM PRODUCT A
+		  JOIN PRO_CATE B ON (A.PCATE_ID=B.PCATE_ID)
+		  JOIN PRO_IMG C ON (A.PRO_ID=C.REF_PRO_ID)
+		 WHERE A.PRO_STATUS='Y'
+		   AND C.PIMG_STATUS='Y'
+		   AND C.PIMG_TYPE='TITLE'
+		 ORDER BY A.PRO_ID DESC
 	</select>
 	
-	<!-- 현재 파는 상품 조회 -->
-	<select id="selectSellingProductList" resultMap="productResultMap">
+	<!-- 상품관리 목록 조회 (전체상품) -->
+	<select id="selectAllThumbnailList" resultMap="thumbnailProductResultMap">
 		SELECT
-			  PRO_ID
-			, PCATE_ID
-			, PRO_TITLE
-			, PRICE
-			, DELIVERY_FEE
-			, PRO_AMOUNT
-			, PRO_CONTENT
-			, PRO_POINT
-			, PRO_DATE
-			, RATING_SUM
-			, RATING_AMOUNT
-			, PRO_STATUS
-		  FROM PRODUCT
-		 WHERE PRO_STATUS='Y'
+				A.PRO_ID
+			  , B.PCATE_NAME
+			  , A.PRO_TITLE
+			  , A.PRICE
+			  , A.PRO_DATE
+			  , C.PIMG_ID
+			  , C.PIMG_ORGNAME
+			  , C.PIMG_SVRNAME
+			  , C.PIMG_PATH
+			  , C.PTHUMBNAIL_PATH
+		  FROM PRODUCT A
+		  JOIN PRO_CATE B ON (A.PCATE_ID=B.PCATE_ID)
+		  JOIN PRO_IMG C ON (A.PRO_ID=C.REF_PRO_ID)
+		 WHERE C.PIMG_STATUS='Y'
+		   AND C.PIMG_TYPE='TITLE'
+		 ORDER BY A.PRO_ID DESC
 	</select>
 	
-	
-	<insert id="insertProduct" parameterType="com.mgstore.product.model.dto.ProductDTO">
+	<!-- 상품 등록 -->
+	<insert id="insertThumbnailContent">
 		INSERT
 		  INTO PRODUCT
 		(
@@ -156,19 +162,181 @@
 		, PRICE
 		, PRO_AMOUNT
 		, PRO_CONTENT
-		, PRO_STATUS
 		)
 		VALUES
 		(
-		  SEQ_PRO_ID.NEXTVAL
-		, #{ proCateCode }
-		, #{ proTitle }
+		SEQ_PRO_ID.NEXTVAL
+		, #{ proCateId }
+		, #{ proTitle } 
 		, #{ price }
 		, #{ proAmount }
 		, #{ proContent }
-		, #{ proStatus }
+		)
+		<selectKey keyProperty="proId" resultType="Integer" order="AFTER">
+				SELECT
+					  SEQ_PRO_ID.CURRVAL
+					FROM DUAL
+		</selectKey>
+	</insert>
+	
+	<!-- PRO_IMG 테이블에 삽입 -->
+	<insert id="insertProImg">
+		INSERT
+		  INTO PRO_IMG
+		(
+		  PIMG_ID
+		, REF_PRO_ID
+		, PIMG_ORGNAME
+		, PIMG_SVRNAME
+		, PIMG_PATH
+		, PIMG_TYPE
+		, PTHUMBNAIL_PATH
+		)
+		VALUES
+		(
+		  SEQ_PIMG_ID.NEXTVAL
+		, #{ refProId }
+		, #{ pImgOrgName }
+		, #{ pImgSvrName }
+		, #{ pImgPath }
+		, #{ pImgType }
+		, #{ pThumbnailPath }
 		)
 	</insert>
+	
+	<!-- 상품 상세조회 -->
+	<select id="selectOneThumbnailProduct" resultMap="thumbnailProductResultMap">
+		SELECT
+			  A.PRO_ID
+			, B.PCATE_NAME
+			, A.PRO_TITLE
+			, A.PRICE
+			, A.PRO_CONTENT
+			, A.PRO_POINT
+			, C.PIMG_ID
+			, C.PIMG_ORGNAME
+			, C.PIMG_SVRNAME
+			, C.PIMG_PATH
+			, C.PIMG_TYPE
+			, C.PTHUMBNAIL_PATH
+		FROM PRODUCT A
+		JOIN PRO_CATE B ON (A.PCATE_ID=B.PCATE_ID)
+		JOIN PRO_IMG C ON (A.PRO_ID=C.REF_PRO_ID)
+	   WHERE A.PRO_STATUS='Y'
+	     AND C.PRO_STATUS='Y'
+	     AND A.PRO_ID=#{ id }
+	</select> 
+	
+	<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+       SELECT
+             COUNT(*)
+        FROM PRODUCT
+    </select>
+	
+	
+	
+	
+	
+	
+	
+<!-- 	<select id="selectProductList" resultMap="productResultMap"> -->
+<!-- 		SELECT -->
+<!-- 			  PRO_ID -->
+<!-- 			, PCATE_ID -->
+<!-- 			, PRO_TITLE -->
+<!-- 			, PRICE -->
+<!-- 			, DELIVERY_FEE -->
+<!-- 			, PRO_AMOUNT -->
+<!-- 			, PRO_CONTENT -->
+<!-- 			, PRO_POINT -->
+<!-- 			, PRO_DATE -->
+<!-- 			, RATING_SUM -->
+<!-- 			, RATING_AMOUNT -->
+<!-- 			, PRO_STATUS -->
+<!-- 		  FROM PRODUCT -->
+<!-- 	</select> -->
+<!-- 	<select id="selectSellingProductList" resultMap="productResultMap"> -->
+<!-- 		SELECT -->
+<!-- 			  PRO_ID -->
+<!-- 			, PCATE_ID -->
+<!-- 			, PRO_TITLE -->
+<!-- 			, PRICE -->
+<!-- 			, DELIVERY_FEE -->
+<!-- 			, PRO_AMOUNT -->
+<!-- 			, PRO_CONTENT -->
+<!-- 			, PRO_POINT -->
+<!-- 			, PRO_DATE -->
+<!-- 			, RATING_SUM -->
+<!-- 			, RATING_AMOUNT -->
+<!-- 			, PRO_STATUS -->
+<!-- 		  FROM PRODUCT -->
+<!-- 		 WHERE PRO_STATUS='Y' -->
+<!-- 	</select> -->
+<!-- 	<insert id="insertProduct" parameterType="com.mgstore.product.model.dto.ProductDTO"> -->
+<!-- 		INSERT -->
+<!-- 		  INTO PRODUCT -->
+<!-- 		( -->
+<!-- 		  PRO_ID -->
+<!-- 		, PCATE_ID -->
+<!-- 		, PRO_TITLE -->
+<!-- 		, PRICE -->
+<!-- 		, PRO_AMOUNT -->
+<!-- 		, PRO_CONTENT -->
+<!-- 		, PRO_STATUS -->
+<!-- 		) -->
+<!-- 		VALUES -->
+<!-- 		( -->
+<!-- 		  SEQ_PRO_ID.NEXTVAL -->
+<!-- 		, #{ proCateCode } -->
+<!-- 		, #{ proTitle } -->
+<!-- 		, #{ price } -->
+<!-- 		, #{ proAmount } -->
+<!-- 		, #{ proContent } -->
+<!-- 		, #{ proStatus } -->
+<!-- 		) -->
+<!-- 		<selectKey keyProperty="id" resultType="Integer" order="AFTER"> -->
+<!-- 			SELECT -->
+<!-- 				  SEQ_PRO_ID.CURRVAL -->
+<!-- 			  FROM DUAL -->
+<!-- 		</selectKey> -->
+<!-- 	</insert> -->
+<!-- 	<insert id="insertProImg"> -->
+<!-- 		INSERT -->
+<!-- 		  INTO PRO_IMG -->
+<!-- 		( -->
+<!-- 		  PIMG_ID -->
+<!-- 		, REF_PRO_ID -->
+<!-- 		, PIMG_ORGNAME -->
+<!-- 		, PIMG_SVRNAME -->
+<!-- 		, PIMG_TMBNAME -->
+<!-- 		, PIMG_TMB_YN -->
+<!-- 		) -->
+<!-- 		VALUES -->
+<!-- 		( -->
+<!-- 		  SEQ_PIMG_ID.NEXTVAL -->
+<!-- 		, #{ refProId } -->
+<!-- 		, #{ pImgOrgName } -->
+<!-- 		, #{ pImgSvrName } -->
+<!-- 		, #{ pImgTmbName } -->
+<!-- 		, #{ pImgTmbYN } -->
+<!-- 		) -->
+<!-- 	</insert> -->
+<!-- 	<select id="selectProImgList" resultMap="thumbnailProResultMap"> -->
+<!-- 		SELECT -->
+<!-- 				A.PRO_ID -->
+<!-- 			  , A.PRO_TITLE -->
+<!-- 			  , B.PCATE_NAME -->
+<!-- 			  , C.PIMG_ID -->
+<!-- 			  , C.PIMG_ORGNAME -->
+<!-- 			  , C.PIMG_SVRNAME -->
+<!-- 			  , C.TMB_NAME -->
+<!-- 			FROM PRODUCT A -->
+<!-- 			JOIN CATEGORY B ON (A.PCATE_ID = B.PCATE_ID) -->
+<!-- 			JOIN PRO_IMG C ON (A.PRO_ID = C.REF_PRO_ID) -->
+<!-- 		   WHERE A.PRO_STATUS = 'Y' -->
+<!-- 		     AND C.PIMG_TMB_YN = 'Y' -->
+<!-- 		     AND .PRO_ID = #{ id } -->
+<!-- 	</select> -->
 	
   
 </mapper>

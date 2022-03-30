@@ -332,6 +332,16 @@
     });
     </script>
     <!-- 5. 이메일 인증 -->
+    <script>
+    	$("#checkEmail").click(function(){
+    		let email = $("#email").val();
+    		
+    		$.ajax({
+    			type : "get",
+    			url : "checkemail?email=" + email;
+    		});
+    	});
+    </script>
     <!-- 4-1. 이미 가입된 이메일입니다 
          4-2. 이메일 인증되어야 로그인 할 수 있음
         /* 이메일 인증 */

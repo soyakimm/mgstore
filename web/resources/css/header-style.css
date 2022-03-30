@@ -168,6 +168,27 @@ header button {
     display: flex;
 }
 
+/* 마이페이지 - 전체 카테고리 */
+.mypage {
+	position: relative;
+	display: inline-block;
+	background: #000;
+}
+
+.mypage-content {
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+
+.mypage-content a {
+	display: block;
+}
+
+.mypage:hover .mypage-content {
+	display: block;
+}
+
 /* 서브 헤더 - 전체 카테고리 */
 header .header-all-category {
     z-index: 1;
@@ -261,6 +282,7 @@ header .show-all-list:hover {
 
 /* 서브 헤더 - 메뉴 리스트 */
 header nav {
+    display: flex;
     height: 58px;
 }
 

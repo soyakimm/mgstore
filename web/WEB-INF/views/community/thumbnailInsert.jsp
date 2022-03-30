@@ -102,14 +102,14 @@
 					<h1>게시글 작성</h1>
 				</div>
 				<div class="board_content">
-					<form method="post" action="${ pageContext.servletContext.contextPath }/community/insert">
+					<form method="post" action="${ pageContext.servletContext.contextPath }/thumbnail/insert" enctype="multipart/form-data">
 						<div class="content">
 							<h4>
 								<span class="title_span">&nbsp;</span> 분류
 							</h4>
 							<span class="input_area"> 
 							<select name="category">
-							<option>카테고리 선택</option>
+							<option value="" selected>카테고리 선택</option>
                                 <option value="10">멍개병원</option>
                                 <option value="20">멍개일상</option>
                                 <option value="30">멍개노하우</option>
@@ -118,7 +118,7 @@
 							</select>
 							
 							<select name="header">
-							<option>말머리 선택</option>
+							<option value="" selected>말머리 선택</option>
                                 <option value="1">건강관리(멍개노하우)</option>
                                 <option value="2">급여/식이(멍개노하우)</option>
                                 <option value="3">꿀팁(멍개노하우)</option>

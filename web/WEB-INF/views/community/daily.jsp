@@ -47,28 +47,37 @@
               class="line-1"
                src="${ pageContext.servletContext.contextPath }/resources/images/community/멍개일상라인1.png"
             />
-            
+            <c:forEach var="thumbnail" items="${ thumbnailList }"> 
             <!--게시글 전체 시작-->
             <div class="uiui">
-            <!--첫번째 게시글 시작-->  
+            <!--첫번째 게시글 시작-->
             <div class="overlap-group">
-            <div class="rectangle"></div>
+            <div class="rectangle" onclick="detailView(${ thumbnail.postId });">
             <img
                   class="rectangle-1"
                   src="${ pageContext.servletContext.contextPath }/resources/images/community/멍개일상%20사각형.png"
                 />
+                <img class="setting" src="${ pageContext.servletContext.contextPath }${ thumbnail.postImgList[0].thumbnailPath }">
                 <div class="ellipse"></div>
-                <div class="text-1 gmarketsansttf-medium-black-8px web-font23">호두맘</div>
+                <div class="text-1 gmarketsansttf-medium-black-8px web-font23">${ thumbnail.user.nickname }</div>
                 <p class="text-2 gmarketsansttf-medium-black-14px web-font24">
-                  오늘은 우리 호두랑 산책을 했어요!
+                  ${ thumbnail.title }
                 </p>
-                <div class="date notosanskr-medium-black-7px web-font25">2022-03-03</div>
+                <div class="juju" hidden> ${ thumbnail.postId } </div>
+                <div class="date notosanskr-medium-black-7px web-font25">${ thumbnail.date }</div>
               </div>
               <!--첫번째 게시글 끝-->
                    
                           
             </div>
              <!--게시글 전체 끝-->
-
+              </c:forEach>
+	
+	<!-- 해당 게시글 클릭했을 때 게시글 번호 넘어가서 해당 게시글 볼 수 있음 -->
+	<script>
+			function detailView(postId){
+				location.href = '${ pageContext.servletContext.contextPath }/thumbnail/detail?postId=' + postId;
+			}
+	</script>
 </body>
 </html>

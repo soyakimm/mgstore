@@ -91,8 +91,9 @@
 	                    	<img src="${ pageContext.servletContext.contextPath }/resources/images/common/cart.svg" alt="장바구니">
 	                    </a>
 	                    <div class="header-line"><span> | </span></div>
-	                    <button class="login" type="button">
+	                    <button class="mypage" type="button">
 	                    	<a href="${ pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
+	                    	<div class="mypage-content"><a>마이쇼핑</a></div>
 	                    </button>
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="regist" type="button">
@@ -131,16 +132,12 @@
                 <div class="header-menu">
                     <div class="header-title">
                     	<button class="show-all-list" type="button">
-                    		<ul>
-	                    		<!-- 커뮤니티 -->
-	                        	<img class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
-	                            <div class="header-all-category-title">자유게시판</div>
-                    		</ul>
-                    		<ul>
-	                            <!-- 스토어 -->
-	                        	<img class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
-	                            <div class="header-all-category-title">카테고리</div>
-                    		</ul>
+	                    	<!-- 커뮤니티 -->
+	                    	<img style="display: none" class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
+	                    	<div style="display: none" class="header-all-category-title">자유게시판</div>
+	                    	<!-- 스토어 -->
+	                    	<img class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
+	                    	<div class="header-all-category-title">카테고리</div>
 	                        <ul class="header-all-category">
 	                            <li class="header-all-category-container">
 	                                <div class="header-all-list-contents">
@@ -232,63 +229,23 @@
                     	</button>
 		                <nav id="header-nav" class="header-nav">
 		                	<ul>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/feed/all">사료</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/dessert/all">간식</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/care/all">케어</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/living/all">리빙</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
-		                	</ul>
-		                </nav>
-		                <nav id="header-nav" class="header-nav">
-		                	<ul>
-		                	<li class="header-item"><a href="#">멍개병원</a></li>
-		                	<li class="header-item"><a href="#">멍개일상</a></li>
-		                	<li class="header-item"><a href="#">멍개노하우</a></li>
-		                	<li class="header-item"><a href="#">멍개메이트</a></li>
-		                	<li class="header-item"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/feed/all">사료</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/dessert/all">간식</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/care/all">케어</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/living/all">리빙</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
+		                	<li class="header-item comm" style="display: none"><a href="#">멍개병원</a></li>
+		                	<li class="header-item comm" style="display: none"><a href="#">멍개일상</a></li>
+		                	<li class="header-item comm" style="display: none"><a href="#">멍개노하우</a></li>
+		                	<li class="header-item comm" style="display: none"><a href="#">멍개메이트</a></li>
+		                	<li class="header-item comm" style="display: none"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
 		                	</ul>
 		                </nav>
                 </div>
-            </div>
+            </div>  
         </div>
     </header>
-    <!-- 커뮤니티/스토어 전환 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-    	/* 커뮤니티 마우스오버 한 경우 */
-		$(".header-community-button button").mouseover(function(){
-			$(".header-community-button button").css("color", "#f5742f");
-			$(".header-store-button button").css("color", "#000");
-			$("#header-nav-store").hide();
-			$("#header-nav-comm").show();
-			$("#store").hide();
-			$("#comm").show();
-			$(".header-all-category").hide();
-		});
-    	/* 커뮤니티 마우스오버 거둔 경우 */
-		$(".header-community-button button").mouseleave(function(){
-			$(".header-community-button button").css("color", "#000");
-			$(".header-store-button button").css("color", "#f5742f");
-			$("#header-nav-comm").hide();
-			$("#header-nav-store").show();
-			$("#comm").hide();
-			$("#store").show();
-			$(".header-all-category").show();
-		});
-		$(".header-community-button button").on("click", function(){
-			$(".header-community-button button").css("color", "#f5742f");
-			$(".header-store-button button").css("color", "#000");
-			$("#header-nav-store").hide();
-			$("#header-nav-comm").show();
-			$("#store").hide();
-			$("#comm").show();
-			$(".header-all-category").hide();
-		});
-	});
-    
-    </script>
 </body>
 </html>

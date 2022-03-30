@@ -154,18 +154,19 @@
         <!-- 상품 리스트 -->
         <div class="goods" id="goods">
             <div class="goods-grid-list">
-                <div class="goods-grid-item">
+            	<c:forEach var="product" items="${ productList }">
+                <div class="goods-grid-item" onclick="detailView(${ product.proId });">
                     <div class="goods-thumbnail">
-                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" ></a>
+                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><img src="${ pageContext.servletContext.contextPath }${ proImg.proImgList[0].pImgPath }" ></a>
                     </div>
                     <div class="goods-desc-category">
-                        <a href="#"><h4>소카테고리명</h4></a>
+                        <a href="#"><h4> ${ product.category.pCateName } </h4></a>
                     </div>
                     <div class="goods-desc-name">
-                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><h3>멍개상점 상품명</h3></a>
+                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><h3>${ product.proTitle }</h3></a>
                     </div>
                     <div class="goods-desc-price">
-                        <span class="num">1,000</span>원
+                        <span class="num">${ product.price }</span>원
                     </div>
                     <div class="goods-desc-rank">
                         <!-- area-label이 뭔지 모르겠다. 4.5처럼 별점 표시하는 것 같음 -->
@@ -195,8 +196,7 @@
                         </span>
                     </div>
                 </div>
-                
-
+                </c:forEach>
     </div>
 </div>
 
@@ -218,6 +218,12 @@
 			$(".sort-select").slideUp(300);
 			$(this).next(".sort-select").stop().slideToggle(0);
 		});
+		
+		
+		function detailView(id){
+			location.href = '${ pageContext.servletContext.contextPath }/product/detail?no=' + id;
+		}
+
 	</script>
 	
 

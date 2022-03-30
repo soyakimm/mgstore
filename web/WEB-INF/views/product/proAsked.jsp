@@ -23,7 +23,7 @@
             <!-- <button class="askBtn" onclick="link">상품문의 쓰기</button> -->
             <input type="askBtn" value="상품문의 쓰기" class="askBtn" onclick="showPopup();" />
             <script>
-            function showPopup() { window.open("proAskedUser.html", "a", "width=400, height=300, left=100, top=50"); }
+            function showPopup() { window.open("${ pageContext.servletContext.contextPath }/product/asked/user", "a", "width=400, height=600, left=100, top=50"); }
             </script>
         </div>
     </div>

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mgstore.mypage.model.dao.MyPageDAO;
 import com.mgstore.mypage.model.dto.MyPetDTO;
+import com.mgstore.mypage.model.dto.MyPostDTO;
 
 public class MyPageService {
 	
@@ -27,6 +28,8 @@ public class MyPageService {
 		List<MyPetDTO> myPetList = myPageDAO.selectMyPetList(session, userId);
 		
 		/* 2. 작성한 게시글 목록 조회 */
+		
+		List<MyPostDTO> myPostList = myPageDAO.selectMyPostList(session, userId);
 		
 		/*3. 조회 끝났으면 session 닫기 */
 		session.close();
