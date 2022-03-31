@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<title>아이디 찾기 | 멍개상점</title>
     <!-- 외부 스타일 시트 -->
-	<link href="${ pageContext.servletContext.contextPath }/resources/css/findIdForm-style.css" rel="stylesheet">
+	<link href="${ pageContext.servletContext.contextPath }/resources/css/user/findIdForm-style.css" rel="stylesheet">
     <!-- 구글 웹폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>

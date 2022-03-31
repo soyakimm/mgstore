@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+/* 푸터 */
+#footer {
+    flex-direction: row;
+    width: 100%;
+    height: 200px;
+    background-color: #4E4A4A;
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
+}
+
+/* 페이지 크기 정렬 */
+.footer-wrapper {
+	position: relative;
+    width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.footer-layout {
+    width: 100%;
+    height: 100%;
+}
+
+/* 메인 푸터 */
+.footer-main {
+    display: inline-block;
+    height: 100%;
+    align-items: center;
+}
+
+.footer-main p {
+    display: inline;
+    line-height: 10px;
+}
+
+.footer-sub {
+    display: inline-block;
+    text-align: right;
+    margin-left: 640px;
+}
+
+.footer-sub div {
+    display: inline;
+}
+
+.hours-box {
+    display: block;
+}
+
+.footer-logo-box {
+    display: inline;
+    width: 200px;
+}
+
+.footer-logo {
+    line-height: 20px;
+}
+
+.chat-img {
+    line-height: 10px;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.info-box {
+    display: block;
+    color: #757575;
+    font-size: small;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.hours-box {
+    display: block;
+    color: #F7F6F7;
+    font-size: small;
+    text-align: right;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.mg-tel {
+    color: #F7F6F7;
+    font-size: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+
+/* 채팅문의 버튼 */
+.chat-button {
+    display: inline;
+    width: 114px;
+    height: 44px;
+    border: 3px solid #f5742f;
+    border-radius: 36px;
+    background: #f5742f;
+    color: #F7F6F7;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0px 0px 10px auto;
+}
+
+.chat-button:hover {
+    border: 3px solid #f5742f;
+    background: #f5742f;
+    color: #fff;
+}
+
+.chat-button:hover span {
+    display: none;
+}
+
+.chat-button:hover::before {
+    content: "HELP";
+}
+
+/* 전체 효과 */
+footer dl, ul, ol, li {
+    list-style: none;
+}
+
+footer a {
+    color: #F7F6F7;
+    text-decoration-line: none;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+	margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+nav {
+    display: inline-flex;
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+}

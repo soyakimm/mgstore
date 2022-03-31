@@ -36,16 +36,30 @@
 	            </div>
 	        </div>
 	        <div class="main-cate-title">
-	            <h1>베스트 상품</h1>
-	            <div class="cut-in-title"><h4>BEST SELLING</h4></div>
+	            <h1>멍개상점</h1>
+	            <div class="cut-in-title"><h4>MUNGAE STORE</h4></div>
+	        </div>
+	        <div>
+		        <h4 style="text-align: center;">
+		        <br>
+		        반려동물과 견주를 우선으로 생각하는
+				1등 쇼핑몰 멍개상점입니다.
+		        </h4>
 	        </div>
 	        <!-- 베스트 상품 -->
 	        <div class="best-selling">
 	            <c:forEach var="best" items="${ best }">
 	            	<a href="#">
 	            		<div class="best-prod-wrap">
-	            			<div class="prod-img">
-	            			</div>
+	            			<c:forEach var="product" items="${ productList }">
+							<li>
+								<div class="box" onclick="detailView(${ product.proCateId });">
+									<img src="${ pageContext.servletContext.contextPath }${ product.ProImgList[0].thumbnailPath }">
+									<p class="category">[ ${ product.category.name } ]</p>
+									<p class="title">${ product.protitle }</p>
+								</div>
+							</li>
+							</c:forEach>
 	            		</div>
 	            	</a>
 	            </c:forEach>
@@ -83,4 +97,5 @@
 		    dots[index-1].className += " picked";
 	    }
 	</script>
+	<jsp:include page="../common/footer.jsp"/>
 </html>
