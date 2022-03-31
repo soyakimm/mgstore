@@ -51,32 +51,6 @@ button {
 		</div>
 		</form>
 		<div id="Accordion_wrap">
-		<!-- 예시 -->
-			<div class="que">
-				<span>여기는 1:1 문의 게시판 입니다. </span> <span class="que-status">답변완료</span>
-				<span class="que-date">2022-09-19 01:12</span>
-			</div>
-			<div class="anw">
-				<span class="que-contents"> 회원이 남긴 질문이 나옵니다. </span>
-				<!-- anw-btn-mng : 관리자용 버튼
-             		 anw-btn-mem : 회원용 버튼
-        		 -->
-				<div class="anw-btn-mem">
-					<button>수정</button>
-					<button>삭제</button>
-				</div>
-				<br>
-				<br>
-				<hr width=95%>
-				<span class="anw-title">관리자 답변 </span>
-				<div class="anw-date">2022-09-22 13:53</div>
-				<div class="anw-btn-mng">
-					<button>수정</button>
-					<button>삭제</button>
-				</div>
-			</div>
-			<!-- --------- -->
-			
 			<c:forEach var="inq" items="${ inqList }">
 			<div class="que">
 				<span>${ inq.inqTitle }</span> 
@@ -86,10 +60,15 @@ button {
 			<div class="anw">
 				<span class="que-contents">${ inq.inqContents }</span>
 				<div class="anw-btn-mem">
+					<!-- 본인게시글만 볼수있음! -->
+					<c:if test="${ sessionScope.loginUser.userId eq '${ inq.inqId }'}">
 					<button type="button" onclick="updateInqView(${ inq.inqId })">수정</button>
 					<button type="button" onclick="deleteInqView(${ inq.inqId })">삭제</button>
-					<!-- 답변등록 버튼은 관리자만 보이게 -->
+					</c:if>
+					<!-- 답변은 관리자만 볼 수 있다 -->
+					<c:if test="${ sessionScope.loginUser.role eq '관리자' }">
 					<button type="button" onclick="insertAns(${ inq.inqId })">답변등록</button>
+					</c:if>
 				</div>
 				<br>
 				<br>
@@ -149,12 +128,19 @@ button {
 
     </script>
 
-
 		<button type="button" class="regist-bord"
-			onclick="location.href='${ pageContext.servletContext.contextPath }/inq/insert" id="regist-button">
+			onclick="registInq()" id="regist-button" >
 			<div class="regist-bord-text">문의글 등록</div>
 		</button>
 	</div>
+	
+	<script type="text/javascript">
+	
+	function registInq(){
+  	  location.href = "${ pageContext.servletContext.contextPath }/inq/insert";
+    }
+	
+	</script>
 
 
 

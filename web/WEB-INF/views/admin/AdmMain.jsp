@@ -156,7 +156,7 @@
        <table id="firstTB">
            <tr>
                <td>
-                   <button class="firstBtn" id="adm_member" type="button">회원관리</button>
+                   <button class="firstBtn" id="userBtn" type="button">회원관리</button>
                    <button class="firstBtn" id="adm_order" type="button">주문관리</button>
                <!-- </td> -->
              <!--  </tr> <tr> -->
@@ -172,7 +172,7 @@
        <script>
 		    const userBtn = document.getElementById('userBtn');
 		   	userBtn.addEventListener('click', function(){
-		   		location.href='${ pageContext.servletContext.contextPath }/admin/usermain';
+		   		location.href='<%=request.getContextPath()%>/admin/userlist';
 		   	});
        		
             const proBtn = document.getElementById('proBtn');

@@ -135,8 +135,8 @@ public class EventInsertServlet extends HttpServlet {
 								fileMap.put("eveFileType", "TITLE");
 
 								/* 썸네일로 변환 할 사이즈를 지정한다. */
-								width = 350;
-								height = 200;
+								width = 1400;
+								height = 250;
 							} else {
 								fileMap.put("eveFileType", "BODY");
 

@@ -15,7 +15,7 @@ import com.mgstore.user.model.dto.UserDTO;
 public class AskedinsertServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "/WEB-INF/views/notice/insertForm.jsp";
+		String path = "/WEB-INF/views/notice/askInsertForm.jsp";
 		
 		request.getRequestDispatcher(path).forward(request, response);
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.mgstore.notice.model.dto.AskConditionDTO;
 import com.mgstore.notice.model.dto.AskedDTO;
 import com.mgstore.notice.model.dto.InqDTO;
 
@@ -41,9 +42,9 @@ public class NoticeDAO {
 	}
 
 	/* 1:1 문의 조회*/
-	public List<InqDTO> selectInqList(SqlSession session, String searchCondition) {
+	public List<InqDTO> selectInqList(SqlSession session, AskConditionDTO askCondition) {
 		
-		return session.selectList("NoticeDAO.selectInqList", searchCondition);
+		return session.selectList("NoticeDAO.selectInqList", askCondition);
 	}
 
 	/* 1:1 문의 등록*/

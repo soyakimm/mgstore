@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import static com.mgstore.common.mybatis.Template.getSqlSession;
 
 import com.mgstore.notice.model.dao.NoticeDAO;
+import com.mgstore.notice.model.dto.AskConditionDTO;
 import com.mgstore.notice.model.dto.InqDTO;
 
 public class InqService {
@@ -18,13 +19,16 @@ public class InqService {
 	public InqService() {
 		noticeDAO = new NoticeDAO();
 	}
+	
 
 	/* 문의글 조회 */
-	public List<InqDTO> selectInqList(String searchCondition) {
+	public List<InqDTO> selectInqList(AskConditionDTO askCondition) {
 		
 		SqlSession session = getSqlSession();
 		
-		List<InqDTO> inqList = noticeDAO.selectInqList(session, searchCondition);
+		List<InqDTO> inqList = noticeDAO.selectInqList(session, askCondition);
+		
+		System.out.println("서비스에서 inqList : " + inqList);
 		
 		return inqList;
 	}
@@ -151,6 +155,7 @@ public class InqService {
 		
 		return result;
 	}
+
 
 
 	

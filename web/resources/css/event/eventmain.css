@@ -24,6 +24,23 @@
     font-family: GmarketSansBold;
 }
 
+/* 등록하기 버튼 - 관리자용 */
+.eve-delete-btn{
+	float: right;
+    left: 50;
+    right: 50;
+    width: 70px;
+    height: 25px;
+    margin-bottom: 8px;
+    
+    background: #F7F7F7;
+    border: 1px solid #F5742F;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+    color: #48484d;
+}
+
 .content-body {
    min-width: 1400px;
    position: relative;
