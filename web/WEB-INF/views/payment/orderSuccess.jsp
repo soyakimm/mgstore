@@ -17,9 +17,9 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<h1>결제 완료</h1>
+	<h1 align="center">결제 완료</h1>
 	<button type="button" class="back-main" onclick="backMain()" id="back-main">
-    	<div class="back-main-text">홈으로 돌아가기</div>
+    	<div class="back-main-text" align="center">홈으로 돌아가기</div>
     </button>
     
     <script type="text/javascript">

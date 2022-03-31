@@ -29,22 +29,11 @@
 						<img src="../resource/로고_주황.png">
 						</td>
 						<td class="table-img-pro">
+							<div><input type="hidden" name="productId" value=1></div>							
 							<div><input type="hidden" name="productName" value="멍멍이풍선껌">멍멍이풍선껌</div><!-- 값받아야됨 / value="${ pay.proName } -->
-							<li><input type="hidden" name="amount" value="2">2개</li>
+							<li><input type="hidden" name="amount" value="1">1개</li>
 							<div><input type="hidden" name="price" value="10000">
 							<fmt:formatNumber value="10000" type="number" />원
-							</div><!-- 값받아야됨 / value="${ pay.proPrice } -->
-						</td>
-					</tr>
-					<tr>
-						<td class="table-img">
-						<img src="../resource/로고_주황.png">
-						</td>
-						<td class="table-img-pro">
-							<div><input type="hidden" name="productName" value="삑삑이 장난감">삑삑이 장난감</div><!-- 값받아야됨 -->
-							<li><input type="hidden" name="amount" value="1">1개</li>
-							<div><input type="hidden" name="price" value="6000">
-							<fmt:formatNumber value="6000" type="number" />원
 							</div><!-- 값받아야됨 / value="${ pay.proPrice } -->
 						</td>
 					</tr>
@@ -150,15 +139,15 @@
 					<tr>
 						<td class="table-row">총 상품 금액</td>
 						<td class="input-layer4">
-							<fmt:formatNumber value="16000" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
-							<input type="hidden" name="proTotal" value="16000">
+							<fmt:formatNumber value="10000" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
+							<input type="hidden" name="proTotal" value="10000">
 						</td> 
 					</tr>
 					<tr>
 						<td class="table-row">배송비</td>
 						<td class="input-layer4">
-							<fmt:formatNumber value="2500" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
-							<input type="hidden" name="deliveryFee" value="2500">
+							<fmt:formatNumber value="0" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
+							<input type="hidden" name="deliveryFee" value="0">
 						</td>
 					</tr>
 					<!--  포인트 보류
@@ -169,12 +158,13 @@
 					<tr>
 						<td class="table-row">총 결제금액</td>
 						<td class="input-layer4">
-							<b><fmt:formatNumber value="18500" type="number" />원</b>
+							<b><fmt:formatNumber value="10000" type="number" />원</b>
 							<input type="hidden" name="orderTotal" value="18500">
 						</td>
 					</tr>
 				</table>
 			</div>
+			<div class="pay-inf">위 주문 내용을 확인하였으며 결제에 동의합니다.</div>
 			<div class="detail-name">
 				<span>결제 방식</span>
 				<hr>
@@ -182,18 +172,19 @@
 					<tr>
 						<td>
 							<button type="button" class="pay-method" id="pay-method-kko" 
-								onclick="payApi('kakaopay');">카카오페이</button>
+								onclick="payApi('kakaopay');">카카오페이로 주문하기</button>
 						</td>
 					</tr>
 					<tr>
-						<td><button type="button" class="pay-method" onclick="payApi('card');"
-								id="pay-method-crd">신용카드</button></td>
+						<td><button type="button" class="pay-method" onclick="payApi('inicis');"
+								id="pay-method-crd">신용카드로 주문하기</button></td>
 					</tr>
 				</table>
 			</div>
+			<!--  
 			<div class="pay-inf">위 주문 내용을 확인하였으며 결제에 동의합니다.</div>
 			<input type="button" class="pay-request pay-request-text" id="pay-request" value="주문하기">
-				
+			-->
 		</div>
 	</div>
 	</form>
@@ -209,60 +200,44 @@
 		var IMP = window.IMP; // 생략가능
         IMP.init('imp75129533'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
-        /* 배열넣기 (위에 전달받은 상품배열)*/
-        /*상품아이디*/
-        var productIdArr = [1, 2];
-        /*
-        $('[name=productId]').each(function(1dx) {
-        	productIdArr.push($('[name=productId]:eq('+1dx')').next().val());
-		}) */
-        /*상품이름*/
-        var productNameArr = ['멍멍이풍선껌', '삑삑이 장난감'];
-        /*
-        $('[name=productName]').each(function(1dx) {
-        	productNameArr.push($('[name=productName]:eq('+1dx')').next().val());
-		}) */
-		/*상품 수량*/
-		var productAmountArr = [2, 1];
-        /*
-        $('[name=amount]').each(function(1dx) {
-        	productAmountArr.push($('[name=amount]:eq('+1dx')').next().val());
-		})	*/
-		/*상품 가격*/
-        var productPriceArr = [5000, 6000];
-        /*
-        $('[name=price]').each(function(1dx) {
-        	productPriceArr.push($('[name=price]:eq('+1dx')').next().val());
-		})  */     
         
         IMP.request_pay({
         	 pg : payType,
              pay_method : 'card',
              merchant_uid : 'merchant_' + new Date().getTime(),
              name : '멍개상점 결제',
-             amount : 300,
+             amount : 300,	//결제 최총 금액
              buyer_email : 'tgtg5174@gmail.com',
              buyer_name : '${loginUser.userName}',
-             buyer_tel : '${loginUser.phone}',
+             buyer_tel : $('[name=phone1]').val(),
              buyer_addr : $('[name=address1]').val(), 
              buyer_postcode : $('[name=zipCode]').val()
         }, function(rsp) {
+        	console.log(rsp.success);
             if ( rsp.success ) {
             	console.log(rsp);
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
                  jQuery.ajax({
-                    url: "/payment/orderList", //cross-domain error가 발생하지 않도록 주의해주세요
+                    url: "${ pageContext.servletContext.contextPath }/payment/orderList", //cross-domain error가 발생하지 않도록 주의해주세요
                     type: 'POST',
                     dataType: 'json',
                     data: {
                         imp_uid : rsp.imp_uid,
+                        buyer_email : 'tgtg5174@gmail.com',
+                        buyer_name : '${loginUser.userName}',
+                        buyer_tel : $('[name=phone1]').val(),
+                        buyer_addr : $('[name=address1]').val(), 
+                        buyer_postcode : $('[name=zipCode]').val(),
                         buyer_addr2 : $('[name=address2]').val(),
-                        imp_uid : rsp.imp_uid,
-                        produectName : productAmountArr,
-                        productAmountArr : productAmountArr,
-                        productPriceArr : productNameArr,
+                        delivery_user : $('[name=ordName]').val(),
+                        buyer_tel2 : $('[name=phone2]').val(),
+                        deliveryReq : $('[name=deliveryReq]').val(),
+                        productName : "멍멍이풍선껌", /*값 고치기*/
+                        productQty : 1, /*값 고치기*/
+                        productPrice : 10000, /*값 고치기*/
+                        proId : 10, /*값 고치기*/
+                        proTotal : 10000 //상품 총 금액 (배송비 포함된)
                         //userId : '${loginUser.userId}', //세션에 있어서 보낼필요 없음>>세션에서 꺼내쓰는걸로 jsp만들어야됨! / ''빼먹으면 오류
-                        proId : productIdArr
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
                 }).done(function(data) {
@@ -289,7 +264,8 @@
                 //실패시 이동할 페이지
                 location.href="${ pageContext.servletContext.contextPath }/payment/orderList";
                 alert(msg);
-            }
+            } 
+          
         });
 	}
  

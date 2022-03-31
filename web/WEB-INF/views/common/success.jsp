@@ -83,6 +83,12 @@
 				successMessage = "이벤트 게시판 삭제 성공! ";
 				movePath = "${ pageContext.servletContext.contextPath }/event/main";
 				break;
+				
+			case "insertOder" :
+				successMessage = "주문이 완료되었습니다 :)";
+				movePath = "${ pageContext.servletContext.contextPath }/myshopping/wishList";
+				// 이동 주소값 주문리스트로 옮기기
+				break;
 
 			case "updateThumbnail" :
 				successMessage = "이벤트 게시판 수정 성공! ";

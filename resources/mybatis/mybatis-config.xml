@@ -26,7 +26,7 @@
 		<mapper resource="com/mgstore/event/model/dao/EventDAO.xml"/>
 		<mapper resource="com/mgstore/cart/model/dao/CartDAO.xml"/>
     	<mapper resource="com/mgstore/mypage/model/dao/MyPageDAO.xml"/>
-
+		<mapper resource="com/mgstore/payment/model/dao/OrderDAO.xml"/>
 
 	</mappers>
 

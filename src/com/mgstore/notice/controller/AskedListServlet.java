@@ -25,7 +25,7 @@ public class AskedListServlet extends HttpServlet {
 		
 		List<AskedDTO> askedList = askedService.selectAskedList(searchCondition);
 		
-		System.out.println(askedList);
+		System.out.println("askedList" + askedList);
 		
 		String path ="";
 		
