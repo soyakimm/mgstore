@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Gmarket+Sans+TTF&display=swap" rel="stylesheet" />
+<title>freeTalkDetail</title>
+ <link href="https://fonts.googleapis.com/css?family=Gmarket+Sans+TTF&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet" />
 	<link href="${ pageContext.servletContext.contextPath }/resources/css/community/thumbnailDetail.css" rel="stylesheet">
@@ -16,34 +15,37 @@
 <style>
 .dkkk {
 	position : relative;
-right : 430px;
-margin-top : 20px;
+right : 433px;
+margin-top : 50px;
 }
 </style>
+
 </head>
 <body>
-<jsp:include page="../common/header-comm.jsp"/>	
-	 <div class="group">
+<jsp:include page="../common/header-comm.jsp"/>
+ <div class="group">
     <div class="frame-3 screen">
         <div class="flex-col">
           <div class="flex-row">
             <div class="text-container">
-              <div class="text-1-1 web-font42">${ thumbnail.header.headerName }</div>
-              <h1 class="text-2 web-font43">${ thumbnail.title }</h1>
+              <div class="text-1-1 web-font42">${ write.header.headerName }</div>
+              <h1 class="text-2 web-font43">${ write.title }</h1>
             </div>
+            
+            
             
             <!--게시글 날짜, 조회수, 하트수, 댓글 수-->
             <div class="other">
-            <div class="date notosanskr-medium-black-11px web-font46">${ thumbnail.date }</div>
-            <div class="juju" hidden> ${ thumbnail.postId } </div>
+            <div class="date notosanskr-medium-black-11px web-font46">${ write.date }</div>
+          
             <img
               class="visibility"
               src="../게시글/image/visibility.png"
             />
-            <div class="number notosanskr-medium-black-11px web-font46">${ thumbnail.views }</div>
+            <div class="number notosanskr-medium-black-11px web-font46">${ write.views }</div>
             <img
               class="heart"
-              src="../게시글/image/heart.png"
+              src="${ pageContext.servletContext.contextPath }/resources/images/community/heart.png"
             />
             <div class="number-1 notosanskr-medium-black-11px web-font46">7</div>
             <img
@@ -56,19 +58,14 @@ margin-top : 20px;
 
 
             <!--회원 이름-->
-            <div class="text-3 web-font44">${ thumbnail.user.nickname }</div>
+            <div class="text-3 web-font44">${ write.user.nickname }</div>
             
             
             <img class="lline" src="${ pageContext.servletContext.contextPath }/resources/images/community/게시글%20라인4.png">
           
-          <!-- 사진 들어가는 공간 -->
-          <c:forEach items="${ thumbnail.postImgList }" var="postImgList">
-          <img class="rectangle-51" src="${ pageContext.servletContext.contextPath }${ postImgList.thumbnailPath }">
-          </c:forEach>
-          
-          
+         
           <span class="dkkk web-font47">
-            ${ thumbnail.text }
+            ${ write.text }
           </span>
           <div class="flex-row-1">
             <div class="overlap-group1 border-1px-star-dust">
@@ -87,7 +84,7 @@ margin-top : 20px;
           <!--신고-->
           <a href="#"><div class="sir"><img
               class="x1"
-             src="${ pageContext.servletContext.contextPath }/resources/images/community/siren.png"
+              src="${ pageContext.servletContext.contextPath }/resources/images/community/siren.png"
             />
             <div class="text-15 notosanskr-medium-fuscous-gray-15px">신고</div>
           </div></a>
@@ -115,18 +112,18 @@ margin-top : 20px;
         <div class="overlap-group4 border-1px-star-dust">
           <img
             class="heart-1"
-            src="../게시글/image/heart.png"
+            src="${ pageContext.servletContext.contextPath }/resources/images/community/heart.png"
           />
         </div>
       </div>
       <!--수정하기, 삭제하기 버튼-->
-      <button type="button" class="rere" onclick="dailyModifyView(${ thumbnail.postId })">수정하기</button>
+      <button type="button" class="rere" onclick="freeTalkModifyView(${ write.postId })">수정하기</button>
 			<button type="button" class="rere" onclick="deleteWrite()">삭제하기</button>
-	
-	<form name="writeForm" method="post">
-            <input type="hidden" name="postId" value="${ thumbnail.postId }">
+		
+		  <form name="writeForm" method="post">
+            <input type="hidden" name="postId" value="${ write.postId }">
             </form>
-	
+		
       <!--좋아요 누르기 시작-->
       
         <!--좋아요 누르기 끝-->
@@ -135,24 +132,24 @@ margin-top : 20px;
 
         <!--댓글 끝-->
     </div>
-	
-	<!-- 수정하기 버튼 눌렀을 때 게시글 번호 말머리, 제목, 내용, 사진 넘어가서 해당 게시글 수정 
+
+<!-- 수정하기 버튼 눌렀을 때 게시글 번호 말머리, 제목, 내용, 사진 넘어가서 해당 게시글 수정 
 	daily/modify?postId 이건 해당 서블릿으로 게시판 번호값을 넘겨주는 것이다 -->
 	<script>
-			function dailyModifyView(postId){
-				location.href = '${ pageContext.servletContext.contextPath }/daily/modify?postId=' + postId;
+	
+			function freeTalkModifyView(postId){
+				location.href = '${ pageContext.servletContext.contextPath }/free/modify?postId=' + postId;
 			}
 			
 			function deleteWrite(){
 				/*YES를 눌렀을 경우*/
 				/*위에서 폼으로 name 지어둔 것 */
 				if(confirm('이 게시글을 삭제하시겠습니까?')){
-					document.forms.writeForm.action = "${ pageContext.servletContext.contextPath }/thumbnail/delete";
+					document.forms.writeForm.action = "${ pageContext.servletContext.contextPath }/free/delete";
 					document.forms.writeForm.submit();
 				}
 			}
 	</script>
-	
-	
+
 </body>
 </html>
