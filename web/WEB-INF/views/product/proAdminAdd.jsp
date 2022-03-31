@@ -19,34 +19,34 @@
 <body>
 	
    <div class="proAdminAdd-page">
-   <form method="post" action="${ pageContext.servletContext.contextPath }/product/admin/add"
-						enctype="multipart/form-data">
         <div class="proAdminAdd-header">
             <div class="proAdminAdd-title"><h3>상품 등록</h3></div>
-            <div class="proAdminAdd-button">
-                <button class="proAddBtn" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin'">취소</button>
-                <button type="submit" class="proModifyBtn">등록하기</button>
-            </div>
         </div>
         <div class="proAdminAdd-body">
+            <div class="proAdminAdd-button">
+                <button class="proAddBtn" onclick="location.href='${ pageContext.servletContext.contextPath }/product/list'">취소</button>
+            </div>
+   <form method="post" action="${ pageContext.servletContext.contextPath }/product/admin/add"
+						enctype="multipart/form-data">
+                <button type="submit" class="proModifyBtn">등록하기</button>
             <div class="pro-regist-wrapper">
                 <table>
                     <tr>
                         <th>상품명<span>&nbsp(필수)</span></th>
                         <td colspan="2">
-                            <input type="text" name="proTitle" placeholder="상품명은 100자까지 입력 가능합니다." size="80" maxlength="100">
+                            <input type="text" name="proTitle" placeholder="상품명은 100자까지 입력 가능합니다." size="80" maxlength="100" required>
                         </td>
                     </tr>
                     <tr>
                         <th>판매가<span>&nbsp(필수)</span></th>
                         <td colspan="2">
-                            <input type="text" name="price">&nbsp원
+                            <input type="text" name="price" required>&nbsp원
                         </td>
                     </tr>
                     <tr>
                         <th>카테고리<span>&nbsp(필수)</span></th>
                         <td colspan="2">
-                            <select name="categoty" style="width: 300px; height: 20px;">
+                            <select name="superCategory" style="width: 300px; height: 20px;">
                                 <option>상위 카테고리를 선택해주세요.</option>
                                 <option> -------------------------------------------------- </option>
                                 <option value="2">사료</option>
@@ -58,7 +58,7 @@
                                 <option value="7">패션</option>
 
                             </select>
-                            <select name=category style="width: 300px; height: 20px;">
+                            <select name="subCategory" style="width: 300px; height: 20px;">
                                 <option>하위 카테고리를 선택해주세요.</option>
                                 <option> -------------------------------------------------- </option>
                                 <option value="11">노즈워크</option>
@@ -76,16 +76,14 @@
                         <th height="300px" rowspan="2">이미지</th>
                         <td id="tid">
                             <h4>썸네일</h4>
-                            <div id="thumbnail-preview">
-                                <img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" alt="사진영역"  style="width:180; height:180;">
-                            </div>
+<!--                             <div id="thumbnail-preview"> -->
+<!--                             </div> -->
                             <input type="file" id="img" name="thumbnail" accept="image/gif, image/jpeg, img/png"/>
                         </td>
                         <td>
                             <h4>상세 이미지</h4>
-                            <div id="image-preview">
-                                <img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" alt="사진영역"  style="width:180; height:180;">
-                            </div>
+<!--                             <div id="image-preview"> -->
+<!--                             </div> -->
                             <input type="file" id="img2" name="contentImg" accept="image/gif, image/jpeg, img/png"/>
                         </td>
                     </tr>

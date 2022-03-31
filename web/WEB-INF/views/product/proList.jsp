@@ -100,7 +100,7 @@
                             <a><img src="${ pageContext.servletContext.contextPath }/resources/images/product/hide.png" alt="토글이미지" class="hide-button"/></a>
                         </div>
                         <ul class="sub-select">
-                            <li><button type="button" onclick="${ pageContext.servletContext.contextPath }/product/list/toy/all">- 전체</button></li>
+                            <li><button type="button" onclick="${ pageContext.servletContext.contextPath }/product/list">- 전체</button></li>
                             <li><button type="button" onclick="${ pageContext.servletContext.contextPath }/product/list/toy/nosewalk">- 노즈워크</button></li>
                             <li><button type="button" onclick="${ pageContext.servletContext.contextPath }/product/list/toy/toy">- 장난감</button></li>
                         </ul>
@@ -117,12 +117,11 @@
                         </ul>
                     </li>
                     
-<%-- 관리자 테스트 가능한 경우 실행하기 -->            
-<%--                     <c:if test="${ sessionScope.loginMember.role eq 'ADMIN' }"> --%>
+                    <c:if test="${ sessionScope.loginUser.role == '관리자' }">
 						<div class="proAdminUrl">
-	                        <button class="proAdmin" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin'">상품관리</button>
+	                        <button class="proAdmin" onclick="location.href='${ pageContext.servletContext.contextPath }/product/admin/add'">상품추가</button>
 	                    </div>
-<%-- 					</c:if> --%>
+					</c:if>
                     
                 
                 </ul>
@@ -155,43 +154,23 @@
         <div class="goods" id="goods">
             <div class="goods-grid-list">
             	<c:forEach var="product" items="${ productList }">
-                <div class="goods-grid-item" onclick="detailView(${ product.proId });">
-                    <div class="goods-thumbnail">
-                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><img src="${ pageContext.servletContext.contextPath }${ proImg.proImgList[0].pImgPath }" ></a>
+                <div class="goods-grid-item" >
+                    <div class="goods-thumbnail" onclick="detailView(${ product.proId });">
+                        <a href=#><img src="${ pageContext.servletContext.contextPath }${ product.proImgList[0].proThumbnailPath }" ></a>
                     </div>
                     <div class="goods-desc-category">
                         <a href="#"><h4> ${ product.category.pCateName } </h4></a>
                     </div>
-                    <div class="goods-desc-name">
-                        <a href="${ pageContext.servletContext.contextPath }/product/detail"><h3>${ product.proTitle }</h3></a>
+                    <div class="goods-desc-name" onclick="detailView(${ product.proId });">
+                        <a href=#><h3>${ product.proTitle }</h3></a>
                     </div>
                     <div class="goods-desc-price">
                         <span class="num">${ product.price }</span>원
                     </div>
                     <div class="goods-desc-rank">
-                        <!-- area-label이 뭔지 모르겠다. 4.5처럼 별점 표시하는 것 같음 -->
                         <span class="goods-stars" role="image" aria-label="#">
                             <span class="goods-star">
-                                <!-- 별 도형 -->
-                                <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                <!-- 숫자가 반올림 이상이면 채우는 코드인 것 같음 -->
-                                <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                            </span>
-                            <span class="goods-star">
-                                <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                            </span>
-                            <span class="goods-star">
-                                <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                            </span>
-                            <span class="goods-star">
-                                <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                            </span>
-                            <span class="goods-star">
-                                <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
+                                <span>${ product.proContent }</span>
                             </span>
                         </span>
                     </div>
@@ -221,7 +200,7 @@
 		
 		
 		function detailView(id){
-			location.href = '${ pageContext.servletContext.contextPath }/product/detail?no=' + id;
+			location.href = '${ pageContext.servletContext.contextPath }/product/detail?id=' + id;
 		}
 
 	</script>

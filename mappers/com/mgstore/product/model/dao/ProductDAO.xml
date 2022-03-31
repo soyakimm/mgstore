@@ -10,14 +10,12 @@
 		<result property="proCateId" column="PCATE_ID"/>
 		<result property="proTitle" column="PRO_TITLE"/>
 		<result property="price" column="PRICE"/>
-		<result property="deliveryFee" column="DELIVERY_FEE"/>
 		<result property="proAmount" column="PRO_AMOUNT"/>
 		<result property="proContent" column="PRO_CONTENT"/>
 		<result property="proPoint" column="PRO_POINT"/>
 		<result property="proDate" column="PRO_DATE"/>
-		<result property="ratingSum" column="RATING_SUM"/>
-		<result property="ratingAmount" column="RATING_AMOUNT"/>
 		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proCount" column="PRO_COUNT"/>
 		
 		<association property="category" resultMap="proCateResultMap"/>
 	</resultMap>
@@ -29,31 +27,18 @@
 		<result property="pCatePId" column="PCATE_P_ID"/>
 	</resultMap>
 	
-	<!-- 상품 옵션 -->
-<!-- 	<resultMap type="com.mgstore.product.model.ProOptionDTO" id="proOptionResultMap"> -->
-<!-- 		<id property="optId" column="OPT_ID"/> -->
-<!-- 		<result property="optCont" column="OPT_CONT"/> -->
-<!-- 		<result property="optPrice" column="OPT_PRICE"/> -->
-<!-- 		<result property="optAmount" column="OPT_AMOUNT"/> -->
-<!-- 		<result property="optPId" column="OPT_P_ID"/> -->
-	
-<!-- 		<association property="product" column="productResultMap"/>	 -->
-<!-- 	</resultMap> -->
-	
 	<!-- 썸네일 -->
 	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProductResultMap">
 		<id property="proId" column="PRO_ID"/>
 		<result property="proCateId" column="PCATE_ID"/>
 		<result property="proTitle" column="PRO_TITLE"/>
 		<result property="price" column="PRICE"/>
-		<result property="deliveryFee" column="DELIVERY_FEE"/>
 		<result property="proAmount" column="PRO_AMOUNT"/>
 		<result property="proContent" column="PRO_CONTENT"/>
 		<result property="proPoint" column="PRO_POINT"/>
 		<result property="proDate" column="PRO_DATE"/>
-		<result property="ratingSum" column="RATING_SUM"/>
-		<result property="ratingAmount" column="RATING_AMOUNT"/>
 		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proCount" column="PRO_COUNT"/>
 		
 		<association property="category" resultMap="proCateResultMap"/>
 		
@@ -62,14 +47,14 @@
 	
 	<!-- 상품이미지 -->
 	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="proImgResultMap">
-		<id property="pImgId" column="PIMG_ID"/>
+		<id property="proImgId" column="PIMG_ID"/>
 		<result property="refProId" column="REF_PRO_ID"/>
-		<result property="pImgOrgName" column="PIMG_ORGNAME"/>
-		<result property="pImgSvrName" column="PIMG_SVRNAME"/>
-		<result property="pImgPath" column="PIMG_PATH"/>
-		<result property="pImgType" column="PIMG_TYPE"/>
-		<result property="pThumbnailPath" column="PTHUMBNAIL_PATH"/>
-		<result property="pImgStatus" column="PIMG_STATUS"/>
+		<result property="proImgOrgName" column="PIMG_ORGNAME"/>
+		<result property="proImgSvrName" column="PIMG_SVRNAME"/>
+		<result property="proImgPath" column="PIMG_PATH"/>
+		<result property="proImgType" column="PIMG_TYPE"/>
+		<result property="proThumbnailPath" column="PTHUMBNAIL_PATH"/>
+		<result property="proImgStatus" column="PIMG_STATUS"/>
 	</resultMap>
 	
 	<!-- 상품 좋아요 -->
@@ -160,7 +145,6 @@
 		, PCATE_ID
 		, PRO_TITLE
 		, PRICE
-		, PRO_AMOUNT
 		, PRO_CONTENT
 		)
 		VALUES
@@ -169,7 +153,6 @@
 		, #{ proCateId }
 		, #{ proTitle } 
 		, #{ price }
-		, #{ proAmount }
 		, #{ proContent }
 		)
 		<selectKey keyProperty="proId" resultType="Integer" order="AFTER">
@@ -223,7 +206,6 @@
 		JOIN PRO_CATE B ON (A.PCATE_ID=B.PCATE_ID)
 		JOIN PRO_IMG C ON (A.PRO_ID=C.REF_PRO_ID)
 	   WHERE A.PRO_STATUS='Y'
-	     AND C.PRO_STATUS='Y'
 	     AND A.PRO_ID=#{ id }
 	</select> 
 	
@@ -232,7 +214,33 @@
              COUNT(*)
         FROM PRODUCT
     </select>
+    
+    <update id="incrementProductCount">
+        UPDATE
+               PRODUCT A
+           SET A.PRO_COUNT = (SELECT B.PRO_COUNT
+                                  FROM PRODUCT B
+                                 WHERE B.PRO_ID = #{ id }
+                               ) + 1
+         WHERE A.PRO_ID = #{ id }
+	</update>
 	
+	<update id="updateProduct">
+		UPDATE
+				PRODUCT
+			SET PRO_TITLE = #{ proTitle }
+			  , PCATE_ID = #{ pCateId }
+			  , PRICE = #{ price }
+			  , PRO_CONTENT = #{ proContent }
+		  WHERE PRO_ID = #{ id }
+	</update>
+	
+	<delete id="deleteProduct">
+		UPDATE
+				PRODUCT
+			SET PRO_STATUS = 'N'
+		  WHERE PRO_ID = #{ id }
+	</delete>
 	
 	
 	

@@ -49,8 +49,8 @@ public class ProAdminAddServlet extends HttpServlet {
 			System.out.println("최대 업로드 파일 용량 : " + maxFileSize);
 			System.out.println("인코딩 방식 : " + encodingType);
 			
-			String fileUploadDirectory = rootLocation + "/resources/images/product/upload/original/";
-			String thumbnailDirectory = rootLocation + "/resources/images/product/upload/thumbnail/";
+			String fileUploadDirectory = rootLocation + "/resources/upload/original/product/";
+			String thumbnailDirectory = rootLocation + "/resources/upload/thumbnail/product/";
 			
 			File directory = new File(fileUploadDirectory);
 			File directory2 = new File(thumbnailDirectory);
@@ -115,7 +115,7 @@ public class ProAdminAddServlet extends HttpServlet {
 							fileMap.put("filedName", filedName);
 							fileMap.put("originFileName", originFileName);
 							fileMap.put("savedFileName", randomFileName);
-							fileMap.put("savePath", "/resources/images/product/original/");
+							fileMap.put("savePath", "/resources/upload/original/product/");
 							
 							/* 제목 사진과 나머지 사진을 구분하고 썸네일도 생성한다. */
 							int width = 0;
@@ -139,7 +139,7 @@ public class ProAdminAddServlet extends HttpServlet {
 									.toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
 							
 							/* 나중에 웹서버에서 접근 가능한 경로 형태로 썸네일의 저장 경로도 함께 저장한다. */
-							fileMap.put("thumbnailPath", "/resources/images/product/upload/thumbnail/thumbnail_" + randomFileName);
+							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/product/thumbnail_" + randomFileName);
 							
 							fileList.add(fileMap);
 							
@@ -161,36 +161,37 @@ public class ProAdminAddServlet extends HttpServlet {
 				System.out.println("fileList : " + fileList);
 				
 				/* 서비스를 요청할 수 있도록 ProductDTO에 담는다. */
-				ProductDTO thumbnail = new ProductDTO();
-				thumbnail.setProCateId(Integer.parseInt(parameter.get("category")));
-				thumbnail.setProTitle(parameter.get("proTitle"));
-				thumbnail.setProContent(parameter.get("proContent"));
+				ProductDTO product = new ProductDTO();
+				product.setProCateId(Integer.parseInt(parameter.get("subCategory")));
+				product.setProTitle(parameter.get("proTitle"));
+				product.setProContent(parameter.get("proContent"));
+				product.setPrice(Integer.parseInt(parameter.get("price")));
 				
-				thumbnail.setProImgList(new ArrayList<ProImgDTO>());
-				List<ProImgDTO> list = thumbnail.getProImgList();
+				product.setProImgList(new ArrayList<ProImgDTO>());
+				List<ProImgDTO> list = product.getProImgList();
 				for(int i = 0; i < fileList.size(); i++) {
 					Map<String, String> file = fileList.get(i);
 					
 					ProImgDTO tempFileInfo = new ProImgDTO();
-					tempFileInfo.setpImgOrgName(file.get("pImgOrgName"));
-					tempFileInfo.setpImgSvrName(file.get("pImgSvrName"));
-					tempFileInfo.setpImgPath(file.get("pImgPath"));
-					tempFileInfo.setpImgType(file.get("pImgType"));
-					tempFileInfo.setpThumbnailPath(file.get("pthumbnailPath"));
+					tempFileInfo.setProImgOrgName(file.get("originFileName"));
+					tempFileInfo.setProImgSvrName(file.get("savedFileName"));
+					tempFileInfo.setProImgPath(file.get("savePath"));
+					tempFileInfo.setProImgType(file.get("fileType"));
+					tempFileInfo.setProThumbnailPath(file.get("thumbnailPath"));
 					
 					list.add(tempFileInfo);
 				}
 				
-				System.out.println("thumbnail product : " + thumbnail);
+				System.out.println("thumbnail product : " + product);
 				
 				/* 서비스 메소드를 요청한다. */
-				int result = new ProductService().insertThumbnail(thumbnail);
+				int result = new ProductService().insertThumbnail(product);
 				
 				/* 성공 실패 페이지를 구분하여 연결한다. */
 				String path = "";
 				if(result > 0) {
 					path = "/WEB-INF/views/common/success.jsp";
-					request.setAttribute("successCode", "insertThumbnail");
+					request.setAttribute("successCode", "insertProImg");
 				} else {
 					path = "/WEB-INF/views/common/failed.jsp";
 					request.setAttribute("message", "상품 등록 실패!");

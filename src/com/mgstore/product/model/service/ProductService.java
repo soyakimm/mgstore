@@ -62,13 +62,13 @@ public class ProductService {
 		SqlSession session = getSqlSession();
 		
 		/* List 조회 */
-		List<ProductDTO> thumbnailList = productDAO.selectAllThumbnailList(session);
+		List<ProductDTO> productList = productDAO.selectAllThumbnailList(session);
 		
 		/* Connection 닫기 */
 		session.close();
 		
 		/* 조회 결과 반환 */
-		return thumbnailList;
+		return productList;
 
 	}
 
@@ -118,14 +118,14 @@ public class ProductService {
 		
 		SqlSession session = getSqlSession();
 		
-		ProductDTO thumbnail= null;
+		ProductDTO product= null;
 		
 		int result = productDAO.incrementProductCount(session, id);
 		
 		if(result > 0) {
-			thumbnail = productDAO.selectOneThumbnailProduct(session, id);
+			product = productDAO.selectOneThumbnailProduct(session, id);
 			
-			if(thumbnail != null) {
+			if(product != null) {
 				session.commit();
 			} else {
 				session.rollback();
@@ -136,58 +136,46 @@ public class ProductService {
 		
 		session.close();
 		
-		return thumbnail;
+		return product;
 
 	}
-
-
-
 	
-	
-	
-//	private final ProductDAO productDAO;
-//	
-//	public ProductService() {
-//		productDAO = new ProductDAO();
-//	}
-//
-//	public List<ProductDTO> selectProductList() {
-//		/* Connection 생성 */
-//		SqlSession session = getSqlSession();
-//		
-//		/* List 조회 */
-//		List<ProductDTO> productList = ProductDAO.selectProductList(session);
-//		
-//		/* Connection 닫기 */
-//		session.close();
-//		
-//		/* 조회 결과 반환 */
-//		return productList;
-//	}
-//
-//	public ProductDTO selectOneProList(int no) {
-//
-//		SqlSession session = getSqlSession();
-//		
-//		ProductDTO product= null;
-//		
-//		int result = productDAO.incrementProductCount(session, no);
-//		
-//		if(result > 0) {
-//			product = productDAO.selectOneThumbnailProduct(session, no);
-//			
-//			if(product != null) {
-//				session.commit();
-//			} else {
-//				session.rollback();
-//			}
-//		} else {
-//			session.rollback();
-//		}
-//		
-//		session.close();
-//		
-//		return product;
-//	}
+	/* 수정용 메소드 */
+	public int updateProduct(ProductDTO updateProduct) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = productDAO.updateProduct(session, updateProduct);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+		
+	}
+
+	/* 삭제용 메소드 */
+	public int deleteProduct(int id) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = productDAO.deleteProduct(session, id);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 
 }
+

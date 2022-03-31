@@ -83,6 +83,12 @@
 				successMessage = "이벤트 게시판 삭제 성공! ";
 				movePath = "${ pageContext.servletContext.contextPath }/event/main";
 				break;
+			
+			case "insertProImg" :
+				successMessage = "상품 등록 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/product/list";
+				break;
+
 
 		
 	
