@@ -21,6 +21,7 @@ h1, .result {
 }
 
 h3 {
+	margin-top: 20px;
 	font-family: 'Noto Sans KR', sans-serif;
 	text-align: center;
 }

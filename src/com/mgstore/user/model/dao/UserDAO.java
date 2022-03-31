@@ -35,14 +35,15 @@ public class UserDAO {
 	public int nicknameCheck(SqlSession session, String nickname) {
 		return session.selectOne("UserDAO.nicknameCheck", nickname);
 	}
+	
+	/* 이메일 중복 확인 */
+	public int emailCheck(SqlSession session, String email) {
+		return session.selectOne("UserDAO.emailCheck", email);
+	}
+	
+	/* 비밀번호 찾기 및 수정 */
+	public int updateUserPasswordTemp(SqlSession session, UserDTO requestUser) {
+		return session.update("UserDAO.updateUserPasswordTemp", requestUser);
+	}
 
-	
-	
-
-
-	
-	
-	
-	
-	
 }

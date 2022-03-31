@@ -89,4 +89,36 @@ public class UserService {
 		
 		return result;
 	}
+	
+	/* 이메일 중복 확인 */
+	public int emailCheck(String email) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = userDAO.emailCheck(session, email);
+		
+		session.close();
+		
+		return result;
+	}
+
+	/* 비밀번호 찾기 */
+	public int findPwd(UserDTO requestUser, String code) {
+		
+		SqlSession session = getSqlSession();
+		
+		requestUser.setUserPwd(code);
+		
+		int result = userDAO.updateUserPasswordTemp(session, requestUser);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
 }

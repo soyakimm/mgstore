@@ -116,9 +116,7 @@ h1 {
 .required .check {
     width: 150px;
     height: 44px;
-    background: #E5E5E5;
     color: #fff;
-    border: 1px solid #E5E5E5;
     border-radius: 40px;
     margin-left: 16px;
 }

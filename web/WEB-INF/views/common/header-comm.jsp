@@ -186,7 +186,6 @@
 		.mypage {
 			position: relative;
 			display: inline-block;
-			background: #000;
 		}
 		
 		.mypage-content {
@@ -419,7 +418,7 @@
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="mypage" type="button">
 	                    	<a href="${ pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
-	                    	<div class="mypage-content"><a>마이쇼핑</a></div>
+	                    	<div class="mypage-content"><a href="${ pageContext.servletContext.contextPath }/myshopping/wishList">마이쇼핑</a></div>
 	                    </button>
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="regist" type="button">
@@ -461,6 +460,7 @@
 	                    	<!-- 커뮤니티 -->
 	                    	<img class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
 	                    	<a href="${ pageContext.servletContext.contextPath }/community/freelist"><div class="header-all-category-title">자유게시판</div></a>
+
 	                    	<!-- 스토어 -->
 	                    	<img style="display: none" class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
 	                    	<div style="display: none" class="header-all-category-title">카테고리</div>

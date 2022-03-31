@@ -9,7 +9,7 @@
 	<!-- favicon -->
     <link href="${ pageContext.servletContext.contextPath }/resources/images/common/favicon.ico" rel="shortcut icon"/>
     <!-- 스타일시트 -->
-    <link href="${ pageContext.servletContext.contextPath }/resources/css/header-style.css" rel="stylesheet">
+    <link href="${ pageContext.servletContext.contextPath }/resources/css/common/header-style.css" rel="stylesheet">
     <!-- 웹폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -93,7 +93,7 @@
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="mypage" type="button">
 	                    	<a href="${ pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
-	                    	<div class="mypage-content"><a>마이쇼핑</a></div>
+	                    	<div class="mypage-content"><a href="${ pageContext.servletContext.contextPath }/myshopping/wishList">마이쇼핑</a></div>
 	                    </button>
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="regist" type="button">
@@ -147,7 +147,7 @@
 	                                            <li>
 	                                                <h3>사료</h3>
 	                                                <ul>
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list/feed/all">- 전체</a></li>
 	                                                    <li><a>- 어덜트(1~7세)</a></li>
 	                                                    <li><a>- 시니어(7세 이상)</a></li>
 	                                                    <li><a>- 전연령</a></li>
@@ -161,7 +161,7 @@
 	                                            <li>
 	                                                <h3>간식</h3>
 	                                                <ul>                                    
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list/dessert/all">- 전체</a></li>
 	                                                    <li><a>- 껌</a></li>
 	                                                    <li><a>- 동결/건조</a></li>
 	                                                    <li><a>- 사사미/육포</a></li>
@@ -175,7 +175,7 @@
 	                                            <li>
 	                                                <h3>케어</h3>
 	                                                <ul>                                    
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list/care/all">- 전체</a></li>
 	                                                    <li><a>- 영양제</a></li>
 	                                                    <li><a>- 위생</a></li>
 	                                                    <li><a>- 미용/목욕/칫솔</a></li>
@@ -187,7 +187,7 @@
 	                                            <li>
 	                                                <h3>리빙</h3>
 	                                                <ul>                                    
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list/living/all">- 전체</a></li>
 	                                                    <li><a>- 안전문/울타리</a></li>
 	                                                    <li><a>- 하우스/방석</a></li>
 	                                                    <li><a>- 급식기/급수기</a></li>
@@ -197,7 +197,7 @@
 	                                            <li>
 	                                                <h3>외출</h3>
 	                                                <ul>                                    
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">- 전체</a></li>
 	                                                    <li><a>- 이동장/유아차</a></li>
 	                                                    <li><a>- 가방/카시트</a></li>
 	                                                    <li><a>- 가슴줄/리드줄/하네스</a></li>
@@ -207,7 +207,7 @@
 	                                            <li>
 	                                                <h3>장난감</h3>
 	                                                <ul>                                    
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list">- 전체</a></li>
 	                                                    <li><a>- 노즈워크</a></li>
 	                                                    <li><a>- 장난감</a></li>
 	                                                </ul>    
@@ -216,7 +216,7 @@
 	                                            <li>
 	                                                <h3>패션</h3>
 	                                                <ul>                                    
-	                                                    <li><a>- 전체</a></li>
+	                                                    <li><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">- 전체</a></li>
 	                                                    <li><a>- 의류</a></li>
 	                                                    <li><a>- 악세사리</a></li>
 	                                                </ul>    
@@ -234,7 +234,7 @@
 		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/care/all">케어</a></li>
 		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/living/all">리빙</a></li>
 		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
-		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
+		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list">장난감</a></li>
 		                	<li class="header-item store"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
 		                	<li class="header-item comm" style="display: none"><a href="#">멍개병원</a></li>
 		                	<li class="header-item comm" style="display: none"><a href="#">멍개일상</a></li>

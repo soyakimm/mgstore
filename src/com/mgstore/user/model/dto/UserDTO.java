@@ -2,6 +2,8 @@ package com.mgstore.user.model.dto;
 
 import java.sql.Date;
 
+import org.apache.ibatis.session.SqlSession;
+
 public class UserDTO {
 	
 	private String userId;
@@ -139,5 +141,4 @@ public class UserDTO {
 				+ agreement + ", role=" + role + ", userStatus=" + userStatus + ", regDate=" + regDate + ", modDate="
 				+ modDate + "]";
 	}
-
 }

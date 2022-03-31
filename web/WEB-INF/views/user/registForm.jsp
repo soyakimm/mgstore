@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%! 
+	public String randomCode(){
+		StringBuffer sb = new StringBuffer();
+		for(int i=0; i <= 6; i++) {
+			int n = (int)(Math.random() * 10);
+			sb.append(n);
+		}
+		return sb.toString();
+	}
+ %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>회원가입 | 멍개상점</title>
 	<!-- 스타일시트 -->
-	<link href="${ pageContext.servletContext.contextPath }/resources/css/registForm-style.css" rel="stylesheet">
+	<link href="${ pageContext.servletContext.contextPath }/resources/css/user/registForm-style.css" rel="stylesheet">
 	<!-- 웹폰트 -->
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -18,13 +28,12 @@
             <h1>회원정보입력</h1>
         </div>
         <div class="regist-table">
-            <form id="regist-form" action="${ pageContext.servletContext.contextPath }/user/regist" method="post">
+            <form id="regist-form" name="regist" action="${ pageContext.servletContext.contextPath }/user/regist" method="post">
                 <ul class="required">
                     <li class="th"><p>아이디</p>
                     <li class="td">
                         <b>*</b>
                         <input type="text" id="userId" name="userId" placeholder="공백 없는 영문/숫자 조합 6-20자" autocomplete="off" required>
-                        <!-- <button type="button" class="check" id="checkId"><span>중복확인</span></button> -->
                     </li>
                 </ul>
                 <div id="checkIdMsg"></div>
@@ -54,7 +63,7 @@
                     <li class="th"><p>이름</p>
                     <li class="td">
                         <b>*</b>
-                        <input type="text" id="userName" name="userName" required>
+                        <input type="text" id="userName" name="userName" autocomplete="off" required>
                     </li>
                 </ul>
                 <div id="checkNameMsg"></div>
@@ -62,8 +71,7 @@
                     <li class="th"><p>닉네임</p>
                     <li class="td">
                         <b>*</b>
-                        <input type="text" id="nickname" name="nickname" placeholder="공백 없는 문자 최대 6자" required>
-                        <!-- <button type="button" class="check" id="checkNickname"><span>중복확인</span></button> -->
+                        <input type="text" id="nickname" name="nickname" placeholder="공백 없는 문자 최대 6자" autocomplete="off" required>
                     </li>
                 </ul>
                 <div id="checkNicknameMsg"></div>
@@ -72,22 +80,19 @@
                     <li class="td">
                         <b>*</b>
                         <input type="email" id="email" name="email" onkeyup="autoDomain('email', this.value)" autocomplete="off" required>
-                        <!--
-                        <span class="at">@</span>
-                        <select class="email-domain">
-                            <option disabled selected>선택하세요</option>
-                            <option value="gmail.com" id="gmail.com">gmail.com</option>
-                            <option value="naver.com" id="naver.com">naver.com</option>
-                            <option value="daum.net" id="daum.net">daum.net</option>
-                            <option value="kakao.com" id="kakao.com">kakao.com</option>
-                            <option value="outlook.com" id="outlook.com">outlook.com</option>
-                            <option>직접 입력</option>
-                        </select>
-                        -->
-                        <button type="button" class="check" id="checkEmail"><span>인증메일발송</span></button>
+                        <button onclick="verifyEmail()" type="button" class="check" id="sendemail" style="background: #E5E5E5; border: 1px solid #E5E5E5;" disabled><span>인증메일발송</span></button>
                     </li>
                 </ul>
                 <div id="checkEmailMsg"></div>
+                <ul class="verifycode required" style="display: none;">
+                    <li class="th"><p>인증코드 입력</p>
+                    <li class="td">
+                        <b>*</b>
+                        <input type="hidden" id="verifycode" name="verifycode" value="<%=randomCode()%>" autocomplete="off" readonly>
+                        <input type="text" id="inputcode" name="inputcode" onkeyup="checkCode()" autocomplete="off" placeholder="이메일 인증코드 입력" required>
+                    </li>
+                </ul>
+                <div id="checkCodeMsg"></div>
                 <ul class="required">
                     <li class="th"><p>핸드폰 번호</p>
                     <li class="td">
@@ -104,7 +109,7 @@
                     <li class="td">
                         <b>*</b>
                         <input type="text" id="postalcode" name="postalcode" readonly>
-                        <button type="button" class="check" onclick="DaumPostcode()"><span>우편번호검색</span></button>
+                        <button type="button" class="searchPostal check" style="background: #E5E5E5; border: 1px solid #E5E5E5;" onclick="DaumPostcode()"><span>우편번호검색</span></button>
                     </li>
                 </ul>
                 <ul class="required">
@@ -332,21 +337,115 @@
     });
     </script>
     <!-- 5. 이메일 인증 -->
+    <!-- 5-1. 이미 가입된 이메일 여부 확인 -->
+    <!-- 5-2. 인증코드 확인 -->
     <script>
-    	$("#checkEmail").click(function(){
-    		let email = $("#email").val();
+    $(document).ready(function(){
+    	const regexEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+    	const email = $("[name=email]");
+    	$("#email").blur(function(){
+    		
+    		if(!regexEmail.test($("#email").val())) {
+    			console.log('false');
+    			$("#checkEmailMsg").text("이메일 형식이 올바르지 않습니다.");
+    			$("#checkEmailMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+    			$("#sendemail").attr("disabled", true);
+    			$("#regist-button").attr("disabled", true);
+    		} else {
+    			console.log('true');
+    			$("#checkEmailMsg").text("");
+    			$("#sendemail").attr("disabled", false);
+    			$("#regist-button").attr("disabled", false);
+    		}
     		
     		$.ajax({
-    			type : "get",
-    			url : "checkemail?email=" + email;
+    			url : '${pageContext.request.contextPath}/user/checkemail',
+    			type: 'post',
+    			data : { email : email.val() },
+    			success : function(result){
+    				console.log(result);
+		    		if(result == "fail") {
+		    			$("#checkEmailMsg").text("이미 가입된 이메일입니다.");
+		    			$("#checkEmailMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+		    			$("#email").css({"background-color": "transparent", "color": "#767676"});
+		    			$("#sendemail").attr("disabled", true);
+		    			$("#regist-button").attr("disabled", true);
+		    		} else {
+		    			
+		    			if(!email.indexOf("@") > -1) {
+		    				$("#checkEmailMsg").text("이메일 형식이 올바르지 않습니다.");
+		        			$("#checkEmailMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+		        			$("#sendemail").attr("disabled", true);
+		        			$("#regist-button").attr("disabled", true);
+		    			} else if(email == "") {
+			    			$("#checkEmailMsg").text("이메일을 입력해 주세요.");
+			    			$("#checkEmailMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+			    			$("#email").css({"background-color": "transparent", "color": "#767676"});
+			    			$("#sendemail").attr("disabled", true);
+			    			$("#regist-button").attr("disabled", true);
+			    		} else {
+			    			$("#checkEmailMsg").text("인증메일발송 통해 이메일을 인증해 주세요.");
+			    			$("#checkEmailMsg").css({"color": "#0D9572", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+			    			$("#sendemail").attr("disabled", false);
+			    			$("#regist-button").attr("disabled", false);
+			    			
+			    		}
+		    		}
+    			},
+    			error : function(){ alert("시스템에 문제가 발생했습니다. 다시 시도해 주세요."); }
     		});
     	});
+		
+    	$("#sendemail").click(function(){
+    		
+    		if(confirm("이 이메일로 인증 메일을 발송하시겠습니까?")) {
+    			$(email).attr('readonly', true);
+    			$(email).css({"background": "#E5E5E5", "color": "#767676"});
+    			$(".verifycode").css("display", "flex");
+    			$("#sendemail").css({"border": "3px solid #757575", "background": "#757575", "color": "#fff"});
+    			
+    			var url = "${ pageContext.servletContext.contextPath }/user/sendemail";
+    			$.ajax({
+    				type : "post",
+    				url : url,
+    				dataType : "html",
+    				data : { 
+    					email : $("#email").val(), 
+    					code : $("#verifycode").val() 
+    				},
+    				success : function(data){
+    					alert("인증 메일이 발송되었습니다. 이메일을 확인해 주세요!");
+    				},
+    				error : function(){ alert("시스템에 문제가 발생했습니다. 다시 시도해 주세요."); }
+    			});
+    			return;
+    		} else {
+    			$(email).attr('readonly', false);
+    			$(email).css({"background": "transparent", "color": "#767676"});
+    			$(".verifycode").css("display", "none");
+    			$(email).focus();
+    		}
+    		
+    	});
+    	
+    });
     </script>
-    <!-- 4-1. 이미 가입된 이메일입니다 
-         4-2. 이메일 인증되어야 로그인 할 수 있음
-        /* 이메일 인증 */
-    
-    -->
+    <!-- 5-2. 이메일 인증 -->
+    <script>
+    function checkCode(){
+    	let codeA = document.getElementById('inputcode').value;
+    	let codeB = document.getElementById('verifycode').value;
+    	if(codeA != codeB) {
+    		$("#checkCodeMsg").text("인증코드가 일치하지 않습니다.");
+			$("#checkCodeMsg").css({"color": "#ff0000", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+			$("#regist-button").attr("disabled", true);
+    	} else {
+    		$("#checkCodeMsg").text("이메일 인증이 완료되었습니다! 회원가입을 계속 진행하세요.");
+    		$("#checkCodeMsg").css({"color": "#0D9572", "font-size": "small", "font-family": "'Noto Sans KR', sans-serif", "margin-left": "108px"});
+			$("#regist-button").attr("disabled", false);
+    	}
+    };
+    </script>
     <!-- 이메일 자동완성 -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -367,7 +466,7 @@
             });
         }
     </script>
-
+    
     <!-- 주소 API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -379,6 +478,18 @@
                 }
             }).open();
         }
+    </script>
+    <!-- 주소 입력 완료 후 버튼 효과 -->
+    <script>
+    $(document).ready(function(){
+    	$(".searchPostal").blur(function(){
+	    	if($("#postalcode").val().length > 0) {
+	    		$(".searchPostal").css({"border": "3px solid #757575", "background": "#757575", "color": "#fff"});
+	    	} else {
+	    		
+	    	}
+    	});
+    });
     </script>
 </body>
 </html>

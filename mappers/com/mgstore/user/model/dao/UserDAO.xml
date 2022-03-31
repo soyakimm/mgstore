@@ -84,7 +84,8 @@
 		SELECT
 			   USER_ID
 		  FROM TBL_USER
-		 WHERE USER_NAME = #{ userName }
+		 WHERE USER_STATUS = 'Y'
+		   AND USER_NAME = #{ userName }
 		   AND EMAIL = #{ email }
 	</select>
 	
@@ -101,4 +102,21 @@
 		  FROM TBL_USER
 		 WHERE NICKNAME = #{ nickname }
 	</select>
+	
+	<select id="emailCheck" resultType="_int">
+		SELECT
+			   COUNT(*)
+		  FROM TBL_USER
+		 WHERE EMAIL = #{ email }
+	</select>
+	
+	<update id="updateUserPasswordTemp">
+		UPDATE
+			   TBL_USER
+		   SET USER_PWD = #{ userPwd }
+		 WHERE USER_STATUS = 'Y'
+		   AND USER_ID = #{ userId }
+		   AND USER_NAME = #{ userName }
+		   AND EMAIL = #{ email }
+	</update>
 </mapper>
