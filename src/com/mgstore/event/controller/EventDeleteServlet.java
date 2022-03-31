@@ -13,17 +13,19 @@ import com.mgstore.event.model.service.EventService;
 @WebServlet("/event/delete")
 public class EventDeleteServlet extends HttpServlet {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		System.out.println(request.getParameter("eveId"));
 		int eveId = Integer.parseInt(request.getParameter("eveId"));
 		
 		int result = new EventService().deleteEvent(eveId);
 		
 		String path="";
-		
 		if(result > 0) {
-			path = "/WEB-INF/views/event/eventMain.jsp";
+			path = "/WEB-INF/views/common/success.jsp";
 			request.setAttribute("successCode", "deleteEvent");
+			//request.setAttribute("eveId", eveId);
 			System.out.println("이벤트삭제성공");
 			
 		} else {

@@ -13,18 +13,17 @@
 </head>
 <body>
 
-	<jsp:include page="../common/header.jsp" />
+	<jsp:include page="../common/header-comm.jsp"/>
 	<div class="group">
 
-
-		<form action="${ pageContext.servletContext.contextPath }/event/update" method="post" enctype="multipart/form-data">
+	<form action="${ pageContext.servletContext.contextPath }/event/update" method="post" enctype="multipart/form-data">
 			<h2>이벤트 소개</h2>
 			<hr>
 			<div class="eve-info">
 					<!-- 이벤트 이름-->
 					<div class="eve name">
 						<p id="title">이벤트제목</p> 
-						<input type="text" id="text" name="eveTitle" placeholder="이벤트 제목을 설정해주세요." value="${ thumbnail.eveTitle }"/>
+						<input type="text" id="text" name="eveTitle" value="${ thumbnail.eveTitle}" placeholder="이벤트 제목을 설정해주세요." required/>
 					</div>
 			</div>
 
@@ -47,7 +46,8 @@
 							<b id="sub" style="font-size: 14px;"> 왼쪽은 이벤트 시작기간
 								 <br> 오른쪽은 이벤트 종료기간입니다. <br>
 							</b>
-							<input type="date" name="evestart" value="${ thumbnail.eveStart }"/> <input type="date" name="eveend" value="${ thumbnail.eveEnd }"/> 
+							<input type="date" name="eveStart" value="${ thumbnail.eveStart }">  <!-- 선생님은 다 옳은 말씀만해.. 다 내 좔못이야.. -->
+							<input type="date" name="eveEnd" value="${ thumbnail.eveEnd }"> 
 						</div>
 
 
@@ -61,7 +61,7 @@
 							<!-- 배너이미지 -->
 							<div id="imgSection">
 								<button id="imgBtn">배너이미지</button>
-								<input type="file" name="thumbnail" id="file" accept="image/gif,image/jpeg,image/png" >
+								<input type="file" name="thumbnail" id="file"  value="${ thumbnail.eveTitle } accept="image/gif,image/jpeg,image/png" required>
 							</div>
 							
 
@@ -69,8 +69,7 @@
 							<div id="imgSection"></div>
 								<span class="eveImg">
 									<button id="imgBtn">설명이미지</button> 
-									<img src="${ pageContext.servletContext.contextPath }${ tempFileInfo.eveSavePath }${ tempFileInfo.eveSavedName }">
-									<input type="file" name="evecontent" id="file" >
+									<input type="file" name="evecontent" id="file" value="${ thumbnail.eveTitle }" required>
 								</span>
 								
 										<br>
@@ -80,11 +79,11 @@
 											<button id="appBtn" type="submit">수정하기</button><br>
 										<br>
 										<br>
-	
+							
+						</div>
 					</form> <!-- 무조건 처리 필요한 enctype -->
-				</form><!-- 전체 폼 -->
 			</div><!--group-->
-	</body>
+		</body>		
 	
 	<script>
 			function detailView(eveId){
@@ -92,6 +91,7 @@
 			}
 	</script>
 	
-	<script src="${ pageContext.servletContext.contextPath }/resources/js/event/EventImagePreview.js"></script>
+	<!-- <script src="${ pageContext.servletContext.contextPath }/resources/js/event/EventImagePreview.js"></script> -->
 	
+	</body>
 </html>

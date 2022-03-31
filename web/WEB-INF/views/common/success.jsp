@@ -84,6 +84,11 @@
 				movePath = "${ pageContext.servletContext.contextPath }/event/main";
 				break;
 
+			case "updateThumbnail" :
+				successMessage = "이벤트 게시판 수정 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/event/main";
+				break;
+				
 		
 	
 		}
