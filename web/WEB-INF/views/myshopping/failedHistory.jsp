@@ -13,8 +13,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
 <jsp:include page="../common/header.jsp" />
+<body>
 	<div class="order-main">
 		<h1 class="title-bg">주문/배송 내역</h1>
 		<div class="order wrapper">
@@ -48,14 +48,12 @@
 					<th class="table-col-name">주문금액</th>
 					<th class="table-col-name">상태</th>
 				</tr>
-				<c:forEach>
 				<tr>
 					<h1>조회된 내용이 없습니다.</h1>
 				</tr>
-				</c:forEach>
 			</table>
 		</div>
 	</div>
 </body>
-
+	<jsp:include page="../common/footer.jsp"/>
 </html>

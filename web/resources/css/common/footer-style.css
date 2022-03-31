@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 /* 푸터 */
@@ -7,6 +8,9 @@
     height: 200px;
     background-color: #4E4A4A;
     border-bottom: 1px solid rgba(229, 229, 229, 1);
+    margin-top: 100px;
+    margin-bottom: 0;
+   
 }
 
 /* 페이지 크기 정렬 */
@@ -129,7 +133,8 @@ footer a {
 }
 
 body {
-	margin: 0;
+	min-height: 100vh;
+	width: 100%;
 }
 
 button {
@@ -149,6 +154,5 @@ img {
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
+	flex: 0 0 auto;
 }

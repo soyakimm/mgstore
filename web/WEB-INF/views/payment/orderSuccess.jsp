@@ -15,8 +15,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
-<body>
 	<jsp:include page="../common/header.jsp" />
+<body>
 	<h1 align="center">결제 완료</h1>
 	<button type="button" class="back-main" onclick="backMain()" id="back-main">
     	<div class="back-main-text" align="center">홈으로 돌아가기</div>
@@ -28,5 +28,5 @@
     };
     </script>
 </body>
-	
+	<jsp:include page="../common/footer.jsp"/>
 </html>

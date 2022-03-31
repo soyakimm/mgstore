@@ -103,20 +103,19 @@
 					}
 			}
 			</script>
-	</c:if>
+		</c:if>
 	</div>
     
     
 </body>
 
-<%-- <jsp:include page="proAsked.jsp"/> --%>
+ <jsp:include page="proAsked.jsp"/> 
 
 <%-- <jsp:include page="proReview.jsp"/> --%>
 
 <jsp:include page="proFooter.jsp"/>
 
-<script>
-	
-</script>
+<jsp:include page="../common/footer.jsp"/>
+
 
 </html>

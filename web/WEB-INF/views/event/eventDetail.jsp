@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <meta charset="UTF-8">
 <title>이벤트 메인 게시글</title>
 <!-- 외부 스타일 시트 -->
@@ -23,10 +24,10 @@
 	}
 	</script>
 </head>
+	<jsp:include page="../common/header-comm.jsp"/>
 <body>
 	
 	<div class="group"> 
-	<jsp:include page="../common/header-comm.jsp"/>
      
  		<div class="content-body">
         <div class="container-wrapper notice-container"> <!-- 위트참고 --> </div>
@@ -165,4 +166,6 @@
 	
 	<!--  <script src="${ pageContext.servletContext.contextPath }/resources/js/event/EventImagePreview.js"></script> -->
 </body>
+
+	<jsp:include page="../common/footer.jsp"/>
 </html>

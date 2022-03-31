@@ -13,8 +13,8 @@
 <!--제이쿼리 CDN-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 </head>
-<body>
 	<jsp:include page="../common/header.jsp" />
+<body>
 	<form name="paymentForm" method="post" action="${ pageContext.servletContext.contextPath }/payment/orderlist">
 	<div class="payment wrapper">
 		<h1>주문/결제</h1>
@@ -271,5 +271,5 @@
  
 </script>
 </body>
-	
+	<jsp:include page="../common/footer.jsp"/>
 </html>

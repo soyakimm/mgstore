@@ -5,15 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <meta charset="UTF-8">
 <title>이벤트수정</title>
 <!-- 외부 스타일 시트 -->
 <link href="${ pageContext.servletContext.contextPath }/resources/css/event/eventmng.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+	<jsp:include page="../common/header-comm.jsp"/>
 <body>
 
-	<jsp:include page="../common/header-comm.jsp"/>
 	<div class="group">
 
 	<form action="${ pageContext.servletContext.contextPath }/event/update" method="post" enctype="multipart/form-data">
@@ -94,4 +95,5 @@
 	<!-- <script src="${ pageContext.servletContext.contextPath }/resources/js/event/EventImagePreview.js"></script> -->
 	
 	</body>
+		<jsp:include page="../common/footer.jsp"/>
 </html>

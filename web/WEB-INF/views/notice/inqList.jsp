@@ -21,8 +21,8 @@ button {
 }
 </style>
 </head>
-<body>
 	<jsp:include page="../common/header.jsp" />
+<body>
 	<div class="main">
 		<h1 class="title-bg">고객센터</h1>
 		<div class="title-mid">
@@ -79,8 +79,10 @@ button {
 				</span>
 				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.ansDate }"/></div>
 				<div class="anw-btn-mng">
+				<c:if test="${ sessionScope.loginUser.role eq '관리자' }">
 					<button type="button" onclick="updateAnsView(${ inq.inqId })">수정</button>
 					<button type="button" onclick="deleteAnsView(${ inq.inqId })">삭제</button>
+				</c:if>
 				</div>
 				</c:if>
 			</div>
@@ -142,9 +144,6 @@ button {
 	
 	</script>
 
-
-
-
-
 </body>
+<jsp:include page="../common/footer.jsp"/>
 </html>
