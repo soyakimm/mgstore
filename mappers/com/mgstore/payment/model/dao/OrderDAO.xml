@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderDAO">
+	<resultMap type="com.mgstore.payment.model.dto.OrderDTO" id="OrderResultMap">
+		<id property="ordId" column="ORD_ID"/>
+		<id property="payId" column="PAY_ID"/>
+		<id property="ordDetalId" column="ORD_DETAL_ID"/>
+		
+		<result property="ordDate" column="ORD_DATE"/>
+		<result property="adrCode" column="ADR_CODE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="adrDetail" column="ADR_DETAIL"/>
+		<result property="ordName" column="ORD_NAME"/>
+		<result property="ordPhone" column="ORD_PHONE"/>
+		<result property="userId" column="USER_ID"/>
+		
+		<result property="payProTotal" column="PAY_AMOUNT"/>
+		<result property="payPoint" column="PAY_POINT"/>
+		<result property="payAmount" column="PAY_TOTAL"/>
+		<result property="payState" column="PAY_STATE"/>
+		
+		<result property="optionId" column="PRO_ID"/>
+		<result property="ordQty" column="ORD_QTY"/>
+		<result property="proName" column="PRO_TITLE"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="userPhone" column="PHONE"/>
+		<result property="userEmail" column="EMAIL"/>
+		<result property="proPrice" column="PRO_PRICE"/>
+		<result property="deliveryReq" column="DELIVERY_REQ"/>
+	</resultMap>
+	
+	<insert id="insertOrder">
+	INSERT
+	  INTO TBL_ORDER
+	(
+	  ORD_ID,
+	  ORD_DATE,
+	  ADR_CODE,
+	  ADDRESS,
+	  ADR_DETAIL,
+	  ORD_NAME,
+	  ORD_PHONE,
+	  USER_ID
+	)
+	VALUES
+	(
+	  SEQ_ORD_ID.NEXTVAL,
+	  SYSDATE,
+	  #{ adrCode },
+	  #{ address },
+	  #{ adrDetail },
+	  #{ ordName },
+	  #{ ordPhone },
+	  #{ userId }
+	) 
+	
+	 	<selectKey keyProperty="ordId" resultType="Integer" order="AFTER"><!-- select에 설정한 값을 위에 행 진행 후에 no에 넣어라! -->
+        	SELECT
+        	       SEQ_ORD_ID.CURRVAL
+        	  FROM DUAL
+       	</selectKey>
+
+	</insert>
+		
+	<insert id="insertOrderDetail">
+	INSERT
+	  INTO ORD_DETAIL
+	(
+	  ORD_DETAL_ID,
+	  ORD_ID,
+	  PRO_ID,
+	  ORD_QTY
+	)
+	VALUES
+	(
+	  SEQ_ORD_DETAIL_ID.NEXTVAL,
+	  #{ ordId },
+	  #{ optionId },
+	  #{ ordQty }
+	)
+
+	</insert>
+
+	<insert id="insertPayment">
+	INSERT
+	  INTO PAYMENT
+	(
+	  PAY_ID,
+	  ORD_ID,
+	  PAY_AMOUNT,
+	  PAY_TOTAL,
+	  PAY_STATE
+	)
+	VALUES
+	(
+	  SEQ_PAY_ID.NEXTVAL,
+	  #{ ordId },
+	  #{ payProTotal },
+	  #{ payAmount },
+	  '주문완료'
+	)
+	
+	</insert>
+	
+	
+	<select id="selectAllHistoryList" resultMap="OrderResultMap">
+	SELECT
+	       A.ORD_DATE,
+	       A.ORD_ID,
+	       B.PRO_ID,
+	       B.ORD_QTY,
+	       C.PAY_TOTAL,
+	       C.PAY_STATE,
+	       D.PRO_TITLE
+	  FROM TBL_ORDER A
+	  JOIN ORD_DETAIL B ON(A.ORD_ID = B.ORD_ID)
+	  JOIN PAYMENT C ON(A.ORD_ID = C.ORD_ID)
+	  JOIN PRODUCT D ON(B.PRO_ID=D.PRO_ID)
+	 WHERE A.USER_ID = #{ userId }
+	</select>
+	
+	<select id="selectHistoryDetail" resultMap="OrderResultMap">
+	SELECT
+	       A.ORD_ID,
+	       A.USER_ID,
+	       B.USER_NAME,
+	       B.PHONE,
+	       B.EMAIL,
+	       A.ORD_NAME,
+	       A.ORD_PHONE,
+	       A.ADR_CODE,
+	       A.ADDRESS,
+	       A.ADR_DETAIL,
+	       A.DELIVERY_REQ,
+	       C.ORD_QTY,
+	       C.PRO_PRICE,
+	       D.PAY_TOTAL,
+	       E.PRO_TITLE
+	  FROM TBL_ORDER A
+	  JOIN ORD_DETAIL C ON(C.ORD_ID = A.ORD_ID)
+	  JOIN PRODUCT E ON(E.PRO_ID = C.PRO_ID)
+	  JOIN PAYMENT D ON(D.ORD_ID = A.ORD_ID)
+	  JOIN TBL_USER B ON(A.USER_ID = B.USER_ID)
+	 WHERE A.ORD_ID = #{ ordId }
+	</select>
+
+
+</mapper>

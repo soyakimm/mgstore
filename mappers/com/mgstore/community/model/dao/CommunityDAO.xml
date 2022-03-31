@@ -73,7 +73,6 @@
   	 POST_ID
    , USER_ID     <!-- 게시글 작성한 USER_ID -->	 
    , CATEGORY_ID
-   , HEADER_ID
    , POST_TITLE
    , POST_TEXT	 
   	)
@@ -82,7 +81,6 @@
   	 SEQ_POST_ID.NEXTVAL
    , #{ userId }
    , #{ categoryId }	
-   , #{ headerId }
    , #{ title }
    , #{ text }
   	)
@@ -173,7 +171,7 @@
 							<if test="searchCondition == 'content'">
 	           				   C.BOARD_BODY LIKE '%' || #{ searchValue } || '%' 	
 							</if> -->
-	       			  WHERE C.POST_STATUS = 'Y' 
+	       			  WHERE C.POST_STATUS = 'Y'
     				<!--  	</where> -->
                       ORDER BY C.POST_ID DESC
   	 		           ) B
@@ -183,7 +181,8 @@
   	 		     ) A 
   	 	 <!--   JOIN TBL_CATEGORY D ON (A.CATEGORY_CODE = D.CATEGORY_CODE)
           JOIN TBL_MEMBER E ON(A.BOARD_WRITER_MEMBER_NO = E.MEMBER_NO) --> 
-  		 WHERE A.RNUM >= #{ startRow }     
+  		 WHERE A.RNUM >= #{ startRow }  
+  		 AND A.CATEGORY_ID = 50    
          ORDER BY A.RNUM 
   </select>
 	
@@ -302,5 +301,96 @@
 		   AND D.PO_STATUS = 'Y'
 		   AND A.POST_ID = #{ postId }
 	</select>
+	
+	<!-- 사진 없는 게시판 상세조회 -->
+	<select id="selectOneWrite" resultMap="writeResultMap">
+	SELECT
+			  A.POST_ID
+			, A.POST_TITLE
+			, A.POST_TEXT
+			, A.CATEGORY_ID	
+		  	, A.USER_ID
+		  	, C.NICKNAME
+		  	, A.POST_VIEWS
+		  	, A.POST_DATE
+		  	, A.POST_MODDATE
+		  FROM POST A
+		  JOIN TBL_USER C ON (A.USER_ID = C.USER_ID)
+		 WHERE A.POST_STATUS = 'Y'
+		   AND A.POST_ID = #{ postId }
+	</select>
+	
+	<!-- 사진 없는 게시판 조회수 업뎃 -->
+	<update id="incrementWriteCount">
+		UPDATE
+			  POST A
+	       SET A.POST_VIEWS = (SELECT B.POST_VIEWS
+	       						 FROM POST B
+	       						WHERE B.POST_ID = #{ postId }
+	       					 ) + 1
+	     WHERE A.POST_ID = #{ postId }		  
+	</update>
+	
+	<!-- 사진 없는 게시글 수정 -->
+	<update id="updateWrite">
+		UPDATE 
+		       POST
+		   SET POST_TITLE = #{ title }
+		     , POST_TEXT = #{ text }
+		 WHERE POST_ID = #{ postId }
+	</update>
+	
+	<!-- 사진 없는 게시판 삭제 -->
+	<update id="deleteFree">
+		UPDATE 
+		       POST
+		   SET POST_STATUS = 'N'
+		 WHERE POST_ID = #{ postId }
+	</update>
+		
+		<!-- 여기서 했던 실수 ORDER BY와 SELECT 절에 필드를 같이 쓸 수 없는데 써버렸다.. 해결했음 -->
+		<!-- 커뮤니티 메인 BEST -->
+	<select id="selectBestList" resultMap="writeResultMap">
+		SELECT
+		       A.POST_ID
+		     , A.POST_TITLE
+		     , A.POST_DATE
+		     , C.NICKNAME <!-- 회원 닉네임 -->
+		     , E.HEADER_NAME
+		     , D.PO_IMAGE_ID  <!-- 사진 아이디 -->
+             , D.PO_IMAGE_NAME  <!-- 원본파일명 -->
+             , D.PO_IMAGE_RENAME <!-- 수정파일명 -->
+             , D.PO_IMAGE_PATH  <!-- 파일 경로 -->
+             , D.PO_THUMBNAIL_PATH <!-- 썸네일 경로 -->
+          FROM POST A
+          JOIN CATEGORY B ON (A.CATEGORY_ID = B.CATEGORY_ID)
+          JOIN TBL_USER C ON (A.USER_ID = C.USER_ID)
+          JOIN POST_IMAGE D ON (A.POST_ID = D.POST_ID) 
+          JOIN HEADER E ON (A.HEADER_ID = E.HEADER_ID)
+         WHERE A.POST_STATUS = 'Y'
+           AND B.CATEGORY_ID = 20
+           AND D.PO_STATUS = 'Y'
+           AND D.PO_FILE_TYPE = 'TITLE'
+ 		   ORDER BY A.POST_VIEWS DESC
+	</select>
+	
+	
+	<!-- 멍개일상 게시판 삭제(게시글) -->
+	<update id="deleteThumbnail">
+		UPDATE 
+		       POST
+		   SET POST_STATUS = 'N'
+		 WHERE POST_ID = #{ postId }
+	</update>
+	
+	
+	<!-- 멍개일상 게시판 삭제(사진) -->
+	<update id="deleteThumbnails">
+		UPDATE 
+		       POST_IMAGE
+		   SET PO_STATUS = 'N'
+		 WHERE POST_ID = #{ postId }
+	</update>
+	
 	
 </mapper>

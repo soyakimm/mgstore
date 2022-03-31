@@ -460,7 +460,7 @@
                     	<button class="show-all-list" type="button">
 	                    	<!-- 커뮤니티 -->
 	                    	<img class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
-	                    	<div class="header-all-category-title">자유게시판</div>
+	                    	<a href="${ pageContext.servletContext.contextPath }/community/freelist"><div class="header-all-category-title">자유게시판</div></a>
 	                    	<!-- 스토어 -->
 	                    	<img style="display: none" class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
 	                    	<div style="display: none" class="header-all-category-title">카테고리</div>
@@ -562,7 +562,7 @@
 		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
 		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
 		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
-		                	<li class="header-item comm"><a href="#">멍개일상</a></li>
+		                	<li class="header-item comm"><a href="${ pageContext.servletContext.contextPath }/thumbnail/list">멍개일상</a></li>
 		                	<li class="header-item comm"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
 		                	</ul>
 		                </nav>

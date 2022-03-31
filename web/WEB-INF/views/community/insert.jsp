@@ -97,7 +97,7 @@ select option[value=""][disabled] {
 
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header-comm.jsp"/>
 
 	<div class="outer">
 		<div class="wrap">
@@ -113,15 +113,10 @@ select option[value=""][disabled] {
 							</h4>
 							<span class="input_area"> 
 							<select name="category">
-							<option value="" selected>카테고리 선택</option>
-                                <option value="10">멍개병원</option>
-                                <option value="20">멍개일상</option>
-                                <option value="30">멍개노하우</option>
-                                <option value="40">멍개메이트</option>
-                                <option value="50">자유게시판</option>
+                                <option value="50" selected>자유게시판</option>
 							</select>
 							
-							<select name="header">
+						<!--  <select name="header">
 							<option value="" selected>말머리 선택</option>
                                 <option value="1">건강관리(멍개노하우)</option>
                                 <option value="2">급여/식이(멍개노하우)</option>
@@ -131,7 +126,7 @@ select option[value=""][disabled] {
                                 <option value="6">기타(멍개노하우)</option>
                                 <option value="7">진행 중(멍개메이트)</option>
                                 <option value="8">완료(멍개메이트)</option>
-							</select>
+							</select>-->	
 							
 							</span>
 							<h4>

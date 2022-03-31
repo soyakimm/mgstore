@@ -14,10 +14,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-	
-<jsp:include page="../common/header.jsp" />
-
 <body>
+<jsp:include page="../common/header.jsp" />
 	<div class="wish-main">
 		<h1 class="title-bg">위시리스트</h1>
 		<div class="wish wrapper">
@@ -25,8 +23,7 @@
 				<aside class="sb-tilte-box">
 					<h3 class="sub-title">나의 쇼핑</h3>
 					<ul class="sub-menu">
-						<li class="sub-menu-li"><a href="">주문/배송</a></li>
-						<li class="sub-menu-li"><a href="">취소내역</a></li>
+						<li class="sub-menu-li"><a href="${ pageContext.servletContext.contextPath }/myshopping/orderHistory">주문/배송</a></li>
 						<li class="sub-menu-li"><a href="${ pageContext.servletContext.contextPath }/myshopping/wishList">위시리스트</a></li>
 					</ul>
 				</aside>

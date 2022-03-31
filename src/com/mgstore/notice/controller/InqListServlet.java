@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mgstore.notice.model.dto.AskConditionDTO;
 import com.mgstore.notice.model.dto.InqDTO;
 import com.mgstore.notice.model.service.InqService;
+import com.mgstore.user.model.dto.UserDTO;
 
 @WebServlet("/inq/list")
 public class InqListServlet extends HttpServlet {
@@ -18,12 +20,19 @@ public class InqListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String searchCondition = request.getParameter("searchCondition");
+//		String userId = ((UserDTO) request.getSession().getAttribute("loginUser")).getUserId(); 
 		
 		System.out.println("searchCondition : " + searchCondition);
 		
+		AskConditionDTO askCondition = new AskConditionDTO();
+		askCondition.setSearchCondition(searchCondition);
+//		askCondition.setUserId(userId);
+//		
+//		System.out.println("userId : " + userId);
+
 		InqService inqService = new InqService();
 		
-		List<InqDTO> inqList = inqService.selectInqList(searchCondition);
+		List<InqDTO> inqList = inqService.selectInqList(askCondition);
 
 		System.out.println("inqList : " + inqList);
 		

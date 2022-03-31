@@ -208,27 +208,31 @@
           <!--  JOIN TBL_USER C ON (A.USER_ID = C.USER_ID) -->
           JOIN EVENT_ATTACHMENT D ON (A.EVE_ID = D.EVE_ID)
          WHERE A.EVE_STATUS = 'Y'
+           AND D.EVE_FILE_TYPE = 'BODY'
          <!-- AND D.EVE_IMG_STATUS = 'Y'  -->  
            AND A.EVE_ID =  #{ eveId }
 	</select>
 	
-	<!-- 이벤트 수정 -->
-	<update id="updateEvent">
-	UPDATE /*event.model.dao.EventDAO#update*/
-	      EVENT
+	
+	
+ 	<!-- 이벤트 수정 -->
+	<update id="updateThumbnailContent">
+	UPDATE
+			EVENT
 	  SET EVE_TITLE = #{ eveTitle }
-	    , EVE_CONTENT = #{ eveContent }
-	    , A.EVE_START<!-- 이벤트 시작일 -->
-        , A.EVE_END<!-- 이벤트 종료일 -->
-	 WHERE EVE_ID = ${ eveId }
-	</update>
+		, EVE_CATE_CODE = #{ categoryCode }
+		, EVE_START = #{ eveStart }
+		, EVE_END = #{ eveEnd }
+	WEHRE EVE_ID = #{eveId}
+	</update> 
 	
 	
 	<!-- 이벤트 삭제 -->
-	<update id="deleteEvent">
-	UPDATE /*event.model.dao.EventDAO#delete*/
+	  <update id="deleteEvent">
+	  UPDATE /*event.model.dao.EventDAO#delete*/
 	      EVENT
-	   SET EVE_STATUS = 'Y'
+	   SET EVE_STATUS = 'N'
 	 WHERE EVE_ID = #{eveId}
-	 </update>
+	 </update> 
+	 
 </mapper>
