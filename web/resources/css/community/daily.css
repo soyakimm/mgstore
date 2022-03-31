@@ -378,7 +378,13 @@ line-height: 10px;
 color: #000000;
 }
 
+
 .setting {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.rectangle {
+    cursor: pointer;
+}
+

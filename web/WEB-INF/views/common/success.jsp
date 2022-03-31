@@ -83,9 +83,19 @@
 				successMessage = "이벤트 게시판 삭제 성공! ";
 				movePath = "${ pageContext.servletContext.contextPath }/event/main";
 				break;
-
+			case "updateWrite" : 
+				successMessage = "게시글 수정에 성공하셨습니다!";
+				movePath = "${ pageContext.servletContext.contextPath }/free/datail?postId=${ postId }";
+				break;
+			case "deleteWrite" : 
+				successMessage = "게시글 삭제에 성공하셨습니다!";
+				movePath = "${ pageContext.servletContext.contextPath }/community/freelist";
+				break;	
+			case "deleteThumbnail" : 
+				successMessage = "게시글 삭제에 성공하셨습니다!";
+				movePath = "${ pageContext.servletContext.contextPath }/thumbnail/list";
+				break;
 		
-	
 		}
 
 		alert(successMessage);

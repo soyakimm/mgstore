@@ -12,9 +12,15 @@
 	<link href="${ pageContext.servletContext.contextPath }/resources/css/community/freeTalk.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.text-container {
+position : relative;
+right : 50px;
+}
+</style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header-comm.jsp"/>
 	 <div class="group">
         
         <div class="frame-4 screen">
@@ -51,8 +57,8 @@
 						<!-- forEach 작성해야함!!!!!!!!!!! -->
                       <!--게시물 첫번째 시작-->
                       <c:forEach var="community" items="${ communityList }">
-                      <div class="flex-row">
-                        <div class="rectangle"></div>
+                      <div class="flex-row" onclick="detailView(${ community.postId });">
+                        
                         <div class="text-container">
                         <div class="juju" hidden> ${ community.postId } </div>
                           <div class="text-1 gmarketsansttf-bold-black-18px web-font48"> ${ community.title } </div>
@@ -76,5 +82,14 @@
   </div>
 </div>
 </div>
+
+<!-- 해당 게시글 클릭했을 때 게시글 번호 넘어가서 해당 게시글 볼 수 있음 -->
+	<script>
+			function detailView(postId){
+				location.href = '${ pageContext.servletContext.contextPath }/free/datail?postId=' + postId;
+			}
+	</script>
+
+
 </body>
 </html>

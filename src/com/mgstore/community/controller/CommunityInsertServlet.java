@@ -26,7 +26,6 @@ public class CommunityInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int categoryId = Integer.parseInt(request.getParameter("category"));
-		int headerId = Integer.parseInt(request.getParameter("header"));
 		String title = request.getParameter("title");
 		String text = request.getParameter("text");
 		String userId = ((UserDTO)request.getSession().getAttribute("loginUser")).getUserId();
@@ -34,7 +33,6 @@ public class CommunityInsertServlet extends HttpServlet {
 		
 		CommunityWriteDTO newWrite = new CommunityWriteDTO();
 		newWrite.setCategoryId(categoryId);
-		newWrite.setHeaderId(headerId);
 		newWrite.setTitle(title);
 		newWrite.setText(text);
 		newWrite.setUserId(userId);

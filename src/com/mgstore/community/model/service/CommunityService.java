@@ -167,4 +167,121 @@ public class CommunityService {
 		return thumbnail;
 	}
 
+	/*사진 없는 게시판 상세 페이지*/
+	public CommunityWriteDTO selectOneWrite(int postId) {
+		
+		SqlSession session = getSqlSession();
+		
+		CommunityWriteDTO write= null;
+		
+		/*조회수*/
+		int result = communityDAO.incrementWriteCount(session, postId);
+		
+		if(result > 0) {
+			write = communityDAO.selectOneWrite(session, postId);
+			
+			if(write != null) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return write;
+	}
+
+	/*사진 없는 게시글 수정*/
+	public int updateFree(CommunityWriteDTO updateWrite) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = communityDAO.updateWrite(session, updateWrite);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/*자유게시판 삭제*/
+	public int deleteFree(int postId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = communityDAO.deleteFree(session, postId);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+	
+	
+	/*커뮤니티 BEST 조회*/
+	public List<CommunityWriteDTO> selectBestList() {
+		
+		/* Connection 생성 */
+		SqlSession session = getSqlSession();
+		
+		/* List 조회 */
+		List<CommunityWriteDTO> thumbnailList = communityDAO.selectBestList(session);
+		
+		/* Connection 닫기 */
+		session.close();
+		
+		/* 조회 결과 반환 */
+		return thumbnailList;
+		
+	}
+
+	/*멍개일상게시판 삭제(게시글 상태 바꿈)*/
+	public int deleteThumbnail(int postId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = communityDAO.deleteThumbnail(session, postId);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
+	/*멍개일상게시판 삭제(사진 상태 바꿈)*/
+	public int deleteThumbnails(int postId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = communityDAO.deleteThumbnails(session, postId);
+		
+		if(result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 }

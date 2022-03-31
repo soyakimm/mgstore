@@ -93,7 +93,7 @@
 
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header-comm.jsp"/>
 
 	<div class="outer">
 		<div class="wrap">
@@ -109,24 +109,21 @@
 							</h4>
 							<span class="input_area"> 
 							<select name="category">
-							<option value="" selected>카테고리 선택</option>
-                                <option value="10">멍개병원</option>
-                                <option value="20">멍개일상</option>
-                                <option value="30">멍개노하우</option>
-                                <option value="40">멍개메이트</option>
-                                <option value="50">자유게시판</option>
+                                <option value="20" selected>멍개일상</option>
 							</select>
+							</span>
 							
+							<br><br><br>
+							
+							<span class="input_area">
 							<select name="header">
 							<option value="" selected>말머리 선택</option>
-                                <option value="1">건강관리(멍개노하우)</option>
-                                <option value="2">급여/식이(멍개노하우)</option>
-                                <option value="3">꿀팁(멍개노하우)</option>
-                                <option value="4">놀이(멍개노하우)</option>
-                                <option value="5">여행(멍개노하우)</option>
-                                <option value="6">기타(멍개노하우)</option>
-                                <option value="7">진행 중(멍개메이트)</option>
-                                <option value="8">완료(멍개메이트)</option>
+                                <option value="1">건강관리</option>
+                                <option value="2">급여/식이</option>
+                                <option value="3">꿀팁</option>
+                                <option value="4">놀이</option>
+                                <option value="5">여행</option>
+                                <option value="6">기타</option>
 							</select>
 							
 							</span>
