@@ -32,26 +32,86 @@
 	<!-- 상품 -->
 	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="productResultMap">
 		<id property="proId" column="PRO_ID"/>
-		<result property="pCateId" column="PCATE_ID"/>
+		<result property="proCateId" column="PCATE_ID"/>
 		<result property="proTitle" column="PRO_TITLE"/>
 		<result property="price" column="PRICE"/>
-		<result property="deliveryFee" column="DELIVERY_FEE"/>
 		<result property="proAmount" column="PRO_AMOUNT"/>
 		<result property="proContent" column="PRO_CONTENT"/>
 		<result property="proPoint" column="PRO_POINT"/>
 		<result property="proDate" column="PRO_DATE"/>
-		<result property="ratingSum" column="RATING_SUM"/>
-		<result property="ratingAmount" column="RATING_AMOUNT"/>
 		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proCount" column="PRO_COUNT"/>
 		
 		<association property="category" resultMap="proCateResultMap"/>
 	</resultMap>
 	
+	<!-- 카테고리 -->
 	<resultMap type="com.mgstore.product.model.dto.ProCateDTO" id="proCateResultMap">
-		<id property="pCateId" column="PCATE_ID"/>
+		<id property="proCateId" column="PCATE_ID"/>
 		<result property="pCateName" column="PCATE_NAME"/>
 		<result property="pCatePId" column="PCATE_P_ID"/>
 	</resultMap>
+	
+		<!-- 썸네일 -->
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProductResultMap">
+		<id property="proId" column="PRO_ID"/>
+		<result property="proCateId" column="PCATE_ID"/>
+		<result property="proTitle" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="proAmount" column="PRO_AMOUNT"/>
+		<result property="proContent" column="PRO_CONTENT"/>
+		<result property="proPoint" column="PRO_POINT"/>
+		<result property="proDate" column="PRO_DATE"/>
+		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proCount" column="PRO_COUNT"/>
+		
+		<association property="category" resultMap="proCateResultMap"/>
+		
+		<collection property="proImgList" resultMap="proImgResultMap"/>
+	</resultMap>
+	
+	<!-- 상품이미지 -->
+	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="proImgResultMap">
+		<id property="proImgId" column="PIMG_ID"/>
+		<result property="refProId" column="REF_PRO_ID"/>
+		<result property="proImgOrgName" column="PIMG_ORGNAME"/>
+		<result property="proImgSvrName" column="PIMG_SVRNAME"/>
+		<result property="proImgPath" column="PIMG_PATH"/>
+		<result property="proImgType" column="PIMG_TYPE"/>
+		<result property="proThumbnailPath" column="PTHUMBNAIL_PATH"/>
+		<result property="proImgStatus" column="PIMG_STATUS"/>
+	</resultMap>
+	
+<!-- 	<select id="selectCartList" resultMap="CartResultMap"> -->
+<!-- 		SELECT -->
+<!-- 				A.CART_AMOUNT -->
+<!-- 			  , B.PRO_TITLE -->
+<!-- 			  , B.PRICE -->
+<!-- 			FROM CART A -->
+<!-- 			JOIN PRODUCT B ON (A.PRO_ID=B.PRO_ID) -->
+<!-- 	</select> -->
+	
+	<insert id="insertCart">
+		 INSERT
+		   INTO CART
+		 (
+		   CART_AMOUNT
+		 , PRO_ID
+		 , USER_ID
+		 )
+		 VALUES
+		 (
+		   #{ cartAmount }
+		 , #{ proId }
+		 , #{ userId }
+		 )
+	</insert>
+	
+	<delete id="deleteCart">
+		DELETE
+		  FROM CART
+		 WHERE PRO_ID = #{ proId }
+	</delete>
 	
 	
 

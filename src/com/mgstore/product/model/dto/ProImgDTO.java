@@ -4,40 +4,40 @@ import java.sql.Date;
 
 public class ProImgDTO implements java.io.Serializable {
 	
-	private int pImgId;
+	private int proImgId;
 	private int refProId;
-	private String pImgOrgName;
-	private String pImgSvrName;
-	private String pImgPath;
-	private String pImgType;
-	private String pThumbnailPath;
-	private String pImgStatus;
+	private String proImgOrgName;
+	private String proImgSvrName;
+	private String proImgPath;
+	private String proImgType;
+	private String proThumbnailPath;
+	private String proImgStatus;
 	
 	
 	public ProImgDTO() {}
 
 
-	public ProImgDTO(int pImgId, int refProId, String pImgOrgName, String pImgSvrName, String pImgPath, String pImgType,
-			String pThumbnailPath, String pImgStatus) {
+	public ProImgDTO(int proImgId, int refProId, String proImgOrgName, String proImgSvrName, String proImgPath,
+			String proImgType, String proThumbnailPath, String proImgStatus) {
 		super();
-		this.pImgId = pImgId;
+		this.proImgId = proImgId;
 		this.refProId = refProId;
-		this.pImgOrgName = pImgOrgName;
-		this.pImgSvrName = pImgSvrName;
-		this.pImgPath = pImgPath;
-		this.pImgType = pImgType;
-		this.pThumbnailPath = pThumbnailPath;
-		this.pImgStatus = pImgStatus;
+		this.proImgOrgName = proImgOrgName;
+		this.proImgSvrName = proImgSvrName;
+		this.proImgPath = proImgPath;
+		this.proImgType = proImgType;
+		this.proThumbnailPath = proThumbnailPath;
+		this.proImgStatus = proImgStatus;
 	}
 
 
-	public int getpImgId() {
-		return pImgId;
+	public int getProImgId() {
+		return proImgId;
 	}
 
 
-	public void setpImgId(int pImgId) {
-		this.pImgId = pImgId;
+	public void setProImgId(int proImgId) {
+		this.proImgId = proImgId;
 	}
 
 
@@ -51,74 +51,74 @@ public class ProImgDTO implements java.io.Serializable {
 	}
 
 
-	public String getpImgOrgName() {
-		return pImgOrgName;
+	public String getProImgOrgName() {
+		return proImgOrgName;
 	}
 
 
-	public void setpImgOrgName(String pImgOrgName) {
-		this.pImgOrgName = pImgOrgName;
+	public void setProImgOrgName(String proImgOrgName) {
+		this.proImgOrgName = proImgOrgName;
 	}
 
 
-	public String getpImgSvrName() {
-		return pImgSvrName;
+	public String getProImgSvrName() {
+		return proImgSvrName;
 	}
 
 
-	public void setpImgSvrName(String pImgSvrName) {
-		this.pImgSvrName = pImgSvrName;
+	public void setProImgSvrName(String proImgSvrName) {
+		this.proImgSvrName = proImgSvrName;
 	}
 
 
-	public String getpImgPath() {
-		return pImgPath;
+	public String getProImgPath() {
+		return proImgPath;
 	}
 
 
-	public void setpImgPath(String pImgPath) {
-		this.pImgPath = pImgPath;
+	public void setProImgPath(String proImgPath) {
+		this.proImgPath = proImgPath;
 	}
 
 
-	public String getpImgType() {
-		return pImgType;
+	public String getProImgType() {
+		return proImgType;
 	}
 
 
-	public void setpImgType(String pImgType) {
-		this.pImgType = pImgType;
+	public void setProImgType(String proImgType) {
+		this.proImgType = proImgType;
 	}
 
 
-	public String getpThumbnailPath() {
-		return pThumbnailPath;
+	public String getProThumbnailPath() {
+		return proThumbnailPath;
 	}
 
 
-	public void setpThumbnailPath(String pThumbnailPath) {
-		this.pThumbnailPath = pThumbnailPath;
+	public void setProThumbnailPath(String proThumbnailPath) {
+		this.proThumbnailPath = proThumbnailPath;
 	}
 
 
-	public String getpImgStatus() {
-		return pImgStatus;
+	public String getProImgStatus() {
+		return proImgStatus;
 	}
 
 
-	public void setpImgStatus(String pImgStatus) {
-		this.pImgStatus = pImgStatus;
+	public void setProImgStatus(String proImgStatus) {
+		this.proImgStatus = proImgStatus;
 	}
 
 
 	@Override
 	public String toString() {
-		return "ProImgDTO [pImgId=" + pImgId + ", refProId=" + refProId + ", pImgOrgName=" + pImgOrgName
-				+ ", pImgSvrName=" + pImgSvrName + ", pImgPath=" + pImgPath + ", pImgType=" + pImgType
-				+ ", pThumbnailPath=" + pThumbnailPath + ", pImgStatus=" + pImgStatus + "]";
+		return "ProImgDTO [proImgId=" + proImgId + ", refProId=" + refProId + ", proImgOrgName=" + proImgOrgName
+				+ ", proImgSvrName=" + proImgSvrName + ", proImgPath=" + proImgPath + ", proImgType=" + proImgType
+				+ ", proThumbnailPath=" + proThumbnailPath + ", proImgStatus=" + proImgStatus + "]";
 	}
 
 	
-	
+
 
 }
