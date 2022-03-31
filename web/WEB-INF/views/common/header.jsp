@@ -59,7 +59,7 @@
                         </div>
                     	<!-- 장바구니/로그인/회원가입 -->
 	                    <div class="header-line"><span> | </span></div>
-	                    <a href="${ pageContext.servletContext.contextPath }/user/login">
+	                    <a href="${ pageContext.servletContext.contextPath }/user/cart">
 	                    	<img src="${ pageContext.servletContext.contextPath }/resources/images/common/cart.svg" alt="장바구니">
 	                    </a>
 	                    <div class="header-line"><span> | </span></div>

@@ -261,6 +261,8 @@ height : 340px;
 				location.href = '${ pageContext.servletContext.contextPath }/thumbnail/detail?postId=' + postId;
 			}
 	</script>
+	
+	<jsp:include page="../common/footer.jsp"/>
 
 </body>
 </html>

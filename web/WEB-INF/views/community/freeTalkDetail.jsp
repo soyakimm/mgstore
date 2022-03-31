@@ -150,6 +150,6 @@ margin-top : 50px;
 				}
 			}
 	</script>
-
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

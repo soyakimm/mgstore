@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <meta charset="UTF-8">
 <title>이벤트메인</title>
 	<!-- 외부 스타일 시트 -->
@@ -11,9 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
+	<jsp:include page="../common/header-comm.jsp"/>
 <body>
 	<div class="group">
-	<jsp:include page="../common/header-comm.jsp"/>
 
 	<!-- 이벤트 메인 전체 적용  -->
     <div class="content-body">
@@ -67,7 +68,6 @@
         </c:forEach>
     </div> <!-- gorup -->
 
-
     
    <script>
 			function detailView(eveId){
@@ -91,5 +91,6 @@
 		}
 	});
 </script>
+	<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

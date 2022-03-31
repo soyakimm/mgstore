@@ -12,9 +12,9 @@
    href="${ pageContext.servletContext.contextPath }/resources/css/notice/notice.css"
    rel="stylesheet">
 </head>
+	<jsp:include page="../common/header.jsp" />
 <body>
 
-	<jsp:include page="../common/header.jsp" />
 	
    <div class="main">
       <h1 class="title-bg">고객센터</h1>
@@ -53,6 +53,7 @@
       </div>
       </form>
    </div>
-
 </body>
+
+<jsp:include page="../common/footer.jsp"/>
 </html>

@@ -123,4 +123,5 @@
 <script src="${ pageContext.servletContext.contextPath }/resources/js/imagePreview.js"></script>
 
 </body>
+<jsp:include page="../common/footer.jsp"/>
 </html>

@@ -154,6 +154,6 @@ select option[value=""][disabled] {
 		</div>
 	</div>
 	<script src="${ pageContext.servletContext.contextPath }/resources/js/community/imagePreview.js"></script>
-
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

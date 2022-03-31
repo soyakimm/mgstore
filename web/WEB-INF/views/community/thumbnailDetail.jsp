@@ -153,6 +153,8 @@ margin-top : 20px;
 			}
 	</script>
 	
+	<jsp:include page="../common/footer.jsp"/>
+	
 	
 </body>
 </html>

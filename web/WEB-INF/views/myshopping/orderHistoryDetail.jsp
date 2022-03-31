@@ -14,8 +14,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
 	<jsp:include page="../common/header.jsp" />
+<body>
 	<div class="wish-main">
 		<h1 class="title-bg">위시리스트</h1>
 		<div class="wish wrapper">
@@ -119,5 +119,5 @@
         };
     </script>
 </body>
-
+	<jsp:include page="../common/footer.jsp"/>
 </html>

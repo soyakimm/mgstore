@@ -21,8 +21,8 @@ button {
 }
 </style>
 </head>
-<body>
 	<jsp:include page="../common/header.jsp" />
+<body>
 	<div class="main">
 		<h1 class="title-bg">고객센터</h1>
 		<div class="title-mid">
@@ -114,4 +114,5 @@ button {
 
 
 </body>
+	<jsp:include page="../common/footer.jsp"/>
 </html>

@@ -73,13 +73,11 @@ right : 50px;
                   	<!-- 페이징 처리!!!!!!!! -->
                   	<jsp:include page="../common/paging.jsp"/>
 				
-	
                     </div>
-                   
           </div>
-          
     </div>
   </div>
+  <jsp:include page="../common/footer.jsp"/>
 </div>
 </div>
 
@@ -89,7 +87,6 @@ right : 50px;
 				location.href = '${ pageContext.servletContext.contextPath }/free/datail?postId=' + postId;
 			}
 	</script>
-
 
 </body>
 </html>
