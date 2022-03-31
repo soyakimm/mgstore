@@ -186,7 +186,6 @@
 		.mypage {
 			position: relative;
 			display: inline-block;
-			background: #000;
 		}
 		
 		.mypage-content {
@@ -419,7 +418,7 @@
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="mypage" type="button">
 	                    	<a href="${ pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
-	                    	<div class="mypage-content"><a>마이쇼핑</a></div>
+	                    	<div class="mypage-content"><a href="${ pageContext.servletContext.contextPath }/myshopping/wishList">마이쇼핑</a></div>
 	                    </button>
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="regist" type="button">
@@ -460,7 +459,7 @@
                     	<button class="show-all-list" type="button">
 	                    	<!-- 커뮤니티 -->
 	                    	<img class="header-category-icon freeboard" src="${ pageContext.servletContext.contextPath }/resources/images/common/comm-list.png" alt="자유게시판">
-	                    	<div class="header-all-category-title">자유게시판</div>
+	                    	<div class="header-all-category-title" href="${ pageContext.servletContext.contextPath }/community/main">자유게시판</a></div>
 	                    	<!-- 스토어 -->
 	                    	<img style="display: none" class="header-category-icon category" src="${ pageContext.servletContext.contextPath }/resources/images/common/store-list.svg" alt="카테고리">
 	                    	<div style="display: none" class="header-all-category-title">카테고리</div>
@@ -562,7 +561,7 @@
 		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/outside/all">외출</a></li>
 		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/toy/all">장난감</a></li>
 		                	<li class="header-item store" style="display: none"><a href="${ pageContext.servletContext.contextPath }/product/list/fashion/all">패션</a></li>
-		                	<li class="header-item comm"><a href="#">멍개일상</a></li>
+		                	<li class="header-item comm"><a href="${ pageContext.servletContext.contextPath }/community/daily">멍개일상</a></li>
 		                	<li class="header-item comm"><a href="${ pageContext.servletContext.contextPath }/event/main">이벤트</a></li>
 		                	</ul>
 		                </nav>
