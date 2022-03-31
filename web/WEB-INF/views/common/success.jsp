@@ -88,6 +88,10 @@
 				successMessage = "상품 등록 성공! ";
 				movePath = "${ pageContext.servletContext.contextPath }/product/list";
 				break;
+			case "deleteProduct" :
+				successMessage = "상품 삭제 성공! ";
+				movePath = "${ pageContext.servletContext.contextPath }/product/list";
+				break;
 
 
 		

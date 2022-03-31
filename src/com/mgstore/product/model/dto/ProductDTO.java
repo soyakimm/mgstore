@@ -10,7 +10,6 @@ public class ProductDTO {
 	private int price;
 	private int proAmount;
 	private String proContent;
-	private int proPoint;
 	private java.sql.Date proDate;
 	private String proStatus;
 	private int proCount;
@@ -19,7 +18,7 @@ public class ProductDTO {
 	public ProductDTO() {}
 
 	public ProductDTO(int proId, int proCateId, ProCateDTO category, String proTitle, int price, int proAmount,
-			String proContent, int proPoint, Date proDate, String proStatus, int proCount, List<ProImgDTO> proImgList) {
+			String proContent, Date proDate, String proStatus, int proCount, List<ProImgDTO> proImgList) {
 		super();
 		this.proId = proId;
 		this.proCateId = proCateId;
@@ -28,7 +27,6 @@ public class ProductDTO {
 		this.price = price;
 		this.proAmount = proAmount;
 		this.proContent = proContent;
-		this.proPoint = proPoint;
 		this.proDate = proDate;
 		this.proStatus = proStatus;
 		this.proCount = proCount;
@@ -91,14 +89,6 @@ public class ProductDTO {
 		this.proContent = proContent;
 	}
 
-	public int getProPoint() {
-		return proPoint;
-	}
-
-	public void setProPoint(int proPoint) {
-		this.proPoint = proPoint;
-	}
-
 	public java.sql.Date getProDate() {
 		return proDate;
 	}
@@ -135,8 +125,8 @@ public class ProductDTO {
 	public String toString() {
 		return "ProductDTO [proId=" + proId + ", proCateId=" + proCateId + ", category=" + category + ", proTitle="
 				+ proTitle + ", price=" + price + ", proAmount=" + proAmount + ", proContent=" + proContent
-				+ ", proPoint=" + proPoint + ", proDate=" + proDate + ", proStatus=" + proStatus + ", proCount="
-				+ proCount + ", proImgList=" + proImgList + "]";
+				+ ", proDate=" + proDate + ", proStatus=" + proStatus + ", proCount=" + proCount + ", proImgList="
+				+ proImgList + "]";
 	}
 
 	

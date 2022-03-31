@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mgstore.cart.model.dto.CartDTO;
+import com.mgstore.product.model.dto.ProImgDTO;
 
 public class CartDAO {
 
@@ -13,6 +14,15 @@ public class CartDAO {
 		
 		return session.selectList("CartDAO.selectCartList");
 	}
+	
+	public int insertCart(SqlSession session, CartDTO thumbnail) {
+		
+		return session.insert("CartDAO.insertCart", thumbnail);
+	}
+	
+	
+	
+
 
 
 	

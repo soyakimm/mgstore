@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품명 | 멍개상점</title>
+<title>상품 | 멍개상점</title>
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
@@ -51,12 +51,16 @@
                             <div class="likeBtn" onclick="link">
                                 <img src="${ pageContext.servletContext.contextPath }/resources/images/product/emptyHeart.png"></div>
                             <div class="cart">
-                            <form name="cartButton" method="post" action="${ pageContext.servletContext.contextPath }/product/cart">
+                            <form name="cartButton" method="get" action="${ pageContext.servletContext.contextPath }/cart">
+                            	<input type="hidden" name="proId" value="${ product.proId }">
                                 <button type="submit" class="cartBtn" id="cartBtn">장바구니</button>
                             </form>
                             </div>
                             <div class="order">
-                                <button type="submit" class="orderBtn" id="orderBtn">구매하기</button>
+<%--                             <form name="orderButton" method="post" action="${ pageContext.servletContext.contextPath}/payment/orderList"> --%>
+<%--                             	<input type="hidden" name="proId" value="${ product.proId }"> --%>
+                                <a href="${ pageContext.servletContext.contextPath }/payment/orderList"><button type="submit" class="orderBtn" id="orderBtn">구매하기</button></a>
+<!--                              </form> -->
                             </div>
                         </div>
                     </div>

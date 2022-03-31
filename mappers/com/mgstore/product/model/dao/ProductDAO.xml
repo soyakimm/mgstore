@@ -12,7 +12,6 @@
 		<result property="price" column="PRICE"/>
 		<result property="proAmount" column="PRO_AMOUNT"/>
 		<result property="proContent" column="PRO_CONTENT"/>
-		<result property="proPoint" column="PRO_POINT"/>
 		<result property="proDate" column="PRO_DATE"/>
 		<result property="proStatus" column="PRO_STATUS"/>
 		<result property="proCount" column="PRO_COUNT"/>
@@ -35,7 +34,6 @@
 		<result property="price" column="PRICE"/>
 		<result property="proAmount" column="PRO_AMOUNT"/>
 		<result property="proContent" column="PRO_CONTENT"/>
-		<result property="proPoint" column="PRO_POINT"/>
 		<result property="proDate" column="PRO_DATE"/>
 		<result property="proStatus" column="PRO_STATUS"/>
 		<result property="proCount" column="PRO_COUNT"/>
@@ -179,11 +177,11 @@
 		(
 		  SEQ_PIMG_ID.NEXTVAL
 		, #{ refProId }
-		, #{ pImgOrgName }
-		, #{ pImgSvrName }
-		, #{ pImgPath }
-		, #{ pImgType }
-		, #{ pThumbnailPath }
+		, #{ proImgOrgName }
+		, #{ proImgSvrName }
+		, #{ proImgPath }
+		, #{ proImgType }
+		, #{ proThumbnailPath }
 		)
 	</insert>
 	
@@ -195,7 +193,6 @@
 			, A.PRO_TITLE
 			, A.PRICE
 			, A.PRO_CONTENT
-			, A.PRO_POINT
 			, C.PIMG_ID
 			, C.PIMG_ORGNAME
 			, C.PIMG_SVRNAME
@@ -225,127 +222,22 @@
          WHERE A.PRO_ID = #{ id }
 	</update>
 	
-	<update id="updateProduct">
+<!-- 	<update id="updateProduct"> -->
+<!-- 		UPDATE -->
+<!-- 				PRODUCT -->
+<!-- 			SET PRO_TITLE = #{ proTitle } -->
+<!-- 			  , PCATE_ID = #{ proCateId } -->
+<!-- 			  , PRICE = #{ price } -->
+<!-- 			  , PRO_CONTENT = #{ proContent } -->
+<!-- 		  WHERE PRO_ID = #{ id } -->
+<!-- 	</update> -->
+	
+	<update id="deleteProduct">
 		UPDATE
-				PRODUCT
-			SET PRO_TITLE = #{ proTitle }
-			  , PCATE_ID = #{ pCateId }
-			  , PRICE = #{ price }
-			  , PRO_CONTENT = #{ proContent }
-		  WHERE PRO_ID = #{ id }
+		   		PRODUCT
+		    SET PRO_STATUS = 'N'
+		  WHERE PRO_ID = #{ proId }
 	</update>
 	
-	<delete id="deleteProduct">
-		UPDATE
-				PRODUCT
-			SET PRO_STATUS = 'N'
-		  WHERE PRO_ID = #{ id }
-	</delete>
-	
-	
-	
-	
-	
-	
-<!-- 	<select id="selectProductList" resultMap="productResultMap"> -->
-<!-- 		SELECT -->
-<!-- 			  PRO_ID -->
-<!-- 			, PCATE_ID -->
-<!-- 			, PRO_TITLE -->
-<!-- 			, PRICE -->
-<!-- 			, DELIVERY_FEE -->
-<!-- 			, PRO_AMOUNT -->
-<!-- 			, PRO_CONTENT -->
-<!-- 			, PRO_POINT -->
-<!-- 			, PRO_DATE -->
-<!-- 			, RATING_SUM -->
-<!-- 			, RATING_AMOUNT -->
-<!-- 			, PRO_STATUS -->
-<!-- 		  FROM PRODUCT -->
-<!-- 	</select> -->
-<!-- 	<select id="selectSellingProductList" resultMap="productResultMap"> -->
-<!-- 		SELECT -->
-<!-- 			  PRO_ID -->
-<!-- 			, PCATE_ID -->
-<!-- 			, PRO_TITLE -->
-<!-- 			, PRICE -->
-<!-- 			, DELIVERY_FEE -->
-<!-- 			, PRO_AMOUNT -->
-<!-- 			, PRO_CONTENT -->
-<!-- 			, PRO_POINT -->
-<!-- 			, PRO_DATE -->
-<!-- 			, RATING_SUM -->
-<!-- 			, RATING_AMOUNT -->
-<!-- 			, PRO_STATUS -->
-<!-- 		  FROM PRODUCT -->
-<!-- 		 WHERE PRO_STATUS='Y' -->
-<!-- 	</select> -->
-<!-- 	<insert id="insertProduct" parameterType="com.mgstore.product.model.dto.ProductDTO"> -->
-<!-- 		INSERT -->
-<!-- 		  INTO PRODUCT -->
-<!-- 		( -->
-<!-- 		  PRO_ID -->
-<!-- 		, PCATE_ID -->
-<!-- 		, PRO_TITLE -->
-<!-- 		, PRICE -->
-<!-- 		, PRO_AMOUNT -->
-<!-- 		, PRO_CONTENT -->
-<!-- 		, PRO_STATUS -->
-<!-- 		) -->
-<!-- 		VALUES -->
-<!-- 		( -->
-<!-- 		  SEQ_PRO_ID.NEXTVAL -->
-<!-- 		, #{ proCateCode } -->
-<!-- 		, #{ proTitle } -->
-<!-- 		, #{ price } -->
-<!-- 		, #{ proAmount } -->
-<!-- 		, #{ proContent } -->
-<!-- 		, #{ proStatus } -->
-<!-- 		) -->
-<!-- 		<selectKey keyProperty="id" resultType="Integer" order="AFTER"> -->
-<!-- 			SELECT -->
-<!-- 				  SEQ_PRO_ID.CURRVAL -->
-<!-- 			  FROM DUAL -->
-<!-- 		</selectKey> -->
-<!-- 	</insert> -->
-<!-- 	<insert id="insertProImg"> -->
-<!-- 		INSERT -->
-<!-- 		  INTO PRO_IMG -->
-<!-- 		( -->
-<!-- 		  PIMG_ID -->
-<!-- 		, REF_PRO_ID -->
-<!-- 		, PIMG_ORGNAME -->
-<!-- 		, PIMG_SVRNAME -->
-<!-- 		, PIMG_TMBNAME -->
-<!-- 		, PIMG_TMB_YN -->
-<!-- 		) -->
-<!-- 		VALUES -->
-<!-- 		( -->
-<!-- 		  SEQ_PIMG_ID.NEXTVAL -->
-<!-- 		, #{ refProId } -->
-<!-- 		, #{ pImgOrgName } -->
-<!-- 		, #{ pImgSvrName } -->
-<!-- 		, #{ pImgTmbName } -->
-<!-- 		, #{ pImgTmbYN } -->
-<!-- 		) -->
-<!-- 	</insert> -->
-<!-- 	<select id="selectProImgList" resultMap="thumbnailProResultMap"> -->
-<!-- 		SELECT -->
-<!-- 				A.PRO_ID -->
-<!-- 			  , A.PRO_TITLE -->
-<!-- 			  , B.PCATE_NAME -->
-<!-- 			  , C.PIMG_ID -->
-<!-- 			  , C.PIMG_ORGNAME -->
-<!-- 			  , C.PIMG_SVRNAME -->
-<!-- 			  , C.TMB_NAME -->
-<!-- 			FROM PRODUCT A -->
-<!-- 			JOIN CATEGORY B ON (A.PCATE_ID = B.PCATE_ID) -->
-<!-- 			JOIN PRO_IMG C ON (A.PRO_ID = C.REF_PRO_ID) -->
-<!-- 		   WHERE A.PRO_STATUS = 'Y' -->
-<!-- 		     AND C.PIMG_TMB_YN = 'Y' -->
-<!-- 		     AND .PRO_ID = #{ id } -->
-<!-- 	</select> -->
-	
-  
 </mapper>
 
