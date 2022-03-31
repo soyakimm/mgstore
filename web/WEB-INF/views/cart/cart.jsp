@@ -45,11 +45,11 @@
                             <div class="product-detail">
                                 <input type="image" name="checkBtn" class="check-button" src="${ pageContext.servletContext.contextPath }/resources/images/product/cart_check.png">
                                 <div class="goods-thumbnail">
-                                    <a href="#"><img src="${ pageContext.servletContext.contextPath }/resources/images/product/goods.png" ></a>
+                                    <a href="#"><img src="${ pageContext.servletContext.contextPath }${ product.proImgList[0].proThumbnailPath }" ></a>
                                 </div>
                                 <div class="name-num">
                                     <div class="goods-desc-name">
-                                        <a href="#"><p>멍개상점 상품명</p></a>
+                                        <a href="#"><p>${ product.proTitle }</p></a>
                                     </div>
                                     <div class="product-num">
                                         <div class="downBtn-box" id="downBtn-box"><span>-</span></div>
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="goods-desc-price">
-                                    <span class="num">1,000</span>원
+                                    <span class="num">${ product.price }</span>원
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                     <div class="order-all-price">
                         <div class="order-price">
                             <div class="all-price">총 상품금액</div>
-                            <div class="all-price-num"><span class="price-num">3,000</span>원</div>
+                            <div class="all-price-num"><span class="price-num">${ product.price }</span>원</div>
                         </div>
                         <div class="order-fee">
                             <div class="all-fee">총 배송비</div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="final-order-price">
                         <div class="final-price">총 결제금액</div>
-                        <div class="final-price-num"><span class="final-num">5,500</span>원</div>
+                        <div class="final-price-num"><span class="final-num">${ (product.price+2500) }</span>원</div>
                     </div>
                     <div class="order">
                         <button class="orderBtn" onclick="link">주문하기</button>
@@ -91,6 +91,7 @@
             </div>
 
         </div>
+
     </div>
     
     

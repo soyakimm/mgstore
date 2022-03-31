@@ -58,5 +58,48 @@ public class CommunityDAO {
 		return session.selectOne("CommunityDAO.selectOneThumbnailBoard", postId);
 		
 	}
+	/*사진없는 게시판 상세 보기*/
+	public CommunityWriteDTO selectOneWrite(SqlSession session, int postId) {
+		
+		return session.selectOne("CommunityDAO.selectOneWrite", postId);
+	}
+	
+	/*사진 없는 게시판 조회수*/
+	public int incrementWriteCount(SqlSession session, int postId) {
+		
+		return session.update("CommunityDAO.incrementWriteCount", postId);
+	}
+	
+	/*사진 없는 게시글 수정*/
+	public int updateWrite(SqlSession session, CommunityWriteDTO updateWrite) {
+		
+		return session.update("CommunityDAO.updateWrite", updateWrite);
+	}
+	
+	/*자유게시판 삭제*/
+	public int deleteFree(SqlSession session, int postId) {
+		
+		return session.update("CommunityDAO.deleteFree", postId);
+	}
+	
+	/*커뮤니티 메인 BEST 조회*/
+	public List<CommunityWriteDTO> selectBestList(SqlSession session) {
+		
+		return session.selectList("CommunityDAO.selectBestList");
+		
+	}
+	
+	/*멍개일상 게시판 삭제(게시글)*/
+	public int deleteThumbnail(SqlSession session, int postId) {
+		
+		return session.update("CommunityDAO.deleteThumbnail", postId);
+	}
+	
+	/*멍개일상 게시판 삭제(사진)*/
+	public int deleteThumbnails(SqlSession session, int postId) {
+		
+		return session.update("CommunityDAO.deleteThumbnails", postId);
+		
+	}
 
 }

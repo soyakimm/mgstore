@@ -18,10 +18,10 @@ public class ProductDAO {
 	}
 	
 	/* 상품게시판 목록 조회 */
-//	public List<ProductDTO> selectThumbnailList(SqlSession session) {
-//		
-//		return session.selectList("ProductDAO.selectThumbnailList");
-//	}
+	public List<ProductDTO> selectThumbnailList(SqlSession session) {
+		
+		return session.selectList("ProductDAO.selectThumbnailList");
+	}
 	
 	/* 썸네일 제목과 내용 insert용 메소드 */
 	public int insertThumbnailContent(SqlSession session, ProductDTO thumbnail) {
@@ -34,7 +34,6 @@ public class ProductDAO {
 		
 		return session.insert("ProductDAO.insertProImg", file);
 	}
-	
 
 	public ProductDTO selectOneThumbnailProduct(SqlSession session, int id) {
 		
@@ -51,12 +50,25 @@ public class ProductDAO {
 	}
 
 	public int incrementProductCount(SqlSession session, int id) {
-		return 0;
+		return session.update("ProductDAO.incrementProductCount", id);
 	}
 
 	public List<ProductDTO> selectAllThumbnailList(SqlSession session) {
 		return session.selectList("ProductDAO.selectAllThumbnailList");
 	}
+
+	public int updateProduct(SqlSession session, ProductDTO updateProduct) {
+		
+		return session.update("ProductDAO.updateProduct", updateProduct);
+		
+	}
+
+	public int deleteProduct(SqlSession session, int id) {
+		
+		return session.update("ProductDAO.deleteProduct", id);
+		
+	}
+
 
 	
 //	public int incrementProductCount(SqlSession session, int id) {

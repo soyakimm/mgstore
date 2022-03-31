@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품명 | 멍개상점</title>
+<title>상품 | 멍개상점</title>
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
@@ -24,77 +24,43 @@
                 <div class="pro-detail-wrapper">
                     <div class="pro-detail-left">
                         <div class="pro-category">
-                            <a href="${ pageContext.servletContext.contextPath }/product/list/toy/all" class="category1">장난감</a>
-                            <img src="${ pageContext.servletContext.contextPath }/resources/images/product/next.png">
-                            <a href="${ pageContext.servletContext.contextPath }/product/list/toy/toy" class="category2">장난감</a>
+                            <a href="${ pageContext.servletContext.contextPath }/product/list" class="category1">장난감</a>
                         </div>
-                        <div class="thumbnail-img"><img src="${ pageContext.servletContext.contextPath }/resources/images/product/상품설명 썸네일.jpg"></div>
+                        <div class="thumbnail-img"><img src="${ pageContext.servletContext.contextPath }${ product.proImgList[0].proThumbnailPath }" ></div>
                     </div>
                     <div class="pro-detail-right">
-                        <div class="pro-title"><p>줄무늬 코끼리 삑삑이 장난감</p></div>
+                        <div class="pro-title"><p>${ product.proTitle }</p></div>
                         <div class="pro-rating">
                             <span class="goods-stars" role="image" aria-label="#">
-                                <span class="goods-star">
-                                    <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                    <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                                </span>
-                                <span class="goods-star">
-                                    <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                    <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                                </span>
-                                <span class="goods-star">
-                                    <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                    <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                                </span>
-                                <span class="goods-star">
-                                    <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                    <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                                </span>
-                                <span class="goods-star">
-                                    <svg class="star" focusable="false" viewBox="0 0 48 48" aria-hidden="true" role="img"><path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path></svg>
-                                    <path fill="#c4c4c6" fill-rule="evenodd" d="M35.236 44c-.325 0-.65-.092-.94-.275L24 37.214l-10.297 6.511c-.624.396-1.415.362-2.008-.09-.592-.45-.868-1.227-.702-1.973l2.732-12.27-9.098-8.257c-.552-.5-.764-1.3-.538-2.03.226-.727.846-1.242 1.575-1.308l11.98-1.065 4.681-11.57C22.611 4.457 23.27 4 24 4c.73 0 1.39.457 1.675 1.162l4.682 11.57 11.979 1.065c.729.066 1.35.58 1.575 1.309.226.728.014 1.528-.538 2.029l-9.098 8.257 2.732 12.27c.166.746-.11 1.523-.702 1.974-.317.242-.693.363-1.07.363"></path>
-                                </span>
+                                <span>${ product.proContent }</span>
                             </span>
                         </div>
                         <div class="pro-price-point">
-                            <div class="pro-price"><span class="price">1,000</span>원</div>
-                            <div class="pro-point"><span class="point">10p</span>&nbsp적립예정</div>
+                            <div class="pro-price"><span class="price">${ product.price }</span>원</div>
                         </div>
                         <div class="pro-fee">
                             <div class="delivery">배송</div>
                             <div class="fee">택배(주문 시 결제)<br>2,500원(50,000원 이상 무료)/추가배송비 5,500원(지역별)</div>
                         </div>
-                        <div class="pro-option-box">
-                        <!-- 옵션의 개수에 따라 유동적으로 표시되도록 후처리 -->
-                            <div class="option-select">
-                                <select name="option1">
-                                    <option>사이즈 선택</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                </select>
-                            </div>
-                            <div class="option-select">
-                                <select name="option2">
-                                    <option>색상 선택</option>
-                                    <option value="gray">gray</option>
-                                    <option value="yellow">yellow</option>
-                                    <option value="blue">blue</option>
-                                </select>
-                            </div>
-                        </div>
+
                         <div class="pro-price-info">
                             <div class="price-p">총 상품금액</div>
-                            <div class="price-num"><span class="num">5,500</span>원</div>
+                            <div class="price-num"><span class="num">${ (product.price+2500) }</span>원</div>
                         </div>
                         <div class="pro-button-wrapper">
                             <div class="likeBtn" onclick="link">
                                 <img src="${ pageContext.servletContext.contextPath }/resources/images/product/emptyHeart.png"></div>
                             <div class="cart">
-                                <button class="cartBtn" onclick="link">장바구니</button>
+                            <form name="cartButton" method="get" action="${ pageContext.servletContext.contextPath }/cart">
+                            	<input type="hidden" name="proId" value="${ product.proId }">
+                                <button type="submit" class="cartBtn" id="cartBtn">장바구니</button>
+                            </form>
                             </div>
                             <div class="order">
-                                <button class="orderBtn" onclick="link">구매하기</button>
+<%--                             <form name="orderButton" method="post" action="${ pageContext.servletContext.contextPath}/payment/orderList"> --%>
+<%--                             	<input type="hidden" name="proId" value="${ product.proId }"> --%>
+                                <a href="${ pageContext.servletContext.contextPath }/payment/orderList"><button type="submit" class="orderBtn" id="orderBtn">구매하기</button></a>
+<!--                              </form> -->
                             </div>
                         </div>
                     </div>
@@ -110,20 +76,47 @@
             </div>
         </div>
         <div class="product-detail-desc">
-            <img src="${ pageContext.servletContext.contextPath }/resources/images/product/상품설명 이미지.jpg">
+           <img src="${ pageContext.servletContext.contextPath }/resources/upload/original/product/${ product.proImgList[1].proImgSvrName }">
         </div>
         <div class="product-detail-hide">
             <button type="button" onclick="link">상품 상세 접기</button>
             <img src="${ pageContext.servletContext.contextPath }/resources/images/product/show.png" class="hide-button">
+            
         </div>
     </div>
     
+    <div class="productBtn">
+    	<c:if test="${ sessionScope.loginUser.role eq '관리자' }">
+			<button type="button" id="modifyBtn" onclick="updateProductView(${ product.proId })">수정하기</button>
+			<button type="button" id="deleteBtn" onclick="deleteProduct()">삭제하기</button>
+			<form name="productForm" method="post">
+				<input type="hidden" name="id" value="${ product.proId }">
+			</form>
+			<script>
+			function updateProductView(id){
+					location.href = "${ pageContext.servletContext.contextPath }/product/update?id="+id;
+			}
+			function deleteProduct(){
+					if(confirm('이 게시글을 삭제하시겠습니까?')){
+							document.forms.productForm.action = "${ pageContext.servletContext.contextPath }/product/delete";
+							document.forms.productForm.submit();
+					}
+			}
+			</script>
+	</c:if>
+	</div>
+    
+    
 </body>
 
-<jsp:include page="proAsked.jsp"/>
+<%-- <jsp:include page="proAsked.jsp"/> --%>
 
-<jsp:include page="proReview.jsp"/>
+<%-- <jsp:include page="proReview.jsp"/> --%>
 
 <jsp:include page="proFooter.jsp"/>
+
+<script>
+	
+</script>
 
 </html>

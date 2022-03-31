@@ -13,9 +13,36 @@
 	<link href="${ pageContext.servletContext.contextPath }/resources/images/community" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.setting {
+ background-repeat: no-repeat;
+  background-size: cover;
+  width : 511px;
+height : 387px;
+}
+
+.gygy {
+width : 511px;
+height : 484px;
+}
+
+.ellipse {
+background-repeat: no-repeat;
+background-size: cover;
+border-radius: 0;
+background-color: #ffffff;
+width : 44px;
+height : 44px;
+
+
+}
+
+
+</style>
+
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header-comm.jsp"/>
 
  <div class="group">
         <div class="frame-7 screen">
@@ -36,8 +63,10 @@
                 <a href="${ pageContext.servletContext.contextPath }/thumbnail/insert"><div class="overlap-group3">
                 <div class="create-new-post">Create New Post</div>
               </div></a>
-              <a href="#"><div class="overlap-group2 border-1px-fuscous-gray">
-                <div class="text notosanskr-medium-fuscous-gray-15px">댓글순</div>
+             <!-- 조회순 조회 -->
+              <a href="${ pageContext.servletContext.contextPath }/thumbnail/list">
+              <div class="overlap-group2 border-1px-fuscous-gray">
+                <div class="text notosanskr-medium-fuscous-gray-15px">조회수순</div>
               </div></a>
               <a href="#"><div class="overlap-group7 border-1px-fuscous-gray">
                 <div class="text notosanskr-medium-fuscous-gray-15px">최신순</div>
@@ -57,8 +86,10 @@
                   class="rectangle-1"
                   src="${ pageContext.servletContext.contextPath }/resources/images/community/멍개일상%20사각형.png"
                 />
+                <div class="gygy">
                 <img class="setting" src="${ pageContext.servletContext.contextPath }${ thumbnail.postImgList[0].thumbnailPath }">
-                <div class="ellipse"></div>
+                </div>
+                <img class="ellipse" src="${ pageContext.servletContext.contextPath }/resources/images/community/favicon.ico">
                 <div class="text-1 gmarketsansttf-medium-black-8px web-font23">${ thumbnail.user.nickname }</div>
                 <p class="text-2 gmarketsansttf-medium-black-14px web-font24">
                   ${ thumbnail.title }
@@ -72,6 +103,10 @@
             </div>
              <!--게시글 전체 끝-->
               </c:forEach>
+	
+	<!-- 페이징 처리중인데 안뜨는중 -->
+	<jsp:include page="../common/paging.jsp"/>
+	
 	
 	<!-- 해당 게시글 클릭했을 때 게시글 번호 넘어가서 해당 게시글 볼 수 있음 -->
 	<script>

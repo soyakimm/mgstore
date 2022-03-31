@@ -1,0 +1,231 @@
+@font-face {
+  font-family: 'GmarketSansLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+:root {
+  --black: #000000;
+  --sonic-silver: #767676;
+  --font-size-xs: 12px;
+  --font-size-m2: 20px;
+  --font-size-xxxl2: 39px;
+  --font-size-m3: 15px;
+  --font-family-noto_sans: "Noto Sans", Helvetica;
+  --font-family-gmarket_sans_ttf-medium: "Gmarket Sans TTF-Medium", Helvetica;
+}
+
+/* 공통으로 반영될 css*/
+
+a {
+  text-decoration: none;
+  color: #484848;
+}
+
+.order-main {
+  align-items: center;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-bg {
+  color: var(--black);
+  font-family: 'GmarketSansLight';
+  font-size: var(--font-size-xxxl2);
+  font-weight: bold;
+  height: 62px;
+  letter-spacing: 0;
+  text-align: center;
+  width: 521px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.wrapper {
+  align-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: center;
+  background-size: 100% 100%;
+  padding: 0 4%;
+}
+
+.sb-tilte-box {
+  text-align: center;
+  border: solid 1px #F7F6F7 ;
+  width: 180px;
+  height: 338px;
+}
+
+.sub-title {
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    color: #f5742f;
+    padding: 0 8px 8px;
+    font-weight: normal;
+    border-bottom: 2px #f5742f solid;
+}
+
+/* 메뉴에 hover 가 안먹음*/
+.sub-menu-li:hover {
+  color: #f5742f
+}
+
+.sub-menu li {
+    text-align: center;
+    list-style: none;
+    padding: 5px;
+    font-family: 'Noto Sans KR';
+    padding-right: 50px;
+    color: #484848;
+}
+
+/* 주문배송 상세내역 */
+.order-detail {
+  width : 80%;
+  text-align: center;
+  height: 80px;
+  font-family: 'Noto Sans KR';
+  color: #484848;
+  margin-left: 5%;
+}
+
+.detail {
+  display: flex;
+  width: 80%;
+} 
+
+
+.order-detail div {
+  text-align: left;
+  margin-top: 5px;
+}
+
+
+.detail-name {
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.detail-name table {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.detail-name li {
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.table-img-pro {
+  width: 50%;
+}
+
+.table-img {
+  height: 150px;
+  width: 150px;
+}
+
+.table-img img{
+  height: 150px;
+  width: 150px;
+}
+
+.payment {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.order-back-text {
+  color: #ffffff;
+  font-family: var(--font-family-noto_sans);
+  font-size: var(--font-size-m3);
+  font-weight: 700;
+  height: 20px;
+  letter-spacing: 0;
+  min-width: 73px;
+  text-align: center;
+}
+
+
+.order-back {
+  align-items: center;
+  background-color: #f5742f;
+  border-radius: 10px;
+  display: flex;
+  height: 50px;
+  padding: 0 63px;
+  border: 0px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 30%;
+
+}
+
+.order-back :hover{
+  cursor: pointer;
+}
+
+.table-row {
+  padding-right: 100px;
+}
+
+.cancel-cus {
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Noto Sans KR';
+  margin-top: 12px;
+  min-width: 60em;
+  height: 200px;
+  padding: 23px 26px;
+  resize: none;
+  border: 2px solid #dddddd;
+  border-radius: 10px;
+}
+
+.payment-cancel {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+
+.cancel-request-text {
+  color: #ffffff;
+  font-family: var(--font-family-noto_sans);
+  font-size: var(--font-size-m3);
+  font-weight: 700;
+  height: 20px;
+  letter-spacing: 0;
+  min-width: 73px;
+  text-align: center;
+}
+
+
+.cancel-request {
+  align-items: center;
+  background-color: #f5742f;
+  border-radius: 10px;
+  display: flex;
+  height: 50px;
+  padding: 0 63px;
+  border: 0px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 30%;
+
+}
+
+.cancel-request :hover{
+  cursor: pointer;
+}
+

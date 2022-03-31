@@ -13,8 +13,8 @@
 </head>
 <body>
 	<div class="group">
-	<jsp:include page="../common/header.jsp"/>
-	
+	<jsp:include page="../common/header-comm.jsp"/>
+
 	<!-- 이벤트 메인 전체 적용  -->
     <div class="content-body">
         <div class="event-container">
@@ -25,6 +25,12 @@
             </div> <!--main container-->
         </div> <!-- container -->
     </div><!-- content-body -->
+    
+    <c:if test="${ sessionScope.loginUser.role eq '관리자'  }"> 
+    <div><button type="button" class="eve-delete-btn"
+		onclick="location.href='${ pageContext.servletContext.contextPath }/event/insert'">등록</button>
+	</div>
+	</c:if>
 	
 	<c:forEach var="thumbnail" items="${ eventList }"> 
 	 <!-- 배너 파트 (1) -->
@@ -60,12 +66,15 @@
         </div>
         </c:forEach>
     </div> <!-- gorup -->
+
+
     
    <script>
 			function detailView(eveId){
 				location.href = '${ pageContext.servletContext.contextPath }/event/detail?eveId=' + eveId;
 			}
 	</script>
+    
     
     
 <!-- 무한스크롤 스크립트 -->

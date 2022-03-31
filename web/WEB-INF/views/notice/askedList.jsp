@@ -63,21 +63,6 @@ button {
 			</div>
 		</form>
 		<div id="Accordion_wrap">
-		<!-- 아래 멍개는 예시 -->
-			<div class="que">
-				<span>여기는 멍개상점 자주 묻는 질문 게시판 입니다.</span> 
-				<span class="que-date">2022-09-1901:12</span>
-			</div>
-			<div class="anw">
-				<span>글작성/삭제/수정 기능은 관리자에게만 부여!</span>
-				<!-- anw-btn-mng : 관리자용 버튼
-             	anw-btn-mem : 회원용 버튼-->
-				<div class="anw-btn-mng">
-					<button>수정</button>
-					<button>삭제</button>
-				</div>
-			</div>
-			
 			<c:forEach var="asked" items="${ askedList }">
 				<div class="que">
 					<span>${ asked.askTitle }</span> 
@@ -86,10 +71,12 @@ button {
 				<div class="anw">
 					<span>${ asked.askContents }</span>
 					<!-- 관리자만 확인 가능한 버튼 -->
+					<c:if test="${ sessionScope.loginUser.role eq '관리자' }">
 					<div class="anw-btn-mng">
 						<button type="button" onclick="updateAskedView(${ asked.askId })">수정</button>
 						<button type="button" onclick="deleteAskedView(${ asked.askId })">삭제</button>
 					</div>
+					</c:if>
 				</div>
 			</c:forEach>
 		</div>
@@ -117,10 +104,12 @@ button {
     </script>
 
 		<!--관리자만 볼 수 있는 버튼으로 만들기!!-->
+		<c:if test="${ sessionScope.loginUser.role eq '관리자' }">
 		<button type="button" class="regist-bord"
 			onclick="location.href='${ pageContext.servletContext.contextPath }/asked/insert'" id="regist-button">
 			<div class="regist-bord-text">게시글 등록</div>
 		</button>
+		</c:if>
 	</div>
 
 

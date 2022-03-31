@@ -13,9 +13,16 @@
 	<link href="${ pageContext.servletContext.contextPath }/resources/images/community" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.dkkk {
+	position : relative;
+right : 430px;
+margin-top : 20px;
+}
+</style>
 </head>
 <body>
-	
+<jsp:include page="../common/header-comm.jsp"/>	
 	 <div class="group">
     <div class="frame-3 screen">
         <div class="flex-col">
@@ -52,17 +59,17 @@
             <div class="text-3 web-font44">${ thumbnail.user.nickname }</div>
             
             
-            <img class="lline" src="../게시글/image/게시글 라인4.png">
+            <img class="lline" src="${ pageContext.servletContext.contextPath }/resources/images/community/게시글%20라인4.png">
           
           <!-- 사진 들어가는 공간 -->
           <c:forEach items="${ thumbnail.postImgList }" var="postImgList">
-          <div class="rectangle-51"><img src="${ pageContext.servletContext.contextPath }${ thumbnail.postImgList[0].thumbnailPath }"></div>
+          <img class="rectangle-51" src="${ pageContext.servletContext.contextPath }${ postImgList.thumbnailPath }">
           </c:forEach>
           
           
-          <div class="text-19 web-font47">
+          <span class="dkkk web-font47">
             ${ thumbnail.text }
-          </div>
+          </span>
           <div class="flex-row-1">
             <div class="overlap-group1 border-1px-star-dust">
               <!--키워드-->
@@ -80,7 +87,7 @@
           <!--신고-->
           <a href="#"><div class="sir"><img
               class="x1"
-              src="../게시글/image/siren.png"
+             src="${ pageContext.servletContext.contextPath }/resources/images/community/siren.png"
             />
             <div class="text-15 notosanskr-medium-fuscous-gray-15px">신고</div>
           </div></a>
@@ -114,8 +121,12 @@
       </div>
       <!--수정하기, 삭제하기 버튼-->
       <button type="button" class="rere" onclick="dailyModifyView(${ thumbnail.postId })">수정하기</button>
-			<button type="button" class="rere">삭제하기</button>
-
+			<button type="button" class="rere" onclick="deleteWrite()">삭제하기</button>
+	
+	<form name="writeForm" method="post">
+            <input type="hidden" name="postId" value="${ thumbnail.postId }">
+            </form>
+	
       <!--좋아요 누르기 시작-->
       
         <!--좋아요 누르기 끝-->
@@ -130,6 +141,15 @@
 	<script>
 			function dailyModifyView(postId){
 				location.href = '${ pageContext.servletContext.contextPath }/daily/modify?postId=' + postId;
+			}
+			
+			function deleteWrite(){
+				/*YES를 눌렀을 경우*/
+				/*위에서 폼으로 name 지어둔 것 */
+				if(confirm('이 게시글을 삭제하시겠습니까?')){
+					document.forms.writeForm.action = "${ pageContext.servletContext.contextPath }/thumbnail/delete";
+					document.forms.writeForm.submit();
+				}
 			}
 	</script>
 	

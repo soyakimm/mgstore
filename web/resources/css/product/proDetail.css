@@ -90,6 +90,8 @@ select{
 
 .thumbnail-img>img{
   border-radius: 5%;
+  height: 100%;
+  width: 100%;
 }
 
 /* 헤더부 오른쪽 ----- */
@@ -211,6 +213,21 @@ select{
   border: 2px solid #F5742F;
   padding: 15px 80px;
   border-radius: 10px;
+}
+
+#modifyBtn, #deleteBtn{
+	background-color: white;
+	color: #F5742F; 
+	font-size: 0.9em;
+	font-weight: bold;
+	border: 2px solid #F5742F;
+	padding: 15px 80px;
+	border-radius: 10px;
+	justify-content: center;
+}
+
+#modifyBtn{
+	margin-left: 730px;
 }
 
 

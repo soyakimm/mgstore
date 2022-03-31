@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mgstore.community.model.dto.CommunityWriteDTO;
 import com.mgstore.community.model.service.CommunityService;
 
-
+/*시작*/
 @WebServlet("/thumbnail/list")
 public class ThumbnailSelectListServlet extends HttpServlet {
 

@@ -93,7 +93,7 @@
 
 </head>
 <body>
-	<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header-comm.jsp"/>
 
 	<div class="outer">
 		<div class="wrap">
@@ -170,10 +170,7 @@
 								name="contentImg2" accept="image/gif,image/jpeg,image/png" value="${ pageContext.servletContext.contextPath }${ thumbnail.postImgList[0].thumbnailPath }" >
 							
 							
-							<!-- 사진 원래 선택 된 값 -->
-					<!-- 		<script>
-  							document.getElementById("header_select").value = "${ daily.headerId }";
-							</script>  -->
+							
 							
 						</div>
 						<div class="btn_area">
