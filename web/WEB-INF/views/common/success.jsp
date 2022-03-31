@@ -117,7 +117,7 @@
 				break;
 			case "insertOder" :
 				successMessage = "주문이 완료되었습니다 :)";
-				movePath = "${ pageContext.servletContext.contextPath }/myshopping/wishList";
+				movePath = "${ pageContext.servletContext.contextPath }/myshopping/orderHistory";
 				break;
 
 			case "updateThumbnail" :
