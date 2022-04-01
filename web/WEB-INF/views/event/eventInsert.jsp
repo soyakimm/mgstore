@@ -67,7 +67,6 @@
 
 							<!--배너게시글설명이미지-->
 							<div id="imgSection"></div>
-								<span class="eveImg">
 									<button id="imgBtn">설명이미지</button> 
 									<input type="file" name="evecontent" id="file" required>
 								</span>
@@ -84,7 +83,7 @@
 					</form> <!-- 무조건 처리 필요한 enctype -->
 			</div><!--group-->
 		</body>	
-
+	<jsp:include page="../common/footer.jsp"/>
 
 	<script src="${ pageContext.servletContext.contextPath }/resources/js/EventImagePreview.js"></script>
 

@@ -16,9 +16,11 @@
 .group {
     max-width: 1400px;
     margin: 0 auto;
+    font-family: GmarketSansBold; 
 }
 
 /*공통 css*/
+/*
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -26,6 +28,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     font-family: "GmarketSansBold", sans-serif;
     vertical-align: baseline;
+}
+*/
+
+pre {
+	font-family: "GmarketSansBold";
 }
 
 .container-wrapper .notice-container {
@@ -51,9 +58,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 /*공통부분 CSS*/
-*, *::before, *::after {
+/**, *::before, *::after {
     box-sizing: border-box;
-}
+}*/
 
 div {
     display: block;
@@ -103,6 +110,7 @@ p {
     margin-bottom: 5px;
     align-items: center;
     font-weight: bold;
+    font-family: "Noto" sans-serif;
 }
 
 h2 {
@@ -119,6 +127,7 @@ h2 {
     border-radius: 99px;
     line-height: 15px;
     letter-spacing: 0;
+    font-family: "Noto" sans-serif;
 }
 
 

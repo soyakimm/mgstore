@@ -18,13 +18,19 @@
     font-family: GmarketSansBold;
 }
 
+
 .group {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 2% 15% 3% 15% !important;
 }
 
-form {
-    padding: 5% 10% 5% 10%;
+/* form { */
+/*     padding: 5% 10% 5% 10%; */
+/* } */
+
+#eveh2{
+	margin-top: 5%;
 }
 
 h2{
