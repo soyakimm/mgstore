@@ -79,7 +79,7 @@
 	height: 35px;
 	border: 0px;
 	color: white;
-	background: #282A35;
+	background: #f5742f;;
 	margin: 5px;
 	cursor : pointer;
 }
@@ -88,6 +88,15 @@
 	text-align: center;
 	border-top: 1px solid #282A35;
 	padding: 30px;
+}
+
+h4 {
+  font-family: 'Gmarket Sans TTF';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+color: #000000;
 }
 
 select option[value=""][disabled] {
@@ -99,7 +108,7 @@ select option[value=""][disabled] {
 <body>
 <jsp:include page="../common/header-comm.jsp"/>
 
-	<div class="outer">
+	 <div class="outer">
 		<div class="wrap">
 			<div class="board_area">
 				<div class="board_title">
@@ -108,8 +117,10 @@ select option[value=""][disabled] {
 				<div class="board_content">
 					<form method="post" action="${ pageContext.servletContext.contextPath }/community/insert">
 						<div class="content">
-							<h4>
-								<span class="title_span">&nbsp;</span> 분류
+							
+              <br>
+              <h4>
+								<span class="web-font24">&nbsp;</span> 분류
 							</h4>
 							<span class="input_area"> 
 							<select name="category">
@@ -127,30 +138,36 @@ select option[value=""][disabled] {
                                 <option value="7">진행 중(멍개메이트)</option>
                                 <option value="8">완료(멍개메이트)</option>
 							</select>-->	
-							
+						
 							</span>
-							<h4>
-								<span class="title_span">&nbsp;</span> 제목
+							
+              <br><br>
+              <h4>
+								<span class="web-font24">&nbsp;</span> 제목
 							</h4>
-							<span class="input_area"> <input type="text" name="title"
+							<span class="input_area "> <input type="text" name="title"
 								required>
 							</span>
 
+              <br><br>
 							<h4>
-								<span class="title_span">&nbsp;</span> 내용
+								<span class=" web-font24">&nbsp;</span> 내용
 							</h4>
 							<textarea class="textarea" rows="20" cols="100" name="text"
 								required></textarea>
 						</div>
 						<div class="btn_area">
 							<button type="button" onclick="location.href='${ pageContext.servletContext.contextPath }/community/main'">목록으로</button>
-							<button type="submit">작성하기</button>
+							<button class="yyyy" type="submit">작성하기</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	
+	
 	<script src="${ pageContext.servletContext.contextPath }/resources/js/community/imagePreview.js"></script>
 	
 	<jsp:include page="../common/footer.jsp"/>

@@ -19,6 +19,11 @@
 right : 430px;
 margin-top : 20px;
 }
+
+.heart {
+	position : relative;
+	left : 2px;
+}
 </style>
 </head>
 <body>
@@ -38,17 +43,17 @@ margin-top : 20px;
             <div class="juju" hidden> ${ thumbnail.postId } </div>
             <img
               class="visibility"
-              src="../게시글/image/visibility.png"
+             src="${ pageContext.servletContext.contextPath }/resources/images/community/visibility.png"
             />
             <div class="number notosanskr-medium-black-11px web-font46">${ thumbnail.views }</div>
             <img
               class="heart"
-              src="../게시글/image/heart.png"
+              src="${ pageContext.servletContext.contextPath }/resources/images/community/heart.png"
             />
             <div class="number-1 notosanskr-medium-black-11px web-font46">7</div>
             <img
               class="comment"
-              src="../게시글/image/comment.png"
+              src="${ pageContext.servletContext.contextPath }/resources/images/community/comment.png"
             />
             <div class="number-2 notosanskr-medium-black-11px web-font46">0</div>
           </div>
@@ -91,9 +96,10 @@ margin-top : 20px;
             />
             <div class="text-15 notosanskr-medium-fuscous-gray-15px">신고</div>
           </div></a>
+          
           <img
             class="line-3"
-            src="../게시글/image/게시글 라인4.png"
+            src="${ pageContext.servletContext.contextPath }/resources/images/community/게시글 라인4.png"
           />
           <div class="text-16">
             <span class="span0">0</span><span class="span1">개의 댓글</span>
@@ -105,7 +111,7 @@ margin-top : 20px;
             <div class="overlap-group6">
               <img
                 class="landscape-1"
-                src="../게시글/image/landscape.png"
+                src="${ pageContext.servletContext.contextPath }/resources/images/community/landscape.png"
               />
             </div>
             <div class="overlap-group5"><div class="text-18">등록</div></div>
@@ -115,7 +121,7 @@ margin-top : 20px;
         <div class="overlap-group4 border-1px-star-dust">
           <img
             class="heart-1"
-            src="../게시글/image/heart.png"
+           src="${ pageContext.servletContext.contextPath }/resources/images/community/heart.png"
           />
         </div>
       </div>
