@@ -154,7 +154,7 @@
 	<delete id="deleteAsked">
 		UPDATE
 			   ASKED
-		   SET ASK_EXPOSURE = 'Y'
+		   SET ASK_EXPOSURE = 'N'
 		 WHERE ASK_ID = #{ askId }
 	</delete>
 	

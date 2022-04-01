@@ -9,6 +9,7 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/myshopping/orderHistory.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!--제이쿼리 CDN-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

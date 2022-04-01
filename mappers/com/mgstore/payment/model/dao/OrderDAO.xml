@@ -119,6 +119,7 @@
 	  JOIN PAYMENT C ON(A.ORD_ID = C.ORD_ID)
 	  JOIN PRODUCT D ON(B.PRO_ID=D.PRO_ID)
 	 WHERE A.USER_ID = #{ userId }
+	 ORDER BY A.ORD_ID DESC
 	</select>
 	
 	<select id="selectHistoryDetail" resultMap="OrderResultMap">

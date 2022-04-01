@@ -18,12 +18,14 @@ public class AskedUpdateServlet extends HttpServlet {
 
 		int askId = Integer.parseInt(request.getParameter("askId"));
 		
+		System.out.println("askId" + askId);
+		
 		AskedService askedService = new AskedService();
 		AskedDTO asked = askedService.selectAskedDetail(askId);
 		
 		String path = "";
 		if(asked != null) {
-			path = "/WEB-INF/views/notice/updateForm.jsp";
+			path = "/WEB-INF/views/notice/askUpdateForm.jsp";
 			request.setAttribute("asked", asked);
 		} else {
 			System.out.println("수정용 조회 실패");

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/myshopping/wishList.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!--제이쿼리 CDN-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -43,15 +45,15 @@
 						<!-- 예시 -->
 						<li class="wish-pro">
 							<div class="img-area">
-								<img src="../resource/로고_주황.png">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/product/강아지망토.jpg">
 							</div>
 							<ul>
 								<li>
 									<input type="checkbox" name="wishProduct" value="producDetail"> 
-									상품명
+									강아지 망토
 								</li>
 								<li class="pro-price">
-									상품가격
+									13,000
 								</li>
 								<li>
 									<button class="basket">장바구니 담기</button>
@@ -64,7 +66,7 @@
 						<c:forEach var="wishList" items="${ wishList }">
 						<li class="wish-pro">
 							<div class="img-area">
-								<img src="${ pageContext.servletContext.contextPath }/resources/images/product/상품설명 썸네일.jpg">
+								<img src="${ pageContext.servletContext.contextPath }/resources/images/product/해피멍스데이.jpg">
 							</div>
 							<ul>
 								<li>
@@ -72,7 +74,7 @@
 									${ wishList.product.proTitle  }
 								</li>
 								<li class="pro-price">
-									${ wishList.product.price }
+									<fmt:formatNumber value="${ wishList.product.price }" type="number" />
 								</li>
 								<li>
 									<button class="basket" onclick="basketUpdate(${ wishList.proId })">장바구니 담기</button>
