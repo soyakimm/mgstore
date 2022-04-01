@@ -84,7 +84,28 @@ bottom : 38px;
 height : 340px;
 }
 
+.rectangle-1 {
+background-color: #c4c4c4;
+}
 
+.uhuh {
+width : 100%;
+height : 100%;
+}
+
+.text-9 {
+position: relative;
+right: 26px;
+}
+
+.text-10 {
+position: relative;
+right: 50px;
+}
+
+.text-12 {
+    padding-left: 23px;
+}
 </style>
 
 </head>
@@ -105,46 +126,55 @@ height : 340px;
 	
     </div>
     <div class="text-container">
-      <div class="text-1-1 web-font2">내가 좋아요&nbsp;&nbsp;누른 페이지</div>
+      <div class="text-1-1 web-font2">최신 게시글</div>
       <!--전체보기 누르면 마이페이지로 이동-->
       <a href="#"><div class="text-2 web-font4">전체 보기</div></a>
     </div>
     <!--내가 좋아요 누른 페이지 추후에 onclick 기능 추가-->
     <div class="flex-row">
+      <div class="rectangle-4">
+      <img class="uhuh"
+        src="${ pageContext.servletContext.contextPath }${ newList[0].postImgList[0].thumbnailPath }"
+      	onerror="this.style.display='none';"
+      /></div>
+      <div class="rectangle-1">
       <img
-        class="rectangle-4"
-        src=""
-      /><img
-        class="rectangle-1"
-        src=""
-      /><img
-        class="rectangle-1"
-        src=""
-      />
+        class="uhuh"
+        src="${ pageContext.servletContext.contextPath }${ newList[1].postImgList[0].thumbnailPath }"
+      	onerror="this.style.display='none';"
+      /></div>
+      <div class="rectangle-1">
       <img
-        class="rectangle-1"
-        src=""
-      />
+       class="uhuh"
+        src="${ pageContext.servletContext.contextPath }${ newList[2].postImgList[0].thumbnailPath }"
+      	onerror="this.style.display='none';"
+      /></div>
+      <div class="rectangle-1" onerror="this.style.display='none';">
+      <img
+        class="uhuh"
+        src="${ pageContext.servletContext.contextPath }${ newList[3].postImgList[0].thumbnailPath }"
+     	onerror="this.style.display='none';"
+      /></div>
     </div>
     <div class="text-container-1">
-      <div class="text-3 gmarketsansttf-medium-elf-green-14px web-font3">건강관리</div>
-      <div class="text-5 gmarketsansttf-medium-elf-green-14px web-font3">급여/식이</div>
-      <div class="text-7 gmarketsansttf-medium-elf-green-14px web-font3">놀이</div>
-      <div class="text-9 gmarketsansttf-medium-elf-green-14px web-font3">여행</div>
+      <div class="text-3 gmarketsansttf-medium-elf-green-14px web-font3">${ newList[0].category.categoryName }</div>
+      <div class="text-5 gmarketsansttf-medium-elf-green-14px web-font3">${ newList[1].category.categoryName }</div>
+      <div class="text-7 gmarketsansttf-medium-elf-green-14px web-font3">${ newList[2].category.categoryName }</div>
+      <div class="text-9 gmarketsansttf-medium-elf-green-14px web-font3">${ newList[3].category.categoryName }</div>
     </div>
     <!--누르면 해당 글 상세 페이지로 이동-->
     <div class="text-container-2">
       <a href="#"><div class="text-4 gmarketsansttf-medium-black-18px web-font5">
-        강아지 겨울철 건강관리
+        ${ newList[0].title }
       </div></a>
       <a href="#"><div class="text-6 gmarketsansttf-medium-black-18px web-font5">
-        반려견에게 절대 주면 안되는 10 ···
+         ${ newList[1].title }
       </div></a>
       <a href="#"><div class="text-8 gmarketsansttf-medium-black-18px web-font5">
-        강아지 노즈워크!
+        ${ newList[2].title }
       </div></a>
       <a href="#"><div class="text-10 gmarketsansttf-medium-black-18px web-font5">
-        반려견과 함께 갈 수 있는 카페
+         ${ newList[3].title }
       </div></a>
     </div>
     <div class="flex-col">
@@ -244,7 +274,7 @@ height : 340px;
     <div class="overlap-group3">
       <img
         class="image-9"
-        src=""
+        src="${ pageContext.servletContext.contextPath }/resources/images/community/KakaoTalk_20220331_232310995.jpg"
       />
       <!--이벤트 왼쪽, 오른쪽 이동-->
       <a href="#"><div class="ellipse-26 border-1px-celeste"><p class="eee">&lt;</p></div></a>

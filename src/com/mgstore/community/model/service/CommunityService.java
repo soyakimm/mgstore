@@ -12,6 +12,7 @@ import com.mgstore.common.paging.SelectCriteria;
 import com.mgstore.community.model.dao.CommunityDAO;
 import com.mgstore.community.model.dto.CommunityPostImageDTO;
 import com.mgstore.community.model.dto.CommunityWriteDTO;
+import com.mgstore.product.model.dto.ProductDTO;
 
 public class CommunityService {
 	
@@ -282,6 +283,41 @@ public class CommunityService {
 		session.close();
 		
 		return result;
+	}
+
+	/*커뮤니티 메인 내가 쓴 게시판 최신 순 조회*/
+	public List<CommunityWriteDTO> selectNewList() {
+		
+		/* Connection 생성 */
+		SqlSession session = getSqlSession();
+		
+		/* List 조회 */
+		List<CommunityWriteDTO> newList = communityDAO.selectNewList(session);
+		
+		/* Connection 닫기 */
+		session.close();
+		
+		/* 조회 결과 반환 */
+		return newList;
+		
+	}
+
+	/*상품 사진 조회수 조회*/
+	public List<ProductDTO> selectProductList() {
+		
+		/* Connection 생성 */
+		SqlSession session = getSqlSession();
+		
+		/* List 조회 */
+		List<ProductDTO> productList = communityDAO.selectProductList(session);
+		
+		/* Connection 닫기 */
+		session.close();
+		
+		/* 조회 결과 반환 */
+		return productList;
+		
+		
 	}
 
 }

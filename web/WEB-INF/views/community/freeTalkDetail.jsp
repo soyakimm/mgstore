@@ -40,7 +40,7 @@ margin-top : 50px;
           
             <img
               class="visibility"
-              src="../게시글/image/visibility.png"
+             src="${ pageContext.servletContext.contextPath }/resources/images/community/visibility.png"
             />
             <div class="number notosanskr-medium-black-11px web-font46">${ write.views }</div>
             <img
@@ -50,7 +50,7 @@ margin-top : 50px;
             <div class="number-1 notosanskr-medium-black-11px web-font46">7</div>
             <img
               class="comment"
-              src="../게시글/image/comment.png"
+              src="${ pageContext.servletContext.contextPath }/resources/images/community/comment.png"
             />
             <div class="number-2 notosanskr-medium-black-11px web-font46">0</div>
           </div>
@@ -90,7 +90,7 @@ margin-top : 50px;
           </div></a>
           <img
             class="line-3"
-            src="../게시글/image/게시글 라인4.png"
+            src="${ pageContext.servletContext.contextPath }/resources/images/community/게시글%20라인4.png"
           />
           <div class="text-16">
             <span class="span0">0</span><span class="span1">개의 댓글</span>
@@ -102,7 +102,7 @@ margin-top : 50px;
             <div class="overlap-group6">
               <img
                 class="landscape-1"
-                src="../게시글/image/landscape.png"
+                src="${ pageContext.servletContext.contextPath }/resources/images/community/landscape.png"
               />
             </div>
             <div class="overlap-group5"><div class="text-18">등록</div></div>

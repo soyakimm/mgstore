@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.mgstore.common.paging.SelectCriteria;
 import com.mgstore.community.model.dto.CommunityPostImageDTO;
 import com.mgstore.community.model.dto.CommunityWriteDTO;
+import com.mgstore.product.model.dto.ProductDTO;
 
 public class CommunityDAO {
 	
@@ -100,6 +101,18 @@ public class CommunityDAO {
 		
 		return session.update("CommunityDAO.deleteThumbnails", postId);
 		
+	}
+	
+	/*커뮤니티 메인 내가 쓴 게시판 최신 순 조회*/
+	public List<CommunityWriteDTO> selectNewList(SqlSession session) {
+		
+		return session.selectList("CommunityDAO.selectNewList");
+	}
+	
+	/*상품 사진 조회수 조회*/
+	public List<ProductDTO> selectProductList(SqlSession session) {
+		
+		return session.selectList("CommunityDAO.selectProductList");
 	}
 
 }
