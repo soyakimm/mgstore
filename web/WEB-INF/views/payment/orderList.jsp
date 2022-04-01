@@ -27,11 +27,13 @@
 				<!-- productDTO로 데이터 넘겨받기 -->
 					<tr>
 						<td class="table-img">
+
 						<img src="${ pageContext.servletContext.contextPath }/resources/images/product/해피멍스데이.jpg">
 						</td>
 						<td class="table-img-pro">
 							<div><input type="hidden" name="productId" value=3></div>							
 							<div><input type="hidden" name="productName" value="해피멍스데이 세트">해피멍스데이 세트</div><!-- 값받아야됨 / value="${ pay.proName } -->
+
 							<li><input type="hidden" name="amount" value="1">1개</li>
 							<div><input type="hidden" name="price" value="33000">
 							<fmt:formatNumber value="33000" type="number" />원

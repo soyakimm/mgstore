@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품목록 | 멍개상점</title>
+   <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
@@ -128,7 +129,6 @@
             </div>  
         </div>
     </aside>
-
     <div class="catalog" id="catalog">
         <!-- 상품 목록 헤더 -->
         <div id="catalog-page" class="catalog-page">
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <!-- 상품 정렬 -->
-        </div>
+            </div>
 
         <!-- 상품 리스트 -->
         <div class="goods" id="goods">
@@ -179,8 +179,10 @@
     </div>
 </div>
 
+<div class="pasing">
 	<!-- 페이징 삽입 -->
 	<jsp:include page="../common/paging.jsp"/>
+</div>
 	
 	<!-- 상품 카테고리 토글 -->
 	<script>
@@ -208,5 +210,5 @@
 
 </body>
 
-<jsp:include page="../common/footer.jsp"/>
+<%-- <jsp:include page="../common/footer.jsp"/> --%>
 </html>

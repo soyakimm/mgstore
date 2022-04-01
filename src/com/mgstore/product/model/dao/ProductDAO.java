@@ -29,7 +29,7 @@ public class ProductDAO {
 		return session.insert("ProductDAO.insertThumbnailContent", thumbnail);
 	}
 	
-	/* Attachment 테이블에 insert */
+	/* ProImg 테이블에 insert */
 	public int insertProImg(SqlSession session, ProImgDTO file) {
 		
 		return session.insert("ProductDAO.insertProImg", file);
@@ -60,21 +60,13 @@ public class ProductDAO {
 	public int updateProduct(SqlSession session, ProductDTO updateProduct) {
 		
 		return session.update("ProductDAO.updateProduct", updateProduct);
-		
 	}
 
 	public int deleteProduct(SqlSession session, int id) {
 		
 		return session.update("ProductDAO.deleteProduct", id);
-		
 	}
 
-
-	
-//	public int incrementProductCount(SqlSession session, int id) {
-//		return 0;
-//	}
-	
 	
 	
 }

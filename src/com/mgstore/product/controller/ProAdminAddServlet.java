@@ -55,36 +55,28 @@ public class ProAdminAddServlet extends HttpServlet {
 			File directory = new File(fileUploadDirectory);
 			File directory2 = new File(thumbnailDirectory);
 			
-			/* 파일 저장경로가 존재하지 않는 경우 디렉토리를 생성한다. */
+			/* 파일 저장경로가 존재하지 않는 경우 디렉토리를 생성 */
 			if(!directory.exists() || !directory2.exists()) {
 				System.out.println("폴더 생성 : " + directory.mkdirs());
 				System.out.println("폴더 생성 : " + directory2.mkdirs());
 			}
 			
-			/* 이게 최종적으로 request를 parsing하고 파일을 저장한 뒤 필요한 내용을 담을 리스트와 맵이다.
-			 * 파일에 대한 정보는 리스트에, 다른 파라미터의 정보는 모두 맵에 담을 것이다.
-			 * */
 			Map<String, String> parameter = new HashMap<>();
 			List<Map<String, String>> fileList = new ArrayList<>();
 			
-			/* 파일을 업로드할 시 최대 크기나 임시 저장할 폴더의 경로 등을 포함하기 위한 인스턴스이다. */
 			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 	        fileItemFactory.setRepository(new File(fileUploadDirectory));
 	        fileItemFactory.setSizeThreshold(maxFileSize);
 	        
-	        /* 서블릿에서 기본 제공하는거 말고 꼭 commons fileupload 라이브러이에 있는 클래스로 임포트 해야 한다. */
 	        ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
 	        
 	        try {
-	        	/* request를 파싱하여 데이터 하나 하나를 FileItem 인스턴로 반환한다. */
 				List<FileItem> fileItems = fileUpload.parseRequest(request);
 				
 				for(FileItem item : fileItems) {
-					/* 폼 데이터는 isFormField 속성이 true이고, 파일은 isFormField 속성이 false이다. */
 					System.out.println(item);
 				}
 				
-				/* 위에서 출력해본 모든 item들을 다 처리할 것이다. */
 				for(int i = 0; i < fileItems.size(); i++) {
 					FileItem item = fileItems.get(i);
 					
@@ -93,9 +85,6 @@ public class ProAdminAddServlet extends HttpServlet {
 						/* 파일 데이터인 경우 */
 						if(item.getSize() > 0) {
 							
-							/* 파일의 사이즈가 0보다 커야 전송된 파일이 있다는 의미이다. 
-							 * 전송된 파일이 있는 경우에만 처리하고, 0인 경우에는 무시하도록 로직을 작성한다.
-							 * */
 							String filedName = item.getFieldName();
 							String originFileName = item.getName();
 							
@@ -104,26 +93,24 @@ public class ProAdminAddServlet extends HttpServlet {
 							
 							String randomFileName = UUID.randomUUID().toString().replace("-", "") + ext;
 							
-							/* 저장할 파일 정보를 담은 인스턴스를 생성하고 */
+							/* 저장할 파일 정보를 담은 인스턴스 생성 */
 							File storeFile = new File(fileUploadDirectory + "/" + randomFileName);
 							
-							/* 저장한다 */
 							item.write(storeFile);
 							
-							/* 필요한 정보를 Map에 담는다. */
 							Map<String, String> fileMap = new HashMap<>();
 							fileMap.put("filedName", filedName);
 							fileMap.put("originFileName", originFileName);
 							fileMap.put("savedFileName", randomFileName);
 							fileMap.put("savePath", "/resources/upload/original/product/");
 							
-							/* 제목 사진과 나머지 사진을 구분하고 썸네일도 생성한다. */
+							/* 썸네일,본문 구분 */
 							int width = 0;
 							int height = 0;
 							if("thumbnail".equals(filedName)) {
 								fileMap.put("fileType", "TITLE");
 								
-								/* 썸네일로 변환 할 사이즈를 지정한다. */
+								/* 썸네일로 변환 할 사이즈 지정 */
 								width = 350;
 								height = 200;
 							} else {
@@ -133,12 +120,11 @@ public class ProAdminAddServlet extends HttpServlet {
 								height = 100;
 							}
 							
-							/* 썸네일로 변환 후 저장한다. */
+							/* 썸네일로 변환 후 저장 */
 							Thumbnails.of(fileUploadDirectory + randomFileName)
 									.size(width, height)
 									.toFile(thumbnailDirectory + "thumbnail_" + randomFileName);
 							
-							/* 나중에 웹서버에서 접근 가능한 경로 형태로 썸네일의 저장 경로도 함께 저장한다. */
 							fileMap.put("thumbnailPath", "/resources/upload/thumbnail/product/thumbnail_" + randomFileName);
 							
 							fileList.add(fileMap);
@@ -146,12 +132,6 @@ public class ProAdminAddServlet extends HttpServlet {
 						}
 						
 					} else {
-						/* 폼 데이터인 경우 */
-						/* 전송된 폼의 name은 getFiledName()으로 받아오고, 해당 필드의 value는 getString()으로 받아온다. 
-						 * 하지만 인코딩 설정을 하더라도 전송되는 파라미터는 ISO-8859-1로 처리된다.
-						 * 별도로 ISO-8859-1로 해석된 한글을 UTF-8로 변경해주어야 한다.
-						 * */
-//						parameter.put(item.getFieldName(), item.getString());
 						parameter.put(item.getFieldName(), new String(item.getString().getBytes("ISO-8859-1"), "UTF-8"));
 						
 					}
@@ -160,7 +140,6 @@ public class ProAdminAddServlet extends HttpServlet {
 				System.out.println("parameter : " + parameter);
 				System.out.println("fileList : " + fileList);
 				
-				/* 서비스를 요청할 수 있도록 ProductDTO에 담는다. */
 				ProductDTO product = new ProductDTO();
 				product.setProCateId(Integer.parseInt(parameter.get("subCategory")));
 				product.setProTitle(parameter.get("proTitle"));
@@ -184,10 +163,8 @@ public class ProAdminAddServlet extends HttpServlet {
 				
 				System.out.println("thumbnail product : " + product);
 				
-				/* 서비스 메소드를 요청한다. */
 				int result = new ProductService().insertThumbnail(product);
 				
-				/* 성공 실패 페이지를 구분하여 연결한다. */
 				String path = "";
 				if(result > 0) {
 					path = "/WEB-INF/views/common/success.jsp";
@@ -200,7 +177,6 @@ public class ProAdminAddServlet extends HttpServlet {
 				request.getRequestDispatcher(path).forward(request, response);
 				
 			} catch (Exception e) {
-				//어떤 종류의 Exception이 발생 하더라도 실패 시 파일을 삭제해야 한다.
 				int cnt = 0;
 				for(int i = 0; i < fileList.size(); i++) {
 					Map<String, String> file = fileList.get(i);
@@ -226,12 +202,6 @@ public class ProAdminAddServlet extends HttpServlet {
 	}
 
 	
-	
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		
-//		String path = "/WEB-INF/views/product/proAdminAdd.jsp";
-//		request.getRequestDispatcher(path).forward(request, response);
-//	}
 }
 
 

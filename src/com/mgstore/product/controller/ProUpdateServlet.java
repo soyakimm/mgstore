@@ -15,10 +15,10 @@ public class ProUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int no = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		ProductService productService = new ProductService();
-		ProductDTO product = productService.selectOneThumbnailProduct(no);
+		ProductDTO product = productService.selectOneThumbnailProduct(id);
 		
 		String path = "";
 		if(product != null) {
@@ -54,7 +54,7 @@ public class ProUpdateServlet extends HttpServlet {
 		String path = "";
 		if(result > 0) {
 			path = "/WEB-INF/views/common/success.jsp";
-			request.setAttribute("successCode", "updateNotice");
+			request.setAttribute("successCode", "updateProduct");
 			request.setAttribute("id", id);
 		} else {
 			path = "/WEB-INF/views/common/failed.jsp";

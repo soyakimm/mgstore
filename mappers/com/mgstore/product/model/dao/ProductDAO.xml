@@ -79,15 +79,15 @@
 	
 	<!-- 상품 문의 -->
 	<resultMap type="com.mgstore.product.model.dto.ProAskDTO" id="proAskResultMap">
-		<id property="pAskId" column="PASK_ID"/>
-		<result property="pQuestion" column=""/>
-		<result property="aAskDate" column=""/>
-		<result property="pAskStatus" column=""/>
-		<result property="managerId" column=""/>
-		<result property="pAnswer" column=""/>
-		<result property="pAnswerDate" column=""/>
+		<id property="proAskId" column="PASK_ID"/>
+		<result property="proAskWriterUserId" column="PASK_WRITER_USRE_ID"/>
+		<result property="proQuestion" column="P_QUESTION"/>
+		<result property="proAskDate" column="PASK_DATE"/>
+		<result property="proAskStatus" column="PASK_STATUS"/>
+		<result property="proAnswer" column="P_ANSWER"/>
+		<result property="proAnswerDate" column="P_ANSWER_DATE"/>
 		
-		<association property="user" resultMap="userResultMap"/>
+		<association property="writer" resultMap="userResultMap"/>
 		<association property="product" resultMap="productResultMap"/>
 	</resultMap>
 	
@@ -222,15 +222,15 @@
          WHERE A.PRO_ID = #{ id }
 	</update>
 	
-<!-- 	<update id="updateProduct"> -->
-<!-- 		UPDATE -->
-<!-- 				PRODUCT -->
-<!-- 			SET PRO_TITLE = #{ proTitle } -->
-<!-- 			  , PCATE_ID = #{ proCateId } -->
-<!-- 			  , PRICE = #{ price } -->
-<!-- 			  , PRO_CONTENT = #{ proContent } -->
-<!-- 		  WHERE PRO_ID = #{ id } -->
-<!-- 	</update> -->
+	<update id="updateProduct">
+		UPDATE
+				PRODUCT
+			SET PRO_TITLE = #{ proTitle }
+			  , PCATE_ID = #{ proCateId }
+			  , PRICE = #{ price }
+			  , PRO_CONTENT = #{ proContent }
+		  WHERE PRO_ID = #{ id }
+	</update>
 	
 	<update id="deleteProduct">
 		UPDATE
@@ -238,6 +238,8 @@
 		    SET PRO_STATUS = 'N'
 		  WHERE PRO_ID = #{ proId }
 	</update>
+
+
 	
 </mapper>
 

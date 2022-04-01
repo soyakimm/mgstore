@@ -37,8 +37,6 @@ body{
   color: black;
   width: 100%;
   height: 100%;
-  margin-bottom: 10%;
-  
 }
 
 a:hover, button:hover{
@@ -62,7 +60,8 @@ button{
 
 .proReview-page, .proAsked-page, .footer-notice-page {
     max-width: 1400px ;
-    margin: 0 auto ;
+    margin: 5% auto ;
+    
 }
 
 
@@ -196,7 +195,7 @@ button{
 .ans{
     margin-top: 2%;
     background: #F7F6F7;
-    padding: 30px 1000px 30px 30px;
+    padding: 30px 700px 30px 30px;
     border-radius: 20px;
     text-align: left;
 }
@@ -343,3 +342,4 @@ input{
 .notice1-content, .notice2-content{
   color: #767676;
 }
+

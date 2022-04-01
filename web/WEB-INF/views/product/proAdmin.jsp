@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품관리 | 멍개상점</title>
+   <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
