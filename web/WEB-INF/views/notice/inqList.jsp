@@ -11,6 +11,7 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/notice/notice.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!--제이쿼리 CDN-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -58,7 +59,7 @@ button {
 				<span class="que-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.inqDate }"/></span>
 			</div>
 			<div class="anw">
-				<span class="que-contents">${ inq.inqContents }</span>
+				<p class="que-contents">${ inq.inqContents }</p>
 				<div class="anw-btn-mem">
 					<!-- 본인게시글만 볼수있음! -->
 					<c:if test="${ sessionScope.loginUser.userId eq '${ inq.inqId }'}">
@@ -74,9 +75,9 @@ button {
 				<br>
 				<hr width=95%>
 				<c:if test="${ inq.inqCategoryId eq 10}">
-				<span class="anw-title">
+				<p class="anw-title">
 				${ inq.ansContents }
-				</span>
+				</p>
 				<div class="anw-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ inq.ansDate }"/></div>
 				<div class="anw-btn-mng">
 				<c:if test="${ sessionScope.loginUser.role eq '관리자' }">

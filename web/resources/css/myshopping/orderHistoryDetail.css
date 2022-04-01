@@ -41,10 +41,9 @@ a {
   font-family: 'GmarketSansLight';
   font-size: var(--font-size-xxxl2);
   font-weight: bold;
-  height: 62px;
-  letter-spacing: 0;
-  text-align: center;
-  width: 521px;
+/*   height: 62px; */
+/*   letter-spacing: 0; */
+/*   width: 521px; */
   text-align: center;
   margin-top: 50px;
 }
@@ -84,18 +83,18 @@ a {
     list-style: none;
     padding: 5px;
     font-family: 'Noto Sans KR';
-    padding-right: 50px;
+/*     padding-right: 50px; */
     color: #484848;
 }
 
 /* 주문배송 상세내역 */
 .order-detail {
-  width : 80%;
+  width : 70%;
   text-align: center;
   height: 80px;
   font-family: 'Noto Sans KR';
   color: #484848;
-  margin-left: 5%;
+  margin-left: 15%;
 }
 
 .detail {
@@ -161,13 +160,10 @@ a {
   align-items: center;
   background-color: #f5742f;
   border-radius: 10px;
-  display: flex;
   height: 50px;
   padding: 0 63px;
   border: 0px;
   margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: 30%;
 
 }
 

@@ -26,7 +26,7 @@
                             <li class="footer-item"><a href="#">멍개소개</a></li>
                             <li class="footer-item"><a href="#">이용약관</a></li>
                             <li class="footer-item"><a href="#">개인정보취급방침</a></li>
-                            <li class="footer-item"><a href="#">고객센터</a></li>
+                            <li class="footer-item"><a href="${ pageContext.servletContext.contextPath }/asked/list">고객센터</a></li>
                         </ul>
                     </nav>
                     <div class="info-box">

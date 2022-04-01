@@ -11,6 +11,7 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/notice/notice.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!--제이쿼리 CDN-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -69,7 +70,7 @@ button {
 					<span class="que-date"><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${ asked.createdDate }"/></span>
 				</div>
 				<div class="anw">
-					<span>${ asked.askContents }</span>
+					<pre>${ asked.askContents }</pre>
 					<!-- 관리자만 확인 가능한 버튼 -->
 					<c:if test="${ sessionScope.loginUser.role eq '관리자' }">
 					<div class="anw-btn-mng">

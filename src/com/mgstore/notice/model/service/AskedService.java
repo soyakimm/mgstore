@@ -22,7 +22,7 @@ public class AskedService {
 		SqlSession session = getSqlSession();
 		
 		List<AskedDTO> askedList = noticeDAO.selectAskedList(session, searchCondition);
-		
+		System.out.println("askedList : " + askedList);
 		return askedList;
 	}
 	
