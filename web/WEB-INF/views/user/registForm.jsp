@@ -15,6 +15,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원가입 | 멍개상점</title>
+	<!-- favicon -->
+    <link href="${ pageContext.servletContext.contextPath }/resources/images/common/favicon.ico" rel="shortcut icon"/>
 	<!-- 스타일시트 -->
 	<link href="${ pageContext.servletContext.contextPath }/resources/css/user/registForm-style.css" rel="stylesheet">
 	<!-- 웹폰트 -->

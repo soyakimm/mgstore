@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 	<title>멍개상점</title>
+	<!-- favicon -->
+    <link href="${ pageContext.servletContext.contextPath }/resources/images/common/favicon.ico" rel="shortcut icon"/>
 	<!-- 외부 스타일 시트 -->
 	<link href="${ pageContext.servletContext.contextPath }/resources/css/main/main-style.css" rel="stylesheet">
 	<!-- 구글 웹폰트 -->
