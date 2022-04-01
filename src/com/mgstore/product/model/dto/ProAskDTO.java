@@ -6,15 +6,15 @@ import com.mgstore.user.model.dto.UserDTO;
 
 public class ProAskDTO {
 	
-	private int pAskId;
-	private String userID;
-	private UserDTO user;
-	private String pQuestion;
-	private java.sql.Date pAskDate;
-	private String pAskStatus;
+	private int proAskId;
+	private String proAskWriterUserId;
+	private UserDTO writer;
+	private String proQuestion;
+	private java.sql.Date proAskDate;
+	private String proAskStatus;
 	private String managerId;
-	private String pAnswer;
-	private java.sql.Date pAnswerDate;
+	private String proAnswer;
+	private java.sql.Date proAnswerDate;
 	private int proId;
 	private ProductDTO product;
 	
@@ -22,80 +22,81 @@ public class ProAskDTO {
 	public ProAskDTO(){}
 
 
-	public ProAskDTO(int pAskId, String userID, UserDTO user, String pQuestion, Date pAskDate, String pAskStatus,
-			String managerId, String pAnswer, Date pAnswerDate, int proId, ProductDTO product) {
+	public ProAskDTO(int proAskId, String proAskWriterUserId, UserDTO writer, String proQuestion, Date proAskDate,
+			String proAskStatus, String managerId, String proAnswer, Date proAnswerDate, int proId,
+			ProductDTO product) {
 		super();
-		this.pAskId = pAskId;
-		this.userID = userID;
-		this.user = user;
-		this.pQuestion = pQuestion;
-		this.pAskDate = pAskDate;
-		this.pAskStatus = pAskStatus;
+		this.proAskId = proAskId;
+		this.proAskWriterUserId = proAskWriterUserId;
+		this.writer = writer;
+		this.proQuestion = proQuestion;
+		this.proAskDate = proAskDate;
+		this.proAskStatus = proAskStatus;
 		this.managerId = managerId;
-		this.pAnswer = pAnswer;
-		this.pAnswerDate = pAnswerDate;
+		this.proAnswer = proAnswer;
+		this.proAnswerDate = proAnswerDate;
 		this.proId = proId;
 		this.product = product;
 	}
 
 
-	public int getpAskId() {
-		return pAskId;
+	public int getProAskId() {
+		return proAskId;
 	}
 
 
-	public void setpAskId(int pAskId) {
-		this.pAskId = pAskId;
+	public void setProAskId(int proAskId) {
+		this.proAskId = proAskId;
 	}
 
 
-	public String getUserID() {
-		return userID;
+	public String getProAskWriterUserId() {
+		return proAskWriterUserId;
 	}
 
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setProAskWriterUserId(String proAskWriterUserId) {
+		this.proAskWriterUserId = proAskWriterUserId;
 	}
 
 
-	public UserDTO getUser() {
-		return user;
+	public UserDTO getWriter() {
+		return writer;
 	}
 
 
-	public void setUser(UserDTO user) {
-		this.user = user;
+	public void setWriter(UserDTO writer) {
+		this.writer = writer;
 	}
 
 
-	public String getpQuestion() {
-		return pQuestion;
+	public String getProQuestion() {
+		return proQuestion;
 	}
 
 
-	public void setpQuestion(String pQuestion) {
-		this.pQuestion = pQuestion;
+	public void setProQuestion(String proQuestion) {
+		this.proQuestion = proQuestion;
 	}
 
 
-	public java.sql.Date getpAskDate() {
-		return pAskDate;
+	public java.sql.Date getProAskDate() {
+		return proAskDate;
 	}
 
 
-	public void setpAskDate(java.sql.Date pAskDate) {
-		this.pAskDate = pAskDate;
+	public void setProAskDate(java.sql.Date proAskDate) {
+		this.proAskDate = proAskDate;
 	}
 
 
-	public String getpAskStatus() {
-		return pAskStatus;
+	public String getProAskStatus() {
+		return proAskStatus;
 	}
 
 
-	public void setpAskStatus(String pAskStatus) {
-		this.pAskStatus = pAskStatus;
+	public void setProAskStatus(String proAskStatus) {
+		this.proAskStatus = proAskStatus;
 	}
 
 
@@ -109,23 +110,23 @@ public class ProAskDTO {
 	}
 
 
-	public String getpAnswer() {
-		return pAnswer;
+	public String getProAnswer() {
+		return proAnswer;
 	}
 
 
-	public void setpAnswer(String pAnswer) {
-		this.pAnswer = pAnswer;
+	public void setProAnswer(String proAnswer) {
+		this.proAnswer = proAnswer;
 	}
 
 
-	public java.sql.Date getpAnswerDate() {
-		return pAnswerDate;
+	public java.sql.Date getProAnswerDate() {
+		return proAnswerDate;
 	}
 
 
-	public void setpAnswerDate(java.sql.Date pAnswerDate) {
-		this.pAnswerDate = pAnswerDate;
+	public void setProAnswerDate(java.sql.Date proAnswerDate) {
+		this.proAnswerDate = proAnswerDate;
 	}
 
 
@@ -151,12 +152,13 @@ public class ProAskDTO {
 
 	@Override
 	public String toString() {
-		return "ProAskDTO [pAskId=" + pAskId + ", userID=" + userID + ", user=" + user + ", pQuestion=" + pQuestion
-				+ ", pAskDate=" + pAskDate + ", pAskStatus=" + pAskStatus + ", managerId=" + managerId + ", pAnswer="
-				+ pAnswer + ", pAnswerDate=" + pAnswerDate + ", proId=" + proId + ", product=" + product + "]";
+		return "ProAskDTO [proAskId=" + proAskId + ", proAskWriterUserId=" + proAskWriterUserId + ", writer=" + writer
+				+ ", proQuestion=" + proQuestion + ", proAskDate=" + proAskDate + ", proAskStatus=" + proAskStatus
+				+ ", managerId=" + managerId + ", proAnswer=" + proAnswer + ", proAnswerDate=" + proAnswerDate
+				+ ", proId=" + proId + ", product=" + product + "]";
 	}
 
-
+	
 	
 
 }

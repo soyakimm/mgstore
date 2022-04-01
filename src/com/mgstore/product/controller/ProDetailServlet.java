@@ -38,7 +38,7 @@ public class ProDetailServlet extends HttpServlet {
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
-
+// 조회용
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		
 //		String path = "/WEB-INF/views/product/proDetail.jsp";

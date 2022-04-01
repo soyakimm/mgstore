@@ -20,7 +20,6 @@
     <div class="proAsked-page-header">
         <div class="proHeader-title"><h3>상품문의</h3></div>
         <div class="asked-write">
-            <!-- <button class="askBtn" onclick="link">상품문의 쓰기</button> -->
             <input type="askBtn" value="상품문의 쓰기" class="askBtn" onclick="showPopup();" />
             <script>
             function showPopup() { window.open("${ pageContext.servletContext.contextPath }/product/asked/user", "a", "width=400, height=600, left=100, top=50"); }
@@ -33,32 +32,32 @@
                 <div class="user-asked-header">
                     <div class="header-left">
                         <div class="user-img">
-                            <img src="${ pageContext.servletContext.contextPath }/resources/images/product/meongae_logo.PNG">
+                            <img src="${ pageContext.servletContext.contextPath }/resources/images/product/sarang.jpg">
                         </div>
                         <div class="user-info">
                             <div class="user-title">
-                                <div class="user-name">닉네임</div>
+                                <div class="user-name">렛서판다</div>
                             </div>
                             <div class="pet-info">
-                                <span class="pet-name">강아지</span>
+                                <span class="pet-name">이사랑</span>
                                 <span>|</span>
-                                <span class="pet-type">타입</span>
+                                <span class="pet-type">믹스견</span>
                             </div>
                         </div>
                     </div>
                     <div class="header-right">
                         <div class="sysdate">
-                            2022.03.02
+                            2022.03.22
                         </div>
                     </div>
                 </div>
                 <div class="user-asked-body">
                     <div class="asked-content">
                         <div class="que">
-                            <span class="Q">Q. &nbsp</span>문의 내용입니다.<br>답변이 완료된 문의입니다.
+                            <span class="Q">Q. &nbsp</span>사람 생일선물로 줘도 좋아할까요?
                         </div>
                         <div class="ans">
-                            <span class="A">A. &nbsp</span>답변 내용입니다.<br>관리자만 답변을 작성할 수 있습니다.
+                            <span class="A">A. &nbsp</span>공격성을 드러내지 않는 성격이라면 괜찮을 것 같습니다. 감사합니다.
                         </div>
                     </div>
                 </div>
@@ -73,29 +72,30 @@
                         </div>
                         <div class="user-info">
                             <div class="user-title">
-                                <div class="user-name">닉네임</div>
+                                <div class="user-name">말미잘</div>
                             </div>
                             <div class="pet-info">
-                                <span class="pet-name">강아지</span>
+                                <span class="pet-name">해삼</span>
                                 <span>|</span>
-                                <span class="pet-type">타입</span>
+                                <span class="pet-type">믹스견</span>
                             </div>
                         </div>
                     </div>
                     <div class="header-right">
                         <div class="sysdate">
-                            2022.03.02
+                            2022.03.29
                         </div>
                     </div>
                 </div>
                 <div class="user-asked-body">
                     <div class="review-content">
                         <div class="que">
-                            <span class="Q">Q. &nbsp</span>문의 내용입니다.<br>답변이 아직 작성되지 않았습니다.
+                            <span class="Q">Q. &nbsp</span>뒤에 있는 가랜드도 상품구성에 포함된 건가요?
                         </div>
                     </div>
                 </div>
             </div>
+          </div>
     </div>
 </div>
 

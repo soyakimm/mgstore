@@ -58,6 +58,10 @@ button{
   margin: 0 auto;
 }
 
+.pasing{
+	margin-top: 40%;
+}
+
 
 /* 카테고리 사이드 바 ---------- */
 
@@ -289,7 +293,6 @@ ul.sort-select{
   padding: 1% 1% 5% 1%;
 }
 
-/* 단점 : 창 너비 줄이면 상품목록 위에 오버랩 */
 .paging-navigation a.current-page {
   color: #F5742F;
   font-weight: bold;

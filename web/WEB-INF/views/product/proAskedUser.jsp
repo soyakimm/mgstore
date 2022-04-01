@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>문의하기 | 멍개상점</title>
+   <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
@@ -21,15 +22,16 @@
             <div class="asked-header">
                 <h3>상품 Q&A 작성하기</h3>
                 <div class="close">
-                    <input type="image" src="../images/cancle-white.png" onclick="self.close();">
+                    <input type="image" src="${ pageContext.servletContext.contextPath }/resources/images/product/cancle-white.png" onclick="self.close();">
                 </div>
             </div>
         </div>
         <div class="asked-body">
+        <form action="${ pageContext.servletContext.contextPath }/proAsk/insert" method="post">
             <div class="body-area">  
-                    <textarea name="asked-msg" maxlength="1000" placeholder="문의하실 내용을 입력하세요.(0/1000)"></textarea>
+                    <textarea name="proQuestion" maxlength="1000" placeholder="문의하실 내용을 입력하세요.(0/1000)"></textarea>
                 <div class="lock-area">
-                    <input type="checkbox" value="비공개" id="lock" name="lock">
+                    <input type="checkbox" value="비공개" id="lock" name="proStatus">
                     <label for="lock" class="label-lock">비공개</label>
                 </div>
                 <div class="button-area">
@@ -50,6 +52,7 @@
 
                 </script>
             </div>
+            </form>
         </div>
         <div class="asked-footer">
             <div class="asked-footer-notice">

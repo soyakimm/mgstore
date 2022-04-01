@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품수정 | 멍개상점</title>
+   <link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
    <!-- 웹 폰트 -->
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
    <!-- 스타일 시트 -->
@@ -78,14 +79,10 @@
                         <th height="300px" rowspan="2">이미지</th>
                         <td id="tid">
                             <h4>썸네일</h4>
-<!--                             <div id="thumbnail-preview"> -->
-<!--                             </div> -->
                             <input type="file" id="img" name="thumbnail" accept="image/gif, image/jpeg, img/png"/ >
                         </td>
                         <td>
                             <h4>상세 이미지</h4>
-<!--                             <div id="image-preview"> -->
-<!--                             </div> -->
                             <input type="file" id="img2" name="contentImg" accept="image/gif, image/jpeg, img/png"/>
                         </td>
                     </tr>

@@ -26,14 +26,14 @@
 				<!-- productDTO로 데이터 넘겨받기 -->
 					<tr>
 						<td class="table-img">
-						<img src="../resource/로고_주황.png">
+						<img src="${ pageContext.servletContext.contextPath }/resources/images/product/HBD.jpg">
 						</td>
 						<td class="table-img-pro">
 							<div><input type="hidden" name="productId" value=1></div>							
-							<div><input type="hidden" name="productName" value="멍멍이풍선껌">멍멍이풍선껌</div><!-- 값받아야됨 / value="${ pay.proName } -->
+							<div><input type="hidden" name="productName" value="멍멍이풍선껌">해피멍스데이 세트</div><!-- 값받아야됨 / value="${ pay.proName } -->
 							<li><input type="hidden" name="amount" value="1">1개</li>
-							<div><input type="hidden" name="price" value="10000">
-							<fmt:formatNumber value="10000" type="number" />원
+							<div><input type="hidden" name="price" value="33000">
+							<fmt:formatNumber value="33000" type="number" />원
 							</div><!-- 값받아야됨 / value="${ pay.proPrice } -->
 						</td>
 					</tr>

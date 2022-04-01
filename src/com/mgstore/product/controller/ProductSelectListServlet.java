@@ -58,31 +58,9 @@ public class ProductSelectListServlet extends HttpServlet {
 		request.getRequestDispatcher(path).forward(request, response);	
 		
 	}
-		
-		
-		
-//		List<ProductDTO> thumbnailList = productService.selectThumbnailList();
-//		
-//		for(ProductDTO product : thumbnailList) {
-//			System.out.println(product);
-//		}
-//		
-//		String path = "";
-//		if(thumbnailList != null) {
-//			path = "/WEB-INF/views/product/proList.jsp";
-//			request.setAttribute("thumbnailList", thumbnailList);
-//		} else {
-//			path = "/WEB-INF/views/common/failed.jsp";
-//			request.setAttribute("message", "상품 게시판 조회에 실패하셨습니다.");
-//		}
-//		
-//		request.getRequestDispatcher(path).forward(request, response);
-//	}
-
-		
-		
-		
 	
+		
+// 페이지 조회	
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		
 //		String path = "/WEB-INF/views/product/proList.jsp";
