@@ -19,14 +19,6 @@ import com.mgstore.common.paging.SelectCriteria;
 public class EventMainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		/*조회수 카운트를 위한 페이지 설정*/
-		/*String currentPage = request.getParameter("currentPage");
-		int pageNo = 1;
-		
-		if(currentPage != null && !"".equals(currentPage)) {
-			pageNo = Integer.parseInt(currentPage);
-		}*/
-		
 		EventService EventService = new EventService();
 		
 		List<EventDTO> eventList = EventService.selectEventList();

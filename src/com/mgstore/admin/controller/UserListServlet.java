@@ -66,12 +66,7 @@ public class UserListServlet extends HttpServlet {
 		}
 
 		request.getRequestDispatcher(path).forward(request, response);
-		
-		
-		//request.setAttribute("userList", userList);
-		//request.getRequestDispatcher("/WEB-INF/views/admin/AdmUserList.jsp").forward(request, response);
-		
-		//System.out.println("출력");
+	
 	}
 
 

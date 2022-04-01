@@ -219,8 +219,6 @@
                 <li><button class="menuBtn" id="userBtn" type="button">일반회원</button></li>
                 <li><button class="menuBtn" id="reportBtn" type="button">신고내역</button></li>
                 <li><button class="menuBtn" id="byeuserBtn" type="button">탈퇴회원</button></li>
-                <!-- <li><button class="menuBtn" id="commBtn" type="button">게시판관리</button></li> -->
-               <!--  <li><button class="menuBtn" id="orderBtn" type="button">주문내역</button></li> -->
                 <li><button class="menuBtn" id="proBtn" type="button">재고관리</button></li>
                 <li><button class="menuBtn" id="profitBtn" type="button">수익관리</button></li>
                 <li><button class="menuBtn" id="payBtn" type="button">판매관리</button></li>
