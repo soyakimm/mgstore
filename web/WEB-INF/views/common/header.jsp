@@ -93,7 +93,7 @@
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="mypage" type="button">
 	                    	<a href="${ pageContext.servletContext.contextPath }/user/mypage">마이페이지</a>
-	                    	<div class="mypage-content"><a href="${ pageContext.servletContext.contextPath }/myshopping/wishList">마이쇼핑</a></div>
+	                    	<div class="mypage-content"><a href="${ pageContext.servletContext.contextPath }/myshopping/orderHistory">마이쇼핑</a></div>
 	                    </button>
 	                    <div class="header-line"><span> | </span></div>
 	                    <button class="regist" type="button">
@@ -248,4 +248,5 @@
         </div>
     </header>
 </body>
+
 </html>

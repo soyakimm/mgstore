@@ -37,6 +37,26 @@ height : 44px;
 
 }
 
+.nyny {
+	background-color: var(--mist-gray);
+    border-radius: 40px;
+    height: 473px;
+    left: 466px;
+    position: absolute;
+    top: 5px;
+    width: 552px;
+	
+}
+
+.tgtg {
+
+position: relative;
+left : 30px;
+}
+
+
+
+
 
 </style>
 
@@ -48,14 +68,14 @@ height : 44px;
         <div class="frame-7 screen">
             <div class="overlap-group6">
             <!--스토어 랜덤 사진-->
-             <div class="view"></div>
+             <img class="nyny" src="${ pageContext.servletContext.contextPath }/resources/images/community/KakaoTalk_20220401_000459335_01.jpg">
               <div class="rectangle-83"></div>
               <h1 class="lets-shopping web-font21">Let’s Shopping</h1>
               <!--스토어 버튼-->
               <a href="#"><div class="rectangle-84 store"></div></a>
               <!--스토어 글씨-->
-              <a href="#"><div class="store">STORE</div></a>
-              <div class="text-15 valign-text-middle"><p class="web-font22">줄무늬 코끼리 삑삑이 장난감</p></div>
+              <a href="#"><div class="store" onclick="detailViews(${ productList[0].proId });">STORE</div></a>
+              <div class="text-15 valign-text-middle"><p class="web-font22 tgtg">${ productList[0].proTitle }</p></div>
             </div>
             <div class="overlap-group-container-1">
               <!--글쓰기 버튼-->
@@ -66,7 +86,7 @@ height : 44px;
              <!-- 조회순 조회 -->
               <a href="${ pageContext.servletContext.contextPath }/thumbnail/list">
               <div class="overlap-group2 border-1px-fuscous-gray">
-                <div class="text notosanskr-medium-fuscous-gray-15px">조회수순</div>
+                <div class="text notosanskr-medium-fuscous-gray-15px">댓글순</div>
               </div></a>
               <a href="#"><div class="overlap-group7 border-1px-fuscous-gray">
                 <div class="text notosanskr-medium-fuscous-gray-15px">최신순</div>
@@ -104,10 +124,9 @@ height : 44px;
              <!--게시글 전체 끝-->
               </c:forEach>
 	
-	<!-- 페이징 처리중인데 안뜨는중 -->
-	<jsp:include page="../common/paging.jsp"/>
 	
-	
+	 </div>
+
 	<!-- 해당 게시글 클릭했을 때 게시글 번호 넘어가서 해당 게시글 볼 수 있음 -->
 	<script>
 			function detailView(postId){
@@ -115,6 +134,16 @@ height : 44px;
 			}
 	</script>
 	
-	<jsp:include page="../common/footer.jsp"/>
+	<script>
+			function detailViews(proId){
+				location.href = '${ pageContext.servletContext.contextPath }/product/detail?id=' + proId;
+			}
+	</script>
+	
+
+
+
+	
 </body>
+	<jsp:include page="../common/footer.jsp"/>
 </html>

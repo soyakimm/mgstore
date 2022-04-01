@@ -18,7 +18,7 @@
 	<div class="group">
 
 	<form action="${ pageContext.servletContext.contextPath }/event/update" method="post" enctype="multipart/form-data">
-			<h2>이벤트 소개</h2>
+			<h2 id="eveh2">이벤트 소개</h2>
 			<hr>
 			<div class="eve-info">
 					<!-- 이벤트 이름-->
@@ -47,7 +47,7 @@
 							<b id="sub" style="font-size: 14px;"> 왼쪽은 이벤트 시작기간
 								 <br> 오른쪽은 이벤트 종료기간입니다. <br>
 							</b>
-							<input type="date" name="eveStart" value="${ thumbnail.eveStart }">  <!-- 선생님은 다 옳은 말씀만해.. 다 내 좔못이야.. -->
+							<input type="date" name="eveStart" value="${ thumbnail.eveStart }">  
 							<input type="date" name="eveEnd" value="${ thumbnail.eveEnd }"> 
 						</div>
 
@@ -84,7 +84,8 @@
 						</div>
 					</form> <!-- 무조건 처리 필요한 enctype -->
 			</div><!--group-->
-		</body>		
+			
+		
 	
 	<script>
 			function detailView(eveId){
@@ -92,8 +93,6 @@
 			}
 	</script>
 	
-	<!-- <script src="${ pageContext.servletContext.contextPath }/resources/js/event/EventImagePreview.js"></script> -->
-	
 	</body>
-		<jsp:include page="../common/footer.jsp"/>
+	 <jsp:include page="../common/footer.jsp"/>
 </html>

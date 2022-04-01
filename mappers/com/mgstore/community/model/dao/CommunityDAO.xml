@@ -64,6 +64,47 @@
 		<result property="status" column="PO_STATUS"/>
 	</resultMap>
   
+  <!--  -->
+  
+	<!-- 상품 -->
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="productResultMap">
+		<id property="proId" column="PRO_ID"/>
+		<result property="proCateId" column="PCATE_ID"/>
+		<result property="proTitle" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="proAmount" column="PRO_AMOUNT"/>
+		<result property="proContent" column="PRO_CONTENT"/>
+		<result property="proDate" column="PRO_DATE"/>
+		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proCount" column="PRO_COUNT"/>
+	</resultMap>
+	
+
+	
+	<!-- 썸네일 -->
+	<resultMap type="com.mgstore.product.model.dto.ProductDTO" id="thumbnailProductResultMap">
+		<id property="proId" column="PRO_ID"/>
+		<result property="proCateId" column="PCATE_ID"/>
+		<result property="proTitle" column="PRO_TITLE"/>
+		<result property="price" column="PRICE"/>
+		<result property="proAmount" column="PRO_AMOUNT"/>
+		<result property="proContent" column="PRO_CONTENT"/>
+		<result property="proDate" column="PRO_DATE"/>
+		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proCount" column="PRO_COUNT"/>
+	</resultMap>
+	
+	<!-- 상품이미지 -->
+	<resultMap type="com.mgstore.product.model.dto.ProImgDTO" id="proImgResultMap">
+		<id property="proImgId" column="PIMG_ID"/>
+		<result property="refProId" column="REF_PRO_ID"/>
+		<result property="proImgOrgName" column="PIMG_ORGNAME"/>
+		<result property="proImgSvrName" column="PIMG_SVRNAME"/>
+		<result property="proImgPath" column="PIMG_PATH"/>
+		<result property="proImgType" column="PIMG_TYPE"/>
+		<result property="proThumbnailPath" column="PTHUMBNAIL_PATH"/>
+		<result property="proImgStatus" column="PIMG_STATUS"/>
+	</resultMap>
   
   <!-- 사진없는 게시글 추가 -->
   <insert id="insertWrite">
@@ -391,6 +432,47 @@
 		   SET PO_STATUS = 'N'
 		 WHERE POST_ID = #{ postId }
 	</update>
+	
+	
+		
+		<!-- 커뮤니티 메인 최신 순 조회 -->
+	<select id="selectNewList" resultMap="writeResultMap">
+		SELECT
+		       A.POST_ID
+		     , A.POST_TITLE
+		     , B.CATEGORY_NAME
+		     , D.PO_IMAGE_ID  <!-- 사진 아이디 -->
+             , D.PO_IMAGE_NAME  <!-- 원본파일명 -->
+             , D.PO_IMAGE_RENAME <!-- 수정파일명 -->
+             , D.PO_IMAGE_PATH  <!-- 파일 경로 -->
+             , D.PO_THUMBNAIL_PATH <!-- 썸네일 경로 -->
+          FROM POST A
+          JOIN CATEGORY B ON (A.CATEGORY_ID = B.CATEGORY_ID)
+          JOIN POST_IMAGE D ON (A.POST_ID = D.POST_ID) 
+         WHERE A.POST_STATUS = 'Y'
+           AND D.PO_FILE_TYPE = 'TITLE'	 
+ 		   ORDER BY A.POST_DATE DESC
+	</select>
+	
+	
+		<!-- 상품 사진 조회수 최대 조회 -->
+  <select id="selectProductList" resultMap="productResultMap">
+		SELECT
+				A.PRO_ID
+			  , A.PRO_TITLE
+			  , C.PIMG_ID
+			  , C.PIMG_ORGNAME
+			  , C.PIMG_SVRNAME
+			  , C.PIMG_PATH
+			  , C.PTHUMBNAIL_PATH
+		  FROM PRODUCT A
+		  JOIN PRO_IMG C ON (A.PRO_ID=C.REF_PRO_ID)
+		 WHERE A.PRO_STATUS='Y'
+		   AND C.PIMG_STATUS='Y'
+		   AND C.PIMG_TYPE='TITLE'
+		 ORDER BY A.PRO_COUNT DESC
+	</select> 
+	
 	
 	
 </mapper>

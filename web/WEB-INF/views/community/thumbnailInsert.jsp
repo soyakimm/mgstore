@@ -71,7 +71,7 @@
 }
 
 .title_span {
-	background-color: #282A35;
+	background-color: #f5742f;
 }
 
 .board_area button {
@@ -79,7 +79,7 @@
 	height: 35px;
 	border: 0px;
 	color: white;
-	background: #282A35;
+	background: #f5742f;
 	margin: 5px;
 	cursor : pointer;
 }
@@ -88,6 +88,15 @@
 	text-align: center;
 	border-top: 1px solid #282A35;
 	padding: 30px;
+}
+
+h4 {
+  font-family: 'Gmarket Sans TTF';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+color: #000000;
 }
 </style>
 
@@ -104,8 +113,10 @@
 				<div class="board_content">
 					<form method="post" action="${ pageContext.servletContext.contextPath }/thumbnail/insert" enctype="multipart/form-data">
 						<div class="content">
+							
+							<br>
 							<h4>
-								<span class="title_span">&nbsp;</span> 분류
+								<span>&nbsp;</span> 분류
 							</h4>
 							<span class="input_area"> 
 							<select name="category">
@@ -127,19 +138,21 @@
 							</select>
 							
 							</span>
+							
+							<br><br>
 							<h4>
-								<span class="title_span">&nbsp;</span> 제목
+								<span>&nbsp;</span> 제목
 							</h4>
 							<span class="input_area"> <input type="text" name="title"
 								required>
 							</span>
-
+								<br><br>
 							<h4>
-								<span class="title_span">&nbsp;</span> 내용
+								<span>&nbsp;</span> 내용
 							</h4>
 							<textarea class="textarea" rows="20" cols="100" name="text"
 								required></textarea>
-						
+						<br>
 						<!-- 무조건 사진 첨부! required -->
 							<h4>
 								<span class="title_span">&nbsp;</span> 대표 이미지 첨부

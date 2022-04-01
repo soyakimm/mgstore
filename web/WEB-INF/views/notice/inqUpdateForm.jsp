@@ -7,6 +7,7 @@
 <title>멍개상점 1:1 문의사항</title>
 <!--제이쿼리 CDN-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!-- 외부 스타일 시트 -->
 <link
    href="${ pageContext.servletContext.contextPath }/resources/css/notice/notice.css"

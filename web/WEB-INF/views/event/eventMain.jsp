@@ -21,6 +21,7 @@
         <div class="event-container">
             <div class="main-container">  
                 <div class="block-title">
+                	<br><br>
                     <h2>멍개이벤트</h2>
                 </div><!-- block-title -->
             </div> <!--main container-->

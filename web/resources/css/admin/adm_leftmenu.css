@@ -86,9 +86,9 @@ body {
 
 
 #btnList{
-    list-style: url(resources/images/admin/adm_img/mng_arrow_small.png);
+    list-style-image: url('../resources/images/admin/adm_img/mng_arrow_small.png');
     text-align: center;
-    margin-top : 50px;
+    margin-top : 150px;
     margin-left: 20px;
     
     

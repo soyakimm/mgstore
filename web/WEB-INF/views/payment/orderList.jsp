@@ -10,6 +10,7 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/payment/payment.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!--제이쿼리 CDN-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 </head>
@@ -26,11 +27,13 @@
 				<!-- productDTO로 데이터 넘겨받기 -->
 					<tr>
 						<td class="table-img">
-						<img src="${ pageContext.servletContext.contextPath }/resources/images/product/HBD.jpg">
+
+						<img src="${ pageContext.servletContext.contextPath }/resources/images/product/해피멍스데이.jpg">
 						</td>
 						<td class="table-img-pro">
-							<div><input type="hidden" name="productId" value=1></div>							
-							<div><input type="hidden" name="productName" value="멍멍이풍선껌">해피멍스데이 세트</div><!-- 값받아야됨 / value="${ pay.proName } -->
+							<div><input type="hidden" name="productId" value=3></div>							
+							<div><input type="hidden" name="productName" value="해피멍스데이 세트">해피멍스데이 세트</div><!-- 값받아야됨 / value="${ pay.proName } -->
+
 							<li><input type="hidden" name="amount" value="1">1개</li>
 							<div><input type="hidden" name="price" value="33000">
 							<fmt:formatNumber value="33000" type="number" />원
@@ -139,15 +142,15 @@
 					<tr>
 						<td class="table-row">총 상품 금액</td>
 						<td class="input-layer4">
-							<fmt:formatNumber value="10000" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
-							<input type="hidden" name="proTotal" value="10000">
+							<fmt:formatNumber value="33000" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
+							<input type="hidden" name="proTotal" value="33000">
 						</td> 
 					</tr>
 					<tr>
 						<td class="table-row">배송비</td>
 						<td class="input-layer4">
-							<fmt:formatNumber value="0" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
-							<input type="hidden" name="deliveryFee" value="0">
+							<fmt:formatNumber value="2500" type="number" />원<!-- fmt이용해서 ##,###,### 바꾹 -->
+							<input type="hidden" name="deliveryFee" value="2500">
 						</td>
 					</tr>
 					<!--  포인트 보류
@@ -158,8 +161,8 @@
 					<tr>
 						<td class="table-row">총 결제금액</td>
 						<td class="input-layer4">
-							<b><fmt:formatNumber value="10000" type="number" />원</b>
-							<input type="hidden" name="orderTotal" value="18500">
+							<b><fmt:formatNumber value="35500" type="number" />원</b>
+							<input type="hidden" name="orderTotal" value="35500">
 						</td>
 					</tr>
 				</table>
@@ -205,8 +208,8 @@
         	 pg : payType,
              pay_method : 'card',
              merchant_uid : 'merchant_' + new Date().getTime(),
-             name : '멍개상점 결제',
-             amount : 300,	//결제 최총 금액
+             name : '멍개상점',
+             amount : 33000,	//결제 최총 금액
              buyer_email : 'tgtg5174@gmail.com',
              buyer_name : '${loginUser.userName}',
              buyer_tel : $('[name=phone1]').val(),
@@ -223,7 +226,7 @@
                     dataType: 'json',
                     data: {
                         imp_uid : rsp.imp_uid,
-                        buyer_email : 'tgtg5174@gmail.com',
+                        buyer_email : '${loginUser.email}',
                         buyer_name : '${loginUser.userName}',
                         buyer_tel : $('[name=phone1]').val(),
                         buyer_addr : $('[name=address1]').val(), 
@@ -232,11 +235,11 @@
                         delivery_user : $('[name=ordName]').val(),
                         buyer_tel2 : $('[name=phone2]').val(),
                         deliveryReq : $('[name=deliveryReq]').val(),
-                        productName : "멍멍이풍선껌", /*값 고치기*/
+                        productName : "해피멍스데이 세트", /*값 고치기*/
                         productQty : 1, /*값 고치기*/
-                        productPrice : 10000, /*값 고치기*/
-                        proId : 10, /*값 고치기*/
-                        proTotal : 10000 //상품 총 금액 (배송비 포함된)
+                        productPrice : 33000, /*값 고치기*/
+                        proId : 3, /*값 고치기*/
+                        proTotal : 35500 //상품 총 금액 (배송비 포함된)
                         //userId : '${loginUser.userId}', //세션에 있어서 보낼필요 없음>>세션에서 꺼내쓰는걸로 jsp만들어야됨! / ''빼먹으면 오류
                         //기타 필요한 데이터가 있으면 추가 전달
                     }

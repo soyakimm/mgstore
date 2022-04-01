@@ -56,11 +56,7 @@
             		location.href='<%=request.getContextPath()%>/byeuser/list';
             	});
 
-<%--                 const commBtn = document.getElementById('commBtn');
-            	commBtn.addEventListener('click', function(){
-            		location.href='<%=request.getContextPath()%>/comm/list';
-            	});
- --%>
+
                 const proBtn = document.getElementById('proBtn');
             	proBtn.addEventListener('click', function(){
             		location.href='<%=request.getContextPath()%>/pro/list';

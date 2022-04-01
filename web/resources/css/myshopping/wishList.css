@@ -36,15 +36,15 @@
     flex-direction: column;
   }
   
+  
   .title-bg {
     color: var(--black);
     font-family: 'GmarketSansLight';
     font-size: var(--font-size-xxxl2);
     font-weight: bold;
     height: 62px;
-    letter-spacing: 0;
     text-align: center;
-    width: 521px;
+    width: 1200px;
     text-align: center;
     margin-top: 50px;
   }
@@ -54,7 +54,7 @@
     max-width: 1400px;
     margin: 0 auto;
     align-items: center;
-    background-size: 100% 100%;
+    background-size: 50% 100%;
     padding: 0 4%;
   }
   
@@ -78,6 +78,7 @@
       padding: 0 8px 8px;
       font-weight: normal;
       border-bottom: 2px #f5742f solid;
+       text-align: center;
   }
   
   /* 메뉴에 hover 가 안먹음*/
@@ -90,7 +91,7 @@
       list-style: none;
       padding: 5px;
       font-family: 'Noto Sans KR';
-      padding-right: 50px;
+/*       padding-right: 50px; */
       color: #484848;
   }
   

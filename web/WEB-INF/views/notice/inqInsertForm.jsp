@@ -8,9 +8,18 @@
 <link
 	href="${ pageContext.servletContext.contextPath }/resources/css/notice/notice.css"
 	rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/EVENT/resources/images/favicon.ico">
 <!--제이쿼리 CDN-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+	button {
+	font-family: 'Noto Sans KR';
+	background: none;
+	border-style: none;
+	color :white;
+}
+</style>
 </head>
 	<jsp:include page="../common/header.jsp" />
 <body>
@@ -43,7 +52,7 @@
 						<input class="file-layout" value="파일을 첨부해주세요." disabled="disabled">
 					</div>
 					<div class="asked-submit">
-						<button type="submit">문의하기</button>
+						<button type="submit" value ="">문의하기</button>
 					</div>
 				</div>
 				<label class="file-upload" for="input-file"> 

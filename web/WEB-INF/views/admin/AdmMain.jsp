@@ -12,13 +12,8 @@
 	    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
-		<!-- 1100에 730사이즈 새창 -->
-		    <script>
-		        window.resizeTo(1300,690);
-		    </script>
-
-        <audio id='audio_play' src='../resources/audio/Squeaky-toy-sound-effect.mp3'></audio> 
-        <script type="text/javascript"> 
+        <audio id='play' src='/resources/audio/Squeaky-toy-sound-effect.mp3' type="audio/mp3"></audio> 
+        <!--  <script> 
         function play() { 
             var audio = document.getElementById('audio_play'); 
             if (audio.paused) { 
@@ -29,7 +24,7 @@
             } 
         } 
         </script>
-     
+     -->
      
 <style>
 
@@ -142,6 +137,7 @@
 
    img { display: block; margin: 0px auto; max-height: 200px;}
 
+
 </style>
 
 </head>
@@ -150,7 +146,7 @@
  	<div class="title" >
         <span style="text-shadow:  -4px 0 white, 0 -5px white, -2px 0 white, 0 -2px white;"></span> 
         <img src="${ pageContext.servletContext.contextPath }/resources/images/admin/adm_img/Logo.PNG" alt="logo">
-        <h1 onclick="play()">관리자 페이지</h1>
+        <h1 onclick="audio_play()">관리자 페이지</h1>
     </div>
     <div class="background">
        <table id="firstTB">
@@ -168,7 +164,17 @@
             </tr>
        </table>
        
-       
+
+		<script>
+		// 관리자 창 띄우기
+		const userBtn = document.getElementById('userBtn');
+		userBtn.addEventListener('click', function() {
+			// 새 창 띄우기
+			window.open('<%=request.getContextPath()%>/admin/userlist', 'width=1100, height=500', 'newWindow');	
+		});
+		</script>
+
+
        <script>
 		    const userBtn = document.getElementById('userBtn');
 		   	userBtn.addEventListener('click', function(){
@@ -180,18 +186,13 @@
         		location.href='${ pageContext.servletContext.contextPath }/pro/listmng';
         	});
        		
-   			<%--        		
-            const adm_comm = document.getElementById("adm_comm");
-            adm_comm.addEventListener('click', function(){
-                location.href='<%=request.getContextPath()%>/views/Login/loginAdmin.jsp';   
-            });     
-         	--%>    
          
             const profitBtn = document.getElementById('profitBtn');
         	profitBtn.addEventListener('click', function(){
         		location.href='${ pageContext.servletContext.contextPath }/pay/profit';
         	});
        </script>
+       
        
     </div>
 </body>

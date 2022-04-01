@@ -14,15 +14,16 @@
 
 .group {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto; 
+    font-family: GmarketSansBold;
 }
 
 /*전체선택자*/
-*, *::before, *::after {
+/* *, *::before, *::after {
     box-sizing: border-box;
-    
     font-family: GmarketSansBold;
 }
+*/
 
 /* 등록하기 버튼 - 관리자용 */
 .eve-delete-btn{
@@ -32,7 +33,7 @@
     width: 70px;
     height: 25px;
     margin-bottom: 8px;
-    
+    font-family: GmarketSansBold;
     background: #F7F7F7;
     border: 1px solid #F5742F;
     box-sizing: border-box;
@@ -40,6 +41,8 @@
     text-align: center;
     color: #48484d;
 }
+
+
 
 .content-body {
    min-width: 1400px;
@@ -65,7 +68,7 @@
 }
 
 .block-title {
-    margin-bottom: 80px;
+   /* margin-bottom: 80px; */
     border: 0;
     padding: 0;
     line-height: 1;
@@ -137,7 +140,7 @@ a {
     padding: 0;
     border: 0;
     font-size: 100%;
-    font-family: "Noto", sans-serif;
+    font-family: GmarketSansBold;
     vertical-align: baseline;
 }
 
@@ -163,7 +166,7 @@ a {
     margin: 0;
     padding: 0;
     font-size: 100%;
-    font-family: 'Noto', sans-serif;
+    font-family: GmarketSansBold;
     font-weight: 400;
 }
 
